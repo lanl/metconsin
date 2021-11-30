@@ -1,5 +1,5 @@
 # metconsin
-Metabolic Context Species Interaction Networks
+**Met**abolic **Con**text **S**pecies **I**nteraction **N**etworks
 
 The goal of this project is to generate microbial species interaction networks using constraint based metabolic modeling. To do this, MetConSIN seeks "conservation laws" in the dynamic FBA system. These will take the form of a piecewise constant function, implying local conservation from a which a local interaction network is implied.
 
