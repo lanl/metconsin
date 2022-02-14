@@ -71,294 +71,102 @@ class SurfMod:
         alphas = alphas.astype(float)
         low_exch = np.minimum(low_exch,alphas*initial_N)
 
-        if solver == 'coin':
-            upbds_exch = initial_N*alphas
+
+        # MatrixA = np.concatenate([-Gamma1,Gamma1,np.eye(Gamma1.shape[1]),-np.eye(Gamma1.shape[1])],axis = 0)
+        upbds_exch = initial_N*alphas
+
+        if report_activity:
+            try:
+                flobj.write("prep_indv_model: initializing LP\n")
+            except:
+                print("prep_indv_model: initializing LP")
+        growth = gb.Model("growth")
+        growth.setParam( 'OutputFlag', False )
+
+
+        sparms = [growth.addVar(lb = - gb.GRB.INFINITY,ub = gb.GRB.INFINITY, name = "s" + str(i)) for i in range(MatrixA.shape[1])]
+        growth.update()
+        objv = gb.quicksum([a[0]*a[1] for a in zip(obje,sparms)])
+        growth.setObjective(objv,gb.GRB.MAXIMIZE)
+
+        bds_vec = np.concatenate([upbds_exch,-low_exch,up_int,-low_int])
+        if report_activity:
+            try:
+                flobj.write("prep_indv_model: Adding constraints\n")
+            except:
+                print("prep_indv_model: Adding constraints")
+
+        growth.addConstrs((gb.quicksum([MatrixA[i][l]*sparms[l] for l in range(len(sparms))]) <= bds_vec[i] for i in range(len(MatrixA))), name = 'LE')
+        growth.addConstrs((gb.quicksum([Gamma2[i][l]*sparms[l] for l in range(len(sparms))]) == 0 for i in range(len(Gamma2))), name = 'Kernal')
+        growth.update()
+
+        if report_activity:
+            try:
+                flobj.write("prep_indv_model: optimizing LP\n")
+                flobj.write("prep_indv_model: optimizing with " + str(len(growth.getConstrs())) + " constraints\n" )
+            except:
+                print("prep_indv_model: optimizing LP")
+                print("prep_indv_model: optimizing with ",len(growth.getConstrs()) ," constraints" )
+        growth.optimize()
+
+
+        status = growth.status
+        # if status == 2:
+        #
+        # print(status)
+
+        statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
+        if status in statusdic.keys():
             if report_activity:
                 try:
-                    flobj.write("prep_indv_model ", self.Name,": initializing LP\n")
+                    flobj.write("prep_indv_model: LP Status: " +  statusdic[status] + '\n')
                 except:
-                    print("prep_indv_model", self.Name,": initializing LP")
-
-            growth = coin.cy.CyClpSimplex()
-            growth.optimizationDirection = 'max'
-            A = np.concatenate([MatrixA,-MatrixA],axis = 1)
-            G = np.concatenate([Gamma2,-Gamma2],axis = 1)
-            obje2 = np.concatenate([obje,-obje])
-            s = growth.addVariable('s',A.shape[1])
-
-            bds_vec = coin.py.modeling.CyLPArray(np.concatenate([upbds_exch,-low_exch,up_int,-low_int]))
-            cobj = coin.py.modeling.CyLPArray(obje2)
-
+                    print("prep_indv_model: LP Status: ", statusdic[status])
+        else:
             if report_activity:
                 try:
-                    flobj.write("prep_indv_model", self.Name,": Adding constraints\n")
+                    flobj.write("prep_indv_model: LP Status: Other\n")
                 except:
-                    print("prep_indv_model", self.Name,": Adding constraints")
+                    print("prep_indv_model: LP Status: Other")
 
-            growth += np.matrix(G) * s == 0
-            growth += np.matrix(A) * s <= bds_vec
-            growth += s >= 0
-            growth.objective = cobj * s
-
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model", self.Name,": optimizing LP\n")
-                    flobj.write("prep_indv_model", self.Name,": optimizing with " + str(growth.nConstraints) + " constraints\n" )
-                except:
-                    print("prep_indv_model", self.Name,": optimizing LP")
-                    print("prep_indv_model", self.Name,": optimizing with ", str(growth.nConstraints) ," constraints" )
+        if status == 2:
 
 
-            growth.primal()
+            # wi = np.array([v.x for v in growth.getVars()])#growth.solution.get_values()
+            val = growth.objVal
 
-            if growth.getStatusCode() == 0:
-
-                val = growth.objectiveValue
-                if len(secondobj) != MatrixA.shape[1]:#if not given a valid second objective, minimize total flux
-                    secondobj = np.ones(A.shape[1])
-                    growth.optimizationDirection = 'min'
-                    if report_activity:
-                        try:
-                            flobj.write("prep_indv_model", self.Name,": minimizing total flux")
-                        except:
-                            print("prep_indv_model", self.Name,": minimizing total flux")
-                else:
-                    secondobj = np.concatenate([secondobj,-secondobj])
-                    if report_activity:
-                        try:
-                            flobj.write("prep_indv_model", self.Name,": maximizing given secondary objective")
-                        except:
-                            print("prep_indv_model", self.Name,": maximizing given secondary objective")
-
-                newobj = coin.py.modeling.CyLPArray(secondobj)
-                growth += cobj * s == val
-                growth.objective = newobj * s
-                growth.primal()
-
-                if report_activity:
-                    minuts,sec = divmod(time.time() - t1, 60)
-                    try:
-                        flobj.write("prep_indv_model", self.Name,": Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
-                    except:
-                        print("prep_indv_model", self.Name,": Done in ",int(minuts)," minutes, ",sec," seconds.")
-                # wi = np.sum(growth.primalVariableSolution['s'].reshape(2,MatrixA.shape[1]),axis = 0)
-
-                return growth.primalVariableSolution['s']
+            if len(secondobj) != len(sparms):#if not given a valid second objective, minimize total flux
+                secondobj = -np.ones(len(sparms))
 
 
-            else:
-                return np.array(["failed to prep"])
-
-        elif solver == 'gb':
-
-
-
-
-            # MatrixA = np.concatenate([-Gamma1,Gamma1,np.eye(Gamma1.shape[1]),-np.eye(Gamma1.shape[1])],axis = 0)
-            upbds_exch = initial_N*alphas
-
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model: initializing LP\n")
-                except:
-                    print("prep_indv_model: initializing LP")
-            growth = gb.Model("growth")
-            growth.setParam( 'OutputFlag', False )
-
-
-            sparms = [growth.addVar(lb = - gb.GRB.INFINITY,ub = gb.GRB.INFINITY, name = "s" + str(i)) for i in range(MatrixA.shape[1])]
+            growth.addConstr(objv == val)
             growth.update()
-            objv = gb.quicksum([a[0]*a[1] for a in zip(obje,sparms)])
-            growth.setObjective(objv,gb.GRB.MAXIMIZE)
-
-            bds_vec = np.concatenate([upbds_exch,-low_exch,up_int,-low_int])
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model: Adding constraints\n")
-                except:
-                    print("prep_indv_model: Adding constraints")
-
-            growth.addConstrs((gb.quicksum([MatrixA[i][l]*sparms[l] for l in range(len(sparms))]) <= bds_vec[i] for i in range(len(MatrixA))), name = 'LE')
-            growth.addConstrs((gb.quicksum([Gamma2[i][l]*sparms[l] for l in range(len(sparms))]) == 0 for i in range(len(Gamma2))), name = 'Kernal')
+            newobj = gb.quicksum([a[0]*a[1] for a in zip(secondobj,sparms)])
+            growth.setObjective(newobj,gb.GRB.MAXIMIZE)
             growth.update()
-
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model: optimizing LP\n")
-                    flobj.write("prep_indv_model: optimizing with " + str(len(growth.getConstrs())) + " constraints\n" )
-                except:
-                    print("prep_indv_model: optimizing LP")
-                    print("prep_indv_model: optimizing with ",len(growth.getConstrs()) ," constraints" )
             growth.optimize()
 
-
-            status = growth.status
-            # if status == 2:
-            #
-            # print(status)
-
-            statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
-            if status in statusdic.keys():
-                if report_activity:
-                    try:
-                        flobj.write("prep_indv_model: LP Status: " +  statusdic[status] + '\n')
-                    except:
-                        print("prep_indv_model: LP Status: ", statusdic[status])
-            else:
-                if report_activity:
-                    try:
-                        flobj.write("prep_indv_model: LP Status: Other\n")
-                    except:
-                        print("prep_indv_model: LP Status: Other")
-
-            if status == 2:
-
-
-                # wi = np.array([v.x for v in growth.getVars()])#growth.solution.get_values()
-                val = growth.objVal
-
-                if len(secondobj) != len(sparms):#if not given a valid second objective, minimize total flux
-                    secondobj = -np.ones(len(sparms))
-
-
-                growth.addConstr(objv == val)
-                growth.update()
-                newobj = gb.quicksum([a[0]*a[1] for a in zip(secondobj,sparms)])
-                growth.setObjective(newobj,gb.GRB.MAXIMIZE)
-                growth.update()
-                growth.optimize()
-
-                wi = np.array([v.x for v in growth.getVars()])
+            wi = np.array([v.x for v in growth.getVars()])
 
 
 
-                # static2 = np.concatenate([-low_exch,up_int,-low_int])
-                if report_activity:
-                    minuts,sec = divmod(time.time() - t1, 60)
-                    try:
-                        flobj.write("prep_indv_model: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
-                    except:
-                        print("prep_indv_model: Done in ",int(minuts)," minutes, ",sec," seconds.")
-
-
-                # self.statbds = static2
-                return wi#,(MatrixA,static2,alphas,Gamma1,Gamma2,obje,death)
-            else:
-                return np.array(["failed to prep"])
-
-        elif solver == 'cp':
-    #
-            MatrixA = MatrixA.astype(float)#np.concatenate([-Gamma1,Gamma1,np.eye(Gamma1.shape[1]),-np.eye(Gamma1.shape[1])],axis = 0).astype(float)
-            Gamma2 = Gamma2.astype(float)
-            upbds_exch = initial_N*alphas
-
+            # static2 = np.concatenate([-low_exch,up_int,-low_int])
             if report_activity:
+                minuts,sec = divmod(time.time() - t1, 60)
                 try:
-                    flobj.write("prep_indv_model: initializing LP\n")
+                    flobj.write("prep_indv_model: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
                 except:
-                    print("prep_indv_model: initializing LP")
+                    print("prep_indv_model: Done in ",int(minuts)," minutes, ",sec," seconds.")
 
 
-
-
-            growth = cp.Cplex()
-
-
-            sparms = ["s" + str(i) for i in range(MatrixA.shape[1])]
-            s_lbs = [-cp.infinity]*MatrixA.shape[1]
-            s_ubs = [cp.infinity]*MatrixA.shape[1]
-
-            growth.variables.add(obj = obje, lb = s_lbs, ub = s_ubs, names = sparms)
-            growth.objective.set_sense(growth.objective.sense.maximize)
-
-            growth.set_results_stream(None)
-            growth.set_warning_stream(None)
-
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model: Adding constraints\n")
-                except:
-                    print("prep_indv_model: Adding constraints")
-
-            bdtypes = np.array(['L']*len(MatrixA) + ['E']*len(Gamma2))
-
-
-            bds_vec = np.concatenate([upbds_exch,-low_exch,up_int,-low_int,np.zeros(len(Gamma2))]).astype(float)
-
-
-            g1p2 = [list(g) for g in MatrixA] + [list(g) for g in Gamma2]
-            g1p2_wi = [[sparms, g] for g in g1p2]
-            growth.linear_constraints.add(lin_expr = g1p2_wi, senses = bdtypes,  rhs = bds_vec)
-            if report_activity:
-                try:
-                    flobj.write("prep_indv_model: optimizing LP\n")
-                except:
-                    print("prep_indv_model: optimizing LP")
-            growth.solve()
-
-            status = growth.solution.get_status()
-            statusdic = {1:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",2:"UNBOUNDED"}
-
-
-            if status in statusdic.keys():
-                if report_activity:
-                    try:
-                        flobj.write("prep_indv_model: LP Status: " +  statusdic[status] + '\n')
-                    except:
-                        print("prep_indv_model: LP Status: ", statusdic[status])
-            else:
-                if report_activity:
-                    try:
-                        flobj.write("prep_indv_model: LP Status: Other\n")
-                    except:
-                        print("prep_indv_model: LP Status: Other")
-
-
-
-            if status == 1:
-
-                # wi = np.array([growth.solution.get_values("s"+str(i)) for i in range(MatrixA.shape[1])])
-                # wi2 = np.array(growth.solution.get_values()) This should be the same but you never freaking know.
-
-                val = growth.solution.get_objective_value()
-
-                if len(secondobj) != len(sparms):#if not given a valid second objective, minimize total flux
-                    secondobj = -np.ones(len(sparms)).astype(float)
-                else:
-                    secondobj = np.array(secondobj).astype(float)
-
-                new_const = [sparms,list(obje)]
-                growth.linear_constraints.add(lin_expr = [new_const], senses = ['E'], rhs = [val])
-                newobj = [(sparms[i],secondobj[i]) for i in range(len(sparms))]
-                growth.objective.set_linear(newobj)
-                growth.solve()
-
-                wi = np.array([growth.solution.get_values("s"+str(i)) for i in range(MatrixA.shape[1])])
-
-
-
-
-                # static2 = np.concatenate([-low_exch,up_int,-low_int])
-                if report_activity:
-                    minuts,sec = divmod(time.time() - t1, 60)
-                    try:
-                        flobj.write("prep_indv_model: Done in " + str(int(minuts)) + " minutes " + str(sec) + " seconds.\n")
-                    except:
-                        print("prep_indv_model: Done in ",int(minuts)," minutes, ",sec," seconds.")
-
-                # self.statbds
-                return wi#,(MatrixA,static2,alphas,Gamma1,Gamma2,obje,death)
-
-
-            else:
-                return np.array(["failed to prep"])
-
-
+            # self.statbds = static2
+            return wi#,(MatrixA,static2,alphas,Gamma1,Gamma2,obje,death)
         else:
-            print("Please select solver Gurobi: 'gb' or CPlex: 'cp' or COIN-CBC:'coin'")
             return np.array(["failed to prep"])
 
-def prep_cobrapy_models(models,uptake_dicts = {},extracell = 'e', random_kappas = "new"):
+
+
+def prep_cobrapy_models(models,uptake_dicts = {},extracell = 'e', random_kappas = "new",media = {}):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
@@ -369,6 +177,11 @@ def prep_cobrapy_models(models,uptake_dicts = {},extracell = 'e', random_kappas 
         modeldict = {}
         for mod in models:
             modeldict[mod.name] = mod
+        models = modeldict
+
+    if len(media):
+        for mod in models:
+            models[mod].medium = media
 
     metaabs = {}
     y0s = {}

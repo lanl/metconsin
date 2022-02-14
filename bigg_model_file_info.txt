@@ -1,0 +1,5 @@
+Species,ID,File,sourceURL
+E.coli,iJR904,sample_models/iJR904.json,http://bigg.ucsd.edu/models/iJR904
+S.cerevisiae,iND705,sample_models/iND750.json,http://bigg.ucsd.edu/models/iND750
+P.putida,iJN746,sample_models/iJN746.json,http://bigg.ucsd.edu/models/iJN746
+M.tuberculosis,iEK1008,sample_models/iEK1008.json,http://bigg.ucsd.edu/models/iEK1008

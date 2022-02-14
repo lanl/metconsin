@@ -37,14 +37,12 @@ def metconsin(desired_models,model_info_file,media = {},uptake_dicts = {},random
                 for ky in media[model].keys():
                     if ky in exc:
                         tmp_medium[ky] = media[model][ky]
-                # model_media[model] = tmp_medium
                 cobra_models[model].medium = tmp_medium
 
             elif media[model] == "minimal":
                 mxg = cobra_models[model].slim_optimize()
                 min_med = cb.medium.minimal_medium(cobra_models[model],mxg,minimize_components = True)
                 cobra_models[model].medium = min_med
-                # model_media[model] = min_med
                 cobra_models[model].medium = min_med
 
 
