@@ -6,8 +6,7 @@ def get_waves(models,mets,mets0):
     wi = {}
     for md in models.keys():
         wi[md] = models[md].prep_indv_model(m0)
-    # yd0 = sum([np.dot(np.concatenate([models[md].Gamma1,-models[md].Gamma1],axis = 1),wi[md]) for md in wi.keys()])
-    yd0 = sum([np.dot(np.concatenate([models[md].Gamma1,axis = 1),wi[md]) for md in wi.keys()])
+    yd0 = sum([np.dot(models[md].Gamma1,wi[md]) for md in wi.keys()])
 
     for md in models.keys():
         print(md)
@@ -21,13 +20,12 @@ def find_waves(y,v,bddts,surfmodel,headsup = [], model = None,report_activity = 
     bddts must be 0 (for internal bound) or kappa_j ydot_j
 
     MatA is
-    [-Gamma1 ]
+    [-Gamma1]
     [Gamma1]
     [   I   ]
     [  -I   ]
     where Gamma1 is GammaStar and Gamma2 is GammaDagger
 
-    ******** If 'coin' is used (and this will be changed to all solvers if possible)
     Positive and negative fluxes are split (so that total flux can be minimized initially) so A becomes
      [A,-A]
      [I, 0]
@@ -346,4 +344,12 @@ def find_waves(y,v,bddts,surfmodel,headsup = [], model = None,report_activity = 
         except:
             print("find_waves: Done  in ",time.time() - t, " seconds.")
 
-    return QB,RB,the_index_of_basis, findbasis
+
+    return QB,RB,np.array(the_index_of_basis), findbasis
+
+def get_expr_coos(expr, var_indices):
+    rw = np.zeros(len(var_indices))
+    wherewhat = [(var_indices[expr.getVar(i)],expr.getCoeff(i)) for i in range(expr.size())]
+    for tp in wherewhat:
+        rw[tp[0]] = tp[1]
+    return rw

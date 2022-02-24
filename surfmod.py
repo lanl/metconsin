@@ -23,9 +23,13 @@ import cobra as cb
 
 class SurfMod:
     def __init__(self,G1,G2,lilg,ilbs,iubs,kaps,elbs,exchanged_metabolites,Name = None,deathrate = 0):
-        self.Gamma1 = np.array(G1)#Exchange rows (GammaStar)
-        self.Gamma2 = np.array(G2)#Internal (GammaDagger)
-        self.objective = np.array(lilg)
+
+        G10 = np.array(G1)
+        self.Gamma1 = np.concatenate([G10,-G10],axis = 1)#Exchange rows (GammaStar)
+        G20 = np.array(G2)
+        self.Gamma2 = np.concatenate([G20,-G20],axis = 1)#Internal (GammaDagger)
+        ob0 = np.array(lilg)
+        self.objective = np.concatenate([lilg,-lilg])
         self.intLB = np.array(ilbs)
         self.intUB = np.array(iubs)
         self.uptakes = np.array(kaps)
@@ -34,8 +38,10 @@ class SurfMod:
             self.Name = ''.join([str(np.random.choice(list('abcdefghijklmnopqrstuvwxyz123456789'))) for n in range(5)])
         else:
             self.Name = Name
-        self.MatrixA =  np.concatenate([-np.array(G1),np.array(G1),np.eye(np.array(G1).shape[1]),-np.eye(np.array(G1).shape[1])],axis = 0)
-        self.statbds = np.concatenate([-np.array(elbs),np.array(iubs),-np.array(ilbs)])#np.empty(0)
+        A0 = np.concatenate([-np.array(G1),np.array(G1),np.eye(np.array(G1).shape[1]),-np.eye(np.array(G1).shape[1])],axis = 0)
+        A1 = np.concatenate([A0,-A0],axis = 1)
+        self.MatrixA = np.concatenate([A1,-np.eye(A1.shape[1])],axis = 0)
+        self.statbds = np.concatenate([-np.array(elbs),np.array(iubs),-np.array(ilbs),np.zeros(A1.shape[1])])#np.empty(0)
         self.deathrate = deathrate
         self.exchanged_metabolites = exchanged_metabolites
 
@@ -49,12 +55,14 @@ class SurfMod:
         alphas = self.uptakes
         low_exch = self.exchgLB
         MatrixA = self.MatrixA
+        statbds = self.statbds
 
 
 
         t1 = time.time()
         Gamma1 = Gamma1.astype(float)
         Gamma2 = Gamma2.astype(float)
+
 
         #All that matters is Ker(Gamma2), so we can replace Gamma2 with a new
         #matrix with orthonormal rows that has the same kernal.
@@ -72,7 +80,6 @@ class SurfMod:
         low_exch = np.minimum(low_exch,alphas*initial_N)
 
 
-        # MatrixA = np.concatenate([-Gamma1,Gamma1,np.eye(Gamma1.shape[1]),-np.eye(Gamma1.shape[1])],axis = 0)
         upbds_exch = initial_N*alphas
 
         if report_activity:
@@ -89,12 +96,13 @@ class SurfMod:
         objv = gb.quicksum([a[0]*a[1] for a in zip(obje,sparms)])
         growth.setObjective(objv,gb.GRB.MAXIMIZE)
 
-        bds_vec = np.concatenate([upbds_exch,-low_exch,up_int,-low_int])
+        bds_vec = np.concatenate([upbds_exch,statbds])
         if report_activity:
             try:
                 flobj.write("prep_indv_model: Adding constraints\n")
             except:
                 print("prep_indv_model: Adding constraints")
+
 
         growth.addConstrs((gb.quicksum([MatrixA[i][l]*sparms[l] for l in range(len(sparms))]) <= bds_vec[i] for i in range(len(MatrixA))), name = 'LE')
         growth.addConstrs((gb.quicksum([Gamma2[i][l]*sparms[l] for l in range(len(sparms))]) == 0 for i in range(len(Gamma2))), name = 'Kernal')

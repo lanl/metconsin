@@ -1,4 +1,5 @@
 from findwaves import *
+from make_network import *
 import time
 import pandas as pd
 
@@ -62,4 +63,6 @@ def metconsin(desired_models,model_info_file,media = {},uptake_dicts = {},random
     # except:
     print("[MetConSIN] Bases computed in ",int(minuts)," minutes, ",sec," seconds.")
 
-    return model_order, models, mets, mets0, bases
+    smi_nodes,cof_edges,sum_edges = species_metabolite_network(bases,mets,mets0,models)
+
+    return {"Nodes":smi_nodes,"FullEdgeSet":cof_edges,"SummaryEdgeSet":sum_edges,"ModelList":model_order, "SurfModels":models, "Metabolites":mets, "MetabConcentrations":mets0, "Bases":bases}

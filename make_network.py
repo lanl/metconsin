@@ -1,67 +1,92 @@
 import numpy as np
 from scipy.sparse import dok_matrix
+import pandas as pd
+import time
+import scipy as sp
 
 
 
 ###### Build a species-metabolite interaction network (that's not hard)
 #### Then build a species-species network (that's fuzzier or harder)
 
+def species_metabolite_network(bases,metlist,metcons,models):
 
-def species_metabolite_network(bases,metlist,models):
+    start_time = time.time()
     node_table = pd.DataFrame(np.array([list(bases.keys()) + list(metlist),["Microbe"]*len(bases) + ["Metabolite"]*len(metlist)]).T,columns = ["Name","Type"])
 
-    met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight"])
-    for ky in bases.keys():
-        for j in range(len(metlist)):
-            metab = metlist[j]
-            sc_dg_rw = np.concatenate([models[ky].Gamma1,-models[ky].Gamma1],axis = 1)[j]
-            Q = bases[ky][0]
-            R = bases[ky][1]
+    met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight","Distance"])
+    met_med_net_summary = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance"])
 
-            if j+len(models[ky].Gamma2) in bases[ky][2][0]:
-                l = np.where(bases[ky][2][0] == j+len(models[ky].Gamma2))[0][0]
-                m = np.linalg.solve(R,Q[l])
-                met_on_mic = np.dot(np.concatenate([models[ky].objective,-models[ky].objective]),m)
+    print("[species_metabolite_network] Building network")
+    for ky in bases.keys():
+
+        Q = bases[ky][0]
+        R = bases[ky][1]
+
+        # print(Q.shape,R.shape)
+        #compute (gamma.T B^(-1)).T = (gamma.T R^(-1)Q^(-1)).T = (gamma.T R^(-1)Q.T) = QR.T^(-1)gamma
+        growth_vec = np.dot(Q,sp.linalg.solve_triangular(R.T,models[ky].objective,lower = True))
+
+        #compute -Gamma1B^(-1) = -Gamma1 R^(-1) Q^(-1) = -Gamma1 R^(-1) Q.T
+        usage_matrix = -np.dot(models[ky].Gamma1,sp.linalg.solve_triangular(R,Q.T))
+
+        for j in range(len(metlist)):
+
+            print("[species_metabolite_network] computing {0} connections to {1}".format(ky,metlist[j]))
+
+            metab = metlist[j]
+
+            exch = [metcons[metlist[i]]*models[ky].uptakes[i] for i in range(len(metlist))]
+            all_constr = np.concatenate([exch,models[ky].statbds,np.zeros(len(models[ky].Gamma2))])
+
+            l = np.where(bases[ky][2] == j)[0]
+
+            if len(l):
+                # d/dy_j h(y) = alpha_j 1_{h_l=y_j}
+                l = l[0]
+                met_on_mic = exch[j]*growth_vec[l]
             else:
                 met_on_mic = 0
 
+
             if met_on_mic:
-                tmp = pd.DataFrame([[metab,ky,"Metabolite",met_on_mic,"None",0,abs(met_on_mic),np.sign(met_on_mic)]],columns = met_med_net.columns)
-                met_med_net = met_med_net.append(tmp,ignore_index = True)
+                tmp1 = pd.DataFrame([[metab,ky,"Metabolite",met_on_mic,"None",0,abs(met_on_mic),np.sign(met_on_mic),1/np.sign(met_on_mic)]],columns = met_med_net.columns)
+                tmp2 = pd.DataFrame([[metab,ky,"Metabolite",met_on_mic,abs(met_on_mic),np.sign(met_on_mic),1/np.sign(met_on_mic)]],columns = met_med_net_summary.columns)
+                met_med_net = met_med_net.append(tmp1,ignore_index = True)
+                met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
-            w = np.linalg.solve(R.T,sc_dg_rw)
-            interactions = np.dot(Q,w)
+            interactions = usage_matrix[j]
 
-            exch = [metcons[metlist[i]]*models[ky].uptakes[i] for i in range(len(metlist))]
-            all_constr = np.concatenate([np.zeros(len(models[ky].Gamma2)),exch,-models[ky].exchgLB,models[ky].intUB,-models[ky].intLB,np.zeros(2*models[ky].Gamma1.shape[1])])
-
-            # Separate Equilibrium/Exchange/ExchangeLB/Internal/Positivity constaints
+            # Separate Exchange/ExchangeLB/Internal/Positivity constaints/Equilibrium
             eq = []
             exlb = []
             ex = []
             internal = []
             posi = []
-            for i in range(len(bases[ky][2][0])):#cnst in bases[ky][2]:
-                cnst = bases[ky][2][0][i]
-                if cnst < len(models[ky].Gamma2):
-                    eq += [{"Index":cnst,"Constraint_Value":all_constr[cnst],"Coefficient":interactions[i],"Impact":interactions[i]*all_constr[cnst]}]
-                elif cnst < (len(models[ky].Gamma2) + len(exch)):
-                    ex += [{"Metabolite":metlist[cnst-len(models[ky].Gamma2)],"Coefficient":interactions[i],"Constrain_Value":all_constr[cnst],"Impact":interactions[i]*all_constr[cnst]}]
-                elif cnst < (len(models[ky].Gamma2) + len(exch) + len(models[ky].exchgLB)):
-                    exlb += [{"Metabolite":metlist[cnst-len(models[ky].Gamma2)-len(exch)],"Coefficient":interactions[i],"Constrain_Value":all_constr[cnst],"Impact":interactions[i]*all_constr[cnst]}]
-                elif cnst < (len(models[ky].Gamma2) + len(exch) + len(models[ky].exchgLB)+2*len(models[ky].intUB)):
+            for i in range(len(bases[ky][2])):#
+                cnst = bases[ky][2][i]
+                if cnst < len(exch):
+                    ex += [{"Metabolite":metlist[cnst],"Coefficient":interactions[i],"Constrain_Value":all_constr[cnst],"Impact":interactions[i]*all_constr[cnst]}]
+                elif cnst <  (len(exch) + len(models[ky].exchgLB)):
+                    exlb += [{"Metabolite":metlist[cnst-len(exch)],"Coefficient":interactions[i],"Constrain_Value":all_constr[cnst],"Impact":interactions[i]*all_constr[cnst]}]
+                elif cnst < (len(exch) + len(models[ky].exchgLB)+2*len(models[ky].intUB)):
                     internal += [{"Index":cnst,"Constraint_Value":all_constr[cnst],"Coefficient":interactions[i],"Impact":interactions[i]*all_constr[cnst]}]
-                else:
+                elif cnst < (len(exch) + len(models[ky].exchgLB)+2*len(models[ky].intUB) + models[ky].MatrixA.shape[1]):
                     posi += [{"Index":cnst,"Constraint_Value":all_constr[cnst],"Coefficient":interactions[i],"Impact":interactions[i]*all_constr[cnst]}]
+                else:
+                    eq += [{"Index":cnst,"Constraint_Value":all_constr[cnst],"Coefficient":interactions[i],"Impact":interactions[i]*all_constr[cnst]}]
 
-            const_impact = sum([v['Impact'] for v in eq]) + sum([v['Impact'] for v in exlb]) + sum([v['Impact'] for v in internal])
+            const_impact = sum([v['Impact'] for v in eq]) + sum([v['Impact'] for v in exlb]) + sum([v['Impact'] for v in internal]) + sum([v['Impact'] for v in posi])
             if const_impact:
                 impact_summary = [{"Cofactor":di["Metabolite"],"Coefficient":di["Coefficient"]} for di in ex] + [{"Cofactor":"Constant","Coefficient":const_impact}]
             else:
                 impact_summary = [{"Cofactor":di["Metabolite"],"Coefficient":di["Coefficient"]} for di in ex]
 
+            total_impact = 0
+
             for di in impact_summary:
-                if di["Coefficient"]:
+                if round(di["Coefficient"],8):
+                    total_impact += di["Coefficient"]
                     if di["Cofactor"] == metab:
                         mtch = 1
                         cof = di["Cofactor"]
@@ -71,10 +96,29 @@ def species_metabolite_network(bases,metlist,models):
                     else:
                         mtch = -1
                         cof = di["Cofactor"]
-                    tmp = pd.DataFrame([[ky,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"])]],columns = met_med_net.columns)
-                    met_med_net = met_med_net.append(tmp,ignore_index = True)
+                    tmp1 = pd.DataFrame([[ky,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"]),1/(di["Coefficient"])]],columns = met_med_net.columns)
+                    met_med_net = met_med_net.append(tmp1,ignore_index = True)
+            if round(total_impact,8):
+                tmp2 = pd.DataFrame([[ky,metab,"Microbe",total_impact,abs(total_impact),np.sign(total_impact),1/(total_impact)]],columns = met_med_net_summary.columns)
+                met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
-    return node_table,met_med_net
+
+    associated = pd.DataFrame(index = node_table.index,columns = ["In","Out","All"])
+    for ndinx in node_table.index:
+        nd = node_table.loc[ndinx,"Name"]
+        associated.loc[ndinx,"Out"] = np.unique(list(met_med_net.loc[met_med_net["Source"] == nd]["Target"]))
+        associated.loc[ndinx,"In"] = np.unique(list(met_med_net.loc[met_med_net["Target"] == nd]["Source"]))
+        associated.loc[ndinx,"All"] = np.concatenate([associated.loc[ndinx,"Out"],associated.loc[ndinx,"In"]])
+
+    node_table = pd.concat([node_table,associated],axis = 1)
+
+    minuts,sec = divmod(time.time() - start_time, 60)
+    # try:
+    #     flobj.write("prep_indv_model", self.Name,": Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+    # except:
+    print("[species_metabolite_network] Network built in ",int(minuts)," minutes, ",sec," seconds.")
+
+    return node_table,met_med_net,met_med_net_summary
 
 
 
