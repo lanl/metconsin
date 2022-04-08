@@ -7,20 +7,27 @@ from pathlib import Path
 import datetime as dt
 
 if __name__=="__main__":
-    species = ["S.cerevisiae","M.tuberculosis","E.coli","P.putida"]
-    # modellist, models, metlist, metcons, bases = metconsin(species,"bigg_model_file_info.txt",media ={"S.cerevisiae":"minimal","P.putida":"minimal","M.tuberculosis":"minimal"})
-    # smi_nodes,cof_edges,sum_edges = species_metabolite_network(bases,metlist,metcons,models)
+    species = ["E.coli"]#["S.cerevisiae","M.tuberculosis","E.coli","P.putida"]
 
-    species_metabolite_interaction_network = metconsin(species,"bigg_model_file_info.txt",media ={"S.cerevisiae":"minimal","P.putida":"minimal","M.tuberculosis":"minimal"})
+    metconsin_return = metconsin(species,"bigg_model_file_info.txt",endtime = 10,track_fluxes = True,save_internal_flux = True,ub_funs = "linear1")
 
-    x = dt.datetime.now()
+    print(metconsin_return["BasisChanges"])
 
-    flder = os.path.join(os.path.expanduser("~"),"Documents","metabolic_network","testNetwork"+x.strftime("%a%d%H%M"))
+    tmlabel = dt.datetime.now()
+
+    flder = os.path.join(os.path.expanduser("~"),"Documents","metabolic_network","_".join([m.replace(".","") for m in species])+tmlabel.strftime("%a%d%H%M"))
 
     Path(flder).mkdir(parents=True, exist_ok=True)
 
+    metconsin_return["Microbes"].to_csv(os.path.join(flder,"Microbes.csv"))
+    metconsin_return["Metabolites"].to_csv(os.path.join(flder,"Metabolites.csv"))
+    for ky in metconsin_return["MetMetNetworks"].keys():
+        metconsin_return["MetMetNetworks"][ky]["edges"].to_csv(os.path.join(flder,"MetMetEdges"+ky+".csv"))
+        metconsin_return["MetMetNetworks"][ky]["nodes"].to_csv(os.path.join(flder,"MetMetNodes"+ky+".csv"))
+        metconsin_return["SpcMetNetworkSummaries"][ky]["edges"].to_csv(os.path.join(flder,"SpcMetNetworksEdgesSummary"+ky+".csv"))
+        metconsin_return["SpcMetNetworks"][ky]["edges"].to_csv(os.path.join(flder,"SpcMetNetworksEdges"+ky+".csv"))
+        metconsin_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(flder,"SpcMetNetworksNodes"+ky+".csv"))
 
-
-    species_metabolite_interaction_network["Nodes"].to_csv(os.path.join(flder,"smi_nodes.tsv"),sep="\t")
-    species_metabolite_interaction_network["FullEdgeSet"].to_csv(os.path.join(flder,"cof_edges.tsv"),sep="\t")
-    species_metabolite_interaction_network["SummaryEdgeSet"].to_csv(os.path.join(flder,"sum_edges.tsv"),sep="\t")
+    for model in species:
+        metconsin_return["ExchangeFluxes"][model].to_csv(os.path.join(flder,model.replace(".","")+"exchange_flux.csv"))
+        metconsin_return["InternalFluxes"][model].to_csv(os.path.join(flder,model.replace(".","")+"internal_flux.csv"))

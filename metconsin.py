@@ -1,14 +1,16 @@
-from findwaves import *
-from make_network import *
+import make_network as mn
+import surfmod as sm
+import prep_models as pr
+import dynamic_simulation as surf
 import time
 import pandas as pd
+import cobra as cb
+import numpy as np
 
-def metconsin(desired_models,model_info_file,media = {},uptake_dicts = {},random_kappas="ones"):
+def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",track_fluxes = True,save_internal_flux = True, resolution = 0.1,report_activity = True):
     '''
 
-    NOTE: as of now uptake is always linear.
-    uptake_dicts => can give uptake parameters for each microbe/metabolite pair
-    random_kappas => how to choose non-given uptake parameters
+    Need to Doc....
 
     '''
     start_time = time.time()
@@ -30,39 +32,88 @@ def metconsin(desired_models,model_info_file,media = {},uptake_dicts = {},random
     print("Loaded " + str(len(cobra_models)) + " models successfully")
 
 
-    for model in cobra_models:
-        if model in media.keys():
-            if isinstance(media[model],dict):
-                tmp_medium = {}
-                exc = [rxn.id for rxn in cobra_models[model].reactions if 'EX_' in rxn.id]
-                for ky in media[model].keys():
-                    if ky in exc:
-                        tmp_medium[ky] = media[model][ky]
-                cobra_models[model].medium = tmp_medium
 
-            elif media[model] == "minimal":
-                mxg = cobra_models[model].slim_optimize()
-                min_med = cb.medium.minimal_medium(cobra_models[model],mxg,minimize_components = True)
-                cobra_models[model].medium = min_med
-                cobra_models[model].medium = min_med
+    if media == "minimal":
+        for model in cobra_models.keys():
+            mxg = cobra_models[model].slim_optimize()
+            min_med = cb.medium.minimal_medium(cobra_models[model],mxg,minimize_components = True)
+            cobra_models[model].medium = min_med
+    else:
+        media_input = media
 
 
     #returns dict of surfmods, list of metabolites, and concentration of metabolites.
-    models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
+    # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
+    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,upper_bound_functions = upper_bound_functions,lower_bound_functions = lower_bound_functions,upper_bound_functions_dt = upper_bound_functions_dt,lower_bound_functions_dt = lower_bound_functions_dt,extracell = extracell, random_kappas = random_kappas,media = media_input, met_filter = met_filter,met_filter_sense = met_filter_sense, lb_funs = lb_funs, ub_funs = ub_funs,flobj = flobj)
+
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.
     #Next establish an ordering of microbes. Note, this won't necessarily be predictable, python
     #dict keys are unordered and calling dict.keys() will give whatever ordering it wants.
-    model_order = list(models.keys())
 
-    bases = get_waves(models,mets,mets0)
+    y0 = np.array([y0dict[met] for met in metlist])
+
+    model_list = [model for model in models.values()]
+    x0 = np.array([1 for i in range(len(model_list))])
+    dynamics = surf.surfin_fba(model_list,x0,y0,endtime,save_bases = True,track_fluxes = track_fluxes,save_internal_flux = save_internal_flux, resolution = resolution,report_activity = report_activity, flobj = flobj)
+    # dynamics["Metabolites"] = metlist
+    # dynamics["Models"] = [model.Name for model in model_list]
 
     minuts,sec = divmod(time.time() - start_time, 60)
-    # try:
-    #     flobj.write("prep_indv_model", self.Name,": Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
-    # except:
-    print("[MetConSIN] Bases computed in ",int(minuts)," minutes, ",sec," seconds.")
+    try:
+        flobj.write("[MetConSIN]: Simulation & Bases computed in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+    except:
+        print("[MetConSIN] Simulation & Bases computed in ",int(minuts)," minutes, ",sec," seconds.")
 
-    smi_nodes,cof_edges,sum_edges = species_metabolite_network(bases,mets,mets0,models)
+    x_sim = pd.DataFrame(dynamics["x"].round(7),columns = dynamics["t"],index = [model.Name for model in model_list])
+    x_sim = x_sim.loc[:,~x_sim.columns.duplicated()]
+    y_sim = pd.DataFrame(dynamics["y"].round(7),columns = dynamics["t"],index = metlist)
+    y_sim = y_sim.loc[:,~y_sim.columns.duplicated()]
+    basis_change_times = dynamics["bt"]
 
-    return {"Nodes":smi_nodes,"FullEdgeSet":cof_edges,"SummaryEdgeSet":sum_edges,"ModelList":model_order, "SurfModels":models, "Metabolites":mets, "MetabConcentrations":mets0, "Bases":bases}
+    met_met_nets = {}
+    mic_met_sum_nets = {}
+    mic_met_nets = {}
+    for i in range(len(basis_change_times)):
+        t0 = basis_change_times[i]
+        try:
+            t1 = basis_change_times[i+1]
+            ky = "{:10.5f}".format(t0)+"-"+"{:10.5f}".format(t1)
+        except:
+            ky = "{:10.5f}".format(t0)
+        for model in model_list:
+            if dynamics["bases"][model.Name][i] != None:
+                model.current_basis = dynamics["bases"][model.Name][i]
+                bases_ok = True
+            else:
+                bases_ok = False
+                break
+        if bases_ok:
+            metcons = y_sim.loc[:,t0].values
+            node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity = report_activity,flobj = flobj)
+            met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
+            mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
+            mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
+
+    all_return = {"Microbes":x_sim,"Metabolites":y_sim, "MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_times}
+
+    if track_fluxes:
+        exchg_fluxes = {}
+        for model in model_list:
+            exchg_fluxes[model.Name] = pd.DataFrame(dynamics["Exchflux"][model.Name].round(7), columns = dynamics["t"],index = metlist)
+        all_return["ExchangeFluxes"] = exchg_fluxes
+
+    if save_internal_flux:
+        internal_flux = {}
+        for model in model_list:
+            internal_flux[model.Name] = pd.DataFrame(dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)], columns = dynamics["t"],index = model.flux_order)
+        all_return["InternalFluxes"] = internal_flux
+
+
+    minuts,sec = divmod(time.time() - start_time, 60)
+    try:
+        flobj.write("[MetConSIN]: Complete in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+    except:
+        print("[MetConSIN] Complete in ",int(minuts)," minutes, ",sec," seconds.")
+
+    return all_return

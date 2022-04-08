@@ -12,7 +12,7 @@ import time
 import cobra as cb
 
 class SurfMod:
-    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivatives,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0):
+    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivatives,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto"):
 
         #put the model in standard form by forming the system
         # [GamStar -GamStar I 0 0 0]         [f(y)]
@@ -35,24 +35,37 @@ class SurfMod:
         num_internal = gamDag.shape[0]
 
         self.GammaStar = gamStar.astype(float)
+
+        if isinstance(gamma_star_indices,str):
+            if gamma_star_indices == "Auto":
+                self.ExchangeOrder = np.arange(gamStar.shape[0]).astype(int)
+            else:
+                print("Cannot understand exchange mapping. Assuming 1:1 and in order, using default (Auto)")
+                self.ExchangeOrder = np.arange(gamStar.shape[0]).astype(int)
+        elif isinstance(gamma_star_indices,np.ndarray):#should add a check here.
+            self.ExchangeOrder = gamma_star_indices
+        else:
+            print("Cannot understand exchange mapping. Assuming 1:1 and in order, using default (Auto)")
+            self.ExchangeOrder = np.arange(gamStar.shape[0]).astype(int)
+
+
         self.GammaDagger = gamDag.astype(float)
         self.num_fluxes = num_v
         self.num_exch_rxns = num_exch
         self.num_internal_metabolites = num_internal
 
         self.total_var = 4*num_v + 2*num_exch
-
-        rw1 = np.concatenate([gamStar, -gamStar, np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
-        rw2 = np.concatenate([-gamStar, gamStar, np.zeros((num_exch,num_exch)),np.eye(num_exch),np.zeros((num_exch,2*num_v))], axis = 1)
+        rw1 = np.concatenate([gamStar.astype(float), -gamStar.astype(float), np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
+        rw2 = np.concatenate([-gamStar.astype(float), gamStar.astype(float), np.zeros((num_exch,num_exch)),np.eye(num_exch),np.zeros((num_exch,2*num_v))], axis = 1)
         rw3 = np.concatenate([np.eye(num_v),np.zeros((num_v,num_v+2*num_exch)),np.eye(num_v),np.zeros((num_v,num_v))], axis = 1)
         rw4 = np.concatenate([np.zeros((num_v,num_v)), np.eye(num_v), np.zeros((num_v,2*num_exch+num_v)),np.eye(num_v)], axis = 1)
         rw5 = np.concatenate([gamDag, -gamDag, np.zeros((num_internal,2*num_exch+2*num_v))], axis = 1)
         std_form_mat = np.concatenate([rw1,rw2,rw3,rw4,rw5], axis = 0)
 
+        self.expandGammaStar = np.concatenate([gamStar.astype(float),-gamStar.astype(float),np.zeros((num_exch,2*num_v + 2*num_exch))],axis = 1)
 
         self.objective = np.concatenate([-np.array(objective).astype(float),np.array(objective).astype(float),np.zeros(2*num_exch+2*num_v).astype(float)])
 
-        self.exchange_rxn_order = exrn_order
         self.flux_order = intrn_order
 
         self.exchange_bounds = np.concatenate([exterior_ubfuns,exterior_lbfuns])
@@ -74,9 +87,11 @@ class SurfMod:
             std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
             new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
             std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-            all_internal = np.concatenate([all_internal,interior_lbs[neg_lower]])
+            #for the constraint a<x<b, need a<b...make sure a = min(a,b)
+            all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
             self.total_var += num_lower
             self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
+            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
 
 
         neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
@@ -85,9 +100,10 @@ class SurfMod:
             std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
             new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
             std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-            all_internal = np.concatenate([all_internal,interior_ubs[neg_upper]])
+            all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
             self.total_var += num_upper
             self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
+            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
 
 
         self.standard_form_constraint_matrix = std_form_mat
@@ -110,7 +126,7 @@ class SurfMod:
 
         self.fba_basic_index = None
 
-    def fba_gb(self,metabolite_con,secondobj = "total",report_activity = True,flobj = None):
+    def fba_gb(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
 
         '''
 
@@ -121,11 +137,21 @@ class SurfMod:
 
         t1 = time.time()
 
+        metabolite_con = master_metabolite_con[self.ExchangeOrder]
+
         std_form_mat = self.standard_form_constraint_matrix
         obje = self.objective
 
         # get the exchange bounds for the current metabolite environment
         exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
+
+        upe = exchg_bds[self.num_exch_rxns:]
+        lowe = exchg_bds[:self.num_exch_rxns]
+        upneg = np.where(upe<0)
+        # print(upe[upneg],lowe[upneg])
+        lowneg = np.where(lowe<0)
+        # print(upe[lowneg],lowe[lowneg])
+
         bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
 
         #Now we use Gurobi to solve min(x'obje) subject to Ax = b, x \geq 0
@@ -234,7 +260,7 @@ class SurfMod:
         else:
             return np.array(["failed to prep"])
 
-    def find_waves_gb(self,flux,metabolite_con,metabolite_con_dt,report_activity = True, flobj = None, careful = False):
+    def find_waves_gb(self,flux,master_metabolite_con,master_metabolite_con_dt,report_activity = True, flobj = None, careful = False):
 
         '''
         Gets basis for LP at given solution that can be used to simulate forward, choosing from degenerate bases
@@ -243,7 +269,8 @@ class SurfMod:
         flux = flux.round(7)
 
         t1 = time.time()
-
+        metabolite_con = master_metabolite_con[self.ExchangeOrder]
+        metabolite_con_dt = master_metabolite_con_dt[self.ExchangeOrder]
 
         ncon,nvar = self.standard_form_constraint_matrix.shape
 
@@ -458,12 +485,12 @@ class SurfMod:
                 self.current_basis = None
                 return None
 
-    def compute_flux(self,metabolite_con):
+    def compute_internal_flux(self,master_metabolite_con):
 
         '''
         Compute current fluxes (including slacks) from current basis & metabolite concentration
         '''
-
+        metabolite_con = master_metabolite_con[self.ExchangeOrder]
         exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
         bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
 
@@ -480,6 +507,11 @@ class SurfMod:
 
 
 def getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,smod, careful = False):
+
+    # if careful:
+    #     print(smod.standard_form_constraint_matrix[:,beta_hat].shape, " ",np.linalg.matrix_rank(smod.standard_form_constraint_matrix[:,beta_hat]))
+    #     print(A_tilde.shape," ",np.linalg.matrix_rank(A_tilde))
+
     basic_vars = np.where(np.array(waves.vbasis) == 0)[0]
 
     if len(basic_vars) < A_tilde.shape[1]:
@@ -501,12 +533,13 @@ def getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,smod, careful = False):
     wave_to_ride = smod.standard_form_constraint_matrix[:,beta_index]
 
     if careful:
+        # print("Full Mat Rank ",np.linalg.matrix_rank(smod.standard_form_constraint_matrix))
         rk = np.linalg.matrix_rank(wave_to_ride)
         shp = wave_to_ride.shape
         print("Basis Shape: ",shp)
         print("Basis Rank: ", rk)
         if (shp[0] != shp[1]) or (shp[0] != rk):
-            return None,None,None
+            return None
 
     Q,R = np.linalg.qr(wave_to_ride)
 
@@ -518,11 +551,18 @@ def getLIcols(mat):
     licols = np.array([])
     col_inds = np.arange(cols)
     while(len(licols)<rows):
+        mat = mat/abs(mat).max()
         U = la.lu(mat)[2].round(7)
         lin_indep_columns = np.unique(np.array([np.flatnonzero(U[i, :])[0] for i in range(U.shape[0]) if len(np.flatnonzero(U[i,:]))]))
-        licols = np.concatenate([licols,col_inds[lin_indep_columns]])
-        col_inds = np.delete(col_inds,lin_indep_columns)
-        mat = proj_orth(np.delete(mat,lin_indep_columns,axis = 1),mat[:,lin_indep_columns])
+        if len(lin_indep_columns):
+            licols = np.concatenate([licols,col_inds[lin_indep_columns]])
+            col_inds = np.delete(col_inds,lin_indep_columns)
+            mat = proj_orth(np.delete(mat,lin_indep_columns,axis = 1),mat[:,lin_indep_columns])
+        else:
+            print("Failed to find LI columns")
+            print("remaining shape ",mat.shape)
+            print("remaining rank ", np.linalg.matrix_rank(mat))
+            break
     return licols.astype(int)
 
 def proj_orth(mat,spc):

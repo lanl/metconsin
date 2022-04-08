@@ -23,6 +23,10 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
     met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight","Distance"])
     met_med_net_summary = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance"])
 
+    met_met_edges = pd.DataFrame(columns = ["Source","Target","Microbe","Weight","ABS_Weight","Sign_Weight","Distance"])
+    met_met_nodes = pd.DataFrame(columns = ["Microbes"]+[model.Name for model in models],index=metlist)
+    microbes_exchanging = dict([(met,[]) for met in metlist])
+
     if report_activity:
         try:
             flobj.write("[species_metabolite_network] Building network\n")
@@ -36,26 +40,34 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         #compute (gamma.T B^(-1)).T = (gamma.T R^(-1)Q^(-1)).T = (gamma.T R^(-1)Q.T) = QR.T^(-1)gamma
         growth_vec = np.dot(Q,sp.linalg.solve_triangular(R.T,-model.objective[beta],lower = True))
 
-        #compute -GammaStarB^(-1) = -Gamma1 R^(-1) Q^(-1) = -Gamma1 R^(-1) Q.T
-        expandgamstar = np.concatenate([-model.GammaStar,model.GammaStar,np.zeros((model.num_exch_rxns,model.total_var - model.num_fluxes))],axis = 1)
-        usage_matrix = -np.dot(expandgamstar[:,beta],sp.linalg.solve_triangular(R,Q.T))
+        #compute -GammaStarB^(-1) = -GammaStar R^(-1) Q^(-1) = -GammaStar R^(-1) Q.T
+        # expandgamstar = model.expandGammaStar#np.concatenate([-model.GammaStar,model.GammaStar,np.zeros((model.num_exch_rxns,model.total_var - 2*model.num_fluxes))],axis = 1)
+        usage_matrix = -np.dot(model.expandGammaStar[:,beta],sp.linalg.solve_triangular(R,Q.T))
 
-        for j in range(len(metlist)):
+        met_met_nodes.loc[:,model.Name] = np.zeros(len(met_met_nodes))
+
+        #form the bound vector the LP
+        metabolite_con = metcons[model.ExchangeOrder]
+        exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
+        bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
+
+        for j in range(len(model.exchanged_metabolites)):
+
+            metab = model.exchanged_metabolites[j]
 
             if report_activity:
                 try:
-                    flobj.write("[species_metabolite_network] computing {0} connections to {1}\n".format(model.Name,metlist[j]))
+                    flobj.write("[species_metabolite_network] computing {0} connections to {1}\n".format(model.Name,metab))
                 except:
-                    print("[species_metabolite_network] computing {0} connections to {1}".format(model.Name,metlist[j]))
+                    print("[species_metabolite_network] computing {0} connections to {1}".format(model.Name,metab))
 
-            metab = metlist[j]
 
-            #form the bound vector the LP
-            exchg_bds = np.array([bd(metcons) for bd in model.exchange_bounds])
-            bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
 
 
             met_on_mic = growth_vec[j] + growth_vec[j+model.num_exch_rxns]
+            met_met_nodes.loc[metab,model.Name] = round(met_on_mic,7)
+            microbes_exchanging[metab] += [model.Name]
+
 
 
             if round(met_on_mic,7):
@@ -73,9 +85,15 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
             internal = []
             for cnst in range(len(bound_rhs)):#
                 if cnst < (model.num_exch_rxns):
-                    exub += [{"Metabolite":metlist[cnst],"Coefficient":interactions[cnst],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[cnst]*bound_rhs[cnst]}]
+                    exub += [{"Metabolite":model.exchanged_metabolites[cnst],"Coefficient":interactions[cnst],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[cnst]*bound_rhs[cnst]}]
+                    if round(interactions[cnst],7):
+                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst],metab,model.Name,interactions[cnst],abs(interactions[cnst]),np.sign(interactions[cnst]),1/abs(interactions[cnst])]],columns = met_met_edges.columns)
+                        met_met_edges = met_met_edges.append(tmpmm,ignore_index = True)
                 elif cnst <  (2*(model.num_exch_rxns)):
-                    exlb += [{"Metabolite":metlist[cnst-(model.num_exch_rxns)],"Coefficient":interactions[cnst],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[cnst]*bound_rhs[cnst]}]
+                    exlb += [{"Metabolite":model.exchanged_metabolites[cnst-(model.num_exch_rxns)],"Coefficient":interactions[cnst],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[cnst]*bound_rhs[cnst]}]
+                    if round(interactions[cnst],7):
+                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst-(model.num_exch_rxns)],metab,model.Name,interactions[cnst],abs(interactions[cnst]),np.sign(interactions[cnst]),1/abs(interactions[cnst])]],columns = met_met_edges.columns)
+                        met_met_edges = met_met_edges.append(tmpmm,ignore_index = True)
                 elif cnst < (2*(model.num_exch_rxns)+2*model.num_fluxes):
                     internal += [{"Index":cnst,"Constraint_Value":bound_rhs[cnst],"Coefficient":interactions[cnst],"Instant_Impact":interactions[cnst]*bound_rhs[cnst]}]
                 else:
@@ -102,10 +120,10 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
                     else:
                         mtch = -1
                         cof = di["Cofactor"]
-                    tmp1 = pd.DataFrame([[model.Name,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"]),1/(di["Coefficient"])]],columns = met_med_net.columns)
+                    tmp1 = pd.DataFrame([[model.Name,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"]),1/abs(di["Coefficient"])]],columns = met_med_net.columns)
                     met_med_net = met_med_net.append(tmp1,ignore_index = True)
             if round(total_impact,7):
-                tmp2 = pd.DataFrame([[model.Name,metab,"Microbe",total_impact,abs(total_impact),np.sign(total_impact),1/(total_impact)]],columns = met_med_net_summary.columns)
+                tmp2 = pd.DataFrame([[model.Name,metab,"Microbe",total_impact,abs(total_impact),np.sign(total_impact),1/abs(total_impact)]],columns = met_med_net_summary.columns)
                 met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
 
@@ -120,13 +138,16 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
 
     minuts,sec = divmod(time.time() - start_time, 60)
 
+    for met,mics in microbes_exchanging.items():
+        met_met_nodes.loc[met,"Microbes"] = ".".join(mics)
+
     if report_activity:
         try:
             flobj.write("[species_metabolite_network] Network built in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
         except:
             print("[species_metabolite_network] Network built in ",int(minuts)," minutes, ",sec," seconds.")
 
-    return node_table,met_med_net,met_med_net_summary
+    return node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes
 
 
 
