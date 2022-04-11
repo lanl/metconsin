@@ -81,29 +81,29 @@ class SurfMod:
         ##A negative lower bound means the FORWARD reaction must be above -bd
         ##A negative upper bound means the REVERSE reaction must be above -bd
 
-        neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
-        num_lower = len(neg_lower[0])
-        if num_lower:
-            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
-            new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
-            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-            #for the constraint a<x<b, need a<b...make sure a = min(a,b)
-            all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
-            self.total_var += num_lower
-            self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
-            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
-
-
-        neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
-        num_upper = len(neg_upper[0])
-        if num_upper:
-            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
-            new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
-            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-            all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
-            self.total_var += num_upper
-            self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
-            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
+        # neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
+        # num_lower = len(neg_lower[0])
+        # if num_lower:
+        #     std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
+        #     new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
+        #     std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+        #     #for the constraint a<x<b, need a<b...make sure a = min(a,b)
+        #     all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
+        #     self.total_var += num_lower
+        #     self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
+        #     self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
+        #
+        #
+        # neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
+        # num_upper = len(neg_upper[0])
+        # if num_upper:
+        #     std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
+        #     new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
+        #     std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+        #     all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
+        #     self.total_var += num_upper
+        #     self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
+        #     self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
 
 
         self.standard_form_constraint_matrix = std_form_mat

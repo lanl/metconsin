@@ -71,6 +71,8 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     y_sim = y_sim.loc[:,~y_sim.columns.duplicated()]
     basis_change_times = dynamics["bt"]
 
+    all_sim = pd.concat([x_sim,y_sim])
+
     met_met_nets = {}
     mic_met_sum_nets = {}
     mic_met_nets = {}
@@ -78,9 +80,11 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
         t0 = basis_change_times[i]
         try:
             t1 = basis_change_times[i+1]
-            ky = "{:10.5f}".format(t0)+"-"+"{:10.5f}".format(t1)
+            ky = "{:.4f}".format(t0)+"-"+"{:.4f}".format(t1)
+            dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))&(np.array(all_sim.columns.astype(float)).round(6)<=t1)]
         except:
-            ky = "{:10.5f}".format(t0)
+            ky = "{:.4f}".format(t0)
+            dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
         for model in model_list:
             if dynamics["bases"][model.Name][i] != None:
                 model.current_basis = dynamics["bases"][model.Name][i]
@@ -91,6 +95,13 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
         if bases_ok:
             metcons = y_sim.loc[:,t0].values
             node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity = report_activity,flobj = flobj)
+
+            #trim out species & metabolites that aren't present in this time interval.
+
+            met_met_edges,met_met_nodes = trim_network(met_met_edges,met_met_nodes,dynamics_t)
+            met_med_net_summary,node_table = trim_network(met_met_edges,met_met_nodes,dynamics_t)
+            met_med_net_summary,node_table = trim_network(met_met_edges,met_met_nodes,dynamics_t)
+
             met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
             mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
             mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
@@ -100,13 +111,17 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     if track_fluxes:
         exchg_fluxes = {}
         for model in model_list:
-            exchg_fluxes[model.Name] = pd.DataFrame(dynamics["Exchflux"][model.Name].round(7), columns = dynamics["t"],index = metlist)
+            eflux = pd.DataFrame(dynamics["Exchflux"][model.Name].round(7), columns = dynamics["t"],index = metlist)
+            eflux = eflux.loc[:,~eflux.columns.duplicated()]
+            exchg_fluxes[model.Name] = eflux
         all_return["ExchangeFluxes"] = exchg_fluxes
 
     if save_internal_flux:
         internal_flux = {}
         for model in model_list:
-            internal_flux[model.Name] = pd.DataFrame(dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)], columns = dynamics["t"],index = model.flux_order)
+            iflux = pd.DataFrame(dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)], columns = dynamics["t"],index = model.flux_order)
+            iflux = iflux.loc[:,~iflux.columns.duplicated()]
+            internal_flux[model.Name] = iflux
         all_return["InternalFluxes"] = internal_flux
 
 
@@ -117,3 +132,13 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
         print("[MetConSIN] Complete in ",int(minuts)," minutes, ",sec," seconds.")
 
     return all_return
+
+def trim_network(edges,nodes,dynamics):
+    newnodes = nodes.copy()
+    newedges = edges.copy()
+    for nd in dynamics.index:
+        if nd in newnodes.index:
+            if max(dynamics.loc[nd]) < 10**-6:
+                newnodes.drop(index = nd, inplace = True)
+                newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
+    return newedges,newnodes
