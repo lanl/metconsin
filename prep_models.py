@@ -2,7 +2,7 @@ import numpy as np
 import scipy as sp
 from surfmod import *
 
-def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",flobj = None):
+def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale = 1.0,flobj = None):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
@@ -61,7 +61,7 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
         idtonm = dict(zip(exchng_metabolite_ids,exchng_metabolite_names))
         nmtoid = dict(zip(exchng_metabolite_names,exchng_metabolite_ids))
 
-        if len(media):#if we're given a media, I'm assuming it's keyed by metabolite name or ID
+        if len(media):#if we're given a media, I'm assuming it's keyed by metabolite name, ID, or exchange reaction ID
             environment = media
         else:#otherwise the media file associated with the model is keyed by reaction ID
             environment = {}
@@ -75,6 +75,10 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
                 y_init[metabo] = environment[metabo]
             elif nmtoid[metabo] in environment.keys():
                 y_init[metabo] = environment[nmtoid[metabo]]
+            elif any([nmtoid[metabo] in rx.reactants for rx in model.reactions]):
+                y_init[metabo] = np.mean([environment[rx.id] for rx in model.reactions if metabo in rx.reactants])
+
+
 
 
         metaabs[model.name] = exchng_metabolite_names
@@ -98,19 +102,15 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
 
 
 
-    #### Initial y is not as difficult. Average them out.
+    #### Initial y is not as difficult. I'll take the highest.
     master_y0 = {}
     for nm in masterlist:
         yyy0 = 0
-        ctt = 0
+        # ctt = 0
         for mod in y0s.values():
             if nm in mod.keys():
-                yyy0 += mod[nm]
-                ctt += 1
-        if ctt:
-            master_y0[nm] = yyy0/ctt
-        else:
-            master_y0[nm] = 0
+                yyy0 = max(yyy0,mod[nm])
+        master_y0[nm] = yyy0
 
 
 
@@ -128,21 +128,6 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
         ###Index is metabolite ID, columns are rxn ID
         Gamma = util.array.create_stoichiometric_matrix(model, array_type = 'DataFrame')
 
-        #Add rows for environmental metabolites that the model does not include.
-        # for meta in masterlist:
-
-            # if meta not in metaabs[model.name]:#the metabolite does not appear in the exmet name list for the model
-            #     blnk = pd.DataFrame([np.zeros(len(Gamma.columns))],columns = Gamma.columns, index = [meta])
-            #     Gamma = Gamma.append(blnk)
-            #     # print(meta)
-            # elif nametoid[model.name][meta] not in Gamma.index:#the metabolite's id does not appear in the stoichiometric matrix (Shouldn't happen...)
-            #     blnk = pd.DataFrame([np.zeros(len(Gamma.columns))],columns = Gamma.columns, index = [nametoid[model.name][meta]])
-            #     Gamma = Gamma.append(blnk)
-
-        #exmetabolite id if in exmet list otherise exmetabolite name
-        # metabolite_ids = [nametoid[model.name][nm] for nm in masterlist if nm in nametoid[model.name].keys() ]
-        # exch_rxn_order = np.array([exmet_to_exrn[model.name][met] if met in exmet_to_exrn[model.name].keys() else "dummy"+met for met in mastertoids])
-
 
         internal_reactions = np.array(Gamma.columns)[[rxn not in exrn[model.name] for rxn in Gamma.columns]]
 
@@ -151,7 +136,6 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
 
         EyE = Gamma.loc[np.array(metabids[model.name]),np.array(exrn[model.name])]
 
-        # print(np.all(EyE == -np.eye(EyE.shape[0])))
 
 
 
@@ -198,7 +182,7 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
             elif upper_bound_functions[modelkey] == "constant":
                 uftype = "Constant"
                 print(model.name, " Upper Bounds: Using constant uptake")
-                exub = np.array([lambda x,m=metab,my0=master_y0: my0[m] for metab in metaabs[model.name]])
+                exub = np.array([lambda x,val=master_y0[metab]: val for metab in metaabs[model.name]])
                 exubdt = np.array([lambda x : 0  for i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "linearRand":
                 uftype = "Linear"
@@ -206,11 +190,11 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exub = np.array([lambda x,i=i,r = rands[i]: r*x[i] for i in range(len(metaabs[model.name]))])
                 exubdt = np.array([lambda x,xd, i=i,r=rands[i] : r*xd[i] for i in range(len(metaabs[model.name]))])
-            elif upper_bound_functions[modelkey] == "linear1":
+            elif upper_bound_functions[modelkey] == "linearScale":
                 uftype = "Linear"
                 print(modelkey, " Upper Bounds: Using linear uptake with uniform coefficients = 1")
-                exub = np.array([lambda x,i=i: x[i] for  i in range(len(metaabs[model.name]))])
-                exubdt = np.array([lambda x,xd,i=i: xd[i] for  i in range(len(metaabs[model.name]))])
+                exub = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
+                exubdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "hill1Rand":
                 uftype = "Hill"
                 print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd random")
@@ -229,7 +213,7 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
         elif ub_funs == "constant":
             uftype = "Constant"
             print(model.name, " Upper Bounds: Using constant uptake")
-            exub = np.array([lambda x,m=metab,my0=master_y0: my0[m] for metab in metaabs[model.name]])
+            exub = np.array([lambda x,val=master_y0[metab]: val for metab in metaabs[model.name]])
             exubdt = np.array([lambda x,xd : 0  for i in range(len(metaabs[model.name]))])
         elif ub_funs == "linearRand":
             uftype = "Linear"
@@ -237,11 +221,11 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exub = np.array([lambda x,i=i,r = rands[i]: r*x[i] for i in range(len(metaabs[model.name]))])
             exubdt = np.array([lambda x,xd, i=i,r=rands[i] : r*xd[i] for i in range(len(metaabs[model.name]))])
-        elif ub_funs == "linear1":
+        elif ub_funs == "linearScale":
             uftype = "Linear"
             print(modelkey, " Upper Bounds: Using linear uptake with uniform coefficients = 1")
-            exub = np.array([lambda x,i=i: x[i] for  i in range(len(metaabs[model.name]))])
-            exubdt = np.array([lambda x,xd,i=i: xd[i] for  i in range(len(metaabs[model.name]))])
+            exub = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
+            exubdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
         elif ub_funs == "hill1Rand":
             uftype = "Hill"
             print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd random")
@@ -273,19 +257,19 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
             elif lower_bound_functions[modelkey] == "constant":
                 lftype = "Constant"
                 print(model.name, " Lower Bounds: Using constant uptake")
-                exlb = np.array([lambda x, m=metab,my0=master_y0: my0[m] for metab in metaabs[model.name]])
-                exlbdt = np.array([lambda x : 0  for i in range(len(metaabs[model.name]))])
+                exlb = np.array([lambda x,val = model.reactions.get_by_id(exmet_to_exrn[model.name][metab]).upper_bound : val  for metab in metabids[model.name]])
+                exlbdt = np.array([lambda x,xd : 0  for i in range(len(metabids[model.name]))])
             elif lower_bound_functions[modelkey] == "linearRand":
                 lftype = "Linear"
                 print(model.name, " Lower Bounds: Using linear uptake with random coefficients")
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exlb = np.array([lambda x,i=i,r=rands[i] : r*x[i] for i in range(len(metaabs[model.name]))])
                 exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: r*xd[i] for i in range(len(metaabs[model.name]))])
-            elif lower_bound_functions[modelkey] == "linear1":
+            elif lower_bound_functions[modelkey] == "linearScale":
                 lftype = "Linear"
                 print(model.name, " Lower Bounds: Using linear uptake with uniform coefficients = 1")
-                exlb = np.array([lambda x,i=i: x[i] for  i in range(len(metaabs[model.name]))])
-                exlbdt = np.array([lambda x,xd,i=i: xd[i] for  i in range(len(metaabs[model.name]))])
+                exlb = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
+                exlbdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
             elif lower_bound_functions[modelkey] == "hill1Rand":
                 lftype = "Hill"
                 print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd random")
@@ -304,19 +288,19 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
         elif lb_funs == "constant":
             lftype = "Constant"
             print(model.name, " Lower Bounds: Using constant uptake")
-            exlb = np.array([lambda x, m=metab,my0=master_y0: my0[m] for metab in metaabs[model.name]])
-            exlbdt = np.array([lambda x,xd : 0  for i in range(len(metaabs[model.name]))])
+            exlb = np.array([lambda x,val = model.reactions.get_by_id(exmet_to_exrn[model.name][metab]).upper_bound : val  for metab in metabids[model.name]])
+            exlbdt = np.array([lambda x,xd : 0  for i in range(len(metabids[model.name]))])
         elif lb_funs == "linearRand":
             lftype = "Linear"
             print(model.name, " Lower Bounds: Using linear uptake with random coefficients")
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exlb = np.array([lambda x,i=i,r=rands[i] : r*x[i] for i in range(len(metaabs[model.name]))])
             exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: r*xd[i] for i in range(len(metaabs[model.name]))])
-        elif lb_funs == "linear1":
+        elif lb_funs == "linearScale":
             lftype = "Linear"
             print(model.name, " Lower Bounds: Using linear uptake with uniform coefficients = 1")
-            exlb = np.array([lambda x,i=i: x[i] for  i in range(len(metaabs[model.name]))])
-            exlbdt = np.array([lambda x,xd,i=i: xd[i] for  i in range(len(metaabs[model.name]))])
+            exlb = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
+            exlbdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
         elif lb_funs == "hill1Rand":
             lftype = "Hill"
             print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd random")

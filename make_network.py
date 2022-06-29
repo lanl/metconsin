@@ -18,7 +18,7 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         models = community
 
     start_time = time.time()
-    node_table = pd.DataFrame(np.array([[model.Name for model in models] + list(metlist),["Microbe"]*len(models) + ["Metabolite"]*len(metlist)]).T,columns = ["Name","Type"])
+    node_table = pd.DataFrame(np.array([[model.Name for model in models] + list(metlist),["Microbe"]*len(models) + ["Metabolite"]*len(metlist)]).T,columns = ["Name","Type"],index = [model.Name for model in models] + list(metlist))
 
     met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight","Distance"])
     met_med_net_summary = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance"])

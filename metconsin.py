@@ -6,8 +6,9 @@ import time
 import pandas as pd
 import cobra as cb
 import numpy as np
+import contextlib
 
-def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",track_fluxes = True,save_internal_flux = True, resolution = 0.1,report_activity = True):
+def metconsin(desired_models,model_info_file, solver = 'gurobi' ,flobj = None,endtime = 10**-2,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale=1.0,track_fluxes = True,save_internal_flux = True, resolution = 0.1,report_activity = True):
     '''
 
     Need to Doc....
@@ -22,7 +23,12 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     for mod in desired_models:
         if any(model_info.Species == mod):
             flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
-            cobra_models[mod] = cb.io.load_json_model(flnm)
+            if flnm.split(".")[-1] == "json":
+                with contextlib.redirect_stderr(None):
+                    cobra_models[mod] = cb.io.load_json_model(flnm)
+            elif flnm.split(".")[-1] == "xml":
+                with contextlib.redirect_stderr(None):
+                    cobra_models[mod] = cb.io.read_sbml_model(flnm)
             if not cobra_models[mod].name:
                 cobra_models[mod].name = mod
         else:
@@ -36,15 +42,21 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     if media == "minimal":
         for model in cobra_models.keys():
             mxg = cobra_models[model].slim_optimize()
-            min_med = cb.medium.minimal_medium(cobra_models[model],mxg,minimize_components = True)
-            cobra_models[model].medium = min_med
+            try:
+                min_med = cb.medium.minimal_medium(cobra_models[model],mxg,minimize_components = True)
+                cobra_models[model].medium = min_med
+            except:
+                pass
+        media_input = {}
     else:
         media_input = media
 
+    for mod in cobra_models.keys():
+        print(mod," COBRA initial growth rate: ",cobra_models[mod].slim_optimize())
 
     #returns dict of surfmods, list of metabolites, and concentration of metabolites.
     # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
-    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,upper_bound_functions = upper_bound_functions,lower_bound_functions = lower_bound_functions,upper_bound_functions_dt = upper_bound_functions_dt,lower_bound_functions_dt = lower_bound_functions_dt,extracell = extracell, random_kappas = random_kappas,media = media_input, met_filter = met_filter,met_filter_sense = met_filter_sense, lb_funs = lb_funs, ub_funs = ub_funs,flobj = flobj)
+    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,upper_bound_functions = upper_bound_functions,lower_bound_functions = lower_bound_functions,upper_bound_functions_dt = upper_bound_functions_dt,lower_bound_functions_dt = lower_bound_functions_dt,extracell = extracell, random_kappas = random_kappas,media = media_input, met_filter = met_filter,met_filter_sense = met_filter_sense, lb_funs = lb_funs, ub_funs = ub_funs,flobj = flobj,linearScale=linearScale)
 
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.
@@ -55,7 +67,7 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
 
     model_list = [model for model in models.values()]
     x0 = np.array([1 for i in range(len(model_list))])
-    dynamics = surf.surfin_fba(model_list,x0,y0,endtime,save_bases = True,track_fluxes = track_fluxes,save_internal_flux = save_internal_flux, resolution = resolution,report_activity = report_activity, flobj = flobj)
+    dynamics = surf.surfin_fba(model_list,x0,y0,endtime,solver = solver,save_bases = True,track_fluxes = track_fluxes,save_internal_flux = save_internal_flux, resolution = resolution,report_activity = report_activity, flobj = flobj)
     # dynamics["Metabolites"] = metlist
     # dynamics["Models"] = [model.Name for model in model_list]
 
@@ -76,6 +88,7 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     met_met_nets = {}
     mic_met_sum_nets = {}
     mic_met_nets = {}
+
     for i in range(len(basis_change_times)):
         t0 = basis_change_times[i]
         try:
@@ -94,13 +107,13 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
                 break
         if bases_ok:
             metcons = y_sim.loc[:,t0].values
-            node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity = report_activity,flobj = flobj)
+            node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity = False,flobj = flobj)
 
             #trim out species & metabolites that aren't present in this time interval.
 
             met_met_edges,met_met_nodes = trim_network(met_met_edges,met_met_nodes,dynamics_t)
-            met_med_net_summary,node_table = trim_network(met_met_edges,met_met_nodes,dynamics_t)
-            met_med_net_summary,node_table = trim_network(met_met_edges,met_met_nodes,dynamics_t)
+            met_med_net,_ = trim_network(met_med_net,node_table,dynamics_t)
+            met_med_net_summary,node_table = trim_network(met_med_net_summary,node_table,dynamics_t)
 
             met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
             mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
@@ -119,7 +132,8 @@ def metconsin(desired_models,model_info_file,flobj = None,endtime = 10**-2,upper
     if save_internal_flux:
         internal_flux = {}
         for model in model_list:
-            iflux = pd.DataFrame(dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)], columns = dynamics["t"],index = model.flux_order)
+            total_interals = dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)] + dynamics["Intflux"][model.Name].round(7)[len(model.flux_order):2*len(model.flux_order)]
+            iflux = pd.DataFrame(total_interals, columns = dynamics["t"],index = model.flux_order)
             iflux = iflux.loc[:,~iflux.columns.duplicated()]
             internal_flux[model.Name] = iflux
         all_return["InternalFluxes"] = internal_flux
@@ -138,7 +152,11 @@ def trim_network(edges,nodes,dynamics):
     newedges = edges.copy()
     for nd in dynamics.index:
         if nd in newnodes.index:
-            if max(dynamics.loc[nd]) < 10**-6:
+            try:
+                if max(dynamics.loc[nd]) < 10**-6:
+                    newnodes.drop(index = nd, inplace = True)
+                    newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
+            except:
                 newnodes.drop(index = nd, inplace = True)
                 newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
     return newedges,newnodes

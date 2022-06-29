@@ -1,11 +1,6 @@
 import numpy as np
 import scipy.linalg as la
 
-try:
-    import gurobipy as gb
-except ImportError:
-    print("Gurobipy import failed.")
-
 
 import pandas as pd
 import time
@@ -81,29 +76,31 @@ class SurfMod:
         ##A negative lower bound means the FORWARD reaction must be above -bd
         ##A negative upper bound means the REVERSE reaction must be above -bd
 
-        # neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
-        # num_lower = len(neg_lower[0])
-        # if num_lower:
-        #     std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
-        #     new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
-        #     std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-        #     #for the constraint a<x<b, need a<b...make sure a = min(a,b)
-        #     all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
-        #     self.total_var += num_lower
-        #     self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
-        #     self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
-        #
-        #
-        # neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
-        # num_upper = len(neg_upper[0])
-        # if num_upper:
-        #     std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
-        #     new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
-        #     std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
-        #     all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
-        #     self.total_var += num_upper
-        #     self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
-        #     self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
+        neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
+        num_lower = len(neg_lower[0])
+        if num_lower:
+            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
+            new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
+            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+            #for the constraint a<x<b, need a<b...make sure a = min(a,b)
+            all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
+            self.total_var += num_lower
+            self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
+            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
+            # print("Forward Force On ",neg_lower)
+
+
+        neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
+        num_upper = len(neg_upper[0])
+        if num_upper:
+            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
+            new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
+            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+            all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
+            self.total_var += num_upper
+            self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
+            self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
+            # print("Reversed Force On ",neg_upper)
 
 
         self.standard_form_constraint_matrix = std_form_mat
@@ -120,11 +117,13 @@ class SurfMod:
         self.deathrate = deathrate
         self.exchanged_metabolites = exchanged_metabolites
 
-        self.fba_model = None
+        self.fba_gb_model = None
 
         self.current_basis = None
 
         self.fba_basic_index = None
+
+        self.fba_clp_model = None
 
     def fba_gb(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
 
@@ -134,6 +133,11 @@ class SurfMod:
 
         '''
 
+        try:
+            import gurobipy as gb
+        except ImportError:
+            print("Gurobipy import failed.")
+            return None
 
         t1 = time.time()
 
@@ -253,18 +257,151 @@ class SurfMod:
                     print(self.Name," fba_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
 
 
-            self.fba_model = growth
+            self.fba_gb_model = growth
             self.fba_basic_index = np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)
 
             return allvars.getAttr(gb.GRB.Attr.X),-val
         else:
             return np.array(["failed to prep"])
 
+    def fba_clp(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
+
+        '''
+
+        Perform FBA and minimize total flux, or use different secondary objective if given.
+
+        '''
+        from cylp.cy.CyClpSimplex import CyClpSimplex
+        from cylp.py.modeling.CyLPModel import CyLPArray
+
+
+        t1 = time.time()
+
+        metabolite_con = master_metabolite_con[self.ExchangeOrder]
+
+        std_form_mat = np.matrix(self.standard_form_constraint_matrix)
+        obje = CyLPArray(self.objective)
+
+        # get the exchange bounds for the current metabolite environment
+        exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
+
+        upe = exchg_bds[self.num_exch_rxns:]
+        lowe = exchg_bds[:self.num_exch_rxns]
+        upneg = np.where(upe<0)
+        # print(upe[upneg],lowe[upneg])
+        lowneg = np.where(lowe<0)
+        # print(upe[lowneg],lowe[lowneg])
+
+        bound_rhs = CyLPArray(np.concatenate([exchg_bds,self.internal_bounds]))
+
+        #Now we use clp to solve min(x'obje) subject to Ax = b, x \geq 0
+        #the actual fluxes calculated are the first 2*num_v entries of x
+        #(with forward and reverse reaction fluxes separated)
+        #
+
+
+        if report_activity:
+            try:
+                flobj.write(self.Name," fba_clp: initializing LP\n")
+            except:
+                print(self.Name," fba_clp: initializing LP")
+        growth = CyClpSimplex()
+
+        x = growth.addVariable('x',self.total_var)
+
+
+
+        if report_activity:
+            try:
+                flobj.write(self.Name," fba_clp: Adding constraints\n")
+            except:
+                print(self.Name," fba_clp: Adding constraints")
+
+        growth += std_form_mat * x == bound_rhs
+
+        growth.objective = obje * x
+
+        if report_activity:
+            try:
+                flobj.write(self.Name," fba_clp: optimizing LP\n")
+                flobj.write(self.Name," fba_clp: optimizing with " + str(std_form_mat.shape[0]) + " constraints\n" )
+            except:
+                print(self.Name," fba_clp: optimizing LP")
+                print(self.Name," fba_clp: optimizing with ",std_form_mat.shape[0] ," constraints" )
+
+        growth.variablesLower = np.zeros_like(growth.variablesLower)
+
+        growth.primal()
+
+
+        status = growth.getStatusString()
+
+
+        if report_activity:
+            try:
+                flobj.write(self.Name," fba_clp: LP Status: " +  status + '\n')
+            except:
+                print(self.Name," fba_clp: LP Status: ", status)
+
+
+        if status == 'optimal':
+
+
+            val = growth.objectiveValue
+            dosec = False
+
+            if secondobj == "total":
+                newobj = CyLPArray(np.concatenate([np.ones(2*self.num_fluxes),np.zeros(self.total_var - 2*self.num_fluxes)]))
+                dosec = True
+
+            elif (type(secondobj) != str) and hasattr(secondobj, "__len__"):
+                if len(secondobj) == self.num_fluxes:
+                    newobj = CyLPArray(np.concatenate([secondobj,-secondobj,np.zeros(self.total_var - 2*self.num_fluxes)]))
+                    dosec = True
+
+                elif len(secondobj) == 2*self.num_fluxes:
+                    newobj = CyLPArray(np.concatenate([secondobj,np.zeros(self.total_var - 2*self.num_fluxes)]))
+                    dosec = True
+
+                elif len(secondobj) == self.total_var:
+                    newobj = CyLPArray(secondobj)
+                    dosec = True
+
+                else:
+                    print(self.Name," FBAWarning: Don't know what to make of given second objective")
+
+            if dosec:
+                growth += np.matrix([obje]) * x == val
+                growth.objective = newobj * x
+                growth.primal()
+
+            if report_activity:
+                minuts,sec = divmod(time.time() - t1, 60)
+                try:
+                    flobj.write(self.Name," fba_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                except:
+                    print(self.Name," fba_clp: Done in ",int(minuts)," minutes, ",sec," seconds.")
+
+
+            self.fba_clp_model = growth
+            self.fba_basic_index = np.where(growth.varIsBasic[:std_form_mat.shape[1]])#np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)
+
+            return growth.primalVariableSolution['x'],-val
+        else:
+            return np.array(["failed to prep"])
+
+
     def find_waves_gb(self,flux,master_metabolite_con,master_metabolite_con_dt,report_activity = True, flobj = None, careful = False):
 
         '''
         Gets basis for LP at given solution that can be used to simulate forward, choosing from degenerate bases
         '''
+
+        try:
+            import gurobipy as gb
+        except ImportError:
+            print("Gurobipy import failed.")
+            return None
 
         flux = flux.round(7)
 
@@ -360,7 +497,7 @@ class SurfMod:
 
             allvars = waves.addMVar(A_tilde.shape[1],lb = 0)#,ub = 1)#
             waves.update()
-            waves.setMObjective(None,-np.ones(A_tilde.shape[1]),0,xc = allvars,sense = gb.GRB.MINIMIZE)
+            waves.setMObjective(None,np.zeros(A_tilde.shape[1]),0,xc = allvars,sense = gb.GRB.MINIMIZE)
             waves.update()
             if report_activity:
                 try:
@@ -417,73 +554,249 @@ class SurfMod:
 
 
 
-            elif status == 4:
-
-                waves.setParam("DualReductions", 0)
-                waves.update()
-                waves.optimize()
-                status = waves.status
-
-                statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
-                if status in statusdic.keys():
-                    if report_activity:
-                        try:
-                            flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
-                        except:
-                            print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
-                else:
-                    if report_activity:
-                        try:
-                            flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
-                        except:
-                            print(self.Name," find_waves_gb: LP Status: Other")
-
-            if status == 5:
-                print("Changing to 0 objective.")
-                waves.setMObjective(None,np.zeros(A_tilde.shape[1]),0,xc = allvars,sense = gb.GRB.MINIMIZE)
-                waves.update()
-                waves.optimize()
-
-                status = waves.status
-
-                statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
-                if status in statusdic.keys():
-                    if report_activity:
-                        try:
-                            flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
-                        except:
-                            print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
-                else:
-                    if report_activity:
-                        try:
-                            flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
-                        except:
-                            print(self.Name," find_waves_gb: LP Status: Other")
-
-                if status == 2:
-
-                    #get the index of the basic variables of waves
-
-                    self.current_basis =  getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,self,careful = careful)
-
-                    if report_activity:
-                        minuts,sec = divmod(time.time() - t1, 60)
-                        try:
-                            flobj.write(self.Name," find_waves_gb: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
-                        except:
-                            print(self.Name," find_waves_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
-
-
-                else:
-
-                    self.current_basis = None
-
-                return None
+            # elif status == 4:
+            #
+            #     waves.setParam("DualReductions", 0)
+            #     waves.update()
+            #     waves.optimize()
+            #     status = waves.status
+            #
+            #     statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
+            #     if status in statusdic.keys():
+            #         if report_activity:
+            #             try:
+            #                 flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
+            #             except:
+            #                 print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
+            #     else:
+            #         if report_activity:
+            #             try:
+            #                 flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
+            #             except:
+            #                 print(self.Name," find_waves_gb: LP Status: Other")
+            #
+            # if status == 5:
+            #     print("Changing to 0 objective.")
+            #     waves.setMObjective(None,np.zeros(A_tilde.shape[1]),0,xc = allvars,sense = gb.GRB.MINIMIZE)
+            #     waves.update()
+            #     waves.optimize()
+            #
+            #     status = waves.status
+            #
+            #     statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
+            #     if status in statusdic.keys():
+            #         if report_activity:
+            #             try:
+            #                 flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
+            #             except:
+            #                 print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
+            #     else:
+            #         if report_activity:
+            #             try:
+            #                 flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
+            #             except:
+            #                 print(self.Name," find_waves_gb: LP Status: Other")
+            #
+            #     if status == 2:
+            #
+            #         #get the index of the basic variables of waves
+            #
+            #         self.current_basis =  getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,self,careful = careful)
+            #
+            #         if report_activity:
+            #             minuts,sec = divmod(time.time() - t1, 60)
+            #             try:
+            #                 flobj.write(self.Name," find_waves_gb: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+            #             except:
+            #                 print(self.Name," find_waves_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
+            #
+            #
+            #     else:
+            #
+            #         self.current_basis = None
+            #
+            #     return None
 
             else:
 
                 self.current_basis = None
                 return None
+
+    def find_waves_clp(self,flux,master_metabolite_con,master_metabolite_con_dt,report_activity = True, flobj = None, careful = False):
+
+        '''
+        Gets basis for LP at given solution that can be used to simulate forward, choosing from degenerate bases
+        '''
+
+        from cylp.cy.CyClpSimplex import CyClpSimplex
+        from cylp.py.modeling.CyLPModel import CyLPArray
+
+        flux = flux.round(7)
+
+        t1 = time.time()
+        metabolite_con = master_metabolite_con[self.ExchangeOrder]
+        metabolite_con_dt = master_metabolite_con_dt[self.ExchangeOrder]
+
+        ncon,nvar = self.standard_form_constraint_matrix.shape
+
+        # print(np.linalg.matrix_rank(self.standard_form_constraint_matrix))
+
+
+        if report_activity:
+            try:
+                flobj.write(self.Name," find_waves_clp: Projecting\n")
+            except:
+                print(self.Name," find_waves_clp: Projecting LP")
+
+        beta_hat = np.where(flux > 0.0)[0]
+
+        original_basis = self.standard_form_constraint_matrix[:,beta_hat]
+        # print((original_basis.round(7) == 0).all(axis = 0).any())
+        # print("Starting vectors shape: ",original_basis.shape)
+        # print("Starting vectors rank: ",np.linalg.matrix_rank(original_basis))
+
+
+        # print("beta hat size: ",len(beta_hat))
+
+
+        if len(beta_hat) == ncon:
+            if report_activity:
+                try:
+                    flobj.write(self.Name," find_waves_clp: Only One Choice\n")
+                except:
+                    print(self.Name," find_waves_clp: Only One Choice LP")
+
+            beta_index = beta_hat
+
+            wave_to_ride = self.standard_form_constraint_matrix[:,beta_index]
+
+            Q,R = np.linalg.qr(wave_to_ride)
+
+            if report_activity:
+                minuts,sec = divmod(time.time() - t1, 60)
+                try:
+                    flobj.write(self.Name," find_waves_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                except:
+                    print(self.Name," find_waves_clp: Done in ",int(minuts)," minutes, ",sec," seconds.")
+
+
+            self.current_basis =  (Q,R,beta_index)
+
+        else:
+
+            s_hat =  self.standard_form_constraint_matrix[:,beta_hat]
+
+            # print(np.linalg.matrix_rank(s_hat))
+
+            exchg_bds_dt = np.array([bd(metabolite_con,metabolite_con_dt) for bd in self.exchange_bounds_dt])
+            bound_rhs_dt = np.concatenate([exchg_bds_dt,np.zeros(len(self.internal_bounds))]).round(8)
+            # print(bound_rhs_dt[np.where(bound_rhs_dt != 0)])
+
+            beta_hat_comp = np.where(flux == 0.0)[0]
+            s_hat_comp = self.standard_form_constraint_matrix[:,beta_hat_comp]
+
+            # print(np.linalg.matrix_rank(s_hat_comp))
+
+            A_tilde = proj_orth(s_hat_comp,s_hat)
+            #Apparently we have to remove the 0 columns because the solver might
+            # Choose those for a "basis" which...WTF.
+            nz_columns = np.invert((A_tilde.round(7) == 0).all(axis = 0))
+            beta_hat_comp = beta_hat_comp[nz_columns]
+            A_tilde = A_tilde[:,nz_columns]
+            A_tilde = np.matrix(A_tilde)
+            # print("A tilde shape: ",A_tilde.shape)
+            # print("A tilde rank: ",np.linalg.matrix_rank(A_tilde))
+
+            b_tilde = proj_orth(bound_rhs_dt,s_hat).round(8)
+            b_tilde = CyLPArray(b_tilde)
+
+
+            if report_activity:
+                try:
+                    flobj.write(self.Name," find_waves_clp: initializing LP\n")
+                except:
+                    print(self.Name," find_waves_clp: initializing LP")
+            waves = CyClpSimplex()
+
+            x = waves.addVariable('x',A_tilde.shape[1])
+            c = CyLPArray(np.zeros(A_tilde.shape[1]))
+            waves.objective = c*x
+            if report_activity:
+                try:
+                    flobj.write(self.Name," find_waves_clp: Adding constraints\n")
+                except:
+                    print(self.Name," find_waves_clp: Adding constraints")
+
+
+            waves += A_tilde * x == b_tilde
+
+
+            if report_activity:
+                try:
+                    flobj.write(self.Name," find_waves_clp: optimizing LP\n")
+                    flobj.write(self.Name," find_waves_clp: optimizing with " + str(A_tilde.shape[0]) + " constraints\n" )
+                except:
+                    print(self.Name," find_waves_clp: optimizing LP")
+                    print(self.Name," find_waves_clp: optimizing with ",A_tilde.shape[0] ," constraints" )
+
+            waves.variablesLower = np.zeros_like(waves.variablesLower)
+            waves.primal()
+
+            status = waves.getStatusString()
+
+            if report_activity:
+                try:
+                    flobj.write(self.Name," find_waves_clp: LP Status: " +  status + '\n')
+                except:
+                    print(self.Name," find_waves_clp: LP Status: ", status)
+
+
+            if status == 'optimal':
+
+                self.current_basis =  getBetaTilde_clp(waves,beta_hat,beta_hat_comp,A_tilde,self,careful = careful)
+
+
+                if report_activity:
+                    minuts,sec = divmod(time.time() - t1, 60)
+                    try:
+                        flobj.write(self.Name," find_waves_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                    except:
+                        print(self.Name," find_waves_clp: Done in ",int(minuts)," minutes, ",sec," seconds.")
+
+                return None
+
+
+            elif status == 'dual infeasible' or 'primal infeasible':
+
+                ###Double check....
+                nonneg = all(waves.primalVariableSolution['x'].round(7) >= 0)
+                equality = not any((np.dot(np.array(A_tilde),waves.primalVariableSolution['x']) - np.array(b_tilde)).round(7))
+
+                if nonneg and equality:
+
+                    self.current_basis =  getBetaTilde_clp(waves,beta_hat,beta_hat_comp,A_tilde,self,careful = careful)
+
+
+                    if report_activity:
+                        minuts,sec = divmod(time.time() - t1, 60)
+                        try:
+                            flobj.write(self.Name," find_waves_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                        except:
+                            print(self.Name," find_waves_clp: Done in ",int(minuts)," minutes, ",sec," seconds.")
+
+                    return None
+
+                else:
+                    self.current_basis = None
+                    return None
+
+
+
+            else:
+
+                self.current_basis = None
+                return None
+
 
     def compute_internal_flux(self,master_metabolite_con):
 
@@ -504,7 +817,44 @@ class SurfMod:
         return all_vars
 
 
+def getBetaTilde_clp(waves,beta_hat,beta_hat_comp,A_tilde,smod, careful = False):
 
+    # if careful:
+    #     print(smod.standard_form_constraint_matrix[:,beta_hat].shape, " ",np.linalg.matrix_rank(smod.standard_form_constraint_matrix[:,beta_hat]))
+    #     print(A_tilde.shape," ",np.linalg.matrix_rank(A_tilde))
+
+    basic_vars = np.where(waves.varIsBasic[:A_tilde.shape[1]])[0]#np.where(np.array(waves.vbasis) == 0)[0]
+
+    if len(basic_vars) < A_tilde.shape[1]:
+        #we need a linearly independent collection of the columns of A_tilde
+        #first project away the ones we already have
+        basic_vars_comp = np.where(waves.varNotBasic[:A_tilde.shape[1]])[0]
+        spc = A_tilde[:,basic_vars]
+        bas = np.linalg.qr(spc,mode="complete")[0]
+        A_t2 = proj_orth(A_tilde[:,basic_vars_comp],A_tilde[:,basic_vars])
+        #then get the linearly independent columns of the remaining
+        lin_indep_columns = getLIcols(A_t2)
+        basic_vars = np.sort(np.concatenate([basic_vars,basic_vars_comp[lin_indep_columns]]))
+
+
+    beta_tilde = beta_hat_comp[basic_vars]
+
+    beta_index = np.sort(np.concatenate([beta_hat,beta_tilde]))
+
+    wave_to_ride = smod.standard_form_constraint_matrix[:,beta_index]
+
+    if careful:
+        # print("Full Mat Rank ",np.linalg.matrix_rank(smod.standard_form_constraint_matrix))
+        rk = np.linalg.matrix_rank(wave_to_ride)
+        shp = wave_to_ride.shape
+        print("Basis Shape: ",shp)
+        print("Basis Rank: ", rk)
+        if (shp[0] != shp[1]) or (shp[0] != rk):
+            return None
+
+    Q,R = np.linalg.qr(wave_to_ride)
+
+    return Q,R,beta_index
 
 def getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,smod, careful = False):
 

@@ -29,10 +29,26 @@ def all_vs(t,s,models):
     v = np.array([])
     for i in range(len(models)):
         model = models[i]
-        v = np.append(v,model.compute_internal_flux(y))[model.current_basis[2]]
-    return min(v) + 10**-7
+        v = np.append(v,model.compute_internal_flux(y))#[model.current_basis[2]]
+    return min(v) + 10**-6
 
-def surfin_fba(models,x0,y0,endtime,track_fluxes = True, save_bases = True,save_internal_flux = True, resolution = 0.1,report_activity = True, flobj = None):
+def find_stop(t0,t1,sln,models,cdt = 0.1,fdt=0.001):
+    #check on a coarse grid for negatives:
+    tcrs = np.arange(t0,t1,cdt)
+    minpert = np.array([all_vs(t,sln(t),models) for t in tcrs])
+    if minpert.round(4).min() >= 0:
+        return t1
+    else:
+        #find first negative
+        failat = np.where(minpert < 0)[0][0]
+        #go finer.
+        if failat == 0:
+            return t0
+        else:
+            finerfail = np.array([all_vs(t,sln(t),models) for t in np.arange(tcrs[failat-1],tcrs[failat],fdt)])
+            return np.where(minpert < 0)[0][0]
+
+def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save_bases = True,save_internal_flux = True, resolution = 0.1,report_activity = True, flobj = None):
     t1 = time.time()
     if report_activity:
         try:
@@ -46,19 +62,37 @@ def surfin_fba(models,x0,y0,endtime,track_fluxes = True, save_bases = True,save_
     fluxes = {}
     for i in range(len(models)):#model in models:
         model = models[i]
-        flux,obval = model.fba_gb(y0)#,secondobj = None)
+        if solver == 'gurobi':
+            flux,obval = model.fba_gb(y0)#,secondobj = None)
+        elif solver == 'clp':
+            flux,obval = model.fba_clp(y0)
+        if report_activity:
+            try:
+                flobj.write(model.Name, " Surfin initial growth rate: ",obval)
+            except:
+                print(model.Name, " Surfin initial growth rate: ",obval)
         fluxes[model.Name] = flux
         ydi = np.zeros_like(ydot0)
         ydi[model.ExchangeOrder] = -x0[i]*np.dot(model.expandGammaStar,flux)
         ydot0 += ydi
 
     for model in models:
-        model.find_waves_gb(fluxes[model.Name],y0,ydot0)
+        if solver == 'gurobi':
+            model.find_waves_gb(fluxes[model.Name],y0,ydot0)
+        elif solver == 'clp':
+            model.find_waves_clp(fluxes[model.Name],y0,ydot0)
 
     if save_bases:
         bases = dict([(model.Name,[]) for model in models])
         for model in models:
             bases[model.Name] += [model.current_basis]
+
+    if report_activity:
+        bInitial = evolve_community(0,s0,models)
+        try:
+            flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)])
+        except:
+            print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)])
 
     t = []
     x = []
@@ -85,11 +119,11 @@ def surfin_fba(models,x0,y0,endtime,track_fluxes = True, save_bases = True,save_
             except:
                 print("surfin_fba: Solving IVP")
         all_vs.terminal = True
-        all_vs.direction = -1
+        # all_vs.direction = -1
         interval = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,), method='RK45',events=all_vs,dense_output = True)
         if interval.status == -1:
             break
-        stptime = interval.t[-1]#find_event(interval,models)
+        stptime = find_stop(t_c, interval.t[-1],interval.sol,models)#interval.t[-1]#find_event(interval,models)
         if stptime == t_c:
             print("No progress at time ",t_c)
             break
@@ -107,6 +141,7 @@ def surfin_fba(models,x0,y0,endtime,track_fluxes = True, save_bases = True,save_
         if save_internal_flux:
             for model in models:
                 intfluxes[model.Name] += [model.compute_internal_flux(y[-1][:,i]) for i in range(y[-1].shape[1])]
+                # print(np.array(intfluxes[model.Name]).min())
         t += [T]
         t_c = stptime
         if t_c < endtime:
@@ -116,10 +151,13 @@ def surfin_fba(models,x0,y0,endtime,track_fluxes = True, save_bases = True,save_
                 except:
                     print("surfin_fba: Finding New Basis at time ",t_c)
             yd = evolve_community(t_c,s0,models)[len(models):]
+            basis_change += [t_c]
             for model in models:
                 current_flux = model.compute_internal_flux(y[-1][:,-1])
-                model.find_waves_gb(current_flux,y[-1][:,-1],yd,careful = True)
-                basis_change += [t_c]
+                if solver == 'gurobi':
+                    model.find_waves_gb(current_flux,y[-1][:,-1],yd,careful = True)
+                elif solver == 'clp':
+                    model.find_waves_clp(current_flux,y[-1][:,-1],yd,careful = True)
                 if save_bases:
                     bases[model.Name] += [model.current_basis]
 
