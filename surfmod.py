@@ -1,8 +1,5 @@
 import numpy as np
 import scipy.linalg as la
-
-
-import pandas as pd
 import time
 import cobra as cb
 
@@ -19,7 +16,7 @@ class SurfMod:
         # where f,g are the upper/lower exchange bounds, and are functions of the
         #environmental metabolites.
 
-        #All that matters is Ker(Gamma2), so we can replace Gamma2 with a new
+        #All that matters is Ker(GammaDagger), so we can replace GammaDagger with a new
         #matrix with orthonormal rows that has the same kernal.
 
         Z = la.null_space(gamDag.astype(float))
@@ -50,16 +47,18 @@ class SurfMod:
         self.num_internal_metabolites = num_internal
 
         self.total_var = 4*num_v + 2*num_exch
-        rw1 = np.concatenate([gamStar.astype(float), -gamStar.astype(float), np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
-        rw2 = np.concatenate([-gamStar.astype(float), gamStar.astype(float), np.zeros((num_exch,num_exch)),np.eye(num_exch),np.zeros((num_exch,2*num_v))], axis = 1)
-        rw3 = np.concatenate([np.eye(num_v),np.zeros((num_v,num_v+2*num_exch)),np.eye(num_v),np.zeros((num_v,num_v))], axis = 1)
-        rw4 = np.concatenate([np.zeros((num_v,num_v)), np.eye(num_v), np.zeros((num_v,2*num_exch+num_v)),np.eye(num_v)], axis = 1)
-        rw5 = np.concatenate([gamDag, -gamDag, np.zeros((num_internal,2*num_exch+2*num_v))], axis = 1)
-        std_form_mat = np.concatenate([rw1,rw2,rw3,rw4,rw5], axis = 0)
+        rw1 = np.concatenate([gamStar.astype(float), -gamStar.astype(float)],axis = 1)#, np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
+        rw2 = np.concatenate([-gamStar.astype(float), gamStar.astype(float)],axis = 1)#, np.zeros((num_exch,num_exch)),np.eye(num_exch),np.zeros((num_exch,2*num_v))], axis = 1)
+        rw3 = np.concatenate([np.eye(num_v),np.zeros((num_v,num_v))],axis = 1)#,np.zeros((num_v,num_v+2*num_exch)),np.eye(num_v),np.zeros((num_v,num_v))], axis = 1)
+        rw4 = np.concatenate([np.zeros((num_v,num_v)), np.eye(num_v)],axis = 1)#, np.zeros((num_v,2*num_exch+num_v)),np.eye(num_v)], axis = 1)
+        rw5 = np.concatenate([gamDag, -gamDag],axis = 1)#, np.zeros((num_internal,2*num_exch+2*num_v))], axis = 1)
+        rw6 = np.concatenate([gamDag, -gamDag],axis = 1)
+        prob_mat = np.concatenate([rw1,rw2,rw3,rw4,rw5,rw6], axis = 0)
+        
 
         self.expandGammaStar = np.concatenate([gamStar.astype(float),-gamStar.astype(float),np.zeros((num_exch,2*num_v + 2*num_exch))],axis = 1)
 
-        self.objective = np.concatenate([-np.array(objective).astype(float),np.array(objective).astype(float),np.zeros(2*num_exch+2*num_v).astype(float)])
+        self.objective = np.concatenate([-np.array(objective).astype(float),np.array(objective).astype(float)])#,np.zeros(2*num_exch+2*num_v).astype(float)])
 
         self.flux_order = intrn_order
 
@@ -70,7 +69,7 @@ class SurfMod:
 
         interior_ubs_min0 = np.array([max(bd,0) for bd in interior_ubs])
         interior_lbs_min0 = np.array([max(bd,0) for bd in interior_lbs])
-        all_internal = np.concatenate([interior_ubs_min0.astype(float),interior_lbs_min0.astype(float),np.zeros(num_internal).astype(float)])
+        all_internal = np.concatenate([interior_ubs_min0.astype(float),interior_lbs_min0.astype(float),np.zeros(2*num_internal).astype(float)])
 
         #We need to add constraints for negative bounds.
         ##A negative lower bound means the FORWARD reaction must be above -bd
@@ -79,13 +78,12 @@ class SurfMod:
         neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
         num_lower = len(neg_lower[0])
         if num_lower:
-            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_lower))],axis = 1)
-            new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,3*num_v+2*num_exch)),np.eye(num_lower)],axis = 1)
-            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+            new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,num_v))],axis = 1)
+            prob_mat = np.concatenate([prob_mat,new_rows],axis = 0)
             #for the constraint a<x<b, need a<b...make sure a = min(a,b)
             all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
             self.total_var += num_lower
-            self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
+            # self.objective = np.concatenate([self.objective,np.zeros(num_lower)])
             self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_lower))],axis = 1)
             # print("Forward Force On ",neg_lower)
 
@@ -93,16 +91,16 @@ class SurfMod:
         neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
         num_upper = len(neg_upper[0])
         if num_upper:
-            std_form_mat = np.concatenate([std_form_mat,np.zeros((std_form_mat.shape[0],num_upper))],axis = 1)
-            new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper],np.zeros((num_upper,2*num_v+2*num_exch+num_lower)),np.eye(num_upper)],axis = 1)
-            std_form_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+            new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper]],axis = 1)
+            prob_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
             all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
             self.total_var += num_upper
-            self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
+            # self.objective = np.concatenate([self.objective,np.zeros(num_upper)])
             self.expandGammaStar = np.concatenate([self.expandGammaStar,np.zeros((self.expandGammaStar.shape[0],num_upper))],axis = 1)
             # print("Reversed Force On ",neg_upper)
 
-
+        std_form_mat = np.concatenate([prob_mat,np.eye(prob_mat.shape[0])],axis = 1)
+        self.solver_constraint_matrix = prob_mat
         self.standard_form_constraint_matrix = std_form_mat
         self.internal_bounds = all_internal
 
@@ -143,7 +141,7 @@ class SurfMod:
 
         metabolite_con = master_metabolite_con[self.ExchangeOrder]
 
-        std_form_mat = self.standard_form_constraint_matrix
+        solver_constraint_matrix = self.solver_constraint_matrix
         obje = self.objective
 
         # get the exchange bounds for the current metabolite environment
@@ -151,9 +149,9 @@ class SurfMod:
 
         upe = exchg_bds[self.num_exch_rxns:]
         lowe = exchg_bds[:self.num_exch_rxns]
-        upneg = np.where(upe<0)
+        # upneg = np.where(upe<0)
         # print(upe[upneg],lowe[upneg])
-        lowneg = np.where(lowe<0)
+        # lowneg = np.where(lowe<0)
         # print(upe[lowneg],lowe[lowneg])
 
         bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
@@ -174,7 +172,7 @@ class SurfMod:
         growth.setParam( 'Presolve', 0)
 
 
-        allvars = growth.addMVar(self.total_var,lb = 0.0)
+        allvars = growth.addMVar(solver_constraint_matrix.shape[1],lb = 0.0)
         growth.update()
         growth.setMObjective(None,obje,0,xc = allvars,sense = gb.GRB.MINIMIZE)
         growth.update()
@@ -186,7 +184,7 @@ class SurfMod:
 
 
     #
-        growth.addMConstr(std_form_mat,allvars,"=",bound_rhs)
+        growth.addMConstr(solver_constraint_matrix,allvars,"<=",bound_rhs)
 
         growth.update()
 
@@ -223,20 +221,20 @@ class SurfMod:
             dosec = False
 
             if secondobj == "total":
-                newobj = np.concatenate([np.ones(2*self.num_fluxes),np.zeros(self.total_var - 2*self.num_fluxes)])
+                newobj = np.ones(2*self.num_fluxes)#,np.zeros(self.total_var - 2*self.num_fluxes)])
                 dosec = True
 
             elif (type(secondobj) != str) and hasattr(secondobj, "__len__"):
                 if len(secondobj) == self.num_fluxes:
-                    newobj = np.concatenate([secondobj,-secondobj,np.zeros(self.total_var - 2*self.num_fluxes)])
+                    newobj = np.concatenate([secondobj,-secondobj])#,np.zeros(self.total_var - 2*self.num_fluxes)])
                     dosec = True
 
                 elif len(secondobj) == 2*self.num_fluxes:
-                    newobj = np.concatenate([secondobj,np.zeros(self.total_var - 2*self.num_fluxes)])
+                    newobj = secondobj#np.concatenate([secondobj,np.zeros(self.total_var - 2*self.num_fluxes)])
                     dosec = True
 
                 elif len(secondobj) == self.total_var:
-                    newobj = secondobj
+                    newobj = secondobj[:len(allvars)]
                     dosec = True
 
                 else:
@@ -258,7 +256,8 @@ class SurfMod:
 
 
             self.fba_gb_model = growth
-            self.fba_basic_index = np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)
+            allconts = growth.getConstrs()
+            self.fba_basic_index = (np.concatenate([np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)[0],np.where([cn.getAttr(gb.GRB.Attr.CBasis) == 0 for cn in allconts])[0]]),)
 
             return allvars.getAttr(gb.GRB.Attr.X),-val
         else:
@@ -279,7 +278,7 @@ class SurfMod:
 
         metabolite_con = master_metabolite_con[self.ExchangeOrder]
 
-        std_form_mat = np.matrix(self.standard_form_constraint_matrix)
+        solver_constraint_matrix = np.matrix(self.solver_constraint_matrix)
         obje = CyLPArray(self.objective)
 
         # get the exchange bounds for the current metabolite environment
@@ -287,9 +286,9 @@ class SurfMod:
 
         upe = exchg_bds[self.num_exch_rxns:]
         lowe = exchg_bds[:self.num_exch_rxns]
-        upneg = np.where(upe<0)
+        # upneg = np.where(upe<0)
         # print(upe[upneg],lowe[upneg])
-        lowneg = np.where(lowe<0)
+        # lowneg = np.where(lowe<0)
         # print(upe[lowneg],lowe[lowneg])
 
         bound_rhs = CyLPArray(np.concatenate([exchg_bds,self.internal_bounds]))
@@ -307,7 +306,7 @@ class SurfMod:
                 print(self.Name," fba_clp: initializing LP")
         growth = CyClpSimplex()
 
-        x = growth.addVariable('x',self.total_var)
+        x = growth.addVariable('x',solver_constraint_matrix.shape[1])
 
 
 
@@ -317,17 +316,17 @@ class SurfMod:
             except:
                 print(self.Name," fba_clp: Adding constraints")
 
-        growth += std_form_mat * x == bound_rhs
+        growth += solver_constraint_matrix * x <= bound_rhs
 
         growth.objective = obje * x
 
         if report_activity:
             try:
                 flobj.write(self.Name," fba_clp: optimizing LP\n")
-                flobj.write(self.Name," fba_clp: optimizing with " + str(std_form_mat.shape[0]) + " constraints\n" )
+                flobj.write(self.Name," fba_clp: optimizing with " + str(solver_constraint_matrix.shape[0]) + " constraints\n" )
             except:
                 print(self.Name," fba_clp: optimizing LP")
-                print(self.Name," fba_clp: optimizing with ",std_form_mat.shape[0] ," constraints" )
+                print(self.Name," fba_clp: optimizing with ",solver_constraint_matrix.shape[0] ," constraints" )
 
         growth.variablesLower = np.zeros_like(growth.variablesLower)
 
@@ -351,20 +350,20 @@ class SurfMod:
             dosec = False
 
             if secondobj == "total":
-                newobj = CyLPArray(np.concatenate([np.ones(2*self.num_fluxes),np.zeros(self.total_var - 2*self.num_fluxes)]))
+                newobj = CyLPArray(np.concatenate([np.ones(2*self.num_fluxes)]))
                 dosec = True
 
             elif (type(secondobj) != str) and hasattr(secondobj, "__len__"):
                 if len(secondobj) == self.num_fluxes:
-                    newobj = CyLPArray(np.concatenate([secondobj,-secondobj,np.zeros(self.total_var - 2*self.num_fluxes)]))
+                    newobj = CyLPArray(np.concatenate([secondobj,-secondobj]))
                     dosec = True
 
                 elif len(secondobj) == 2*self.num_fluxes:
-                    newobj = CyLPArray(np.concatenate([secondobj,np.zeros(self.total_var - 2*self.num_fluxes)]))
+                    newobj = CyLPArray(secondobj)
                     dosec = True
 
                 elif len(secondobj) == self.total_var:
-                    newobj = CyLPArray(secondobj)
+                    newobj = CyLPArray(secondobj[:2*self.num_fluxes])
                     dosec = True
 
                 else:
@@ -384,11 +383,28 @@ class SurfMod:
 
 
             self.fba_clp_model = growth
-            self.fba_basic_index = np.where(growth.varIsBasic[:std_form_mat.shape[1]])#np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)
+            self.fba_basic_index = np.where(growth.varIsBasic)#np.where(allvars.getAttr(gb.GRB.Attr.VBasis) == 0)
 
             return growth.primalVariableSolution['x'],-val
         else:
             return np.array(["failed to prep"])
+
+    # def find_waves_customsimplex(self,flux,master_metabolite_con,master_metabolite_con_dt,report_activity = True, flobj = None, careful = False):
+
+    #     flux = flux.round(7)
+    #     t1 = time.time()
+    #     metabolite_con = master_metabolite_con[self.ExchangeOrder]
+    #     metabolite_con_dt = master_metabolite_con_dt[self.ExchangeOrder]
+
+    #     ncon,nvar = self.standard_form_constraint_matrix.shape
+
+    #     beta_hat = np.where(flux > 0.0)[0]
+
+    #     original_basis = self.standard_form_constraint_matrix[:,beta_hat]
+
+    #     #check if the original basis satisfies what we need...
+
+    #     omega = np.solve()
 
 
     def find_waves_gb(self,flux,master_metabolite_con,master_metabolite_con_dt,report_activity = True, flobj = None, careful = False):
@@ -549,73 +565,6 @@ class SurfMod:
                         print(self.Name," find_waves_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
 
                 return None
-
-
-
-
-
-            # elif status == 4:
-            #
-            #     waves.setParam("DualReductions", 0)
-            #     waves.update()
-            #     waves.optimize()
-            #     status = waves.status
-            #
-            #     statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
-            #     if status in statusdic.keys():
-            #         if report_activity:
-            #             try:
-            #                 flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
-            #             except:
-            #                 print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
-            #     else:
-            #         if report_activity:
-            #             try:
-            #                 flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
-            #             except:
-            #                 print(self.Name," find_waves_gb: LP Status: Other")
-            #
-            # if status == 5:
-            #     print("Changing to 0 objective.")
-            #     waves.setMObjective(None,np.zeros(A_tilde.shape[1]),0,xc = allvars,sense = gb.GRB.MINIMIZE)
-            #     waves.update()
-            #     waves.optimize()
-            #
-            #     status = waves.status
-            #
-            #     statusdic = {1:"LOADED",2:"OPTIMAL",3:"INFEASIBLE",4:"INF_OR_UNBD",5:"UNBOUNDED"}
-            #     if status in statusdic.keys():
-            #         if report_activity:
-            #             try:
-            #                 flobj.write(self.Name," find_waves_gb: LP Status: " +  statusdic[status] + '\n')
-            #             except:
-            #                 print(self.Name," find_waves_gb: LP Status: ", statusdic[status])
-            #     else:
-            #         if report_activity:
-            #             try:
-            #                 flobj.write(self.Name," find_waves_gb: LP Status: Other\n")
-            #             except:
-            #                 print(self.Name," find_waves_gb: LP Status: Other")
-            #
-            #     if status == 2:
-            #
-            #         #get the index of the basic variables of waves
-            #
-            #         self.current_basis =  getBetaTilde(waves,beta_hat,beta_hat_comp,A_tilde,self,careful = careful)
-            #
-            #         if report_activity:
-            #             minuts,sec = divmod(time.time() - t1, 60)
-            #             try:
-            #                 flobj.write(self.Name," find_waves_gb: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
-            #             except:
-            #                 print(self.Name," find_waves_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
-            #
-            #
-            #     else:
-            #
-            #         self.current_basis = None
-            #
-            #     return None
 
             else:
 
@@ -922,3 +871,11 @@ def proj_orth(mat,spc):
     '''
     bas = np.linalg.qr(spc,mode = "complete")[0]
     return np.linalg.solve(bas,mat)[spc.shape[1]:]
+
+#####Functions to perform the simplex algorithm manually
+def compute_ybar(A,c,beta):
+    return np.linalg.solve(A[:,beta].T,c[beta])
+
+def compute_redcosts(A,c,beta):
+    return c - np.dot(A.T,compute_ybar(A,c,beta))
+
