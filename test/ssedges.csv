@@ -1,0 +1,2 @@
+,Source,Target,Weight,Metabolites,ABSWeight,SignWeight,Distance
+E.coli->E.coli,E.coli,E.coli,-1.7616430476456046,"['Acetoacetate', 'N-Acetylneuraminate', 'Allantoin', 'Choline C5H14NO', 'Fe2+ mitochondria', 'D-Fructose', 'L-Fucose 1-phosphate', 'L-Fucose', 'Melibiose C12H22O11', 'D-Serine', 'Spermidine']",1.7616430476456046,-1.0,0.567651886877127

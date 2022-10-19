@@ -3,7 +3,7 @@ import scipy as sp
 from surfmod import *
 import pandas as pd
 
-def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale = 1.0,flobj = None):
+def prep_cobrapy_models(models,forceOns = True,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {}, media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale = 1.0):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
@@ -23,8 +23,6 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
     nametoid = {}
     exrn_to_exmet = {}
     exmet_to_exrn = {}
-
-    rand_str_loc = 0
 
     for modelkey in models.keys():
         model = models[modelkey]
@@ -319,7 +317,7 @@ def prep_cobrapy_models(models,upper_bound_functions = {},lower_bound_functions 
 
         #SurfMod(gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative = [],exterior_ubfuns_derivatives = [],exchanged_metabolites,Name = None,deathrate = 0)
 
-        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder)
+        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
 
 
     return surfmods,masterlist,master_y0

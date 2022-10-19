@@ -16,10 +16,10 @@ def evolve_community(t,s,models):
 
     for i in range(len(models)):
         model = models[i]
-        v = model.compute_internal_flux(y)
-        xdot[i] = x[i]*np.dot(-model.objective,v) - model.deathrate
+        model.compute_internal_flux(y)
+        xdot[i] = x[i]*np.dot(-model.objective,model.inter_flux) - model.deathrate
         ydi = np.zeros_like(ydot)
-        ydi[model.ExchangeOrder] = -x[i]*np.dot(model.expandGammaStar,v)#Influx = GammaStar*v
+        ydi[model.ExchangeOrder] = -x[i]*np.dot(model.GammaStar,model.inter_flux)#Influx = GammaStar*v
         ydot = ydot + ydi
 
     return np.concatenate([xdot,ydot])
@@ -29,26 +29,44 @@ def all_vs(t,s,models):
     v = np.array([])
     for i in range(len(models)):
         model = models[i]
-        v = np.append(v,model.compute_internal_flux(y))#[model.current_basis[2]]
-    return min(v) + 10**-6
+        model.compute_internal_flux(y)
+        model.compute_slacks(y)
+        v = np.append(v,np.concatenate([model.inter_flux,model.slack_vals]))#[model.current_basis[2]]
+    return min(v) + 10**-5
 
-def find_stop(t0,t1,sln,models,cdt = 0.1,fdt=0.001):
+def find_stop(t0,t1,sln,models,cdt = 0.1,fdt=0.01):
+    if t0==t1:
+        print("[find_stop] No Interval")
+        return t0
+    cdt = min(cdt,t1-t0)
+    fdt = min(fdt,t1-t0)
     #check on a coarse grid for negatives:
     tcrs = np.arange(t0,t1,cdt)
     minpert = np.array([all_vs(t,sln(t),models) for t in tcrs])
-    if minpert.round(4).min() >= 0:
+    if minpert.round(5).min() >= 0:
         return t1
     else:
         #find first negative
-        failat = np.where(minpert < 0)[0][0]
+        failat = np.where(minpert.round(5) < 0)[0][0]
         #go finer.
         if failat == 0:
+            print("[find_stop] Failed Immediately, value {}".format(minpert[0]))
             return t0
         else:
-            finerfail = np.array([all_vs(t,sln(t),models) for t in np.arange(tcrs[failat-1],tcrs[failat],fdt)])
-            return np.where(minpert < 0)[0][0]
+            tr = np.arange(tcrs[failat-1],tcrs[failat],fdt)
+            finerfail = np.array([all_vs(t,sln(t),models) for t in tr])
+            flt = tr[np.where(finerfail.round(5) < 0)]
+            return flt
 
-def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save_bases = True,save_internal_flux = True, resolution = 0.1,report_activity = True, flobj = None):
+def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save_bases = True,save_internal_flux = True, resolution = 0.1,report_activity = True, flobj = None,fwreport = False):
+
+
+    '''
+    models = list of models.
+    '''
+    
+
+
     t1 = time.time()
     if report_activity:
         try:
@@ -56,31 +74,67 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
         except:
             print("surfin_fba: Initializing Simulation")
 
-    model_names = [model.Name for model in models]
+    # model_names = [model.Name for model in models]
     s0 = np.concatenate([x0,y0])
     ydot0 = np.zeros_like(y0)
     fluxes = {}
     for i in range(len(models)):#model in models:
+        #fba_solver sets model.essential_basis,model.current_basis_full,model.inter_flux
         model = models[i]
         if solver == 'gurobi':
-            flux,obval = model.fba_gb(y0)#,secondobj = None)
+            obval = model.fba_gb(y0)#,secondobj = None)
         elif solver == 'clp':
-            flux,obval = model.fba_clp(y0)
+            obval = model.fba_clp(y0)
         if report_activity:
             try:
                 flobj.write(model.Name, " Surfin initial growth rate: ",obval)
             except:
                 print(model.Name, " Surfin initial growth rate: ",obval)
-        fluxes[model.Name] = flux
+        fluxes[model.Name] = model.inter_flux
         ydi = np.zeros_like(ydot0)
-        ydi[model.ExchangeOrder] = -x0[i]*np.dot(model.expandGammaStar,flux)
+        ydi[model.ExchangeOrder] = -x0[i]*np.dot(model.GammaStar,model.inter_flux)
         ydot0 += ydi
 
     for model in models:
-        if solver == 'gurobi':
-            model.find_waves_gb(fluxes[model.Name],y0,ydot0)
-        elif solver == 'clp':
-            model.find_waves_clp(fluxes[model.Name],y0,ydot0)
+        #findWave sets model.current_basis_full, model.current_basis
+        model.findWave(y0,ydot0,details = fwreport)
+
+
+        print("------------------------------------\n\n     Debug  \n\n-----------------------------------------")
+
+        metabolite_con = y0[model.ExchangeOrder]
+        exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
+        bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
+
+        incess = np.all([j in model.current_basis_full for j in model.essential_basis])
+        print("Includes the essentials? {}".format(incess))
+        ###
+        rk = np.linalg.matrix_rank(model.standard_form_constraint_matrix[:,model.current_basis_full])
+        print("Is full rank? {}".format(rk == model.standard_form_constraint_matrix.shape[0]))
+
+        basisflxesbeta = np.linalg.solve(model.standard_form_constraint_matrix[:,model.current_basis_full],bound_rhs)
+        basisflxes = np.zeros(model.standard_form_constraint_matrix.shape[1])
+        basisflxes[model.current_basis_full] = basisflxesbeta
+        fluxesfound = basisflxes[:model.num_fluxes]
+        basisval = np.dot(fluxesfound,-model.objective)
+        print("Basis gives objective value {}".format(basisval))
+        dist = np.linalg.norm(fluxesfound - model.inter_flux)
+        print("Distance from basis flux to gurobi flux = {}".format(dist))
+
+        ###Let's check the reduced as well.
+        model.compute_internal_flux(y0)
+        print("Reduction objective value: {}".format(-np.dot(model.inter_flux,model.objective)))
+        print("Reduction error {}".format(np.linalg.norm(model.inter_flux-fluxesfound)))
+
+        neg_ind = np.where(basisflxes<-10**-5)
+        if len(neg_ind[0]):
+            for ind in neg_ind[0]:
+                print("Negative flux from Waves-Basis at index {} = {}".format(ind,basisflxes[ind]))
+        else:
+            print("No negative flux from Waves-Basis.")
+
+        print("------------------------------------\n\n      Stop Debug  \n\n-----------------------------------------")
+
 
     if save_bases:
         bases = dict([(model.Name,[]) for model in models])
@@ -90,9 +144,12 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
     if report_activity:
         bInitial = evolve_community(0,s0,models)
         try:
-            flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)])
+            flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
         except:
-            print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)])
+            print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
+
+
+
 
     t = []
     x = []
@@ -107,7 +164,6 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
     catch_badLP = False
 
     while t_c < endtime:
-        # infeasible_prob = lambda t,s,models : neg_v(t,s,models)
         for model in models:
             if model.current_basis == None:
                 catch_badLP = True
@@ -123,10 +179,70 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
         interval = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,), method='RK45',events=all_vs,dense_output = True)
         if interval.status == -1:
             break
+        # print(all_vs(interval.t[-1],interval.y[:,-1],models))
         stptime = find_stop(t_c, interval.t[-1],interval.sol,models)#interval.t[-1]#find_event(interval,models)
         if stptime == t_c:
+
+
+            print("Computed to time {}".format(interval.t[-1]))
+
+
+
+            try:
+                yatstop = y[-1][:,-1]
+            except:
+                yatstop = y0
+
+            for model in models:
+                model.compute_internal_flux(yatstop)
+                print("Current {} internal flux norm: {} \n and max internal flux: {}".format(model.Name,np.linalg.norm(model.inter_flux),np.max(abs(model.inter_flux))))
+                neg_flux = np.where(model.inter_flux < -10**-5)[0]
+                for ng in neg_flux:
+                    print("Negative flux at index {}, value {}".format(ng,model.inter_flux[ng]))
+                model.compute_slacks(yatstop)
+                neg_slack = np.where(model.slack_vals < -10**-5)[0]
+                for ng in neg_slack:
+                    print("Negative slack at constraint index {}, value {}".format(ng,model.slack_vals[ng]))
+            
+
+            minmetind = np.argmin(s0[len(models):])
+            minmetval = s0[len(models):][minmetind]
+            print("Current Min met: index {}, value {}".format(minmetind,minmetval))
+            interval2 = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,), method='RK45',dense_output = True)
+            T2 = np.linspace(t_c,endtime,max(2,int((endtime-t_c)*(1/resolution))))
+            s2 = interval2.sol(T2)
+            y2 = s2[len(models):,:]
+            # x += [s2[:len(models)]]
+            # y += [y2]
+            # t += [T2]
+            negatives = [np.any(col < -10**-4) for col in y2.T]
+            if np.any(negatives):
+                negcol = np.where(negatives)[0][0]
+                negt = T2[negcol]
+                negmetind = np.argmin(y2.T[negcol])
+                negval = y2.T[negcol][negmetind]
+                print("Negative Metabolites? index: {}, value: {}, time: {}".format(negmetind,negval,negt))
+            else:
+                print("Negative Metabolites? No.")
+
+
             print("No progress at time ",t_c)
+            for model in models:
+                if solver == 'gurobi':
+                    obval = model.fba_gb(yatstop.round(5))
+                elif solver == 'clp':
+                    obval = model.fba_clp(yatstop.round(5))
+                model.compute_internal_flux(yatstop.round(5))
+                print("Current {} growth rate {}".format(model.Name,obval))
+                print("Current {} internal flux norm after re-FBA: {} \n and max internal flux: {}".format(model.Name,np.linalg.norm(model.inter_flux),np.max(abs(model.inter_flux))))
+
+                ydi = np.zeros_like(ydot0)
+                ydi[model.ExchangeOrder] = np.dot(model.GammaStar,model.inter_flux)
+                print("Contribution of {} to ydot after re-FBA: {}".format(model.Name,np.linalg.norm(ydi)))
+
+
             break
+
         s0 = interval.sol(stptime)
         T = np.linspace(t_c,stptime,max(2,int((stptime-t_c)*(1/resolution))))
         s = interval.sol(T)
@@ -135,13 +251,15 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
         if track_fluxes:
             for model in models:
                 for i in range(y[-1].shape[1]):
-                    flxt = np.zeros_like(y0)
-                    flxt[model.ExchangeOrder] = np.dot(model.expandGammaStar,model.compute_internal_flux(y[-1][:,i]))
+                    flxt = np.zeros_like(ydot0)
+                    model.compute_internal_flux(y[-1][:,i])
+                    flxt[model.ExchangeOrder] = np.dot(model.GammaStar,model.inter_flux)
                     Exchfluxes[model.Name] += [flxt]
         if save_internal_flux:
             for model in models:
-                intfluxes[model.Name] += [model.compute_internal_flux(y[-1][:,i]) for i in range(y[-1].shape[1])]
-                # print(np.array(intfluxes[model.Name]).min())
+                for i in range(y[-1].shape[1]):
+                    model.compute_internal_flux(y[-1][:,i])
+                    intfluxes[model.Name] += [model.inter_flux]
         t += [T]
         t_c = stptime
         if t_c < endtime:
@@ -153,14 +271,61 @@ def surfin_fba(models,x0,y0,endtime, solver = 'gurobi',track_fluxes = True, save
             yd = evolve_community(t_c,s0,models)[len(models):]
             basis_change += [t_c]
             for model in models:
-                current_flux = model.compute_internal_flux(y[-1][:,-1])
-                if solver == 'gurobi':
-                    model.find_waves_gb(current_flux,y[-1][:,-1],yd,careful = True)
-                elif solver == 'clp':
-                    model.find_waves_clp(current_flux,y[-1][:,-1],yd,careful = True)
+
+                metabolite_con = y[-1][:,-1][model.ExchangeOrder]
+                
+                exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
+
+                bound_rhsarr = np.concatenate([exchg_bds,model.internal_bounds])
+
+                model.compute_internal_flux(y[-1][:,-1])
+                slkvals = bound_rhsarr - np.dot(model.solver_constraint_matrix,model.inter_flux)
+
+                all_vars = np.concatenate([model.inter_flux,slkvals])
+
+                model.essential_basis = (all_vars>10**-6).nonzero()[0]
+
+
+                model.findWave(y[-1][:,-1],yd,details = fwreport)
                 if save_bases:
                     bases[model.Name] += [model.current_basis]
 
+                print("------------------------------------\n\n     Debug  \n\n-----------------------------------------")
+
+                metabolite_con = y[-1][:,-1][model.ExchangeOrder]
+                exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
+                bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
+
+                incess = np.all([j in model.current_basis_full for j in model.essential_basis])
+                print("Includes the essentials? {}".format(incess))
+                ###
+                rk = np.linalg.matrix_rank(model.standard_form_constraint_matrix[:,model.current_basis_full])
+                print("Is full rank? {}".format(rk == model.standard_form_constraint_matrix.shape[0]))
+
+                basisflxesbeta = np.linalg.solve(model.standard_form_constraint_matrix[:,model.current_basis_full],bound_rhs)
+                basisflxes = np.zeros(model.standard_form_constraint_matrix.shape[1])
+                basisflxes[model.current_basis_full] = basisflxesbeta
+                fluxesfound = basisflxes[:model.num_fluxes]
+                basisval = np.dot(fluxesfound,-model.objective)
+                print("Basis gives objective value {}".format(basisval))
+                dist = np.linalg.norm(fluxesfound - model.inter_flux)
+                print("Distance from basis flux to gurobi flux = {}".format(dist))
+
+                ###Let's check the reduced as well.
+                model.compute_internal_flux(y[-1][:,-1])
+                print("Reduction objective value: {}".format(-np.dot(model.inter_flux,model.objective)))
+                print("Reduction error {}".format(np.linalg.norm(model.inter_flux-fluxesfound)))
+
+                neg_ind = np.where(basisflxes<-10**-5)
+                if len(neg_ind[0]):
+                    for ind in neg_ind[0]:
+                        print("Negative flux from Waves-Basis at index {} = {}".format(ind,basisflxes[ind]))
+                else:
+                    print("No negative flux from Waves-Basis.")
+
+                print("------------------------------------\n\n      Stop Debug  \n\n-----------------------------------------")
+
+            print("d/dt norm: {}".format(np.linalg.norm(evolve_community(t_c,s0,models))))
 
 
     retdict = {"t":np.concatenate(t),"x":np.concatenate(x,axis = 1),"y":np.concatenate(y,axis = 1),"bt":np.array(basis_change)}

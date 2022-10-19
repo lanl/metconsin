@@ -11,7 +11,7 @@ import contextlib
 def metconsin(desired_models,model_info_file, solver = 'gurobi' ,flobj = None,endtime = 10**-2,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {},extracell = 'e', random_kappas = "new",media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale=1.0,track_fluxes = True,save_internal_flux = True, resolution = 0.1,report_activity = True):
     '''
 
-    Need to Doc....
+    Does Full Simulation, makes networks for each time interval.
 
     '''
     start_time = time.time()
@@ -111,9 +111,9 @@ def metconsin(desired_models,model_info_file, solver = 'gurobi' ,flobj = None,en
 
             #trim out species & metabolites that aren't present in this time interval.
 
-            met_met_edges,met_met_nodes = trim_network(met_met_edges,met_met_nodes,dynamics_t)
-            met_med_net,_ = trim_network(met_med_net,node_table,dynamics_t)
-            met_med_net_summary,node_table = trim_network(met_med_net_summary,node_table,dynamics_t)
+            met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
+            met_med_net,_ = mn.trim_network(met_med_net,node_table,dynamics_t)
+            met_med_net_summary,node_table = mn.trim_network(met_med_net_summary,node_table,dynamics_t)
 
             met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
             mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
@@ -147,16 +147,3 @@ def metconsin(desired_models,model_info_file, solver = 'gurobi' ,flobj = None,en
 
     return all_return
 
-def trim_network(edges,nodes,dynamics):
-    newnodes = nodes.copy()
-    newedges = edges.copy()
-    for nd in dynamics.index:
-        if nd in newnodes.index:
-            try:
-                if max(dynamics.loc[nd]) < 10**-6:
-                    newnodes.drop(index = nd, inplace = True)
-                    newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
-            except:
-                newnodes.drop(index = nd, inplace = True)
-                newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
-    return newedges,newnodes

@@ -189,6 +189,32 @@
 
 \begin{document}
 \maketitle
+
+\begin{frame}{MetConSIN}
+
+{\scriptsize
+Concept:
+\begin{itemize}
+\item Genome-scale models and constraint based methods are commonly used and allow us to use knowledge of microbial genome sequences to predict metabolic behavior.
+\item This modeling paradigm implies a dynamical system that couples optimization with differential equations, and is very difficult to simulate and analyze.
+\begin{itemize}\scriptsize
+\item Naively, optimization must be done at every time-step.
+\item Really, optimization is only required at a (relatively) sparse set of time-points.
+\end{itemize}
+\item This dynamical system can be understood as a sequence of simpler dynamical systems which model species-metabolite interaction networks.
+\end{itemize}
+
+Planned Implementation:
+\begin{itemize}
+\item Use metagenomic sequencing of environmental samples to build genome scale models of microbial community members.
+\item Simulate community genome (metagenome) scale dynamics of metabolism.
+\item Identify time intervals of constant network topology \& corresponding networks.
+\item Identify impactful transitions in network topology.
+\item Develop simplified \& tractable predictive modeling for design \& engineering by leveraging the ``sequence of networks" structure of the microbial community.
+\end{itemize}
+}
+\end{frame}
+
 %--------------------------------------------------------------------------------------------------
 \begin{frame}{MetConSIN}
 \begin{minipage}{0.45\textwidth}
