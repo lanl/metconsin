@@ -3,7 +3,18 @@ import scipy as sp
 from surfmod import *
 import pandas as pd
 
-def prep_cobrapy_models(models,forceOns = True,upper_bound_functions = {},lower_bound_functions = {},upper_bound_functions_dt = {},lower_bound_functions_dt = {}, media = {}, met_filter = [],met_filter_sense = "exclude", lb_funs = "constant", ub_funs = "linearRand",linearScale = 1.0):
+def prep_cobrapy_models(models,
+                        forceOns = True,
+                        upper_bound_functions = {},
+                        lower_bound_functions = {},
+                        upper_bound_functions_dt = {},
+                        lower_bound_functions_dt = {}, 
+                        media = {}, 
+                        met_filter = [],
+                        met_filter_sense = "exclude", 
+                        lb_funs = "constant", 
+                        ub_funs = "linearRand",
+                        linearScale = 1.0):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}

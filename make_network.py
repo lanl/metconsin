@@ -21,10 +21,10 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
     start_time = time.time()
     node_table = pd.DataFrame(np.array([[model.Name for model in models] + list(metlist),["Microbe"]*len(models) + ["Metabolite"]*len(metlist)]).T,columns = ["Name","Type"],index = [model.Name for model in models] + list(metlist))
 
-    met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight","Distance"])
-    met_med_net_summary = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance"])
+    met_med_net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Cofactor","Match","ABS_Weight","Sign_Weight","Distance","ABSRootWeight","SignedRootWeight"])
+    met_med_net_summary = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance","ABSRootWeight","SignedRootWeight"])
 
-    met_met_edges = pd.DataFrame(columns = ["Source","Target","Microbe","Weight","ABS_Weight","Sign_Weight","Distance"])
+    met_met_edges = pd.DataFrame(columns = ["Source","Target","Microbe","Weight","ABS_Weight","Sign_Weight","Distance","ABSRootWeight","SignedRootWeight"])
     met_met_nodes = pd.DataFrame(columns = ["Microbes"]+[model.Name for model in models],index=metlist)
     microbes_exchanging = dict([(met,[]) for met in metlist])
 
@@ -40,13 +40,20 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         #beta is (basis rows,basis columns)
         # so v_i = (B^-1 y[beta[0]])_j:i=beta[1]_j for i in beta[1], 0 otherwise.
         # and a\cdot v = a[beta[1]]^T B^-1 y[beta[0]]
-        # and Av = A[:,beta[1]]B^^-1 y[beta[0]]
+        # and Av = A[:,beta[1]]B^-1 y[beta[0]]
 
-        #compute (gamma.T B^(-1)).T = (gamma.T R^(-1)Q^(-1)).T = (gamma.T R^(-1)Q.T) = QR.T^(-1)gamma
-        growth_vec = np.dot(Q,sp.linalg.solve_triangular(R.T,-model.objective[beta[1]],lower = True))
+        if len(beta[0]):
+            #compute (gamma.T B^(-1)).T = (gamma.T R^(-1)Q^(-1)).T = (gamma.T R^(-1)Q.T) = QR.T^(-1)gamma
+            growth_vec = np.dot(Q,sp.linalg.solve_triangular(R.T,-model.objective[beta[1]],lower = True))
 
-        #compute -GammaStarB^(-1) = -GammaStar R^(-1) Q^(-1) = -GammaStar R^(-1) Q.T
-        usage_matrix = -np.dot(model.GammaStar[:,beta[1]],sp.linalg.solve_triangular(R,Q.T))
+            #compute -GammaStarB^(-1) = -GammaStar R^(-1) Q^(-1) = -GammaStar R^(-1) Q.T
+            usage_matrix = -np.dot(model.GammaStar[:,beta[1]],sp.linalg.solve_triangular(R,Q.T))
+        
+        else:
+            growth_vec = np.empty( shape=(0) )
+            usage_matrix = np.empty( shape=(len(model.exchanged_metabolites), 0) )
+
+
 
         met_met_nodes.loc[:,model.Name] = np.zeros(len(met_met_nodes))
 
@@ -77,8 +84,8 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
 
 
                 if round(met_on_mic,7):
-                    tmp1 = pd.DataFrame([[metab,model.Name,"Metabolite",met_on_mic,"None",0,abs(met_on_mic),np.sign(met_on_mic),1/np.abs(met_on_mic)]],columns = met_med_net.columns)
-                    tmp2 = pd.DataFrame([[metab,model.Name,"Metabolite",met_on_mic,abs(met_on_mic),np.sign(met_on_mic),1/np.abs(met_on_mic)]],columns = met_med_net_summary.columns)
+                    tmp1 = pd.DataFrame([[metab,model.Name,"Metabolite",met_on_mic,"None",0,abs(met_on_mic),np.sign(met_on_mic),1/np.abs(met_on_mic),np.sqrt(np.abs(met_on_mic)),np.sign(met_on_mic)*np.sqrt(np.abs(met_on_mic))]],columns = met_med_net.columns)
+                    tmp2 = pd.DataFrame([[metab,model.Name,"Metabolite",met_on_mic,abs(met_on_mic),np.sign(met_on_mic),1/np.abs(met_on_mic),np.sqrt(np.abs(met_on_mic)),np.sign(met_on_mic)*np.sqrt(np.abs(met_on_mic))]],columns = met_med_net_summary.columns)
                     met_med_net = met_med_net.append(tmp1,ignore_index = True)
                     met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
@@ -94,12 +101,12 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
                 if cnst < (model.num_exch_rxns):
                     exub += [{"Metabolite":model.exchanged_metabolites[cnst],"Coefficient":interactions[ii],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[ii]*bound_rhs[cnst]}]
                     if round(interactions[ii],7):
-                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst],metab,model.Name,interactions[ii],abs(interactions[ii]),np.sign(interactions[ii]),1/abs(interactions[ii])]],columns = met_met_edges.columns)
+                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst],metab,model.Name,interactions[ii],abs(interactions[ii]),np.sign(interactions[ii]),1/abs(interactions[ii]),np.sqrt(np.abs(interactions[ii])),np.sign(interactions[ii])*np.sqrt(np.abs(interactions[ii]))]],columns = met_met_edges.columns)
                         met_met_edges = met_met_edges.append(tmpmm,ignore_index = True)
                 elif cnst <  (2*(model.num_exch_rxns)):
                     exlb += [{"Metabolite":model.exchanged_metabolites[cnst-(model.num_exch_rxns)],"Coefficient":interactions[ii],"Constraint_Value":bound_rhs[cnst],"Instant_Impact":interactions[ii]*bound_rhs[cnst]}]
                     if round(interactions[cnst],7):
-                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst-(model.num_exch_rxns)],metab,model.Name,interactions[ii],abs(interactions[ii]),np.sign(interactions[ii]),1/abs(interactions[ii])]],columns = met_met_edges.columns)
+                        tmpmm = pd.DataFrame([[model.exchanged_metabolites[cnst-(model.num_exch_rxns)],metab,model.Name,interactions[ii],abs(interactions[ii]),np.sign(interactions[ii]),1/abs(interactions[ii]),np.sqrt(np.abs(interactions[ii])),np.sign(interactions[ii])*np.sqrt(np.abs(interactions[ii]))]],columns = met_met_edges.columns)
                         met_met_edges = met_met_edges.append(tmpmm,ignore_index = True)
                 elif cnst < (2*(model.num_exch_rxns)+2*model.num_fluxes):
                     internal += [{"Index":cnst,"Constraint_Value":bound_rhs[cnst],"Coefficient":interactions[ii],"Instant_Impact":interactions[ii]*bound_rhs[cnst]}]
@@ -127,10 +134,10 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
                     else:
                         mtch = -1
                         cof = di["Cofactor"]
-                    tmp1 = pd.DataFrame([[model.Name,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"]),1/abs(di["Coefficient"])]],columns = met_med_net.columns)
+                    tmp1 = pd.DataFrame([[model.Name,metab,"Microbe",di["Coefficient"],cof,mtch,abs(di["Coefficient"]),np.sign(di["Coefficient"]),1/abs(di["Coefficient"]),np.sqrt(np.abs(di["Coefficient"])),np.sign(di["Coefficient"])*np.sqrt(np.abs(di["Coefficient"]))]],columns = met_med_net.columns)
                     met_med_net = met_med_net.append(tmp1,ignore_index = True)
             if round(total_impact,7):
-                tmp2 = pd.DataFrame([[model.Name,metab,"Microbe",total_impact,abs(total_impact),np.sign(total_impact),1/abs(total_impact)]],columns = met_med_net_summary.columns)
+                tmp2 = pd.DataFrame([[model.Name,metab,"Microbe",total_impact,abs(total_impact),np.sign(total_impact),1/abs(total_impact),np.sqrt(np.abs(total_impact)),np.sign(total_impact)*np.sqrt(np.abs(total_impact))]],columns = met_med_net_summary.columns)
                 met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
 
@@ -174,29 +181,32 @@ def trim_network(edges,nodes,dynamics):
 
 
 
-def heuristic_ss(metmed,nodes):
+def heuristic_ss(metmed,nodes,report_activity = False):
     '''
-    metmed should have columns ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance"]
+    metmed should have columns ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","Distance","ABSRootWeight","SignedRootWeight"]
     '''
     nodetable = nodes[nodes["Type"] == "Microbe"]
-    edge_table = pd.DataFrame(columns = ["Source","Target","Weight","Metabolites","ABSWeight","SignWeight","Distance"],dtype = object)
+    edge_table = pd.DataFrame(columns = ["Source","Target","Weight","Metabolites","ABSWeight","SignWeight","Distance","ABSRootWeight","SignedRootWeight"],dtype = object)
     adjacency = pd.DataFrame(columns = nodetable["Name"],index = nodetable["Name"])
-    for tgnd in adjacency.index:
-        print("Target: {}".format(tgnd))
-        #rows will be targets
-        allmediators = metmed[metmed["Target"]==tgnd]#list of metabolites that effect it.
-        allsrces = metmed[[(tg in allmediators["Source"].values) for tg in metmed["Target"]]]#list of sources
-        for srcnd in np.unique(allsrces["Source"].values):
-            step1s = allsrces[allsrces["Source"]==srcnd]
-            mediators = step1s["Target"].values
-            weight = 0
-            for rw in step1s.index:
-                stp2 = allmediators[allmediators["Source"] == step1s.loc[rw,"Target"]]["Weight"].values
-                weight += step1s.loc[rw,"Weight"]*sum(stp2)
-            adjacency.loc[tgnd,srcnd] = weight
-            if abs(weight)>0:
-                edge_table.loc["{}->{}".format(srcnd,tgnd)] = [srcnd,tgnd,weight,list(mediators),abs(weight),np.sign(weight),1/abs(weight)]
+    if len(metmed):
+        for tgnd in adjacency.index:
+            if report_activity:
+                print("Target: {}".format(tgnd))
+            #rows will be targets
+            allmediators = metmed[metmed["Target"]==tgnd]#list of metabolites that effect it.
+            allsrces = metmed[[(tg in allmediators["Source"].values) for tg in metmed["Target"]]]#list of sources
+            for srcnd in np.unique(allsrces["Source"].values):
+                step1s = allsrces[allsrces["Source"]==srcnd]
+                mediators = step1s["Target"].values
+                weight = 0
+                for rw in step1s.index:
+                    stp2 = allmediators[allmediators["Source"] == step1s.loc[rw,"Target"]]["Weight"].values
+                    weight += step1s.loc[rw,"Weight"]*sum(stp2)
+                adjacency.loc[tgnd,srcnd] = weight
+                if abs(weight)>0:
+                    edge_table.loc["{}->{}".format(srcnd,tgnd)] = [srcnd,tgnd,weight,list(mediators),abs(weight),np.sign(weight),1/abs(weight),np.sqrt(abs(weight)),np.sign(weight)*np.sqrt(abs(weight))]
     return edge_table,nodetable,adjacency
+
 
 
 

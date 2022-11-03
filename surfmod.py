@@ -5,6 +5,8 @@ import scipy.linalg as la
 import time
 from numba import jit
 
+import sys
+
 class SurfMod:
     def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivatives,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto",forcedOns = True):
 
@@ -84,26 +86,56 @@ class SurfMod:
 
         if forcedOns:
         #We need to add constraints for negative bounds.
-        ##A negative lower bound means the FORWARD reaction must be above -bd
-        ##A negative upper bound means the REVERSE reaction must be above -bd
+        ##A negative lower bound means the FORWARD reaction must be above -bd and REVERSE reaction must be 0
+        ###         bd>val is becomes -bd<-val in standard form.
+        ##A negative upper bound means the REVERSE reaction must be above -bd abd FORWARD reaction must be 0
+        ###         bd>val is becomes -bd<-val in standard form.
+
+
+            fon = []
+            foff = []
 
             neg_lower = np.where(interior_lbs < 0) #need to add a constraint for the FORWARD reaction
             num_lower = len(neg_lower[0])
             if num_lower:
+                #Force on Forward
+                fon += [(neg_lower[0][p],len(prob_mat) + p) for p in range(num_lower)]
                 new_rows = np.concatenate([-np.eye(num_v)[neg_lower],np.zeros((num_lower,num_v))],axis = 1)
                 prob_mat = np.concatenate([prob_mat,new_rows],axis = 0)
                 #for the constraint a<x<b, need a<b...make sure a = min(a,b)
                 all_internal = np.concatenate([all_internal,-np.minimum(-interior_lbs[neg_lower],interior_ubs_min0[neg_lower])])
-                print("{} Internal forward reactions forced on : {}".format(self.Name,neg_lower))
+                #Force off Reverse
+                foff += [(neg_lower[0][p] + len(interior_ubs),len(prob_mat) + p) for p in range(num_lower)]
+                new_rows = np.concatenate([np.zeros((num_lower,num_v)),np.eye(num_v)[neg_lower]],axis = 1)
+                prob_mat = np.concatenate([prob_mat,new_rows],axis = 0)
+                all_internal = np.concatenate([all_internal,np.zeros(num_lower)])
+                for bd in neg_lower[0]:
+                    print("{} Internal forward reactions forced on : {}\nBounds are ({},{})".format(self.Name,bd,np.minimum(-interior_lbs[bd],interior_ubs_min0[bd]),interior_ubs_min0[bd]))
+                
 
 
             neg_upper = np.where(interior_ubs < 0) #need to add a constraint for the REVERSE reaction
             num_upper = len(neg_upper[0])
             if num_upper:
+                ## Force on reverse
+                fon += [(neg_upper[0][p] + len(interior_ubs),len(prob_mat) + p) for p in range(num_upper)]
                 new_rows = np.concatenate([np.zeros((num_upper,num_v)),-np.eye(num_v)[neg_upper]],axis = 1)
                 prob_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
                 all_internal = np.concatenate([all_internal,-np.minimum(-interior_ubs[neg_upper],interior_lbs_min0[neg_upper])])
-                print("{} Internal reverse reactions forced on : {}".format(self.Name,neg_upper))
+                ## Force off forward
+                foff += [(neg_upper[0][p],len(prob_mat) + p) for p in range(num_upper)]
+                new_rows = np.concatenate([np.eye(num_v)[neg_upper],np.zeros((num_upper,num_v))],axis = 1)
+                prob_mat = np.concatenate([std_form_mat,new_rows],axis = 0)
+                all_internal = np.concatenate([all_internal,np.zeros(num_upper)])
+                for bd in neg_upper[0]:
+                    print("{} Internal reverse reactions forced on : {}\nBounds are ({},{})".format(self.Name,bd+len(interior_lbs),-np.minimum(interior_ubs[bd],interior_lbs_min0[bd]),interior_lbs_min0[bd]))
+
+            self.ForcedOn = fon
+            self.ForcedOff = foff
+
+        else:
+            self.ForcedOn = []
+            self.ForcedOff = []
 
         std_form_mat = np.concatenate([prob_mat,np.eye(prob_mat.shape[0])],axis = 1)
         self.solver_constraint_matrix = prob_mat
@@ -126,6 +158,8 @@ class SurfMod:
 
         self.inter_flux = None
         self.slack_vals = None
+
+        self.feasible = True
 
 
     def fba_gb(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
@@ -211,6 +245,14 @@ class SurfMod:
 
         if status == 2:
 
+            fluxes = allvars.getAttr(gb.GRB.Attr.X)
+            allconts = growth.getConstrs()
+            slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])
+            all_vars = np.concatenate([fluxes,slkvals])
+
+            basisinfo =  np.concatenate([np.array(allvars.getAttr(gb.GRB.Attr.VBasis)),np.array([cn.getAttr(gb.GRB.Attr.CBasis) for cn in allconts])])
+
+            # print("Min all_vars0: {}".format(all_vars.min()))
 
             val = growth.getObjective().getValue()
             print("Initial Growth Rate: {}".format(-val))
@@ -237,36 +279,49 @@ class SurfMod:
                 growth.update()
                 growth.setMObjective(None,newobj,0,xc = allvars,sense = gb.GRB.MINIMIZE)
                 growth.update()
+
+                # lbs = allvars.getAttr(gb.GRB.Attr.LB)
+                # print("Lower bound = {}".format(min(lbs)))
+
                 growth.optimize()
                 growth.update()
-                print("Secondary Objective Value = {}".format(growth.getObjective().getValue()))
+                # print(growth.status)
+                if growth.status == 2:
+                    print("Secondary Objective Value = {}".format(growth.getObjective().getValue()))
+                else: 
+                    print("After secondary optimization status = {}\nIgnoring second optimization.".format(statusdic[growth.status]))
+                    dosec = False
             
 
             #we need to get the non-zero variables and non-zero slacks. We don't need the entire bases - just the non-zeros. 
-            fluxes = allvars.getAttr(gb.GRB.Attr.X)
-            # nzvars = (fluxes > 10**-6).nonzero()
-
-            allconts = growth.getConstrs()
-            # if dosec:
-            #     slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])[:-1]#don't include the added constraint
-            # else:
-            #     slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])
-            # nzslk = (slkvals > 10**-6).nonzero()
-
-            slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])
-            all_vars = np.concatenate([fluxes,slkvals])
-
             if dosec:
+                fluxes = allvars.getAttr(gb.GRB.Attr.X)
+
+                allconts = growth.getConstrs()
+
+                slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])
+                all_vars = np.concatenate([fluxes,slkvals])
                 all_vars = all_vars[:-1]#don't include the added constraint
+
+                basisinfo =  np.concatenate([np.array(allvars.getAttr(gb.GRB.Attr.VBasis)),np.array([cn.getAttr(gb.GRB.Attr.CBasis) for cn in allconts])])
+
+
+            # print("Min all_vars: {}".format(all_vars.min()))
+            # minvar_loc = np.where(all_vars == all_vars.min())[0]
+            # # print(minvar_loc)
+            # if any(minvar_loc< len(fluxes)):
+            #     print("Minimum occurs in vars")
+            # if any(minvar_loc>=len(fluxes)):
+            #     print("Minimum occurs in slack.")
 
 
             self.essential_basis = (all_vars>self.ezero).nonzero()[0]#
 
 
-            basisinfo =  np.concatenate([np.array(allvars.getAttr(gb.GRB.Attr.VBasis)),np.array([cn.getAttr(gb.GRB.Attr.CBasis) for cn in allconts])])
 
             
             if dosec:
+
                 if basisinfo[-1]==0:
                     ##the secondary obj. slack is basic. Simply remove it.
                     thebasis = np.where(basisinfo[:-1] == 0)[0]
@@ -282,17 +337,24 @@ class SurfMod:
                     augM = np.concatenate([augM, np.array([np.eye(augM.shape[0])[-1]]).T],axis = 1)
                     start_basis = np.where(basisinfo == 0)[0]
 
+  
+                    new_flxsb = np.linalg.solve(augM[:,start_basis],np.concatenate([bound_rhs,[val]]))
+                    new_flxs = np.zeros(augM.shape[1])
+                    new_flxs[start_basis] = new_flxsb
 
-                    # new_flxsb = np.linalg.solve(augM[:,start_basis],np.concatenate([bound_rhs,[val]]))
-                    # new_flxs = np.zeros(augM.shape[1])
-                    # new_flxs[start_basis] = new_flxsb
+                    print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
 
-                    # print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                    new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
+                    new_total_flux = np.sum(new_flxs[:len(obje)])
+                    print("Start basis growth rate: {}\n Start basis total flux: {}".format(-new_growth_obj,new_total_flux))
 
-                    # new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
-                    # new_total_flux = np.sum(new_flxs[:len(obje)])
+                    if np.min(new_flxs)<-10**-6:
+                        print("Start Basis minimum flux: {} at index {}".format(np.min(new_flxs),np.argmin(new_flxs)))
 
-                    # print("Start growth rate: {}\n New total flux: {}".format(-new_growth_obj,new_total_flux))
+                    # neg_flx = np.where(new_flxs<-10**-6)[0]
+                    # for nf in neg_flx:
+                    #     print("Start Basis: Negative flux at {} = {}".format(nf,new_flxs[nf]))
+
 
                     Abarm1 = np.linalg.solve(augM[:,start_basis],augM[:,-1])
                     # csupp = np.concatenate([newobj,np.zeros(augM.shape[0])])
@@ -300,42 +362,43 @@ class SurfMod:
                     # print("cbarm1 = {}".format(cbarm1))
                     ### That should be 0...does it matter?
                     ### Choose i s.t. all_vars[start_basis[i]]=0 and Abarm1[i]>0
-                    ## We'll maximize Abarm1[i] to maximize the determinant of the resulting matrix.
-                    #choicemaker = (1-all_vars[start_basis].round(6).astype(bool))*Abarm1
-                    choicemaker = np.divide(all_vars[start_basis],Abarm1,-np.ones_like(Abarm1),where = Abarm1>0)
-                    choice = np.where(choicemaker == min(choicemaker[choicemaker>0]))[0][0]
+                    ## Compute the lambdas, choose the smallest. We get a little messed up by round off error
+                    # leading to negative lambdas (from negative initial vars ~ -10**-7), so we'll take the abs of the vars to get the smallest lambda
+                    # We have to choose over strictly positive Abars so fill negatives with -1 in resulting divide.
+                    choicemaker = np.divide(abs(all_vars[start_basis]),Abarm1,-np.ones_like(Abarm1),where = Abarm1>10**-6)
+                    choice = np.where(choicemaker == min(choicemaker[choicemaker>-0.5]))[0][0]
 
-                    # print("Value of removed flux: {}".format(all_vars[start_basis][choice]))
+                    print("Removed variable {} = {}.\n Value of lambda: {} \n Value of Abar: {}".format(start_basis[choice],all_vars[start_basis][choice],choicemaker[choice],Abarm1[choice]))
 
-                    if choicemaker[choice] > 0:
-                        thebasis = np.delete(start_basis,choice)
+                    thebasis = np.delete(start_basis,choice)
 
-                        fllbasis = np.concatenate([thebasis,[augM.shape[1]-1]])
+                    fllbasis = np.concatenate([thebasis,[augM.shape[1]-1]])
 
-                        new_flxsb = np.linalg.solve(augM[:,fllbasis],np.concatenate([bound_rhs,[val]]))
+                    new_flxsb = np.linalg.solve(augM[:,fllbasis],np.concatenate([bound_rhs,[val]]))
 
-                        new_flxs = np.zeros(augM.shape[1])
-                        new_flxs[fllbasis] = new_flxsb
+                    new_flxs = np.zeros(augM.shape[1])
+                    new_flxs[fllbasis] = new_flxsb
 
-                        self.essential_basis = (new_flxs[:-1]>self.ezero).nonzero()[0]
+                    self.essential_basis = (new_flxs[:-1]>self.ezero).nonzero()[0]
 
-                        fluxes = new_flxs[:len(fluxes)]
-                        slkvals = new_flxs[:len(fluxes):-1]
+                    print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
 
-                        # print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                    fluxes = new_flxs[:len(fluxes)]
+                    slkvals = new_flxs[:len(fluxes):-1]
 
-                        # new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
-                        # new_total_flux = np.sum(new_flxs[:len(obje)])
+                    
 
-                        # print("New growth rate: {}\n New total flux: {}".format(-new_growth_obj,new_total_flux))
+                    new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
+                    new_total_flux = np.sum(new_flxs[:len(obje)])
 
-                        # neg_flx = np.where(new_flxs.round(6)<0)[0]
-                        # for nf in neg_flx:
-                        #     print("Negative flux at {} = {}".format(nf,new_flxs[nf]))
+                    print("New growth rate: {}\n New total flux: {}".format(-new_growth_obj,new_total_flux))
 
-                    else:
-                        print(choicemaker[choice])
+                    if np.min(new_flxs)<-10**-6:
+                        print("New Basis minimum flux: {} at index {}".format(np.min(new_flxs),np.argmin(new_flxs)))
 
+                    # neg_flx = np.where(new_flxs<-10**-6)[0]
+                    # for nf in neg_flx:
+                    #     print("Negative flux at {} = {}".format(nf,new_flxs[nf]))
 
 
             else:
@@ -363,6 +426,7 @@ class SurfMod:
 
             return -val
         else:
+            self.feasible = False
             return np.array(["failed to prep"])
 
 
@@ -558,32 +622,6 @@ class SurfMod:
 
 
 
-
-
-
-
-            # if dosec:
-            #     basisinfo =  growth.varIsBasic[:-1]
-            # else:
-            #     basisinfo =  growth.varIsBasic
-
-            # untrimmed = np.where(basisinfo)[0]
-
-            # print("{} variables, {} slacks".format(x.shape,slkvals.shape))
-
-            # incess = np.all([j in untrimmed for j in self.essential_basis])
-            # print("Includes the essentials? {}".format(incess))
-
-            # if not incess:
-            #     missing = [j for j in self.essential_basis if (j not in untrimmed)]
-            #     print("Missing {}".format(missing))
-            #     print("With vals {}".format([all_vars[k] for k in missing]))
-
-
-
-            # thebasis,_ = remove_licol(self.standard_form_constraint_matrix,untrimmed,self.essential_basis)
-            # print(thebasis.shape)
-            
             self.current_basis_full = thebasis
 
 
@@ -601,6 +639,7 @@ class SurfMod:
 
             return -val
         else:
+            self.feasible = False
             return np.array(["failed to prep"])
 
 
@@ -612,7 +651,7 @@ class SurfMod:
         exchg_bds_dt = np.array([bd(metabolite_con,metabolite_con_dt) for bd in self.exchange_bounds_dt])
         bound_rhs_dt = np.concatenate([exchg_bds_dt,np.zeros(len(self.internal_bounds))]).round(8)
 
-        basisinds = self.current_basis_full
+        basisinds = self.current_basis_full.copy()
 
         # svd = np.linalg.svd(self.standard_form_constraint_matrix[:,basisinds],compute_uv = False)
         # print("Minimum singular value: {}".format(min(svd)))
@@ -620,6 +659,36 @@ class SurfMod:
         essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])#location of essentials within beta
         Abeta = self.standard_form_constraint_matrix[:,basisinds]
         Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+
+        # all_vbeta = np.zeros(self.standard_form_constraint_matrix.shape[1])
+        # all_vbeta[basisinds] = Vbeta
+
+        # all_flx = np.concatenate([self.inter_flux,self.slack_vals])
+
+        # for fon in self.ForcedOn:
+        #     print("Flux {}, Constraint {}".format(all_flx[fon[0]],all_flx[fon[1]]))
+        #     print("FluxDot {}, ConstraintDot {}".format(all_vbeta[fon[0]],all_vbeta[fon[1]]))
+
+        # ######
+
+        # exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
+        # bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
+
+        # current_fluxes = np.linalg.solve(Abeta,bound_rhs)
+        # all_cf = np.zeros(self.standard_form_constraint_matrix.shape[1])
+        # all_cf[basisinds] = current_fluxes
+
+        # neg_ind = np.where(all_cf<-10**-5)
+        # if len(neg_ind[0]):
+        #     for ind in neg_ind[0]:
+        #         print("Negative flux before Waves at index {} = {}".format(ind,all_cf[ind]))
+        # else:
+        #     print("No negative flux before Waves.")
+
+
+
+        # ######
+
 
         #If we're lucky we already have a basic feasible. For now, that's good enough. I'm not trying to optimize something like "most interior" or whatever.
         # print("Min border dv/dt = {}".format(min([Vbeta[i] for i in range(len(Vbeta)) if (i not in essential_indx)])))
@@ -638,6 +707,10 @@ class SurfMod:
             self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
             return None
 
+        ## If not, let's check if any exist (i.e. check feasibility of A v = db/dt with essentials in the basis.
+
+
+
         #Otherwise, we can use the simplex algorithm with the "phase-one" problem.
         Abarnp1 = np.array([np.dot(-Abeta,np.ones(Abeta.shape[0]))]).T
         Aplus = np.concatenate([self.standard_form_constraint_matrix,Abarnp1],axis = 1)
@@ -649,38 +722,69 @@ class SurfMod:
         basisinds[min_nonessential] = self.standard_form_constraint_matrix.shape[1]
 
         alldone = False
+
         pivcnt = 0
         if details:
             objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
-            print("{}.findWaves: Initial Objective Value: {}".format(self.Name,objval))
-        while ((not alldone) and (pivcnt < 1000)):
+            print("{}.findWaves: Initial Objective Value of Phase-0 Problem: {}".format(self.Name,objval))
+        changing = np.ones(10)
+        btol = 10**-6
+        while (((not alldone) and (pivcnt < 1000)) and (np.mean(changing)>btol)):
         #returns in as indexed in A, out as indexed in beta
-            pivin,pivout,alldone = pivot(np.eye(Aplus.shape[1])[-1],Aplus,basisinds,bound_rhs_dt,min_nonessential,muststay = essential_indx)
+            pivin,pivout,alldone,ch = pivot(np.eye(Aplus.shape[1])[-1],Aplus,basisinds,bound_rhs_dt,min_nonessential,muststay = essential_indx)
+            pivout_ind = basisinds[pivout]
+
+            if pivout_ind in self.essential_basis:
+                print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                sys.exit()
             basisinds[pivout] = pivin
-            if details:
-                if not alldone:
-                    objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
+            changing[1:] = changing[:-1]
+            changing[0] = abs(ch)
+            if ch == 0:
+                changing = np.zeros_like(changing)
+            if not alldone:
+                objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
+                if details:
                     try:
-                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout,objval))
+                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
                     except:
-                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout,objval))
-                else:
+                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
+            else:
+                objval = 0
+                if details:
                     try:
-                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout,0))
+                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
                     except:
-                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout,0))
-            
-            
+                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
+        
+        
 
             # svd = np.linalg.svd(Aplus[:,basisinds],compute_uv = False)
             # print("Minimum singular value: {}".format(min(svd)))
-
-
-
             pivcnt += 1
-        basisinds.sort()
-        self.current_basis_full = basisinds
-        self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+
+        if objval == 0:
+            basisinds.sort()
+
+            # Abeta = self.standard_form_constraint_matrix[:,basisinds]
+            # Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+
+            # all_vbeta = np.zeros(self.standard_form_constraint_matrix.shape[1])
+            # all_vbeta[basisinds] = Vbeta
+
+            # all_flx = np.concatenate([self.inter_flux,self.slack_vals])
+
+            # for fon in self.ForcedOn:
+            #     print("Flux {}, Constraint {}".format(all_flx[fon[0]],all_flx[fon[1]]))
+            #     print("FluxDot {}, ConstraintDot {}".format(all_vbeta[fon[0]],all_vbeta[fon[1]]))
+
+
+            self.current_basis_full = basisinds
+            self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+        else:
+            self.feasible = False
+            print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
+
 
 
     def compute_internal_flux(self,master_metabolite_con):
@@ -694,7 +798,10 @@ class SurfMod:
 
         Q,R,beta = self.current_basis
 
-        fl_beta = la.solve_triangular(R,np.dot(Q.T,bound_rhs[beta[0]]))
+        if len(beta[0]):
+            fl_beta = la.solve_triangular(R,np.dot(Q.T,bound_rhs[beta[0]]))
+        else:
+            fl_beta = np.array([])
 
         all_vars = np.zeros(self.num_fluxes)#np.zeros(self.total_var)
         all_vars[beta[1]] = fl_beta
@@ -729,8 +836,13 @@ def getReduced(basisinds,num_fluxes,A):
     rowsToInclude = np.array([i for i in range(A.shape[0]) if i not in rowsToDelete])
     colsToInclude = np.array([i for i in basisinds if i<num_fluxes])
     reducedbeta = (rowsToInclude,colsToInclude)
-    reducedAbeta = A[rowsToInclude][:,colsToInclude]
-    Q,R = np.linalg.qr(reducedAbeta)
+    if len(rowsToInclude):
+        reducedAbeta = A[rowsToInclude][:,colsToInclude]
+        Q,R = np.linalg.qr(reducedAbeta)
+    else:
+        Q = np.array([[]])
+        R = np.array([[]])
+        reducedbeta = (list(rowsToInclude),list(colsToInclude))
     return (Q,R,reducedbeta)
 
 def remove_licol(fullmat,indexes,essentials,fluxes):
@@ -812,8 +924,10 @@ def pivot(c,A,beta,b,preferred,muststay = []):
     ## This is because our pivot out i^* must have Abar[eta_j,i^*] > 0 and i^*  cannot be essential.
    
     canleave = np.array([i for i in range(A.shape[0]) if i not in muststay])
-    negcbareta = np.array([i for i in negcbareta if max([abs(a) for a in Abar[canleave,i]]) > 10**-6])
-      
+    negcbareta = np.array([i for i in negcbareta if max([a for a in Abar[canleave,i]]) > 10**-6])
+
+
+    
     #get the columns of Abar that correspond to ok pivot in based on cbar_eta.
     Abarnegeta = Abar[:,negcbareta]
 
@@ -824,8 +938,19 @@ def pivot(c,A,beta,b,preferred,muststay = []):
     # 
     #    
     istars = np.array([conditionargmin(alllambdas[i],[x>10**-6 for x in Abarnegeta.T[i]],exclude = muststay) for i in range(len(alllambdas))])
-    
 
+    #if istars[j] == alllambdas.shape[1], then we couldn't find an argmin and that column should not have been in negcbareta
+    for k in range(len(istars)):
+        if k == alllambdas.shape[1]:
+            negcbareta = np.delete(negcbareta,k)
+            istars = np.delete(istars,k)
+            alllambdas = alllambdas[np.delete(np.arange(len(alllambdas)),k)]
+    
+    if len(istars) == 0:
+        return beta[0],0,False,0 
+
+
+        
     ### Stopping condition is to pivot out the preferred variable. This can happen when lambda[i,preferred] is minimal. Sometimes, it won't be in istars b/c argmin gives the first one.
     checkfordone = np.array([abs(alllambdas[i,preferred] - alllambdas[i,istars[i]]) < 10**-5 for i in range(alllambdas.shape[0])]) 
     #preferred is index of preferred in beta, not in A
@@ -834,7 +959,7 @@ def pivot(c,A,beta,b,preferred,muststay = []):
         in0 = np.where(checkfordone)[0][0]
         pivotin = negcbareta[in0]
         # print("Rank check is ",Abar[preferred,pivotin],"\n Chosen with ",alllambdas[in0,preferred])
-        return pivotin,preferred,True
+        return pivotin,preferred,True,alllambdas[in0,preferred]*cbar[pivotin]
 
     #if we can't pivot out the one we really want to choose the one that has the largest effect I guess.
     all_lambdas = np.array([alllambdas[i,istars[i]] for i in range(len(istars))])
@@ -845,11 +970,12 @@ def pivot(c,A,beta,b,preferred,muststay = []):
 
 
     # print("Rank check is ",Abar[out,pivotin],"\n Should change obj. by ",changes[in0])
-    return pivotin,out,False
+    return pivotin,out,False,changes[in0]
 
 @jit(nopython=True)
 def conditionargmin(arr,condition_arr,exclude = []):
     ok_inds = np.where(np.array(condition_arr))[0]
+    ok_inds = np.array([i for i in ok_inds if i not in exclude])
     if len(ok_inds):
         amin = ok_inds[0]
         for j in ok_inds:
@@ -858,8 +984,8 @@ def conditionargmin(arr,condition_arr,exclude = []):
                     amin = j
         return amin
     else:
-        print("No qualifying min")
-        return 0
+        print("No qualifying min found.")
+        return len(arr)
 
 
 
