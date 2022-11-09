@@ -693,9 +693,11 @@ class SurfMod:
         #If we're lucky we already have a basic feasible. For now, that's good enough. I'm not trying to optimize something like "most interior" or whatever.
         # print("Min border dv/dt = {}".format(min([Vbeta[i] for i in range(len(Vbeta)) if (i not in essential_indx)])))
 
+        UpDateFlag = True
+
         if all([Vbeta[i]>-self.ezero for i in range(len(Vbeta)) if (i not in essential_indx)]):
         # if all([Vbeta[i]>-10**-6 for i in range(len(Vbeta)) if (i not in essential_indx)]):
-
+            UpDateFlag = False
             if details:
                 try:
                     flobj.write("{}.findWaves: No Pivot Needed \n".format(self.Name))
@@ -785,6 +787,8 @@ class SurfMod:
             self.feasible = False
             print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
 
+
+        return UpDateFlag
 
 
     def compute_internal_flux(self,master_metabolite_con):

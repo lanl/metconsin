@@ -150,7 +150,7 @@ def surfin_fba(models,x0,y0,endtime,
     if save_bases:
         bases = dict([(model.Name,[]) for model in models])
         for model in models:
-            bases[model.Name] += [model.current_basis]
+            bases[model.Name] += [(0,model.current_basis[2])]
 
     if report_activity:
         bInitial = evolve_community(0,s0,models)
@@ -330,9 +330,10 @@ def surfin_fba(models,x0,y0,endtime,
                 model.essential_basis = (all_vars>model.ezero).nonzero()[0]
 
 
-                model.findWave(y[-1][:,-1],yd,details = fwreport)
+                updateflg = model.findWave(y[-1][:,-1],yd,details = fwreport)
                 if save_bases:
-                    bases[model.Name] += [model.current_basis]
+                    if updateflg:
+                        bases[model.Name] += [(t_c,model.current_basis[2])]
 
                 if debugging:
                     print("------------------------------------\n\n     Debug  \n\n-----------------------------------------")

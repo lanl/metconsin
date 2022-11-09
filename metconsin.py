@@ -322,8 +322,14 @@ def metconsin_sim(desired_models,
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
         for model in model_list:
-            if dynamics["bases"][model.Name][i] != None:
-                model.current_basis = dynamics["bases"][model.Name][i]
+
+            modbc = [bc[0] for bc in dynamics["bases"][model.Name]]
+            lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][0]
+
+            if dynamics["bases"][model.Name][lastone] != None:
+                basinds = dynamics["bases"][model.Name][lastone][1]
+                Q,R = np.linalg.qr(model.standard_form_constraint_matrix[basinds[0]][:,basinds[1]])
+                model.current_basis = (Q,R,basinds)
                 bases_ok = True
             else:
                 bases_ok = False
