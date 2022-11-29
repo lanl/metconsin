@@ -355,18 +355,24 @@ def metconsin_sim(desired_models,
     if track_fluxes:
         exchg_fluxes = {}
         for model in model_list:
-            eflux = pd.DataFrame(dynamics["Exchflux"][model.Name].round(7), columns = dynamics["t"],index = metlist)
-            eflux = eflux.loc[:,~eflux.columns.duplicated()]
-            exchg_fluxes[model.Name] = eflux
+            try:
+                eflux = pd.DataFrame(dynamics["Exchflux"][model.Name].round(7), columns = dynamics["t"],index = metlist)
+                eflux = eflux.loc[:,~eflux.columns.duplicated()]
+                exchg_fluxes[model.Name] = eflux
+            except:
+                pass
         all_return["ExchangeFluxes"] = exchg_fluxes
 
     if save_internal_flux:
         internal_flux = {}
         for model in model_list:
-            total_interals = dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)] + dynamics["Intflux"][model.Name].round(7)[len(model.flux_order):2*len(model.flux_order)]
-            iflux = pd.DataFrame(total_interals, columns = dynamics["t"],index = model.flux_order)
-            iflux = iflux.loc[:,~iflux.columns.duplicated()]
-            internal_flux[model.Name] = iflux
+            try:
+                total_interals = dynamics["Intflux"][model.Name].round(7)[:len(model.flux_order)] + dynamics["Intflux"][model.Name].round(7)[len(model.flux_order):2*len(model.flux_order)]
+                iflux = pd.DataFrame(total_interals, columns = dynamics["t"],index = model.flux_order)
+                iflux = iflux.loc[:,~iflux.columns.duplicated()]
+                internal_flux[model.Name] = iflux
+            except:
+                pass
         all_return["InternalFluxes"] = internal_flux
 
 

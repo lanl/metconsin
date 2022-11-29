@@ -1,10 +1,10 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","metabolic_network","metconsin"))
+sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data"))
 import pandas as pd
 from pathlib import Path
 import datetime as dt
-model_info = pd.read_csv("bigg_model_file_info.txt")
 import pickle
 import importlib as il
 import cobra as cb
@@ -23,18 +23,20 @@ if __name__ == "__main__":
 
   print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Set Up \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
+  model_info = pd.read_csv(os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data","ModelSeed_info.csv"))#pd.read_csv("bigg_model_file_info.txt")
+
   t1 = time.time()
 
   cbmods = {}
 
-  desired_models = ["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
+  desired_models = ["bc1012"]#["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
 
   cobra_models = {}
 
   for mod in desired_models:
     if any(model_info.Species == mod):
-      flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
-      cobra_models[mod] = cb.io.load_json_model(flnm)
+      flnm = os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data",model_info.loc[model_info.Species == mod,'File'].iloc[0])
+      cobra_models[mod] = cb.io.read_sbml_model(flnm)
       if not cobra_models[mod].name:
         cobra_models[mod].name = mod
       else:
@@ -58,19 +60,19 @@ if __name__ == "__main__":
   # y0dict['Phosphate'] =  0.24750125668547476 
   # y0dict['Sulfate'] =  0.06327342503867513
 
-  y0dict['1,5-Diaminopentane'] =  0.5599251910752577  #initial: 0
-  y0dict['Acetate'] =  2.6399966266628385 #0
-  y0dict['Ammonium'] =  1.891684696081923 #9.850520309487253
-  y0dict['CO2 CO2'] =  20.81322091083119 #0
-  y0dict['D-Glucose'] =  0.7618404833201142  #10
-  y0dict['Ethanol'] = 1.959576384069774*10**-6 #0
-  y0dict['Formate'] = 2.095931684869389*10**-6 #0
-  y0dict['H+'] =  8.491244066404017 #0
-  y0dict['H2O H2O'] =  34.92232236698047 #0
-  y0dict['L-Alanine'] =  0.0013694067412982423 #0 
-  y0dict['O2 O2'] =  1.5182252447927205 #19.92838760912608
-  y0dict['Phosphate'] =  0.2570719001940351 #0.8404819955275409
-  y0dict['Sulfate'] =  0.06572014956331541 #0.21486830108436766
+  # y0dict['1,5-Diaminopentane'] =  0.5599251910752577  #initial: 0
+  # y0dict['Acetate'] =  2.6399966266628385 #0
+  # y0dict['Ammonium'] =  1.891684696081923 #9.850520309487253
+  # y0dict['CO2 CO2'] =  20.81322091083119 #0
+  # y0dict['D-Glucose'] =  0.7618404833201142  #10
+  # y0dict['Ethanol'] = 1.959576384069774*10**-6 #0
+  # y0dict['Formate'] = 2.095931684869389*10**-6 #0
+  # y0dict['H+'] =  8.491244066404017 #0
+  # y0dict['H2O H2O'] =  34.92232236698047 #0
+  # y0dict['L-Alanine'] =  0.0013694067412982423 #0 
+  # y0dict['O2 O2'] =  1.5182252447927205 #19.92838760912608
+  # y0dict['Phosphate'] =  0.2570719001940351 #0.8404819955275409
+  # y0dict['Sulfate'] =  0.06572014956331541 #0.21486830108436766
 
 
   print([(ky,val) for ky,val in y0dict.items() if abs(val)>0])
@@ -206,18 +208,19 @@ if __name__ == "__main__":
   if testSimulation:
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Dynamic Simulation \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-    dynami = surf.surfin_fba(list(models.values()),[1],y0,10,fwreport= True,solver = 'gurobi')#,solver = 'clp')
+    dynami = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,10,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
     # print(dynami['t'], '\n\n',dynami['x'])
     print("Final x: {}".format(dynami['x'][:,-1]))
+    print("Basis Times: {}".format(dynami['bt']))
     ydict = dict([(metlist[i],dynami['y'][i,-1]) for i in range(len(metlist))])
     print([(ky,val) for ky,val in ydict.items() if abs(val)>10**-6])
     plt.plot(dynami['t'],dynami['x'].T)
     for bt in dynami['bt']:
-      plt.plot([bt]*10,np.linspace(np.min(dynami['x']),np.max(dynami['x']),10),":")
+      plt.plot([bt]*10,np.linspace(np.min(dynami['x']),np.max(dynami['x']),10),"b:")
     plt.show()
     plt.plot(dynami['t'],dynami['y'].T)
     for bt in dynami['bt']:
-      plt.plot([bt]*10,np.linspace(np.min(dynami['y']),np.max(dynami['y']),10),":")
+      plt.plot([bt]*10,np.linspace(np.min(dynami['y']),np.max(dynami['y']),10),"b:")
     plt.show()
 
 

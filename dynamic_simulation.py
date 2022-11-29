@@ -56,7 +56,10 @@ def find_stop(t0,t1,sln,models,cdt = 0.1,fdt=0.01):
             tr = np.arange(tcrs[failat-1],tcrs[failat],fdt)
             finerfail = np.array([all_vs(t,sln(t),models) for t in tr])
             flt = tr[np.where(finerfail.round(5) < 0)]
-            return flt[0]
+            try:
+                return flt[0]
+            except:
+                return tcrs[failat]
 
 def surfin_fba(models,x0,y0,endtime, 
                 solver = 'gurobi',
@@ -149,15 +152,22 @@ def surfin_fba(models,x0,y0,endtime,
 
     if save_bases:
         bases = dict([(model.Name,[]) for model in models])
-        for model in models:
-            bases[model.Name] += [(0,model.current_basis[2])]
+        if all([mod.feasible for mod in models]):
+            for model in models:
+                bases[model.Name] += [(0,model.current_basis[2])]
 
     if report_activity:
-        bInitial = evolve_community(0,s0,models)
-        try:
-            flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
-        except:
-            print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
+        if all([mod.feasible for mod in models]):
+            bInitial = evolve_community(0,s0,models)
+            try:
+                flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
+            except:
+                print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
+        else:
+            try:
+                flobj.write([model.Name for model in models], " Initial feasible? :", [mod.feasible for mod in models])
+            except:
+                print([model.Name for model in models], " Initial feasible? :", [mod.feasible for mod in models])
 
 
 
@@ -323,9 +333,9 @@ def surfin_fba(models,x0,y0,endtime,
                 bound_rhsarr = np.concatenate([exchg_bds,model.internal_bounds])
 
                 model.compute_internal_flux(y[-1][:,-1])
-                slkvals = bound_rhsarr - np.dot(model.solver_constraint_matrix,model.inter_flux)
+                model.compute_slacks(y[-1][:,-1])#slkvals = bound_rhsarr - np.dot(model.solver_constraint_matrix,model.inter_flux)
 
-                all_vars = np.concatenate([model.inter_flux,slkvals])
+                all_vars = np.concatenate([model.inter_flux,model.slack_vals])
 
                 model.essential_basis = (all_vars>model.ezero).nonzero()[0]
 

@@ -645,6 +645,8 @@ class SurfMod:
 
     def findWave(self,master_metabolite_con,master_metabolite_con_dt,details = False, flobj = None):
 
+        all_current_vars = np.concatenate([self.inter_flux,self.slack_vals])
+
         metabolite_con = master_metabolite_con[self.ExchangeOrder]
         metabolite_con_dt = master_metabolite_con_dt[self.ExchangeOrder]
 
@@ -730,7 +732,7 @@ class SurfMod:
             objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
             print("{}.findWaves: Initial Objective Value of Phase-0 Problem: {}".format(self.Name,objval))
         changing = np.ones(10)
-        btol = 10**-6
+        btol = 10**-8
         while (((not alldone) and (pivcnt < 1000)) and (np.mean(changing)>btol)):
         #returns in as indexed in A, out as indexed in beta
             pivin,pivout,alldone,ch = pivot(np.eye(Aplus.shape[1])[-1],Aplus,basisinds,bound_rhs_dt,min_nonessential,muststay = essential_indx)
@@ -783,8 +785,20 @@ class SurfMod:
 
             self.current_basis_full = basisinds
             self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+
+
+            Abeta = self.standard_form_constraint_matrix[:,basisinds]
+            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+
+            ess_vars = all_current_vars[self.current_basis_full]
+            print(Vbeta[np.argsort(Vbeta)][:10])
+            print(ess_vars[np.argsort(Vbeta)][:10])
+
+
+
         else:
             self.feasible = False
+            UpDateFlag = False
             print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
 
 
