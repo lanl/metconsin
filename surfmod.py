@@ -142,6 +142,7 @@ class SurfMod:
         self.standard_form_constraint_matrix = std_form_mat
         self.internal_bounds = all_internal
         self.num_constr = std_form_mat.shape[0]
+        self.total_vars = std_form_mat.shape[1]
 
         self.exchange_bounds_dt = np.concatenate([exterior_ubfuns_derivatives,exterior_lbfuns_derivative])
 
@@ -770,31 +771,37 @@ class SurfMod:
         if objval == 0:
             basisinds.sort()
 
-            # Abeta = self.standard_form_constraint_matrix[:,basisinds]
-            # Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
-
-            # all_vbeta = np.zeros(self.standard_form_constraint_matrix.shape[1])
-            # all_vbeta[basisinds] = Vbeta
-
-            # all_flx = np.concatenate([self.inter_flux,self.slack_vals])
-
-            # for fon in self.ForcedOn:
-            #     print("Flux {}, Constraint {}".format(all_flx[fon[0]],all_flx[fon[1]]))
-            #     print("FluxDot {}, ConstraintDot {}".format(all_vbeta[fon[0]],all_vbeta[fon[1]]))
-
 
             self.current_basis_full = basisinds
             self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
 
 
-            Abeta = self.standard_form_constraint_matrix[:,basisinds]
-            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+            ########### BELOW -> A look at what we want to optimize - we want
+            ########            to min(max(-vdot/v))
 
-            ess_vars = all_current_vars[self.current_basis_full]
-            print(Vbeta[np.argsort(Vbeta)][:10])
-            print(ess_vars[np.argsort(Vbeta)][:10])
+            # Abeta = self.standard_form_constraint_matrix[:,basisinds]
+            # Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+
+            # ess_vars = all_current_vars[self.current_basis_full]
+
+            # oneovertimeto = np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
 
 
+
+            # print("========== {} ==========".format("How Fast?"))
+            # print(Vbeta[np.argsort(oneovertimeto)][:10])
+            # print("========== {} ==========".format("How Far?"))
+            # print(ess_vars[np.argsort(oneovertimeto)][:10])
+            # print("========== {} ==========".format("How Bad?"))
+            # print(oneovertimeto[np.argsort(oneovertimeto)][:10])
+            # print("====================")
+
+            # all_vbeta = np.zeros_like(all_current_vars)
+            # all_vbeta[self.current_basis_full] = Vbeta
+
+            # indxbroke = 27
+            # print("++++++++ INDEX {}++++++".format(indxbroke))
+            # print("Val: {} \nd/dt: {}".format(all_current_vars[indxbroke],all_vbeta[indxbroke]))
 
         else:
             self.feasible = False

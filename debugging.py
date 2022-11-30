@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
   cbmods = {}
 
-  desired_models = ["bc1012"]#["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
+  desired_models = ["bc1012","bc1011"]#["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
 
   cobra_models = {}
 
@@ -208,12 +208,13 @@ if __name__ == "__main__":
   if testSimulation:
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Dynamic Simulation \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-    dynami = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,10,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
+    endtime = 10
+    dynami = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,endtime,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
     # print(dynami['t'], '\n\n',dynami['x'])
     print("Final x: {}".format(dynami['x'][:,-1]))
     print("Basis Times: {}".format(dynami['bt']))
     ydict = dict([(metlist[i],dynami['y'][i,-1]) for i in range(len(metlist))])
-    print([(ky,val) for ky,val in ydict.items() if abs(val)>10**-6])
+    print([(ky,val) for ky,val in ydict.items() if val<0])
     plt.plot(dynami['t'],dynami['x'].T)
     for bt in dynami['bt']:
       plt.plot([bt]*10,np.linspace(np.min(dynami['x']),np.max(dynami['x']),10),"b:")

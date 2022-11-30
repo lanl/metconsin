@@ -32,34 +32,27 @@ def all_vs(t,s,models):
         model.compute_internal_flux(y)
         model.compute_slacks(y)
         v = np.append(v,np.concatenate([model.inter_flux,model.slack_vals]))#[model.current_basis[2]]
-    return min(v) + 10**-5
+    return min(v) + 10**-8
 
-def find_stop(t0,t1,sln,models,cdt = 0.1,fdt=0.01):
+def get_var_i(t,i,sln,mod,nummods):
+    y = sln(t)[nummods:]
+    mod.compute_internal_flux(y)
+    mod.compute_slacks(y)
+    return np.concatenate([mod.inter_flux,mod.slack_vals])[i]
+
+def find_stop(t0,t1,sln,models):
     if t0==t1:
         print("[find_stop] No Interval")
         return t0
-    cdt = min(cdt,t1-t0)
-    fdt = min(fdt,t1-t0)
-    #check on a coarse grid for negatives:
-    tcrs = np.arange(t0,t1,cdt)
-    minpert = np.array([all_vs(t,sln(t),models) for t in tcrs])
-    if minpert.round(5).min() >= 0:
-        return t1
-    else:
-        #find first negative
-        failat = np.where(minpert.round(5) < 0)[0][0]
-        #go finer.
-        if failat == 0:
-            print("[find_stop] Failed Immediately, value {}".format(minpert[0]))
-            return t0
-        else:
-            tr = np.arange(tcrs[failat-1],tcrs[failat],fdt)
-            finerfail = np.array([all_vs(t,sln(t),models) for t in tr])
-            flt = tr[np.where(finerfail.round(5) < 0)]
-            try:
-                return flt[0]
-            except:
-                return tcrs[failat]
+    all_roots = t1*np.ones(sum([mod.total_vars for mod in models]))
+    j = 0
+    for mod in models:
+        for i in range(mod.total_vars):
+            if min(abs(get_var_i(t0,i,sln,mod,len(models))),abs(get_var_i(t1,i,sln,mod,len(models)))) > 10**-7 and (get_var_i(t0,i,sln,mod,len(models))*get_var_i(t1,i,sln,mod,len(models)) < 0):
+                all_roots[j] = root_scalar(get_var_i,args = (i,sln,mod,len(models)),bracket=[t0,t1]).root
+            j+=1
+    return min(all_roots)
+
 
 def surfin_fba(models,x0,y0,endtime, 
                 solver = 'gurobi',
@@ -224,71 +217,14 @@ def surfin_fba(models,x0,y0,endtime,
                             print("Previously Forced To {}".format(-model.internal_bounds[fon[1]-2*model.num_exch_rxns]))
                             model.internal_bounds[fon[1]-2*model.num_exch_rxns] = 0
                         if solver == 'gurobi':
-                            obval = model.fba_gb(y0)#,secondobj = None)
+                            obval = model.fba_gb(s0[len(models):])#,secondobj = None)
                         elif solver == 'clp':
-                            obval = model.fba_clp(y0)
+                            obval = model.fba_clp(s0[len(models):])
                 stops += 1
 
-            # print("Computed to time {}".format(stptime))
-
-
-
-            # try:
-            #     yatstop = y[-1][:,-1]
-            # except:
-            #     yatstop = y0
-
-                
-
-            # for model in models:
-            #     model.compute_internal_flux(yatstop)
-            #     print("Current {} internal flux norm: {} \n and max internal flux: {}".format(model.Name,np.linalg.norm(model.inter_flux),np.max(abs(model.inter_flux))))
-            #     neg_flux = np.where(model.inter_flux < -10**-5)[0]
-            #     for ng in neg_flux:
-            #         print("Negative flux at index {}, value {}".format(ng,model.inter_flux[ng]))
-            #     model.compute_slacks(yatstop)
-            #     neg_slack = np.where(model.slack_vals < -10**-5)[0]
-            #     for ng in neg_slack:
-            #         print("Negative slack at constraint index {}, value {}".format(ng,model.slack_vals[ng]))
-            
-
-            # minmetind = np.argmin(s0[len(models):])
-            # minmetval = s0[len(models):][minmetind]
-            # print("Current Min met: index {}, value {}".format(minmetind,minmetval))
-            # interval2 = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,), method='RK45',dense_output = True)
-            # T2 = np.linspace(t_c,endtime,max(2,int((endtime-t_c)*(1/resolution))))
-            # s2 = interval2.sol(T2)
-            # y2 = s2[len(models):,:]
-            # # x += [s2[:len(models)]]
-            # # y += [y2]
-            # # t += [T2]
-            # negatives = [np.any(col < -10**-4) for col in y2.T]
-            # if np.any(negatives):
-            #     negcol = np.where(negatives)[0][0]
-            #     negt = T2[negcol]
-            #     negmetind = np.argmin(y2.T[negcol])
-            #     negval = y2.T[negcol][negmetind]
-            #     print("Negative Metabolites? index: {}, value: {}, time: {}".format(negmetind,negval,negt))
-            # else:
-            #     print("Negative Metabolites? No.")
-
-
-            # print("No progress at time ",t_c)
-            # for model in models:
-            #     if solver == 'gurobi':
-            #         obval = model.fba_gb(yatstop.round(5))
-            #     elif solver == 'clp':
-            #         obval = model.fba_clp(yatstop.round(5))
-            #     model.compute_internal_flux(yatstop.round(5))
-            #     print("Current {} growth rate {}".format(model.Name,obval))
-            #     print("Current {} internal flux norm after re-FBA: {} \n and max internal flux: {}".format(model.Name,np.linalg.norm(model.inter_flux),np.max(abs(model.inter_flux))))
-
-            #     ydi = np.zeros_like(ydot0)
-            #     ydi[model.ExchangeOrder] = np.dot(model.GammaStar,model.inter_flux)
-            #     print("Contribution of {} to ydot after re-FBA: {}".format(model.Name,np.linalg.norm(ydi)))
 
             else:
-                print("No progress at time {}. Stopping Simulation.")
+                print("No progress at time {}. Stopping Simulation.".format(stptime))
                 break
         ########################################################################################################################
         ########################################################################################################################
@@ -297,10 +233,11 @@ def surfin_fba(models,x0,y0,endtime,
         ########################################################################################################################
 
         s0 = interval.sol(stptime)
+        y0 = np.maximum(0,s0[len(models):])
         T = np.linspace(t_c,stptime,max(2,int((stptime-t_c)*(1/resolution))))
         s = interval.sol(T)
         x += [s[:len(models),:]]
-        y += [s[len(models):,:]]
+        y += [np.maximum(0,s[len(models):,:])]
         if track_fluxes:
             for model in models:
                 for i in range(y[-1].shape[1]):
