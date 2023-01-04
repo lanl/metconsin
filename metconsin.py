@@ -12,14 +12,14 @@ import os
 def metconsin_network(desired_models,
     model_info_file, 
     save_folder,
-    media = {},
+    media = None,
     solver = 'gurobi',
     report_activity = True,
-    upper_bound_functions = {},
-    lower_bound_functions = {},
-    upper_bound_functions_dt = {},
-    lower_bound_functions_dt = {},
-    met_filter = [],
+    upper_bound_functions = None,
+    lower_bound_functions = None,
+    upper_bound_functions_dt = None,
+    lower_bound_functions_dt = None,
+    met_filter = None,
     met_filter_sense = "exclude", 
     lb_funs = "constant", 
     ub_funs = "linearRand",
@@ -38,6 +38,19 @@ def metconsin_network(desired_models,
     If no media is provided, the default ``diet" files for the given COBRA models is averaged.
 
     '''
+
+    if media == None:
+        media = {}
+    if upper_bound_functions == None:
+        upper_bound_functions = {}
+    if lower_bound_functions == None:
+        lower_bound_functions = {}
+    if upper_bound_functions_dt == None:
+        upper_bound_functions_dt = {}
+    if lower_bound_functions_dt == None:
+        lower_bound_functions_dt = {}
+    if met_filter == None:
+        met_filter = []
 
 
     start_time = time.time()
@@ -186,15 +199,15 @@ def metconsin_network(desired_models,
 
 def metconsin_sim(desired_models,
     model_info_file,
-    solver = 'gurobi' ,
+    solver = 'gurobi',
     flobj = None,
     endtime = 10**-2,
-    upper_bound_functions = {},
-    lower_bound_functions = {},
-    upper_bound_functions_dt = {},
-    lower_bound_functions_dt = {},
-    media = {}, 
-    met_filter = [],
+    upper_bound_functions = None,
+    lower_bound_functions = None,
+    upper_bound_functions_dt = None,
+    lower_bound_functions_dt = None,
+    media = None, 
+    met_filter = None,
     met_filter_sense = "exclude", 
     lb_funs = "constant", 
     ub_funs = "linearRand",
@@ -213,6 +226,21 @@ def metconsin_sim(desired_models,
 
     '''
     start_time = time.time()
+
+
+    if media == None:
+        media = {}
+    if upper_bound_functions == None:
+        upper_bound_functions = {}
+    if lower_bound_functions == None:
+        lower_bound_functions = {}
+    if upper_bound_functions_dt == None:
+        upper_bound_functions_dt = {}
+    if lower_bound_functions_dt == None:
+        lower_bound_functions_dt = {}
+    if met_filter == None:
+        met_filter = []
+
 
     cobra_models = {}
 

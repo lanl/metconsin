@@ -19,6 +19,27 @@ def prep_cobrapy_models(models,
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
 
+                        # upper_bound_functions = {},
+                        # lower_bound_functions = {},
+                        # upper_bound_functions_dt = {},
+                        # lower_bound_functions_dt = {}, 
+                        # media = {}, 
+                        # met_filter = [],
+
+    if media == None:
+        media = {}
+    if upper_bound_functions == None:
+        upper_bound_functions = {}
+    if lower_bound_functions == None:
+        lower_bound_functions = {}
+    if upper_bound_functions_dt == None:
+        upper_bound_functions_dt = {}
+    if lower_bound_functions_dt == None:
+        lower_bound_functions_dt = {}
+    if met_filter == None:
+        met_filter = []
+
+
     from cobra import util
 
     if not isinstance(models,dict):

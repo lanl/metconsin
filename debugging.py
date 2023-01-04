@@ -39,11 +39,11 @@ if __name__ == "__main__":
       cobra_models[mod] = cb.io.read_sbml_model(flnm)
       if not cobra_models[mod].name:
         cobra_models[mod].name = mod
-      else:
-        print("Error: No model of species " + mod)
       mxg = cobra_models[mod].slim_optimize()
       min_med = cb.medium.minimal_medium(cobra_models[mod],mxg)#,minimize_components = True)
       cobra_models[mod].medium = min_med
+    else:
+      print("Error: No model of species " + mod)
 
 
   models,metlist,y0dict = pr.prep_cobrapy_models(cobra_models,ub_funs = "linearScale",forceOns=True)#"linearRand")#hill11
@@ -208,21 +208,22 @@ if __name__ == "__main__":
   if testSimulation:
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Dynamic Simulation \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-    endtime = 10
-    dynami = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,endtime,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
-    # print(dynami['t'], '\n\n',dynami['x'])
-    print("Final x: {}".format(dynami['x'][:,-1]))
-    print("Basis Times: {}".format(dynami['bt']))
-    ydict = dict([(metlist[i],dynami['y'][i,-1]) for i in range(len(metlist))])
+    endtime = 0.5
+    dynamics = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,endtime,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
+    # print(dynamics['t'], '\n\n',dynamics['x'])
+    print("Final x: {}".format(dynamics['x'][:,-1]))
+    print("Basis Times: {}".format(dynamics['bt']))
+    ydict = dict([(metlist[i],dynamics['y'][i,-1]) for i in range(len(metlist))])
     print([(ky,val) for ky,val in ydict.items() if val<0])
-    plt.plot(dynami['t'],dynami['x'].T)
-    for bt in dynami['bt']:
-      plt.plot([bt]*10,np.linspace(np.min(dynami['x']),np.max(dynami['x']),10),"b:")
+    plt.plot(dynamics['t'],dynamics['x'].T)
+    for bt in dynamics['bt']:
+      plt.plot([bt]*10,np.linspace(np.min(dynamics['x']),np.max(dynamics['x']),10),"b:")
     plt.show()
-    plt.plot(dynami['t'],dynami['y'].T)
-    for bt in dynami['bt']:
-      plt.plot([bt]*10,np.linspace(np.min(dynami['y']),np.max(dynami['y']),10),"b:")
+    plt.plot(dynamics['t'],dynamics['y'].T)
+    for bt in dynamics['bt']:
+      plt.plot([bt]*10,np.linspace(np.min(dynamics['y']),np.max(dynamics['y']),10),"b:")
     plt.show()
+
 
 
     # dyn2 = surf.surfin_fba(list(models.values()),[dynami['x'][0][-1]],dynami['y'][:,-1],10,fwreport=True)

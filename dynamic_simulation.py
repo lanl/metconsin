@@ -267,7 +267,6 @@ def surfin_fba(models,x0,y0,endtime,
                 
                 exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
 
-                bound_rhsarr = np.concatenate([exchg_bds,model.internal_bounds])
 
                 model.compute_internal_flux(y[-1][:,-1])
                 model.compute_slacks(y[-1][:,-1])#slkvals = bound_rhsarr - np.dot(model.solver_constraint_matrix,model.inter_flux)

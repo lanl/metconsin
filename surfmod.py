@@ -660,6 +660,7 @@ class SurfMod:
         # print("Minimum singular value: {}".format(min(svd)))
 
         essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])#location of essentials within beta
+        
         Abeta = self.standard_form_constraint_matrix[:,basisinds]
         Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
 
@@ -710,6 +711,83 @@ class SurfMod:
             self.current_basis_full = basisinds
             Abeta = self.standard_form_constraint_matrix[:,basisinds]
             self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+
+
+            ########### BELOW -> A look at what we want to optimize - we want
+            ########            to min(max(-vdot/v))
+
+            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+
+            ess_vars = all_current_vars[self.current_basis_full]
+
+
+
+            keeptrying = True
+            numof = 0
+
+            wbeta = np.linalg.solve(self.standard_form_constraint_matrix[:,basisinds],bound_rhs_dt)
+            w = np.zeros(self.standard_form_constraint_matrix.shape[1])
+            w[basisinds] = wbeta
+            thevs = -np.divide(np.ones_like(all_current_vars),all_current_vars,out = np.zeros_like(all_current_vars), where = np.abs(all_current_vars)>10**-8)
+
+            oneovertimeto = thevs*w#np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
+
+
+
+            # print("========== {} ==========".format("How Fast?"))
+            # print(Vbeta[np.argsort(oneovertimeto)][:10])
+            # print("========== {} ==========".format("How Far?"))
+            # print(ess_vars[np.argsort(oneovertimeto)][:10])
+            print("========== {} ==========".format("How Bad (start)?"))
+            print(max(oneovertimeto))
+            print("====================")
+
+            maxtimes = [max(oneovertimeto)]
+
+
+            while keeptrying:
+                UpDateFlag = True
+                
+                pivin,pivout,alldone,ch = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
+                pivout_ind = basisinds[pivout]
+                if pivout_ind in self.essential_basis and pivout_ind != pivin:
+                    print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                    sys.exit()
+                basisinds[pivout] = pivin
+                basisinds.sort()
+                essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
+
+                self.current_basis_full = basisinds
+                self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+
+
+                Abeta = self.standard_form_constraint_matrix[:,basisinds]
+                wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+                w = np.zeros(self.standard_form_constraint_matrix.shape[1])
+                w[basisinds] = wbeta
+
+                ess_vars = all_current_vars[self.current_basis_full]
+
+                oneovertimeto = w*thevs#np.divide(wbeta,ess_vars,out=wbeta.copy(),where = np.abs(ess_vars)>10**-8)
+                numof+=1
+
+                print("========== {} - {} ==========".format("How Bad?",numof))
+                print(max(oneovertimeto))
+                print("====================")
+                maxtimes += [max(oneovertimeto)]
+
+                keeptrying = not alldone
+                if numof > 5:
+                    if np.std(maxtimes[-5:]) < 10**-5:
+                        keeptrying = False
+                if numof > 100:
+                    keeptrying = False
+
+            if numof  == 1:
+                UpDateFlag = False
+            
+
+
             return None
 
         ## If not, let's check if any exist (i.e. check feasibility of A v = db/dt with essentials in the basis.
@@ -736,10 +814,10 @@ class SurfMod:
         btol = 10**-8
         while (((not alldone) and (pivcnt < 1000)) and (np.mean(changing)>btol)):
         #returns in as indexed in A, out as indexed in beta
-            pivin,pivout,alldone,ch = pivot(np.eye(Aplus.shape[1])[-1],Aplus,basisinds,bound_rhs_dt,min_nonessential,muststay = essential_indx)
+            pivin,pivout,alldone,ch = pivot(np.eye(Aplus.shape[1])[-1],Aplus,basisinds,bound_rhs_dt,min_nonessential,essential_indx)
             pivout_ind = basisinds[pivout]
 
-            if pivout_ind in self.essential_basis:
+            if pivout_ind in self.essential_basis and pivout_ind != pivin:
                 print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
                 sys.exit()
             basisinds[pivout] = pivin
@@ -770,7 +848,7 @@ class SurfMod:
 
         if objval == 0:
             basisinds.sort()
-
+            essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
 
             self.current_basis_full = basisinds
             self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
@@ -779,29 +857,67 @@ class SurfMod:
             ########### BELOW -> A look at what we want to optimize - we want
             ########            to min(max(-vdot/v))
 
-            # Abeta = self.standard_form_constraint_matrix[:,basisinds]
-            # Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+            Abeta = self.standard_form_constraint_matrix[:,basisinds]
+            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
 
-            # ess_vars = all_current_vars[self.current_basis_full]
-
-            # oneovertimeto = np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
+            ess_vars = all_current_vars[self.current_basis_full]
 
 
 
-            # print("========== {} ==========".format("How Fast?"))
-            # print(Vbeta[np.argsort(oneovertimeto)][:10])
-            # print("========== {} ==========".format("How Far?"))
-            # print(ess_vars[np.argsort(oneovertimeto)][:10])
-            # print("========== {} ==========".format("How Bad?"))
-            # print(oneovertimeto[np.argsort(oneovertimeto)][:10])
-            # print("====================")
+            wbeta = np.linalg.solve(self.standard_form_constraint_matrix[:,basisinds],bound_rhs_dt)
+            w = np.zeros(self.standard_form_constraint_matrix.shape[1])
+            w[basisinds] = wbeta
+            keeptrying = True
+            numof = 0
 
-            # all_vbeta = np.zeros_like(all_current_vars)
-            # all_vbeta[self.current_basis_full] = Vbeta
+            thevs = -np.divide(np.ones_like(all_current_vars),all_current_vars,out = np.zeros_like(all_current_vars), where = np.abs(all_current_vars)>10**-8)
+            oneovertimeto = w*thevs#np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
 
-            # indxbroke = 27
-            # print("++++++++ INDEX {}++++++".format(indxbroke))
-            # print("Val: {} \nd/dt: {}".format(all_current_vars[indxbroke],all_vbeta[indxbroke]))
+
+
+            print("========== {} ==========".format("How Bad? (Start)"))
+            print(max(oneovertimeto))
+            print("====================")
+
+            maxtimes = [max(oneovertimeto)]
+
+            while keeptrying:
+                pivin,pivout,alldone,ch = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
+                pivout_ind = basisinds[pivout]
+                if pivout_ind in self.essential_basis and pivout_ind != pivin:
+                    print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                    sys.exit()
+                basisinds[pivout] = pivin
+                basisinds.sort()
+                essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
+
+                self.current_basis_full = basisinds
+                self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
+
+
+                Abeta = self.standard_form_constraint_matrix[:,basisinds]
+                wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
+                w = np.zeros(self.standard_form_constraint_matrix.shape[1])
+                w[basisinds] = wbeta
+
+                ess_vars = all_current_vars[self.current_basis_full]
+
+                oneovertimeto = w*thevs#np.divide(wbeta,ess_vars,out=wbeta.copy(),where = np.abs(ess_vars)>10**-8)
+                numof+=1
+
+                print("========== {} - {} ==========".format("How Bad?",numof))
+                print(max(oneovertimeto))
+                print("====================")
+
+                maxtimes += [max(oneovertimeto)]
+
+                keeptrying = not alldone
+                if numof > 5:
+                    if np.std(maxtimes[-5:]) < 10**-5:
+                        keeptrying = False
+                if numof > 100:
+                    keeptrying = False
+
 
         else:
             self.feasible = False
@@ -894,7 +1010,9 @@ def remove_licol(fullmat,indexes,essentials,fluxes):
         return None,None
 
 
-def pivot_nojit(c,A,beta,b,preferred,muststay = []):
+def pivot_nojit(c,A,beta,b,preferred,muststay = None):
+    if muststay == None:
+        muststay = []
     #get eta
     eta = np.array([i for i in range(A.shape[1]) if (i not in beta)])
     #compute A^-1_beta * A
@@ -934,7 +1052,76 @@ def pivot_nojit(c,A,beta,b,preferred,muststay = []):
     return pivotin,out,False
 
 @jit(nopython=True)
-def pivot(c,A,beta,b,preferred,muststay = []):
+def minmaxpivot(x,v,A,beta,b,muststay):
+    ''''
+    pivot to reduce max(v'x) - actually just going to reduce the element that is currently max. Could actually
+    increase the overall max...is there a better way?
+    '''
+
+    if max(v) < 10**-8:
+        return beta[0],0,True,0
+    
+    #get eta
+    eta = np.array([i for i in range(A.shape[1]) if (i not in beta)])
+    #compute A^-1_beta * A
+    Abar = np.linalg.solve(A[:,beta],A)
+    #compute primal basic solution
+    xbeta = x[beta]
+    ##multiply by v
+    maxof = v*x
+    maxind = maxof.argmax()
+    c = np.zeros_like(v)
+    c[maxind] = v[maxind]
+    #compute reduced costs
+    cbar = c - np.dot(c[beta].T,Abar)
+
+    #get the possible pivot ins
+    negcbareta = np.array([i for i in eta if cbar[i] < 0])
+    ###Can't choose a column to pivot in with only negative values or only positive on essentials. Remove those from negchareta
+    ## This is because our pivot out i^* must have Abar[eta_j,i^*] > 0 and i^*  cannot be essential.
+   
+    canleave = np.array([i for i in range(A.shape[0]) if i not in muststay])
+    negcbareta = np.array([i for i in negcbareta if max([a for a in Abar[canleave,i]]) > 10**-6])
+
+    #get the columns of Abar that correspond to ok pivot in based on cbar_eta.
+    Abarnegeta = Abar[:,negcbareta]
+
+    ### The possible lambdas x_{out}/Abar[out,in]
+    alllambdas = np.divide(xbeta,Abarnegeta.T,np.zeros_like(Abarnegeta.T))#, Abarnegeta.T > 10**-6)
+    # maxlam = np.max(alllambdas)
+    ###Don't want to pivot some of them out. Also we are ok with those ones going negative! 
+    # 
+    #    
+    istars = np.array([conditionargmin(alllambdas[i],[x>10**-6 for x in Abarnegeta.T[i]],muststay) for i in range(len(alllambdas))])
+
+    #if istars[j] == alllambdas.shape[1], then we couldn't find an argmin and that column should not have been in negcbareta
+    for k in range(len(istars)):
+        if k == alllambdas.shape[1]:
+            negcbareta = np.delete(negcbareta,k)
+            istars = np.delete(istars,k)
+            alllambdas = alllambdas[np.delete(np.arange(len(alllambdas)),k)]
+
+    if len(negcbareta) == 0:
+        return beta[0],0,True,0 
+
+    all_lambdas = np.array([alllambdas[i,istars[i]] for i in range(len(istars))])
+    changes = all_lambdas*cbar[negcbareta]
+    # print(min(changes))
+    if min(changes) > -10**-8:
+        return beta[0],0,True,0
+
+
+    in0 = np.argmin(changes)#index of the entering one in Abarnegeta.
+    out = istars[in0]#index of leaving (in beta, not A)
+    pivotin = negcbareta[in0]
+
+
+    # print("Rank check is ",Abar[out,pivotin],"\n Should change obj. by ",changes[in0])
+    return pivotin,out,False,changes[in0]
+
+@jit(nopython=True)
+def pivot(c,A,beta,b,preferred,muststay):
+
     #get eta
     eta = np.array([i for i in range(A.shape[1]) if (i not in beta)])
     #compute A^-1_beta * A
@@ -962,7 +1149,7 @@ def pivot(c,A,beta,b,preferred,muststay = []):
     ###Don't want to pivot some of them out. Also we are ok with those ones going negative! 
     # 
     #    
-    istars = np.array([conditionargmin(alllambdas[i],[x>10**-6 for x in Abarnegeta.T[i]],exclude = muststay) for i in range(len(alllambdas))])
+    istars = np.array([conditionargmin(alllambdas[i],[x>10**-6 for x in Abarnegeta.T[i]], muststay) for i in range(len(alllambdas))])
 
     #if istars[j] == alllambdas.shape[1], then we couldn't find an argmin and that column should not have been in negcbareta
     for k in range(len(istars)):
@@ -998,7 +1185,7 @@ def pivot(c,A,beta,b,preferred,muststay = []):
     return pivotin,out,False,changes[in0]
 
 @jit(nopython=True)
-def conditionargmin(arr,condition_arr,exclude = []):
+def conditionargmin(arr,condition_arr,exclude):
     ok_inds = np.where(np.array(condition_arr))[0]
     ok_inds = np.array([i for i in ok_inds if i not in exclude])
     if len(ok_inds):
@@ -1021,3 +1208,86 @@ def compute_objval(c,A,beta,b):
     return np.dot(c,x)
 
     
+@jit(nopython=True)
+def minmaxpivot_constrained(w,v,A,beta,b,muststay):
+    ''''
+    pivot to reduce max(v*x) - actually just going to reduce the element that is currently max. Constrain the other elements of v*x
+    by the current max. This ends up looking like a single pivot of an LP solve but we have to add particular constraints each time.
+    '''
+
+    #compute primal basic solution
+    wbeta = w[beta]
+
+    ##multiply by v
+    s = v*w
+    maxind = s.argmax()
+    smax = np.max(s)
+
+    ### Now add the new constraints onto A,b
+
+    Apl = np.append(A,np.zeros(A.shape),axis = 1)
+    eyeye = np.concatenate([np.eye(A.shape[1]),np.eye(A.shape[1])],axis = 1)
+    Apl = np.append(Apl,eyeye,axis = 0)
+
+    bpl = np.append(b,np.array([smax]*A.shape[1]))
+
+    betapl = np.append(beta,np.arange(A.shape[1],Apl.shape[1]))
+    wpl = np.append(w,smax - w)
+
+
+    #get eta
+    eta = np.array([i for i in range(A.shape[1]) if (i not in beta)]) #equivalent to np.array([i for i in range(Apl.shape[1]) if (i not in betapl)])
+    #compute A^-1_betapl * A
+    Abar = np.linalg.solve(Apl[:,betapl],Apl)
+
+    c = np.zeros(Apl.shape[1])
+    c[maxind] = 1#v[maxind]
+    #compute reduced costs
+    cbar = c - np.dot(c[beta].T,Abar)
+
+    #get the possible pivot ins
+    negcbareta = np.array([i for i in eta if cbar[i] < 0])
+    if len(negcbareta) == 0:
+        return beta[0],0,True,0 
+    ###Can't choose a column to pivot in with only negative values or only positive on essentials (including new constraints). Remove those from negchareta
+    ## This is because our pivot out i^* must have Abar[eta_j,i^*] > 0 and i^*  cannot be essential.
+    muststaypl = np.append(muststay,np.arange(A.shape[1],Apl.shape[1]))
+   
+    canleave = np.array([i for i in range(A.shape[0]) if i not in muststay])#equivalent to np.array([i for i in range(Apl.shape[0]) if i not in muststaypl])
+    negcbareta = np.array([i for i in negcbareta if max([a for a in Abar[canleave,i]]) > 10**-6])
+
+    #get the columns of Abar that correspond to ok pivot in based on cbar_eta.
+    Abarnegeta = Abar[:,negcbareta]
+
+    ### The possible lambdas x_{out}/Abar[out,in]
+    alllambdas = np.divide(wpl[betapl],Abarnegeta.T,np.zeros_like(Abarnegeta.T))#, Abarnegeta.T > 10**-6)
+    # maxlam = np.max(alllambdas)
+    ###Don't want to pivot some of them out. Also we are ok with those ones going negative! 
+    # 
+    #    
+    istars = np.array([conditionargmin(alllambdas[i],[x>10**-6 for x in Abarnegeta.T[i]],muststaypl) for i in range(len(alllambdas))])
+
+    #if istars[j] == alllambdas.shape[1], then we couldn't find an argmin and that column should not have been in negcbareta
+    for k in range(len(istars)):
+        if k == alllambdas.shape[1]:
+            negcbareta = np.delete(negcbareta,k)
+            istars = np.delete(istars,k)
+            alllambdas = alllambdas[np.delete(np.arange(len(alllambdas)),k)]
+
+    if len(negcbareta) == 0:
+        return beta[0],0,True,0 
+
+    all_lambdas = np.array([alllambdas[i,istars[i]] for i in range(len(istars))])
+    changes = all_lambdas*cbar[negcbareta]
+    print(min(changes))
+    if min(changes) > -10**-8:
+        return beta[0],0,True,0
+
+
+    in0 = np.argmin(changes)#index of the entering one in Abarnegeta.
+    out = istars[in0]#index of leaving (in beta, not A)
+    pivotin = negcbareta[in0]
+
+
+    # print("Rank check is ",Abar[out,pivotin],"\n Should change obj. by ",changes[in0])
+    return pivotin,out,False,changes[in0]
