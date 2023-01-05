@@ -1,7 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","metabolic_network","metconsin"))
-sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data"))
+sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","metabolic_networks","isolate_data"))
 import pandas as pd
 from pathlib import Path
 import datetime as dt
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
   print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Set Up \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-  model_info = pd.read_csv(os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data","ModelSeed_info.csv"))#pd.read_csv("bigg_model_file_info.txt")
+  model_info = pd.read_csv(os.path.join(os.path.expanduser("~"),"Documents","metabolic_networks","isolate_data","ModelSeed_info.csv"))#pd.read_csv("bigg_model_file_info.txt")
 
   t1 = time.time()
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
   for mod in desired_models:
     if any(model_info.Species == mod):
-      flnm = os.path.join(os.path.expanduser("~"),"Documents","Data","isolate_data",model_info.loc[model_info.Species == mod,'File'].iloc[0])
+      flnm = os.path.join(os.path.expanduser("~"),"Documents","metabolic_networks","isolate_data",model_info.loc[model_info.Species == mod,'File'].iloc[0])
       cobra_models[mod] = cb.io.read_sbml_model(flnm)
       if not cobra_models[mod].name:
         cobra_models[mod].name = mod

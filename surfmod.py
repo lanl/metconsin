@@ -664,33 +664,6 @@ class SurfMod:
         Abeta = self.standard_form_constraint_matrix[:,basisinds]
         Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
 
-        # all_vbeta = np.zeros(self.standard_form_constraint_matrix.shape[1])
-        # all_vbeta[basisinds] = Vbeta
-
-        # all_flx = np.concatenate([self.inter_flux,self.slack_vals])
-
-        # for fon in self.ForcedOn:
-        #     print("Flux {}, Constraint {}".format(all_flx[fon[0]],all_flx[fon[1]]))
-        #     print("FluxDot {}, ConstraintDot {}".format(all_vbeta[fon[0]],all_vbeta[fon[1]]))
-
-        # ######
-
-        # exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
-        # bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
-
-        # current_fluxes = np.linalg.solve(Abeta,bound_rhs)
-        # all_cf = np.zeros(self.standard_form_constraint_matrix.shape[1])
-        # all_cf[basisinds] = current_fluxes
-
-        # neg_ind = np.where(all_cf<-10**-5)
-        # if len(neg_ind[0]):
-        #     for ind in neg_ind[0]:
-        #         print("Negative flux before Waves at index {} = {}".format(ind,all_cf[ind]))
-        # else:
-        #     print("No negative flux before Waves.")
-
-
-
         # ######
 
 
@@ -709,92 +682,38 @@ class SurfMod:
                     print("{}.findWaves: No Pivot Needed".format(self.Name))
             basisinds.sort()
             self.current_basis_full = basisinds
-            Abeta = self.standard_form_constraint_matrix[:,basisinds]
-            self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
 
-
-            ########### BELOW -> A look at what we want to optimize - we want
-            ########            to min(max(-vdot/v))
-
-            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
-
-            ess_vars = all_current_vars[self.current_basis_full]
-
-
-
-            keeptrying = True
-            numof = 0
-
-            wbeta = np.linalg.solve(self.standard_form_constraint_matrix[:,basisinds],bound_rhs_dt)
-            w = np.zeros(self.standard_form_constraint_matrix.shape[1])
-            w[basisinds] = wbeta
-            thevs = -np.divide(np.ones_like(all_current_vars),all_current_vars,out = np.zeros_like(all_current_vars), where = np.abs(all_current_vars)>10**-8)
-
-            oneovertimeto = thevs*w#np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
-
-
-
-            # print("========== {} ==========".format("How Fast?"))
-            # print(Vbeta[np.argsort(oneovertimeto)][:10])
-            # print("========== {} ==========".format("How Far?"))
-            # print(ess_vars[np.argsort(oneovertimeto)][:10])
-            print("========== {} ==========".format("How Bad (start)?"))
-            print(max(oneovertimeto))
-            print("====================")
-
-            maxtimes = [max(oneovertimeto)]
-
-
-            while keeptrying:
-                UpDateFlag = True
-                
-                pivin,pivout,alldone,ch = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
-                pivout_ind = basisinds[pivout]
-                if pivout_ind in self.essential_basis and pivout_ind != pivin:
-                    print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
-                    sys.exit()
-                basisinds[pivout] = pivin
-                basisinds.sort()
-                essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
-
-                self.current_basis_full = basisinds
-                self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
-
-
-                Abeta = self.standard_form_constraint_matrix[:,basisinds]
-                wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
-                w = np.zeros(self.standard_form_constraint_matrix.shape[1])
-                w[basisinds] = wbeta
-
-                ess_vars = all_current_vars[self.current_basis_full]
-
-                oneovertimeto = w*thevs#np.divide(wbeta,ess_vars,out=wbeta.copy(),where = np.abs(ess_vars)>10**-8)
-                numof+=1
-
-                print("========== {} - {} ==========".format("How Bad?",numof))
-                print(max(oneovertimeto))
-                print("====================")
-                maxtimes += [max(oneovertimeto)]
-
-                keeptrying = not alldone
-                if numof > 5:
-                    if np.std(maxtimes[-5:]) < 10**-5:
-                        keeptrying = False
-                if numof > 100:
-                    keeptrying = False
-
-            if numof  == 1:
-                UpDateFlag = False
-            
-
+            UpDateFlag = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx)
 
             return None
 
-        ## If not, let's check if any exist (i.e. check feasibility of A v = db/dt with essentials in the basis.
-
-
-
         #Otherwise, we can use the simplex algorithm with the "phase-one" problem.
+
+        basisinds,objval = self.solve_phaseone(Abeta,Vbeta,essential_indx,basisinds,details,bound_rhs_dt,flobj)
+
+
+        #### Note that if the objective value of the phase 1 problem is > 0 then the problem is infeasible.
+        if objval == 0:
+            basisinds.sort()
+            essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
+
+            #Finally we can choose from bases that will allow forward solving by trying to maximize the linear estimate of the forward solve interval
+            #by maximizing the the minimum of the linear estimates for each variable 
+            #(linear estimate is possible b/c our solution gives dv/dt and interval ends when v = 0 for any v)
+            _ = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx)
+
+
+
+        else:
+            self.feasible = False
+            UpDateFlag = False
+            print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
+
+
+        return UpDateFlag
+
+    def solve_phaseone(self,Abeta,Vbeta,essential_indx,basisinds,details,bound_rhs_dt,flobj):
+
         Abarnp1 = np.array([np.dot(-Abeta,np.ones(Abeta.shape[0]))]).T
         Aplus = np.concatenate([self.standard_form_constraint_matrix,Abarnp1],axis = 1)
         #get most negative entry that isn't in the essential basis and switch it with n+1
@@ -841,92 +760,85 @@ class SurfMod:
                         print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
         
         
-
-            # svd = np.linalg.svd(Aplus[:,basisinds],compute_uv = False)
-            # print("Minimum singular value: {}".format(min(svd)))
             pivcnt += 1
+        return basisinds,objval
 
-        if objval == 0:
+    def solve_minmax(self,basisinds,bound_rhs_dt,all_current_vars,essential_indx):
+
+        keeptrying = True
+        numof = 0
+
+        wbeta = np.linalg.solve(self.standard_form_constraint_matrix[:,basisinds],bound_rhs_dt)
+        w = np.zeros(self.standard_form_constraint_matrix.shape[1])
+        w[basisinds] = wbeta
+        thevs = -np.divide(np.ones_like(all_current_vars),all_current_vars,out = np.zeros_like(all_current_vars), where = np.abs(all_current_vars)>10**-8)
+
+        oneovertimeto = thevs*w
+
+
+        print("========== {} ==========".format("How Bad (start)?"))
+        print(max(oneovertimeto))
+        print("====================")
+
+        maxtimes = [max(oneovertimeto)]
+
+
+        stopat = 0
+
+        while keeptrying:
+            UpDateFlag = True
+            
+            pivin,pivout,alldone,_ = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
+            pivout_ind = basisinds[pivout]
+            if pivout_ind in self.essential_basis and pivout_ind != pivin:
+                print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                sys.exit()
+            basisinds[pivout] = pivin
             basisinds.sort()
             essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
 
-            self.current_basis_full = basisinds
-            self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
-
-
-            ########### BELOW -> A look at what we want to optimize - we want
-            ########            to min(max(-vdot/v))
-
             Abeta = self.standard_form_constraint_matrix[:,basisinds]
-            Vbeta = np.linalg.solve(Abeta,bound_rhs_dt)
-
-            ess_vars = all_current_vars[self.current_basis_full]
-
-
-
-            wbeta = np.linalg.solve(self.standard_form_constraint_matrix[:,basisinds],bound_rhs_dt)
+            wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
             w = np.zeros(self.standard_form_constraint_matrix.shape[1])
             w[basisinds] = wbeta
-            keeptrying = True
-            numof = 0
 
-            thevs = -np.divide(np.ones_like(all_current_vars),all_current_vars,out = np.zeros_like(all_current_vars), where = np.abs(all_current_vars)>10**-8)
-            oneovertimeto = w*thevs#np.divide(Vbeta,ess_vars,out=Vbeta.copy(),where = np.abs(ess_vars)>10**-8)
+            oneovertimeto = w*thevs#
+            numof+=1
 
-
-
-            print("========== {} ==========".format("How Bad? (Start)"))
+            print("========== {} - {} ==========".format("How Bad?",numof))
             print(max(oneovertimeto))
             print("====================")
+            maxtimes += [max(oneovertimeto)]
 
-            maxtimes = [max(oneovertimeto)]
-
-            while keeptrying:
-                pivin,pivout,alldone,ch = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
-                pivout_ind = basisinds[pivout]
-                if pivout_ind in self.essential_basis and pivout_ind != pivin:
-                    print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
-                    sys.exit()
-                basisinds[pivout] = pivin
-                basisinds.sort()
-                essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
-
-                self.current_basis_full = basisinds
-                self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
-
-
-                Abeta = self.standard_form_constraint_matrix[:,basisinds]
-                wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
-                w = np.zeros(self.standard_form_constraint_matrix.shape[1])
-                w[basisinds] = wbeta
-
-                ess_vars = all_current_vars[self.current_basis_full]
-
-                oneovertimeto = w*thevs#np.divide(wbeta,ess_vars,out=wbeta.copy(),where = np.abs(ess_vars)>10**-8)
-                numof+=1
-
-                print("========== {} - {} ==========".format("How Bad?",numof))
-                print(max(oneovertimeto))
-                print("====================")
-
-                maxtimes += [max(oneovertimeto)]
-
-                keeptrying = not alldone
-                if numof > 5:
-                    if np.std(maxtimes[-5:]) < 10**-5:
-                        keeptrying = False
-                if numof > 100:
+            keeptrying = not alldone
+            #stop if we've done so well - this will also get us out of any loop.
+            if maxtimes[-1] <= stopat:
+                keeptrying = False
+            elif numof > 100:
+                keeptrying = False
+            elif numof > 5:
+                #stop if we're stuck at the same number
+                if np.std(maxtimes[-5:]) < 10**-5:
                     keeptrying = False
+                #also stop if we're stuck in a loop
+                if maxtimes[-1] in maxtimes[:-1]:
+                    #get the loop:
+                    loopat = np.where(np.array(maxtimes) == maxtimes[-1])[0]
+                    if maxtimes[-1] == min(maxtimes[loopat[0]:loopat[1]]):
+                        keeptrying = False
+                    else:
+                        stopat = min(maxtimes[loopat[0]:loopat[1]])
 
 
-        else:
-            self.feasible = False
+        if numof  == 1:
             UpDateFlag = False
-            print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
+
+        self.current_basis_full = basisinds
+        self.current_basis = getReduced(basisinds,self.num_fluxes,self.standard_form_constraint_matrix)
 
 
         return UpDateFlag
-
+            
 
     def compute_internal_flux(self,master_metabolite_con):
 
