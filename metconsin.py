@@ -261,8 +261,11 @@ def metconsin_sim(desired_models,
             print("Error: No model of species " + mod)
 
 
-    print("Loaded " + str(len(cobra_models)) + " models successfully")
-
+    
+    try:
+        flobj.write("[MetConSIN] Loaded " + str(len(cobra_models)) + " models successfully\n")
+    except:
+        print("[MetConSIN] Loaded " + str(len(cobra_models)) + " models successfully")
 
 
     if media == "minimal":
@@ -278,7 +281,11 @@ def metconsin_sim(desired_models,
         media_input = media
 
     for mod in cobra_models.keys():
-        print(mod," COBRA initial growth rate: ",cobra_models[mod].slim_optimize())
+        cbgr = cobra_models[mod].slim_optimize()
+        try:
+            flobj.write("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
+        except:
+            print("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
 
     #returns dict of surfmods, list of metabolites, and concentration of metabolites.
     # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
@@ -294,7 +301,8 @@ def metconsin_sim(desired_models,
                                                     lb_funs = lb_funs, 
                                                     ub_funs = ub_funs,
                                                     linearScale=linearScale,
-                                                    forceOns=forceOns)
+                                                    forceOns=forceOns,
+                                                    flobj=flobj)
 
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.

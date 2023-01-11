@@ -196,9 +196,9 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_gb: initializing LP\n")
+                flobj.write(self.Name + " [fba_gb] initializing LP\n")
             except:
-                print(self.Name," fba_gb: initializing LP")
+                print(self.Name," [fba_gb] initializing LP")
         growth = gb.Model("growth")
         growth.setParam( 'OutputFlag', False )
         growth.setParam( 'Presolve', 0)
@@ -210,9 +210,9 @@ class SurfMod:
         growth.update()
         if report_activity:
             try:
-                flobj.write(self.Name," fba_gb: Adding constraints\n")
+                flobj.write(self.Name + " [fba_gb] Adding constraints\n")
             except:
-                print(self.Name," fba_gb: Adding constraints")
+                print(self.Name," [fba_gb] Adding constraints")
 
         growth.addMConstr(solver_constraint_matrix,allvars,"<=",bound_rhs)
 
@@ -220,11 +220,11 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_gb: optimizing LP\n")
-                flobj.write(self.Name," fba_gb: optimizing with " + str(len(growth.getConstrs())) + " constraints\n" )
+                flobj.write(self.Name + " [fba_gb] optimizing LP\n")
+                flobj.write(self.Name + " [fba_gb] optimizing with " + str(len(growth.getConstrs())) + " constraints\n" )
             except:
-                print(self.Name," fba_gb: optimizing LP")
-                print(self.Name," fba_gb: optimizing with ",len(growth.getConstrs()) ," constraints" )
+                print(self.Name," [fba_gb] optimizing LP")
+                print(self.Name," [fba_gb] optimizing with ",len(growth.getConstrs()) ," constraints" )
         growth.optimize()
 
 
@@ -234,15 +234,15 @@ class SurfMod:
         if status in statusdic.keys():
             if report_activity:
                 try:
-                    flobj.write(self.Name," fba_gb: LP Status: " +  statusdic[status] + '\n')
+                    flobj.write(self.Name + " [fba_gb] LP Status: " +  statusdic[status] + '\n')
                 except:
-                    print(self.Name," fba_gb: LP Status: ", statusdic[status])
+                    print(self.Name," [fba_gb] LP Status: ", statusdic[status])
         else:
             if report_activity:
                 try:
-                    flobj.write(self.Name," fba_gb: LP Status: Other\n")
+                    flobj.write(self.Name + " [fba_gb] LP Status: Other\n")
                 except:
-                    print(self.Name," fba_gb: LP Status: Other")
+                    print(self.Name," [fba_gb] LP Status: Other")
 
         if status == 2:
 
@@ -256,7 +256,11 @@ class SurfMod:
             # print("Min all_vars0: {}".format(all_vars.min()))
 
             val = growth.getObjective().getValue()
-            print("Initial Growth Rate: {}".format(-val))
+            if report_activity:
+                try:
+                    flobj.write("{} [fba_gb] Initial Growth Rate: {}\n".format(self.Name,-val))
+                except:
+                    print("{} [fba_gb] Initial Growth Rate: {}".format(self.Name,-val))
             dosec = False
 
             if secondobj == "total":
@@ -287,10 +291,20 @@ class SurfMod:
                 growth.optimize()
                 growth.update()
                 # print(growth.status)
+                
                 if growth.status == 2:
-                    print("Secondary Objective Value = {}".format(growth.getObjective().getValue()))
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] Secondary Objective Value = {} \n".format(self.Name,growth.getObjective().getValue()))
+                        except:
+                            print("{} [fba_gb] Secondary Objective Value = {}".format(self.Name,growth.getObjective().getValue()))
                 else: 
-                    print("After secondary optimization status = {}\nIgnoring second optimization.".format(statusdic[growth.status]))
+
+                    try:
+                        flobj.write("{} [fba_gb] After secondary optimization status = {}\nIgnoring second optimization.\n".format(self.Name,statusdic[growth.status]))
+                    except:
+                        print("{} [fba_gb] After secondary optimization status = {}\nIgnoring second optimization.".format(self.Name,statusdic[growth.status]))
+
                     dosec = False
             
 
@@ -307,15 +321,6 @@ class SurfMod:
                 basisinfo =  np.concatenate([np.array(allvars.getAttr(gb.GRB.Attr.VBasis)),np.array([cn.getAttr(gb.GRB.Attr.CBasis) for cn in allconts])])
 
 
-            # print("Min all_vars: {}".format(all_vars.min()))
-            # minvar_loc = np.where(all_vars == all_vars.min())[0]
-            # # print(minvar_loc)
-            # if any(minvar_loc< len(fluxes)):
-            #     print("Minimum occurs in vars")
-            # if any(minvar_loc>=len(fluxes)):
-            #     print("Minimum occurs in slack.")
-
-
             self.essential_basis = (all_vars>self.ezero).nonzero()[0]#
 
 
@@ -327,9 +332,6 @@ class SurfMod:
                     ##the secondary obj. slack is basic. Simply remove it.
                     thebasis = np.where(basisinfo[:-1] == 0)[0]
                 else:
-
-
-
 
                     ##We need to add the secondary obj slack to the basis by pivoting so that we can then remove it (with no replacement)
                     # Really we just need to identify an index we can remove without changing either objective value.
@@ -343,14 +345,22 @@ class SurfMod:
                     new_flxs = np.zeros(augM.shape[1])
                     new_flxs[start_basis] = new_flxsb
 
-                    print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                        except:
+                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
 
                     new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
                     new_total_flux = np.sum(new_flxs[:len(obje)])
-                    print("Start basis growth rate: {}\n Start basis total flux: {}".format(-new_growth_obj,new_total_flux))
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] Start basis growth rate: {}\n Start basis total flux: {}".format(self.Name,-new_growth_obj,new_total_flux))
+                        except:
+                            print("{} [fba_gb] Start basis growth rate: {}\n Start basis total flux: {}".format(self.Name,-new_growth_obj,new_total_flux))
 
                     if np.min(new_flxs)<-10**-6:
-                        print("Start Basis minimum flux: {} at index {}".format(np.min(new_flxs),np.argmin(new_flxs)))
+                        print("{} [fba_gb] Start Basis - negative minimum flux: {} at index {}".format(self.Name,np.min(new_flxs),np.argmin(new_flxs)))
 
                     # neg_flx = np.where(new_flxs<-10**-6)[0]
                     # for nf in neg_flx:
@@ -369,7 +379,11 @@ class SurfMod:
                     choicemaker = np.divide(abs(all_vars[start_basis]),Abarm1,-np.ones_like(Abarm1),where = Abarm1>10**-6)
                     choice = np.where(choicemaker == min(choicemaker[choicemaker>-0.5]))[0][0]
 
-                    print("Removed variable {} = {}.\n Value of lambda: {} \n Value of Abar: {}".format(start_basis[choice],all_vars[start_basis][choice],choicemaker[choice],Abarm1[choice]))
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] Removed variable {} = {}.\n Value of lambda: {} \n Value of Abar: {}\n".format(self.Name,start_basis[choice],all_vars[start_basis][choice],choicemaker[choice],Abarm1[choice]))
+                        except:
+                            print("{} [fba_gb] Removed variable {} = {}.\n Value of lambda: {} \n Value of Abar: {}".format(self.Name,start_basis[choice],all_vars[start_basis][choice],choicemaker[choice],Abarm1[choice]))
 
                     thebasis = np.delete(start_basis,choice)
 
@@ -381,8 +395,12 @@ class SurfMod:
                     new_flxs[fllbasis] = new_flxsb
 
                     self.essential_basis = (new_flxs[:-1]>self.ezero).nonzero()[0]
-
-                    print("Distance from all_vars: {}".format(np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                    
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                        except:
+                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
 
                     fluxes = new_flxs[:len(fluxes)]
                     slkvals = new_flxs[:len(fluxes):-1]
@@ -392,10 +410,14 @@ class SurfMod:
                     new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
                     new_total_flux = np.sum(new_flxs[:len(obje)])
 
-                    print("New growth rate: {}\n New total flux: {}".format(-new_growth_obj,new_total_flux))
+                    if report_activity:
+                        try:
+                            flobj.write("{} [fba_gb] New growth rate: {}\n New total flux: {}\n".format(self.Name,-new_growth_obj,new_total_flux))
+                        except:
+                            print("{} [fba_gb] New growth rate: {}\n New total flux: {}".format(self.Name,-new_growth_obj,new_total_flux))
 
                     if np.min(new_flxs)<-10**-6:
-                        print("New Basis minimum flux: {} at index {}".format(np.min(new_flxs),np.argmin(new_flxs)))
+                        print("{} [fba_gb] New Basis negative minimum flux: {} at index {}".format(self.Name,np.min(new_flxs),np.argmin(new_flxs)))
 
                     # neg_flx = np.where(new_flxs<-10**-6)[0]
                     # for nf in neg_flx:
@@ -420,9 +442,9 @@ class SurfMod:
             if report_activity:
                 minuts,sec = divmod(time.time() - t1, 60)
                 try:
-                    flobj.write(self.Name," fba_gb: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                    flobj.write(self.Name + " [fba_gb] Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
                 except:
-                    print(self.Name," fba_gb: Done in ",int(minuts)," minutes, ",sec," seconds.")
+                    print(self.Name," [fba_gb] Done in ",int(minuts)," minutes, ",sec," seconds.")
 
 
             return -val
@@ -464,7 +486,7 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_clp: initializing LP\n")
+                flobj.write(self.Name + " fba_clp: initializing LP\n")
             except:
                 print(self.Name," fba_clp: initializing LP")
         growth = CyClpSimplex()
@@ -475,7 +497,7 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_clp: Adding constraints\n")
+                flobj.write(self.Name + " fba_clp: Adding constraints\n")
             except:
                 print(self.Name," fba_clp: Adding constraints")
 
@@ -485,8 +507,8 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_clp: optimizing LP\n")
-                flobj.write(self.Name," fba_clp: optimizing with " + str(solver_constraint_matrix.shape[0]) + " constraints\n" )
+                flobj.write(self.Name + " fba_clp: optimizing LP\n")
+                flobj.write(self.Name + " fba_clp: optimizing with " + str(solver_constraint_matrix.shape[0]) + " constraints\n" )
             except:
                 print(self.Name," fba_clp: optimizing LP")
                 print(self.Name," fba_clp: optimizing with ",solver_constraint_matrix.shape[0] ," constraints" )
@@ -501,7 +523,7 @@ class SurfMod:
 
         if report_activity:
             try:
-                flobj.write(self.Name," fba_clp: LP Status: " +  status + '\n')
+                flobj.write(self.Name + " fba_clp: LP Status: " +  status + '\n')
             except:
                 print(self.Name," fba_clp: LP Status: ", status)
 
@@ -632,7 +654,7 @@ class SurfMod:
             if report_activity:
                 minuts,sec = divmod(time.time() - t1, 60)
                 try:
-                    flobj.write(self.Name," fba_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
+                    flobj.write(self.Name + " fba_clp: Done in " + str(int(minuts)) + " minutes, " + str(sec) + " seconds.\n")
                 except:
                     print(self.Name," fba_clp: Done in ",int(minuts)," minutes, ",sec," seconds.")
 
@@ -682,12 +704,23 @@ class SurfMod:
                     print("{}.findWaves: No Pivot Needed".format(self.Name))
             basisinds.sort()
             self.current_basis_full = basisinds
+            if details:
+                try:
+                    flobj.write("{}.findWaves: Solving min-max\n".format(self.Name))
+                except:
+                    print("{}.findWaves: Solving min-max".format(self.Name))
 
-            UpDateFlag = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx)
+            UpDateFlag = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx,details,flobj)
 
             return None
 
         #Otherwise, we can use the simplex algorithm with the "phase-one" problem.
+
+        if details:
+            try:
+                flobj.write("{}.findWaves: Solving phase-1\n".format(self.Name))
+            except:
+                print("{}.findWaves: Solving phase-1".format(self.Name))
 
         basisinds,objval = self.solve_phaseone(Abeta,Vbeta,essential_indx,basisinds,details,bound_rhs_dt,flobj)
 
@@ -700,7 +733,12 @@ class SurfMod:
             #Finally we can choose from bases that will allow forward solving by trying to maximize the linear estimate of the forward solve interval
             #by maximizing the the minimum of the linear estimates for each variable 
             #(linear estimate is possible b/c our solution gives dv/dt and interval ends when v = 0 for any v)
-            _ = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx)
+            if details:
+                try:
+                    flobj.write("{}.findWaves: Solving min-max\n".format(self.Name))
+                except:
+                    print("{}.findWaves: Solving min-max".format(self.Name))
+            _ = self.solve_minmax(basisinds,bound_rhs_dt,all_current_vars,essential_indx,details,flobj)
 
 
 
@@ -728,7 +766,10 @@ class SurfMod:
         pivcnt = 0
         if details:
             objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
-            print("{}.findWaves: Initial Objective Value of Phase-0 Problem: {}".format(self.Name,objval))
+            try:
+                flobj.write("{}.solve_phase1: Initial Objective Value of Phase-0 Problem: {}".format(self.Name,objval))
+            except:
+                print("{}.solve_phase1: Initial Objective Value of Phase-0 Problem: {}".format(self.Name,objval))
         changing = np.ones(10)
         btol = 10**-8
         while (((not alldone) and (pivcnt < 1000)) and (np.mean(changing)>btol)):
@@ -737,7 +778,7 @@ class SurfMod:
             pivout_ind = basisinds[pivout]
 
             if pivout_ind in self.essential_basis and pivout_ind != pivin:
-                print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                print("{}.solve_phase1: What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(self.Name,pivout_ind,pivout,pivout in essential_indx))
                 sys.exit()
             basisinds[pivout] = pivin
             changing[1:] = changing[:-1]
@@ -748,22 +789,22 @@ class SurfMod:
                 objval = np.linalg.solve(Aplus[:,basisinds],bound_rhs_dt)[min_nonessential]
                 if details:
                     try:
-                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
+                        flobj.write("{}.solve_phase1: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
                     except:
-                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
+                        print("{}.solve_phase1: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,objval))
             else:
                 objval = 0
                 if details:
                     try:
-                        flobj.write("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
+                        flobj.write("{}.solve_phase1: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
                     except:
-                        print("{}.findWaves: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
+                        print("{}.solve_phase1: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt+1,pivin,pivout_ind,0))
         
         
             pivcnt += 1
         return basisinds,objval
 
-    def solve_minmax(self,basisinds,bound_rhs_dt,all_current_vars,essential_indx):
+    def solve_minmax(self,basisinds,bound_rhs_dt,all_current_vars,essential_indx,details,flobj,constrained = False):
 
         keeptrying = True
         numof = 0
@@ -776,26 +817,31 @@ class SurfMod:
         oneovertimeto = thevs*w
 
 
-        print("========== {} ==========".format("How Bad (start)?"))
-        print(max(oneovertimeto))
-        print("====================")
+        # print("========== {} ==========".format("How Bad (start)?"))
+        # print(max(oneovertimeto))
+        # print("====================")
 
         maxtimes = [max(oneovertimeto)]
 
 
-        stopat = 0
+        stopat = 10**-10
+
+        pivcnt = 0
 
         while keeptrying:
             UpDateFlag = True
-            
-            pivin,pivout,alldone,_ = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
+            if constrained:
+                pivin,pivout,alldone,_ = minmaxpivot_constrained(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
+            else:
+                pivin,pivout,alldone,_ = minmaxpivot(w,thevs,self.standard_form_constraint_matrix,basisinds,bound_rhs_dt,essential_indx)
             pivout_ind = basisinds[pivout]
             if pivout_ind in self.essential_basis and pivout_ind != pivin:
-                print("What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(pivout_ind,pivout,pivout in essential_indx))
+                print("{}.solve_minmax: What's wrong with index {}\nThats {} in beta\nIs that in the list? {}".format(self.Name,pivout_ind,pivout,pivout in essential_indx))
                 sys.exit()
             basisinds[pivout] = pivin
             basisinds.sort()
             essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])
+
 
             Abeta = self.standard_form_constraint_matrix[:,basisinds]
             wbeta = np.linalg.solve(Abeta,bound_rhs_dt)
@@ -805,10 +851,17 @@ class SurfMod:
             oneovertimeto = w*thevs#
             numof+=1
 
-            print("========== {} - {} ==========".format("How Bad?",numof))
-            print(max(oneovertimeto))
-            print("====================")
+            # print("========== {} - {} ==========".format("How Bad?",numof))
+            # print(max(oneovertimeto))
+            # print("====================")
             maxtimes += [max(oneovertimeto)]
+
+            pivcnt += 1
+            if details:
+                try:
+                    flobj.write("{}.solve_minmax: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {} \n".format(self.Name,pivcnt,pivin,pivout_ind,maxtimes[-1]))
+                except:
+                    print("{}.solve_minmax: Pivot number {}, Pivot In: {}, Pivot Out: {}, Objective: {}".format(self.Name,pivcnt,pivin,pivout_ind,maxtimes[-1]))
 
             keeptrying = not alldone
             #stop if we've done so well - this will also get us out of any loop.
@@ -1138,7 +1191,7 @@ def minmaxpivot_constrained(w,v,A,beta,b,muststay):
     ### Now add the new constraints onto A,b
 
     Apl = np.append(A,np.zeros(A.shape),axis = 1)
-    eyeye = np.concatenate([np.eye(A.shape[1]),np.eye(A.shape[1])],axis = 1)
+    eyeye = np.concatenate((np.eye(A.shape[1]),np.eye(A.shape[1])),axis = 1)
     Apl = np.append(Apl,eyeye,axis = 0)
 
     bpl = np.append(b,np.array([smax]*A.shape[1]))
@@ -1155,7 +1208,7 @@ def minmaxpivot_constrained(w,v,A,beta,b,muststay):
     c = np.zeros(Apl.shape[1])
     c[maxind] = 1#v[maxind]
     #compute reduced costs
-    cbar = c - np.dot(c[beta].T,Abar)
+    cbar = c - np.dot(c[betapl].T,Abar)
 
     #get the possible pivot ins
     negcbareta = np.array([i for i in eta if cbar[i] < 0])

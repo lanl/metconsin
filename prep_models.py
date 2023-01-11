@@ -14,7 +14,8 @@ def prep_cobrapy_models(models,
                         met_filter_sense = "exclude", 
                         lb_funs = "constant", 
                         ub_funs = "linearRand",
-                        linearScale = 1.0):
+                        linearScale = 1.0,
+                        flobj = None):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
@@ -79,7 +80,7 @@ def prep_cobrapy_models(models,
                 exchng_metabolite_names_flt = [met for met in exchng_metabolite_names if met in met_filter]
             else:
                 exchng_metabolite_names_flt = exchng_metabolite_names
-                print("Must specify sense of metabolite filter - exclude or include.\n No filtering done.")
+                print("[prep_cobrapy_models] Must specify sense of metabolite filter - exclude or include.\n No filtering done.")
             exchng_metabolite_ids_flt = [metid for metid in exchng_metabolite_ids if model.metabolites.get_by_id(metid).name in exchng_metabolite_names_flt]
             exchng_reactions_flt = [rxid for rxid in exchng_reactions if all([metid in exchng_metabolite_ids_flt for metid in model.reactions.get_by_id(rxid).reactants])]
 
@@ -176,7 +177,7 @@ def prep_cobrapy_models(models,
         elif np.all(EyE == np.eye(EyE.shape[0])):#else influx = -gammaStar*v
             GammaStar = Gamma.loc[np.array(metabids[model.name]),internal_reactions]
         else:
-            print(model.name,": Left of GammaStar is not +/- identity, problem with block form.")
+            print("[prep_cobrapy_models] ",model.name,": Left of GammaStar is not +/- identity, problem with block form.")
             return None
 
 
@@ -208,68 +209,98 @@ def prep_cobrapy_models(models,
                 if modelkey in upper_bound_functions_dt.keys():
                     exubdt = np.array([upper_bound_functions_dt[modelkey][met] if met in upper_bound_functions_dt[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
                 else:
-                    print("Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
+                    print("[prep_cobrapy_models] Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
                     return None
             elif upper_bound_functions[modelkey] == "constant":
                 uftype = "Constant"
-                print(model.name, " Upper Bounds: Using constant uptake")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using constant uptake\n".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] {} Upper Bounds: Using constant uptake".format(modelkey))
                 exub = np.array([lambda x,val=master_y0[metab]: val for metab in metaabs[model.name]])
                 exubdt = np.array([lambda x : 0  for i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "linearRand":
                 uftype = "Linear"
-                print(modelkey, " Upper Bounds: Using linear uptake with random coefficients")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with random coefficients\n".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Upper Bounds: Using linear uptake with random coefficients")
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exub = np.array([lambda x,i=i,r = rands[i]: r*x[i] for i in range(len(metaabs[model.name]))])
                 exubdt = np.array([lambda x,xd, i=i,r=rands[i] : r*xd[i] for i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "linearScale":
                 uftype = "Linear"
-                print(modelkey, " Upper Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with uniform coefficients = {}\n".format(modelkey,linearScale))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Upper Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))
                 exub = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
                 exubdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "hill1Rand":
                 uftype = "Hill"
-                print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd random")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd random")
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exub = np.array([lambda x,i=i,r=rands[i]: x[i]/(r + x[i]) for i in range(len(metaabs[model.name]))])
                 exubdt = np.array([lambda x,xd,i=i,r=rands[i]: xd[i]*r/((r+x[i])**2) for i in range(len(metaabs[model.name]))])
             elif upper_bound_functions[modelkey] == "hill11":
                 uftype = "Hill"
-                print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
                 exub = np.array([lambda x,i=i: x[i]/(1 + x[i]) for i in range(len(metaabs[model.name]))])
                 exubdt = np.array([lambda x,xd,i=i: xd[i]*1/((1+x[i])**2) for i in range(len(metaabs[model.name]))])
             else:
-                print("Unknown function type {}. Prep CobraPy Model failed.".format(upper_bound_functions[modelkey]))
+                print("[prep_cobrapy_models] Unknown function type {}. Prep CobraPy Model failed.".format(upper_bound_functions[modelkey]))
                 return None
 
         elif ub_funs == "constant":
             uftype = "Constant"
-            print(model.name, " Upper Bounds: Using constant uptake")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using constant uptake\n".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Upper Bounds: Using constant uptake".format(modelkey))
             exub = np.array([lambda x,val=master_y0[metab]: val for metab in metaabs[model.name]])
             exubdt = np.array([lambda x,xd : 0  for i in range(len(metaabs[model.name]))])
         elif ub_funs == "linearRand":
             uftype = "Linear"
-            print(modelkey, " Upper Bounds: Using linear uptake with random coefficients")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with random coefficients\n".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with random coefficients".format(modelkey))
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exub = np.array([lambda x,i=i,r = rands[i]: r*x[i] for i in range(len(metaabs[model.name]))])
             exubdt = np.array([lambda x,xd, i=i,r=rands[i] : r*xd[i] for i in range(len(metaabs[model.name]))])
         elif ub_funs == "linearScale":
             uftype = "Linear"
-            print(modelkey, " Upper Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))
+            try:
+                flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with uniform coefficients = {}\n".format(modelkey,linearScale))
+            except:
+                print("[prep_cobrapy_models] {} Upper Bounds: Using linear uptake with uniform coefficients = {}".format(modelkey,linearScale))
             exub = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
             exubdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
         elif ub_funs == "hill1Rand":
             uftype = "Hill"
-            print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd random")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exub = np.array([lambda x,i=i,r=rands[i]: x[i]/(r + x[i]) for i in range(len(metaabs[model.name]))])
             exubdt = np.array([lambda x,xd,i=i,r=rands[i]: xd[i]*r/((r+x[i])**2) for i in range(len(metaabs[model.name]))])
         elif ub_funs == "hill11":
             uftype = "Hill"
-            print(modelkey, " Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Upper Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
             exub = np.array([lambda x,i=i: x[i]/(1 + x[i]) for i in range(len(metaabs[model.name]))])
             exubdt = np.array([lambda x,xd,i=i: xd[i]*1/((1+x[i])**2) for i in range(len(metaabs[model.name]))])
         else:
-            print("Unknown function type {}. Prep CobraPy Model failed.".format(ub_funs))
+            print("[prep_cobrapy_models] {} Unknown function type {}. Prep CobraPy Model failed.".format(modelkey,ub_funs))
             return None
 
 
@@ -283,68 +314,98 @@ def prep_cobrapy_models(models,
                 if modelkey in upper_bound_functions_dt.keys():
                     exlbdt = np.array([lower_bound_functions_dt[modelkey][met] if met in lower_bound_functions_dt[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
                 else:
-                    print("Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
+                    print("[prep_cobrapy_models] Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
                     return None
             elif lower_bound_functions[modelkey] == "constant":
                 lftype = "Constant"
-                print(model.name, " Lower Bounds: Using constant uptake")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using constant uptake\n".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] {} Lower Bounds: Using constant uptake".format(modelkey))
                 exlb = np.array([lambda x,val = model.reactions.get_by_id(exmet_to_exrn[model.name][metab]).upper_bound : val  for metab in metabids[model.name]])
                 exlbdt = np.array([lambda x,xd : 0  for i in range(len(metabids[model.name]))])
             elif lower_bound_functions[modelkey] == "linearRand":
                 lftype = "Linear"
-                print(model.name, " Lower Bounds: Using linear uptake with random coefficients")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with random coefficients\n".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Lower Bounds: Using linear uptake with random coefficients")
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exlb = np.array([lambda x,i=i,r=rands[i] : r*x[i] for i in range(len(metaabs[model.name]))])
                 exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: r*xd[i] for i in range(len(metaabs[model.name]))])
             elif lower_bound_functions[modelkey] == "linearScale":
                 lftype = "Linear"
-                print(model.name, " Lower Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with uniform coefficients = {}\n".format(modelkey,linearScale))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Lower Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))                
                 exlb = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
                 exlbdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
             elif lower_bound_functions[modelkey] == "hill1Rand":
                 lftype = "Hill"
-                print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd random")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Lower Bounds: Using hill function uptake with exponent = 1, Kd random")
                 rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
                 exlb = np.array([lambda x,i=i,r=rands[i]: x[i]/(r + x[i]) for i in range(len(metaabs[model.name]))])
                 exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: xd[i]*r/((r+x[i])**2) for i in range(len(metaabs[model.name]))])
             elif lower_bound_functions[modelkey] == "hill11":
                 lftype = "Hill"
-                print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
+                try:
+                    flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
+                except:
+                    print("[prep_cobrapy_models] ",modelkey, " Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
                 exlb = np.array([lambda x,i=i: x[i]/(1 + x[i]) for i in range(len(metaabs[model.name]))])
                 exlbdt = np.array([lambda x,xd,i=i: xd[i]*1/((1+x[i])**2) for i in range(len(metaabs[model.name]))])
             else:
-                print(model.name," Lower Bounds Unknown function type {}. Prep CobraPy Model failed.".format(lower_bound_functions[modelkey]))
+                print("[prep_cobrapy_models]",model.name," Lower Bounds Unknown function type {}. Prep CobraPy Model failed.".format(lower_bound_functions[modelkey]))
                 return None
 
         elif lb_funs == "constant":
             lftype = "Constant"
-            print(model.name, " Lower Bounds: Using constant uptake")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using constant uptake\n".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Lower Bounds: Using constant uptake".format(modelkey))
             exlb = np.array([lambda x,val = model.reactions.get_by_id(exmet_to_exrn[model.name][metab]).upper_bound : val  for metab in metabids[model.name]])
             exlbdt = np.array([lambda x,xd : 0  for i in range(len(metabids[model.name]))])
         elif lb_funs == "linearRand":
             lftype = "Linear"
-            print(model.name, " Lower Bounds: Using linear uptake with random coefficients")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with random coefficients\n".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with random coefficients".format(modelkey))
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exlb = np.array([lambda x,i=i,r=rands[i] : r*x[i] for i in range(len(metaabs[model.name]))])
             exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: r*xd[i] for i in range(len(metaabs[model.name]))])
         elif lb_funs == "linearScale":
             lftype = "Linear"
-            print(model.name, " Lower Bounds: Using linear uptake with uniform coefficients = {}".format(linearScale))
+            try:
+                flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with uniform coefficients = {}\n".format(modelkey,linearScale))
+            except:
+                print("[prep_cobrapy_models] {} Lower Bounds: Using linear uptake with uniform coefficients = {}".format(modelkey,linearScale))
             exlb = np.array([lambda x,i=i: linearScale*x[i] for  i in range(len(metaabs[model.name]))])
             exlbdt = np.array([lambda x,xd,i=i: linearScale*xd[i] for  i in range(len(metaabs[model.name]))])
         elif lb_funs == "hill1Rand":
             lftype = "Hill"
-            print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd random")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd random".format(modelkey))
             rands = [np.random.rand() for i in range(len(metaabs[model.name]))]
             exlb = np.array([lambda x,i=i,r=rands[i]: x[i]/(r + x[i]) for i in range(len(metaabs[model.name]))])
             exlbdt = np.array([lambda x,xd,i=i,r=rands[i]: xd[i]*r/((r+x[i])**2) for i in range(len(metaabs[model.name]))])
         elif lb_funs == "hill11":
             lftype = "Hill"
-            print(model.name, " Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1")
+            try:
+                flobj.write("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
+            except:
+                print("[prep_cobrapy_models] {} Lower Bounds: Using hill function uptake with exponent = 1, Kd uniformly = 1".format(modelkey))
             exlb = np.array([lambda x,i=i: x[i]/(1 + x[i]) for i in range(len(metaabs[model.name]))])
             exlbdt = np.array([lambda x,xd,i=i: xd[i]*1/((1+x[i])**2) for i in range(len(metaabs[model.name]))])
         else:
-            print(model.name," Lower Bounds Unknown function type {}. Prep CobraPy Model failed.".format(lftype))
+            print("[prep_cobrapy_models] {} Lower Bounds Unknown function type {}. Prep CobraPy Model failed.".format(modelkey,lftype))
             return None
 
         #SurfMod(gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative = [],exterior_ubfuns_derivatives = [],exchanged_metabolites,Name = None,deathrate = 0)

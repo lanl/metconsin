@@ -88,12 +88,12 @@ def surfin_fba(models,x0,y0,endtime,
         #fba_solver sets model.essential_basis,model.current_basis_full,model.inter_flux
         model = models[i]
         if solver == 'gurobi':
-            obval = model.fba_gb(y0)#,secondobj = None)
+            obval = model.fba_gb(y0,flobj = flobj)#,secondobj = None)
         elif solver == 'clp':
-            obval = model.fba_clp(y0)
+            obval = model.fba_clp(y0,flobj = flobj)
         if report_activity:
             try:
-                flobj.write(model.Name, " Surfin initial growth rate: ",obval)
+                flobj.write("{} Surfin initial growth rate: {}".format(model.Name,obval))
             except:
                 print(model.Name, " Surfin initial growth rate: ",obval)
         fluxes[model.Name] = model.inter_flux
@@ -104,7 +104,7 @@ def surfin_fba(models,x0,y0,endtime,
     for model in models:
         
         #findWave sets model.current_basis_full, model.current_basis
-        model.findWave(y0,ydot0,details = fwreport)
+        model.findWave(y0,ydot0,details = fwreport,flobj = flobj)
 
         if debugging:
             print("------------------------------------\n\n     Debug  \n\n-----------------------------------------")
@@ -153,12 +153,12 @@ def surfin_fba(models,x0,y0,endtime,
         if all([mod.feasible for mod in models]):
             bInitial = evolve_community(0,s0,models)
             try:
-                flobj.write([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
+                flobj.write("{} Bases intial growth rate : {}".format([model.Name for model in models],bInitial[:len(models)]/np.array(x0)))
             except:
                 print([model.Name for model in models], " Bases intial growth rate :", bInitial[:len(models)]/np.array(x0))
         else:
             try:
-                flobj.write([model.Name for model in models], " Initial feasible? :", [mod.feasible for mod in models])
+                flobj.write("{} Initial feasible? : {}".format([model.Name for model in models],[mod.feasible for mod in models]))
             except:
                 print([model.Name for model in models], " Initial feasible? :", [mod.feasible for mod in models])
 
@@ -217,9 +217,9 @@ def surfin_fba(models,x0,y0,endtime,
                             print("Previously Forced To {}".format(-model.internal_bounds[fon[1]-2*model.num_exch_rxns]))
                             model.internal_bounds[fon[1]-2*model.num_exch_rxns] = 0
                         if solver == 'gurobi':
-                            obval = model.fba_gb(s0[len(models):])#,secondobj = None)
+                            obval = model.fba_gb(s0[len(models):],flobj = flobj)#,secondobj = None)
                         elif solver == 'clp':
-                            obval = model.fba_clp(s0[len(models):])
+                            obval = model.fba_clp(s0[len(models):],flobj = flobj)
                 stops += 1
 
 
@@ -255,7 +255,7 @@ def surfin_fba(models,x0,y0,endtime,
         if t_c < endtime:
             if report_activity:
                 try:
-                    flobj.write("surfin_fba: Finding New Basis at time ",t_c," \n")
+                    flobj.write("surfin_fba: Finding New Basis at time {} \n".format(t_c))
                 except:
                     print("surfin_fba: Finding New Basis at time ",t_c)
             yd = evolve_community(t_c,s0,models)[len(models):]
@@ -276,7 +276,7 @@ def surfin_fba(models,x0,y0,endtime,
                 model.essential_basis = (all_vars>model.ezero).nonzero()[0]
 
 
-                updateflg = model.findWave(y[-1][:,-1],yd,details = fwreport)
+                updateflg = model.findWave(y[-1][:,-1],yd,details = fwreport,flobj = flobj)
                 if save_bases:
                     if updateflg:
                         bases[model.Name] += [(t_c,model.current_basis[2])]
