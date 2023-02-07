@@ -15,7 +15,8 @@ def prep_cobrapy_models(models,
                         lb_funs = "constant", 
                         ub_funs = "linearRand",
                         linearScale = 1.0,
-                        flobj = None):
+                        flobj = None,
+                        deathrates = None):
 
 
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
@@ -39,6 +40,8 @@ def prep_cobrapy_models(models,
         lower_bound_functions_dt = {}
     if met_filter == None:
         met_filter = []
+    if deathrates == None:
+        deathrates = dict([(modky,0) for modky in models.keys()])
 
 
     from cobra import util
@@ -410,7 +413,7 @@ def prep_cobrapy_models(models,
 
         #SurfMod(gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative = [],exterior_ubfuns_derivatives = [],exchanged_metabolites,Name = None,deathrate = 0)
 
-        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
+        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,deathrate = deathrates[modelkey],lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
 
 
     return surfmods,masterlist,master_y0

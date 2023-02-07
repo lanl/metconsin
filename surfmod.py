@@ -873,7 +873,8 @@ class SurfMod:
                 #stop if we're stuck at the same number
                 if np.std(maxtimes[-5:]) < 10**-5:
                     keeptrying = False
-                #also stop if we're stuck in a loop
+            #also stop if we're stuck in a loop
+            elif numof > 2:
                 if maxtimes[-1] in maxtimes[:-1]:
                     #get the loop:
                     loopat = np.where(np.array(maxtimes) == maxtimes[-1])[0]
@@ -892,7 +893,6 @@ class SurfMod:
 
         return UpDateFlag
             
-
     def compute_internal_flux(self,master_metabolite_con):
 
         '''
@@ -912,7 +912,7 @@ class SurfMod:
         all_vars = np.zeros(self.num_fluxes)#np.zeros(self.total_var)
         all_vars[beta[1]] = fl_beta
 
-        self.inter_flux = all_vars
+        self.inter_flux = all_vars#compute_if(bound_rhs.astype(np.float64),self.current_basis,self.num_fluxes)
 
 
     def compute_slacks(self,master_metabolite_con):
@@ -936,6 +936,26 @@ class SurfMod:
 
         self.slack_vals = all_slks
 
+@jit(nopython=True)
+def compute_if(bound_rhs,current_basis,num_fluxes):
+    '''
+    Compute current fluxes (not including slacks) from current basis & metabolite concentration - uses reduced basis.
+    '''
+    # metabolite_con = master_metabolite_con[ExchangeOrder]
+    # exchg_bds = np.array([bd(metabolite_con) for bd in exchange_bounds])
+    # bound_rhs = np.concatenate([exchg_bds,internal_bounds])
+
+    Q,R,beta = current_basis
+
+    if len(beta[0]):
+        fl_beta = np.linalg.solve(R,np.dot(Q.T,bound_rhs[beta[0]]))
+    else:
+        fl_beta = np.empty(0,np.float64)
+
+    all_vars = np.zeros(num_fluxes)#np.zeros(self.total_var)
+    all_vars[beta[1]] = fl_beta
+
+    return all_vars
 
 def getReduced(basisinds,num_fluxes,A):
     rowsToDelete = np.array([i-num_fluxes for i in basisinds if i>=num_fluxes])

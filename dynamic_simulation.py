@@ -8,7 +8,7 @@ import numpy as np
 from scipy.optimize import root_scalar
 
 
-def evolve_community(t,s,models):
+def evolve_community(t,s,models,metabolite_in,metabolite_out):
     x = s[:len(models)]
     y = s[len(models):]
     xdot = np.zeros_like(x)
@@ -17,14 +17,16 @@ def evolve_community(t,s,models):
     for i in range(len(models)):
         model = models[i]
         model.compute_internal_flux(y)
-        xdot[i] = x[i]*np.dot(-model.objective,model.inter_flux) - model.deathrate
+        xdot[i] = x[i]*np.dot(-model.objective,model.inter_flux) - x[i]*model.deathrate
         ydi = np.zeros_like(ydot)
         ydi[model.ExchangeOrder] = -x[i]*np.dot(model.GammaStar,model.inter_flux)#Influx = GammaStar*v
         ydot = ydot + ydi
+    
+    ydot = ydot + metabolite_in - y*metabolite_out
 
     return np.concatenate([xdot,ydot])
 
-def all_vs(t,s,models):
+def all_vs(t,s,models,yi,yo):
     y = s[len(models):]
     v = np.array([])
     for i in range(len(models)):
@@ -63,7 +65,10 @@ def surfin_fba(models,x0,y0,endtime,
                 report_activity = True, 
                 flobj = None,
                 fwreport = False,
-                debugging = False):
+                debugging = False,
+                inflow = None,
+                outflow = None
+                ):
 
 
     '''
@@ -72,13 +77,25 @@ def surfin_fba(models,x0,y0,endtime,
     
 
 
-
     t1 = time.time()
     if report_activity:
         try:
             flobj.write("surfin_fba: Initializing Simulation\n")
         except:
             print("surfin_fba: Initializing Simulation")
+    
+    try:
+        if len(inflow) != len(y0):
+            inflow = np.zeros_like(y0)
+    except:
+        if inflow == None:
+            inflow = np.zeros_like(y0)
+    try:
+        if len(outflow) != len(y0):
+            outflow = np.zeros_like(y0)
+    except:
+        if outflow == None:
+            outflow = np.zeros_like(y0)
 
     # model_names = [model.Name for model in models]
     s0 = np.concatenate([x0,y0])
@@ -100,6 +117,8 @@ def surfin_fba(models,x0,y0,endtime,
         ydi = np.zeros_like(ydot0)
         ydi[model.ExchangeOrder] = -x0[i]*np.dot(model.GammaStar,model.inter_flux)
         ydot0 += ydi
+    
+    ydot0 = ydot0 + inflow - y0*outflow
 
     for model in models:
         
@@ -151,7 +170,7 @@ def surfin_fba(models,x0,y0,endtime,
 
     if report_activity:
         if all([mod.feasible for mod in models]):
-            bInitial = evolve_community(0,s0,models)
+            bInitial = evolve_community(0,s0,models,inflow,outflow)
             try:
                 flobj.write("{} Bases intial growth rate : {}".format([model.Name for model in models],bInitial[:len(models)]/np.array(x0)))
             except:
@@ -184,15 +203,17 @@ def surfin_fba(models,x0,y0,endtime,
                 catch_badLP = True
         if catch_badLP:
             break
-        if report_activity:
-            try:
-                flobj.write("surfin_fba: Solving IVP\n")
-            except:
-                print("surfin_fba: Solving IVP")
+
         all_vs.terminal = True
         # all_vs.direction = -1
         if all([mod.feasible for mod in models]):
-            interval = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,), method='RK45',events=all_vs,dense_output = True)
+            ode_solver = "Radau"
+            if report_activity:
+                try:
+                    flobj.write("surfin_fba: Solving IVP using {} solver\n".format(ode_solver))
+                except:
+                    print("surfin_fba: Solving IVP using {} solver".format(ode_solver))
+            interval = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,inflow,outflow),events=all_vs,dense_output = True, method=ode_solver)
             if interval.status == -1:
                 break
             stptime = find_stop(t_c, interval.t[-1],interval.sol,models)#interval.t[-1]#find_event(interval,models)
@@ -258,7 +279,7 @@ def surfin_fba(models,x0,y0,endtime,
                     flobj.write("surfin_fba: Finding New Basis at time {} \n".format(t_c))
                 except:
                     print("surfin_fba: Finding New Basis at time ",t_c)
-            yd = evolve_community(t_c,s0,models)[len(models):]
+            yd = evolve_community(t_c,s0,models,inflow,outflow)[len(models):]
             basis_change += [t_c]
             for model in models:
 

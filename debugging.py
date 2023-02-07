@@ -45,8 +45,8 @@ if __name__ == "__main__":
     else:
       print("Error: No model of species " + mod)
 
-
-  models,metlist,y0dict = pr.prep_cobrapy_models(cobra_models,ub_funs = "linearScale",forceOns=True)#"linearRand")#hill11
+  drs = dict([(mod,2) for mod in desired_models])
+  models,metlist,y0dict = pr.prep_cobrapy_models(cobra_models,ub_funs = "linearScale",forceOns=True,deathrates=drs)#"linearRand")#hill11
 
   # y0dict['1,5-Diaminopentane'] =  0.9042818633990344
   # y0dict['Acetate'] =  0.6377115946128331
@@ -85,8 +85,8 @@ if __name__ == "__main__":
 
   for ky,model in models.items():
 
-
     model.ezero  = 10**-8
+
 
   testInitial = False
   if testInitial:
@@ -208,8 +208,15 @@ if __name__ == "__main__":
   if testSimulation:
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Dynamic Simulation \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
-    endtime = 0.5
-    dynamics = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,endtime,fwreport= True,solver = 'gurobi',resolution=0.001)#,solver = 'clp')
+    endtime = 50
+    dynamics = surf.surfin_fba(list(models.values()),[1]*len(desired_models),y0,endtime,
+    fwreport= True,
+    solver = 'gurobi',
+    resolution=0.001,
+    inflow = 10*np.ones_like(y0),
+    outflow = 0*np.ones_like(y0))#,solver = 'clp')
+
+
     # print(dynamics['t'], '\n\n',dynamics['x'])
     print("Final x: {}".format(dynamics['x'][:,-1]))
     print("Basis Times: {}".format(dynamics['bt']))

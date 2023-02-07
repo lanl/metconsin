@@ -13,6 +13,8 @@ def metconsin_network(desired_models,
     model_info_file, 
     save_folder,
     media = None,
+    metabolite_inflow = None,
+    metabolite_outflow = None,
     solver = 'gurobi',
     report_activity = True,
     upper_bound_functions = None,
@@ -113,6 +115,19 @@ def metconsin_network(desired_models,
     y0 = np.array([y0dict[met] for met in metlist])
     ydot0 = np.zeros_like(y0)
 
+    try:
+        if len(metabolite_inflow) != len(y0):
+            metabolite_inflow = np.zeros_like(y0)
+    except:
+        if metabolite_inflow == None:
+            metabolite_inflow = np.zeros_like(y0)
+    try:
+        if len(metabolite_outflow) != len(y0):
+            metabolite_outflow = np.zeros_like(y0)
+    except:
+        if metabolite_outflow == None:
+            metabolite_outflow = np.zeros_like(y0)
+
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Compute FBA \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     for ky,model in models.items():
 
@@ -160,7 +175,7 @@ def metconsin_network(desired_models,
         modellist = [model for model in models.values()]
         dynamics = pd.DataFrame(index = [mod.Name for mod in modellist]+list(metlist))
         s0 = np.concatenate([np.ones(len(modellist)),y0])
-        dynamics_vals = surf.evolve_community(0,s0,modellist)
+        dynamics_vals = surf.evolve_community(0,s0,modellist,metabolite_inflow,metabolite_outflow)
         dynamics["s0"] = s0
         dynamics["sdot0"] = dynamics_vals
 
@@ -199,6 +214,9 @@ def metconsin_network(desired_models,
 
 def metconsin_sim(desired_models,
     model_info_file,
+    metabolite_inflow = None,
+    metabolite_outflow = None,
+    model_deathrates = None,
     solver = 'gurobi',
     flobj = None,
     endtime = 10**-2,
@@ -291,6 +309,7 @@ def metconsin_sim(desired_models,
     # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
 
     models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,
+                                                    deathrates=model_deathrates,
                                                     upper_bound_functions = upper_bound_functions,
                                                     lower_bound_functions = lower_bound_functions,
                                                     upper_bound_functions_dt = upper_bound_functions_dt,
@@ -317,6 +336,8 @@ def metconsin_sim(desired_models,
 
 
     dynamics = surf.surfin_fba(model_list,x0,y0,endtime,
+                                inflow = metabolite_inflow,
+                                outflow = metabolite_outflow,
                                 solver = solver,
                                 save_bases = True,
                                 track_fluxes = track_fluxes,
