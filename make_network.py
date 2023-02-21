@@ -10,7 +10,7 @@ import scipy as sp
 ###### Build a species-metabolite interaction network (that's not hard)
 #### Then build a species-species network (that's fuzzier or harder)
 
-def species_metabolite_network(metlist,metcons,community,report_activity = True,flobj = None):
+def species_metabolite_network(metlist,metcons,community,report_activity = True,flobj = None,selfloop = False):
 
     #let community be dict or listlike - going to use as listlike
     if isinstance(community,dict):
@@ -61,6 +61,16 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         metabolite_con = metcons[model.ExchangeOrder]
         exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
         bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
+
+        if selfloop:
+            internal_basic = np.where(beta[0] >= len(model.exchanged_metabolites))
+            intrinsic_growth = np.dot(growth_vec[internal_basic],bound_rhs[internal_basic])
+
+            tmp1 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,"None",0,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net.columns)
+            met_med_net = met_med_net.append(tmp1,ignore_index = True)
+            tmp2 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net_summary.columns)
+            met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
+
 
         for j in range(len(model.exchanged_metabolites)):
 
@@ -168,15 +178,20 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
 def trim_network(edges,nodes,dynamics):
     newnodes = nodes.copy()
     newedges = edges.copy()
+    dropped = 0
+    messedup = 0
     for nd in dynamics.index:
         if nd in newnodes.index:
-            try:
-                if max(dynamics.loc[nd]) < 10**-6:
-                    newnodes.drop(index = nd, inplace = True)
-                    newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
-            except:
+            # try:
+            if max(dynamics.loc[nd]) < 10**-6:
                 newnodes.drop(index = nd, inplace = True)
                 newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
+                dropped += 1
+            # except:
+            #     newnodes.drop(index = nd, inplace = True)
+            #     newedges = newedges.loc[(newedges["Source"] != nd) & (newedges["Target"] != nd)]
+            #     messedup += 1
+    # print("Dropped {}, Messed up {}".format(dropped,messedup))
     return newedges,newnodes
 
 
@@ -189,22 +204,32 @@ def heuristic_ss(metmed,nodes,report_activity = False):
     edge_table = pd.DataFrame(columns = ["Source","Target","Weight","Metabolites","ABSWeight","SignWeight","Distance","ABSRootWeight","SignedRootWeight"],dtype = object)
     adjacency = pd.DataFrame(columns = nodetable["Name"],index = nodetable["Name"])
     if len(metmed):
+        metmed_woself = metmed[metmed["Source"] != metmed["Target"]]
+        selfloops = metmed[metmed["Source"]==metmed["Target"]]
         for tgnd in adjacency.index:
             if report_activity:
                 print("Target: {}".format(tgnd))
             #rows will be targets
-            allmediators = metmed[metmed["Target"]==tgnd]#list of metabolites that effect it.
-            allsrces = metmed[[(tg in allmediators["Source"].values) for tg in metmed["Target"]]]#list of sources
+            allmediators = metmed_woself[metmed_woself["Target"]==tgnd]#list of metabolites that effect it.
+            allsrces = metmed_woself[[(tg in allmediators["Source"].values) for tg in metmed_woself["Target"]]]#list of sources for those metabolites
             for srcnd in np.unique(allsrces["Source"].values):
-                step1s = allsrces[allsrces["Source"]==srcnd]
-                mediators = step1s["Target"].values
-                weight = 0
-                for rw in step1s.index:
-                    stp2 = allmediators[allmediators["Source"] == step1s.loc[rw,"Target"]]["Weight"].values
-                    weight += step1s.loc[rw,"Weight"]*sum(stp2)
-                adjacency.loc[tgnd,srcnd] = weight
-                if abs(weight)>0:
-                    edge_table.loc["{}->{}".format(srcnd,tgnd)] = [srcnd,tgnd,weight,list(mediators),abs(weight),np.sign(weight),1/abs(weight),np.sqrt(abs(weight)),np.sign(weight)*np.sqrt(abs(weight))]
+                if srcnd != tgnd:
+                    step1s = allsrces[allsrces["Source"]==srcnd]
+                    mediators = step1s["Target"].values
+                    weight = 0
+                    for rw in step1s.index:
+                        stp2 = allmediators[allmediators["Source"] == step1s.loc[rw,"Target"]]["Weight"].values
+                        weight += step1s.loc[rw,"Weight"]*sum(stp2)
+                    adjacency.loc[tgnd,srcnd] = weight
+                    if abs(weight)>0:
+                        edge_table.loc["{}->{}".format(srcnd,tgnd)] = [srcnd,tgnd,weight,list(mediators),abs(weight),np.sign(weight),1/abs(weight),np.sqrt(abs(weight)),np.sign(weight)*np.sqrt(abs(weight))]
+            relslp = selfloops[selfloops["Target"] == tgnd]
+            if len(relslp):
+                slfweight = np.mean(relslp["Weight"].values)
+                adjacency.loc[tgnd,tgnd] = slfweight
+                edge_table.loc["{}->{}".format(tgnd,tgnd)] = [tgnd,tgnd,slfweight,"None",abs(slfweight),np.sign(slfweight),1/abs(slfweight),np.sqrt(abs(slfweight)),np.sign(slfweight)*np.sqrt(abs(slfweight))]
+            else:
+                adjacency.loc[tgnd,tgnd] = 0
     return edge_table,nodetable,adjacency
 
 

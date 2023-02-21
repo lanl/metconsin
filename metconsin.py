@@ -9,6 +9,7 @@ import numpy as np
 import contextlib
 import os
 
+
 def metconsin_network(desired_models,
     model_info_file, 
     save_folder,
@@ -347,8 +348,9 @@ def metconsin_sim(desired_models,
                                 flobj = flobj,
                                 fwreport = findwaves_report,
                                 debugging=debugging)
-    # dynamics["Metabolites"] = metlist
-    # dynamics["Models"] = [model.Name for model in model_list]
+
+
+
 
     minuts,sec = divmod(time.time() - start_time, 60)
     try:
@@ -356,6 +358,7 @@ def metconsin_sim(desired_models,
     except:
         print("[MetConSIN] Simulation & Bases computed in ",int(minuts)," minutes, ",sec," seconds.")
 
+    # Put the dynamics into dataframes for easy saving/access
     x_sim = pd.DataFrame(dynamics["x"].round(7),columns = dynamics["t"],index = [model.Name for model in model_list])
     x_sim = x_sim.loc[:,~x_sim.columns.duplicated()]
     y_sim = pd.DataFrame(dynamics["y"].round(7),columns = dynamics["t"],index = metlist)
@@ -370,6 +373,7 @@ def metconsin_sim(desired_models,
     speciesHeuristic = {}
 
     for i in range(len(basis_change_times)):
+        #get the times - if we're on the last one there's no "end time"
         t0 = basis_change_times[i]
         try:
             t1 = basis_change_times[i+1]
@@ -378,34 +382,38 @@ def metconsin_sim(desired_models,
         except:
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
-        for model in model_list:
 
-            modbc = [bc[0] for bc in dynamics["bases"][model.Name]]
-            lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][0]
+        if dynamics_t.shape[1]:#if the interval is too small to contain any of the dynamics (this has to be due to roundoff error - there should be a point at each basis change time.)
+            for model in model_list:
+                #dynamics["basis"][model.Name] is a list of tuples of (basis change time, index of reduced basis - rows/columns)
+                modbc = [bc[0] for bc in dynamics["bases"][model.Name]]#list of times this model changed basis
+                lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][0]#this is the index in dynamics["basis"][model.Name] of the basis this model is using at this time interval
 
-            if dynamics["bases"][model.Name][lastone] != None:
-                basinds = dynamics["bases"][model.Name][lastone][1]
-                Q,R = np.linalg.qr(model.standard_form_constraint_matrix[basinds[0]][:,basinds[1]])
-                model.current_basis = (Q,R,basinds)
-                bases_ok = True
-            else:
-                bases_ok = False
-                break
-        if bases_ok:
-            metcons = y_sim.loc[:,t0].values
-            node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity=report_activity_network,flobj = flobj)
+                #now we set the basis for the model to be the one it was using in this time interval
+                if dynamics["bases"][model.Name][lastone] != None:
+                    basinds = dynamics["bases"][model.Name][lastone][1]
+                    Q,R = np.linalg.qr(model.standard_form_constraint_matrix[basinds[0]][:,basinds[1]])
+                    model.current_basis = (Q,R,basinds)
+                    bases_ok = True
+                #if there isn't a basis for a model we quit.
+                else:
+                    bases_ok = False
+                    break
+            if bases_ok:
+                metcons = y_sim.loc[:,t0].values
+                node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity=report_activity_network,flobj = flobj)
 
-            #trim out species & metabolites that aren't present in this time interval.
+                #trim out species & metabolites that aren't present in this time interval.
 
-            met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
-            met_med_net,_ = mn.trim_network(met_med_net,node_table,dynamics_t)
-            met_med_net_summary,node_table = mn.trim_network(met_med_net_summary,node_table,dynamics_t)
-            ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network)
+                met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
+                met_med_net,_ = mn.trim_network(met_med_net,node_table,dynamics_t)
+                met_med_net_summary,node_table = mn.trim_network(met_med_net_summary,node_table,dynamics_t)
+                ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network)
 
-            met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
-            mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
-            mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
-            speciesHeuristic[ky] = {"nodes":ssnodes,"edges":ssnet,"adjacency":ssadj}
+                met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
+                mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
+                mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
+                speciesHeuristic[ky] = {"nodes":ssnodes,"edges":ssnet,"adjacency":ssadj}
 
     all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_times}
 
