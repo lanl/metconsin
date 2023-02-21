@@ -11,6 +11,8 @@ import cobra as cb
 import numpy as np
 import make_network as mn
 import time
+from metconsin import *
+
 
 import matplotlib.pyplot as plt
 
@@ -29,7 +31,7 @@ if __name__ == "__main__":
 
   cbmods = {}
 
-  desired_models = ["bc1012","bc1011"]#["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
+  desired_models = ["bc1001","bc1009"]#["E.coli"]#,"P.putida"]#,"S.cerevisiae","M.tuberculosis",
 
   cobra_models = {}
 
@@ -204,7 +206,7 @@ if __name__ == "__main__":
     ssnet.to_csv("test/ssedges.csv")
     ssnodes.to_csv("test/ssnodes.csv")
 
-  testSimulation = True
+  testSimulation = False
   if testSimulation:
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n Dynamic Simulation \n\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 
@@ -241,3 +243,4 @@ if __name__ == "__main__":
     print("Total Script Time: ",int(minuts)," minutes, ",sec," seconds.")
 
 
+                                                        

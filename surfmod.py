@@ -914,7 +914,6 @@ class SurfMod:
 
         self.inter_flux = all_vars#compute_if(bound_rhs.astype(np.float64),self.current_basis,self.num_fluxes)
 
-
     def compute_slacks(self,master_metabolite_con):
 
         '''Compute the values of the slack variables'''

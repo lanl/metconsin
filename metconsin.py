@@ -383,11 +383,11 @@ def metconsin_sim(desired_models,
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
 
-        if dynamics_t.shape[1]:#if the interval is too small to contain any of the dynamics (this has to be due to roundoff error - there should be a point at each basis change time.)
+        if dynamics_t.shape[1]:#skip if the interval is too small to contain any of the dynamics (this has to be due to roundoff error - there should be a point at each basis change time.)
             for model in model_list:
                 #dynamics["basis"][model.Name] is a list of tuples of (basis change time, index of reduced basis - rows/columns)
                 modbc = [bc[0] for bc in dynamics["bases"][model.Name]]#list of times this model changed basis
-                lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][0]#this is the index in dynamics["basis"][model.Name] of the basis this model is using at this time interval
+                lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][-1]#this is the index in dynamics["basis"][model.Name] of the basis this model is using at this time interval
 
                 #now we set the basis for the model to be the one it was using in this time interval
                 if dynamics["bases"][model.Name][lastone] != None:
@@ -401,6 +401,8 @@ def metconsin_sim(desired_models,
                     break
             if bases_ok:
                 metcons = y_sim.loc[:,t0].values
+                # for model in model_list:
+                #     print(model.current_basis[2])
                 node_table,met_med_net,met_med_net_summary,met_met_edges,met_met_nodes = mn.species_metabolite_network(metlist,metcons,model_list,report_activity=report_activity_network,flobj = flobj)
 
                 #trim out species & metabolites that aren't present in this time interval.

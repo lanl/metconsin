@@ -65,13 +65,9 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
 
         internal_basic = np.where(beta[0] >= len(model.exchanged_metabolites))
-        intrinsic_growth = np.dot(growth_vec[internal_basic],bound_rhs[internal_basic])
-        intr_growths[model.Name] = intrinsic_growth
-        # tmp1 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,"None",0,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net.columns)
-        # met_med_net = met_med_net.append(tmp1,ignore_index = True)
-        # tmp2 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net_summary.columns)
-        # met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
+        intrinsic_growth = np.dot(growth_vec[internal_basic],bound_rhs[beta[0]][internal_basic])
+        intr_growths[model.Name] = intrinsic_growth
 
         for j in range(len(model.exchanged_metabolites)):
 
