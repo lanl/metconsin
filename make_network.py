@@ -10,7 +10,7 @@ import scipy as sp
 ###### Build a species-metabolite interaction network (that's not hard)
 #### Then build a species-species network (that's fuzzier or harder)
 
-def species_metabolite_network(metlist,metcons,community,report_activity = True,flobj = None,selfloop = False):
+def species_metabolite_network(metlist,metcons,community,report_activity = True,flobj = None):
 
     #let community be dict or listlike - going to use as listlike
     if isinstance(community,dict):
@@ -33,6 +33,8 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
             flobj.write("[species_metabolite_network] Building network\n")
         except:
             print("[species_metabolite_network] Building network")
+
+    intr_growths = {}
 
     for model in models:
 
@@ -62,14 +64,13 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
         bound_rhs = np.concatenate([exchg_bds,model.internal_bounds])
 
-        if selfloop:
-            internal_basic = np.where(beta[0] >= len(model.exchanged_metabolites))
-            intrinsic_growth = np.dot(growth_vec[internal_basic],bound_rhs[internal_basic])
-
-            tmp1 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,"None",0,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net.columns)
-            met_med_net = met_med_net.append(tmp1,ignore_index = True)
-            tmp2 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net_summary.columns)
-            met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
+        internal_basic = np.where(beta[0] >= len(model.exchanged_metabolites))
+        intrinsic_growth = np.dot(growth_vec[internal_basic],bound_rhs[internal_basic])
+        intr_growths[model.Name] = intrinsic_growth
+        # tmp1 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,"None",0,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net.columns)
+        # met_med_net = met_med_net.append(tmp1,ignore_index = True)
+        # tmp2 = pd.DataFrame([[model.Name,model.Name,"Microbe",intrinsic_growth,np.abs(intrinsic_growth),np.sign(intrinsic_growth),1/np.abs(intrinsic_growth),np.sqrt(np.abs(intrinsic_growth)),np.sign(intrinsic_growth)*np.sqrt(np.abs(intrinsic_growth))]],columns = met_med_net_summary.columns)
+        # met_med_net_summary = met_med_net_summary.append(tmp2,ignore_index = True)
 
 
         for j in range(len(model.exchanged_metabolites)):
@@ -159,6 +160,9 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
         associated.loc[ndinx,"All"] = associated.loc[ndinx,"Out"] + associated.loc[ndinx,"In"]#np.concatenate([associated.loc[ndinx,"Out"],associated.loc[ndinx,"In"]])
 
     node_table = pd.concat([node_table,associated],axis = 1)
+    node_table["IntrinsicGrowth"] = np.ones(len(node_table))
+    for model in models:
+        node_table.loc[model.Name,"IntrinsicGrowth"] = intr_growths[model.Name]
 
     minuts,sec = divmod(time.time() - start_time, 60)
 
