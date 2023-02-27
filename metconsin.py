@@ -215,6 +215,7 @@ def metconsin_network(desired_models,
 
 def metconsin_sim(desired_models,
     model_info_file,
+    final_interval_weight = 0.5,
     metabolite_inflow = None,
     metabolite_outflow = None,
     model_deathrates = None,
@@ -371,6 +372,8 @@ def metconsin_sim(desired_models,
     mic_met_sum_nets = {}
     mic_met_nets = {}
     speciesHeuristic = {}
+    interval_lens = {}
+    total_interval = 0
 
     for i in range(len(basis_change_times)):
         #get the times - if we're on the last one there's no "end time"
@@ -379,9 +382,13 @@ def metconsin_sim(desired_models,
             t1 = basis_change_times[i+1]
             ky = "{:.4f}".format(t0)+"-"+"{:.4f}".format(t1)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))&(np.array(all_sim.columns.astype(float)).round(6)<=t1)]
+            interval_lens[ky] = t1-t0
         except:
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
+            interval_lens[ky] = final_interval_weight
+            total_interval = t0/(1-final_interval_weight)
+
 
         if dynamics_t.shape[1]:#skip if the interval is too small to contain any of the dynamics (this has to be due to roundoff error - there should be a point at each basis change time.)
             for model in model_list:
@@ -416,6 +423,20 @@ def metconsin_sim(desired_models,
                 mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
                 mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
                 speciesHeuristic[ky] = {"nodes":ssnodes,"edges":ssnet,"adjacency":ssadj}
+    
+    # avg_micmetnet_sum,var_micmetnet_sum,avg_micmet_summ_nodes = mn.average_net(mic_met_sum_nets,interval_lens,total_interval,"micmet")
+    # mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"average_edges":avg_micmetnet_sum,"variance_edges":var_micmetnet_sum}
+
+    # avg_micmetnet,var_micmetnet,avg_micmet_nodes = mn.average_net(mic_met_nets,interval_lens,total_interval,"micmet")
+    # mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"average_edges":avg_micmetnet,"variance_edges":var_micmetnet}
+
+    # avg_metmetnet,var_metmetnet,avg_metmet_nodes = mn.average_net(met_met_nets,interval_lens,total_interval,"metmet")
+    # met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"average_edges":avg_metmetnet,"variance_edges":var_metmetnet}
+
+    # avg_spec,var_spec,avg_spc_nodes = mn.average_net(speciesHeuristic,interval_lens,total_interval,"spc")
+    # speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"average_edges":avg_spec,"variance_edges":var_spec}
+
+
 
     all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_times}
 

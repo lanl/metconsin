@@ -5,12 +5,12 @@ import pandas as pd
 
 def prep_cobrapy_models(models,
                         forceOns = True,
-                        upper_bound_functions = {},
-                        lower_bound_functions = {},
-                        upper_bound_functions_dt = {},
-                        lower_bound_functions_dt = {}, 
-                        media = {}, 
-                        met_filter = [],
+                        upper_bound_functions = None,
+                        lower_bound_functions = None,
+                        upper_bound_functions_dt = None,
+                        lower_bound_functions_dt = None, 
+                        media = None, 
+                        met_filter = None,
                         met_filter_sense = "exclude", 
                         lb_funs = "constant", 
                         ub_funs = "linearRand",
@@ -314,7 +314,7 @@ def prep_cobrapy_models(models,
             if isinstance(lower_bound_functions[modelkey],dict):
                 lftype = "User"
                 exlb = np.array([lower_bound_functions[modelkey][met] if met in lower_bound_functions[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
-                if modelkey in upper_bound_functions_dt.keys():
+                if modelkey in lower_bound_functions_dt.keys():
                     exlbdt = np.array([lower_bound_functions_dt[modelkey][met] if met in lower_bound_functions_dt[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
                 else:
                     print("[prep_cobrapy_models] Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
