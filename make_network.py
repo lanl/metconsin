@@ -290,12 +290,12 @@ def average_network(networks,interval_times,total_interval,network_type):
     elif network_type == "spc":
         return average_network_spc(networks,interval_times,total_interval)
     else:
-        return None
+        return None,None,False
 
 def average_network_micmet(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None,None
+        return None,None,False
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
@@ -318,7 +318,7 @@ def average_network_micmet(networks,interval_times,total_interval):
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_micmet_node_table(avg_network)
-    return avg_network,node_table
+    return avg_network,node_table,True
 
 def make_avg_micmet_node_table(avg_edges):
     all_nodes = np.unique(list(avg_edges["Source"]) + list(avg_edges["Target"]))
@@ -348,7 +348,7 @@ def make_avg_micmet_node_table(avg_edges):
 def average_network_metmet(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None,None
+        return None,None,False
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
@@ -368,7 +368,7 @@ def average_network_metmet(networks,interval_times,total_interval):
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_metmet_node_table(networks,interval_times)
-    return avg_network,node_table
+    return avg_network,node_table,True
 
 def make_avg_metmet_node_table(networks,interval_times):
 
@@ -412,7 +412,7 @@ def make_avg_metmet_node_table(networks,interval_times):
 def average_network_spc(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None,None
+        return None,None,False
     all_networks = pd.DataFrame(dtype = float)
     metabs = pd.DataFrame()
     for ky in networks.keys():
@@ -438,7 +438,7 @@ def average_network_spc(networks,interval_times,total_interval):
 
     node_table = make_avg_spc_node_table(networks,interval_times)
 
-    return avg_network,node_table
+    return avg_network,node_table,True
 
 def make_avg_spc_node_table(networks,interval_times):
 
