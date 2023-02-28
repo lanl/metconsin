@@ -745,7 +745,10 @@ class SurfMod:
         else:
             self.feasible = False
             UpDateFlag = False
-            print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
+            try:
+                flobj.write("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}\n".format(self.Name,objval))
+            except:
+                print("{}.findWaves: No feasible basis for forward simulation. Objective value stalled at {}".format(self.Name,objval))
 
 
         return UpDateFlag

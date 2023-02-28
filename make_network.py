@@ -295,12 +295,15 @@ def average_network(networks,interval_times,total_interval,network_type):
 def average_network_micmet(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None
+        return None,None
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
         weights = edges["Weight"]
-        weights.index = ["++".join(edges.loc[rw,["Source","Target","SourceType"]]) for rw in edges.index]
+        if "Cofactor" in edges.columns:
+            weights.index = ["++".join(edges.loc[rw,["Source","Target","SourceType","Cofactor"]]) for rw in edges.index]
+        else:
+            weights.index = ["++".join(edges.loc[rw,["Source","Target","SourceType"]]) for rw in edges.index]
         all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
     all_networks = all_networks.fillna(value = 0)
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
@@ -345,7 +348,7 @@ def make_avg_micmet_node_table(avg_edges):
 def average_network_metmet(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None
+        return None,None
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
@@ -409,7 +412,7 @@ def make_avg_metmet_node_table(networks,interval_times):
 def average_network_spc(networks,interval_times,total_interval):
     if total_interval == 0:
         print("Average network making - Total interval 0")
-        return None
+        return None,None
     all_networks = pd.DataFrame(dtype = float)
     metabs = pd.DataFrame()
     for ky in networks.keys():
