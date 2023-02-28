@@ -309,12 +309,19 @@ def average_network_micmet(networks,interval_times,total_interval):
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
     var_network_rw_vals = np.dot(((all_networks.values.T - avg_network_rw.values)**2).T,[interval_times[col] for col in all_networks.columns])
     var_network_rw = pd.Series(var_network_rw_vals,index = all_networks.index)
-    avg_network = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Variance","ABS_Weight","Sign_Weight","ABSRootWeight","SignedRootWeight"])
+    if "Cofactor" in edges.columns:
+        avg_network = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Variance","Cofactor","ABS_Weight","Sign_Weight","ABSRootWeight","SignedRootWeight"])
+    else:
+        avg_network = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","Variance","ABS_Weight","Sign_Weight","ABSRootWeight","SignedRootWeight"])
     for rw in avg_network_rw.index:
         we = avg_network_rw[rw]
         varwe = var_network_rw.loc[rw]
-        source,target,ty = rw.split("++")
-        avg_network.loc[rw] = [source,target,ty,we,varwe,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
+        if "Cofactor" in edges.columns:
+            source,target,ty,cof = rw.split("++")
+            avg_network.loc[rw] = [source,target,ty,we,varwe,cof,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
+        else:
+            source,target,ty = rw.split("++")
+            avg_network.loc[rw] = [source,target,ty,we,varwe,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_micmet_node_table(avg_network)
@@ -414,17 +421,17 @@ def average_network_spc(networks,interval_times,total_interval):
         print("Average network making - Total interval 0")
         return None,None,False
     all_networks = pd.DataFrame(dtype = float)
-    metabs = pd.DataFrame()
+    # metabs = pd.DataFrame()
     for ky in networks.keys():
         edges = networks[ky]["edges"]
         weights = edges["Weight"]
-        weights.index = ["++".join(edges.loc[rw,["Source","Target"]]) for rw in edges.index]
-        mets = edges["Metabolites"]
-        mets.index = ["++".join(edges.loc[rw,["Source","Target"]]) for rw in edges.index]
-        metabs = pd.concat([metabs,mets],axis = 1).rename({"Metabolites":ky},axis = 1)
+        weights.index = ["++".join(edges.loc[rw,["Source","Target","Metabolites"]]) for rw in edges.index]
+        # mets = edges["Metabolites"]
+        # mets.index = ["++".join(edges.loc[rw,["Source","Target","Metabolites"]]) for rw in edges.index]
+        # metabs = pd.concat([metabs,mets],axis = 1).rename({"Metabolites":ky},axis = 1)
         all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
     all_networks = all_networks.fillna(value = 0)
-    metabs.fillna("",inplace = True)
+    # metabs.fillna("",inplace = True)
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
     var_network_rw_vals = np.dot(((all_networks.values.T - avg_network_rw.values)**2).T,[interval_times[col] for col in all_networks.columns])
     var_network_rw = pd.Series(var_network_rw_vals,index = all_networks.index)
@@ -432,8 +439,8 @@ def average_network_spc(networks,interval_times,total_interval):
     for rw in avg_network_rw.index:
         we = avg_network_rw[rw]
         varwe = var_network_rw.loc[rw]
-        source,target = rw.split("++")
-        avg_network.loc[rw] = [source,target,".".join(metabs.loc[rw].unique()),we,varwe,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
+        source,target,metabolites = rw.split("++")
+        avg_network.loc[rw] = [source,target,metabolites,we,varwe,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_spc_node_table(networks,interval_times)
