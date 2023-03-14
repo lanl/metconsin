@@ -56,25 +56,28 @@ def find_stop(t0,t1,sln,models):
     return min(all_roots)
 
 
-def surfin_fba(models,x0,y0,endtime, 
-                solver = 'gurobi',
-                track_fluxes = True, 
-                save_bases = True,
-                save_internal_flux = True, 
-                resolution = 0.1,
-                report_activity = True, 
-                flobj = None,
-                fwreport = False,
-                debugging = False,
-                inflow = None,
-                outflow = None
-                ):
+def surfin_fba(models,x0,y0,endtime,**kwargs):
 
 
-    '''
-    models = list of models.
     '''
     
+    surfin_fba
+
+
+    '''
+    
+
+    solver = kwargs.get("solver",'gurobi')
+    track_fluxes = kwargs.get("track_fluxes",True) 
+    save_bases = kwargs.get("save_bases",True)
+    save_internal_flux = kwargs.get("save_internal_flux",True)
+    resolution = kwargs.get("resolution",0.1)
+    report_activity = kwargs.get("report_activity",True)
+    flobj = kwargs.get("flobj")
+    fwreport = kwargs.get("fwreport",False)
+    debugging = kwargs.get("debugging",False)
+    inflow = kwargs.get("inflow",None)
+    outflow = kwargs.get("outflow",None)
 
 
     t1 = time.time()

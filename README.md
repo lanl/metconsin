@@ -1,8 +1,17 @@
 # metconsin
 **Met**abolic **Con**text **S**pecies **I**nteraction **N**etworks
 
-The goal of this project is to generate microbial species interaction networks using constraint based metabolic modeling. To do this, MetConSIN seeks "conservation laws" in the dynamic FBA system. These will take the form of a piecewise constant function, implying local conservation from a which a local interaction network is implied.
+The goal of this project is to generate microbial interaction networks using constraint based metabolic modeling. To do this, MetConSIN uses the dynamic FBA system. 
 
+## Installation
+Clone from github. We plan to add pip install in the future
+
+## Dependencies
+MetConSIN requires [Gurobi](https://www.gurobi.com/documentation/9.5/) and gurobi's python package. Alternatively, MetConSIN can use the open source [CyLP](http://mpy.github.io/CyLPdoc/index.html), but this is much slower.
+
+Metconsin also requires [numba](https://numba.pydata.org/).
+
+## Basis of the Method
 Dynamic FBA can be written:
 
 <img src="https://latex.codecogs.com/gif.latex?\begin{array}{c}&space;\frac{dx_i}{dt}&space;=&space;x_i\left(\boldsymbol{\chi}_i&space;\cdot&space;\boldsymbol{v}_i&space;\right&space;)\\&space;\frac{d\boldsymbol{y}}{dt}&space;=&space;-\sum_i&space;x_i&space;\Gamma_i^*&space;\boldsymbol{v}_i&space;\end{array}" title="\begin{array}{c} \frac{dx_i}{dt} = x_i\left(\boldsymbol{\chi}_i \cdot \boldsymbol{v}_i \right )\\ \frac{d\boldsymbol{y}}{dt} = -\sum_i x_i \Gamma_i^* \boldsymbol{v}_i \end{array}" />
@@ -29,7 +38,27 @@ We can then rewrite the system as
 
 for <img src="https://latex.codecogs.com/gif.latex?t&space;\in&space;[t_0,t_1]" title="t \in [t_0,t_1]" />, so that we have an ODE in that time interval.
 
-MetConSIN seeks to create a pairwise species interaction network by finding a conservation law, meaning we seek matrices such that 
+MetConSIN interprets these ODEs as networks of interactions, which it builds for later analysis.
+
+## References
+James D. Brunner and Nicholas Chia. Minimizing the number of optimizations for efficient community dynamic flux balance analysis. PLOS Computational Biology, 16(9):1-20, 09 2020. doi: 10.1371/journal.  pcbi.1007786. [Link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007786)
+
+## TO DO (3/14/2023):
+
+* Documentation
+* Helper function for saving networks
+* pip installation
+* Build in standard environments
+    - Western
+    - High Fiber
+    - M9 media
+
+
+## Future Plans:
+
+Eventually, we plan to develop a rigorous species-species approximation of the ODE networks and characterize the error. 
+
+An error-free species-species approximation is possible if we can find a conservation law, meaning we seek matrices such that 
 
 <img src="https://latex.codecogs.com/gif.latex?A_1&space;\frac{d\boldsymbol{x}}{dt}&space;&plus;&space;A_2&space;\frac{d\boldsymbol{y}}{dt}&space;=&space;0" title="A_1 \frac{d\boldsymbol{x}}{dt} + A_2 \frac{d\boldsymbol{y}}{dt} = 0" />
 
@@ -46,3 +75,5 @@ Finally, we may evaluate the function
 <img src="https://latex.codecogs.com/gif.latex?\boldsymbol{\chi}_i&space;\cdot&space;B_i^{-1}\boldsymbol{h}_i\left(&space;A_2^{-1}\left(\boldsymbol{\phi}_0&space;-&space;A_i&space;\boldsymbol{x}&space;\right&space;)&space;\right&space;)" title="\boldsymbol{\chi}_i \cdot B_i^{-1}\boldsymbol{h}_i\left( A_2^{-1}\left(\boldsymbol{\phi}_0 - A_i \boldsymbol{x} \right ) \right )" />
 
 to find metabolically contextualized species interactions. 
+
+However, such a conservation law is unlikely to exist, so we seek an approximation with desirable error characteristics.

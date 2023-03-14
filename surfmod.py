@@ -1,5 +1,3 @@
-from operator import index
-from tracemalloc import start
 import numpy as np
 import scipy.linalg as la
 import time

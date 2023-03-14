@@ -209,7 +209,7 @@ def prep_cobrapy_models(models,
             if isinstance(upper_bound_functions[modelkey],dict):
                 uftype = "User"
                 exub = np.array([upper_bound_functions[modelkey][met] if met in upper_bound_functions[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
-                if modelkey in upper_bound_functions_dt.keys():
+                if modelkey in (upper_bound_functions_dt.keys() and isinstance(upper_bound_functions_dt[modelkey],dict)):
                     exubdt = np.array([upper_bound_functions_dt[modelkey][met] if met in upper_bound_functions_dt[modelkey].keys() else lambda x : 0 for met in metaabs[model.name]])
                 else:
                     print("[prep_cobrapy_models] Error: Numeric differentiation not supported. Please provide derivative for user-defined bound functions")
@@ -412,8 +412,8 @@ def prep_cobrapy_models(models,
             return None
 
         #SurfMod(gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative = [],exterior_ubfuns_derivatives = [],exchanged_metabolites,Name = None,deathrate = 0)
-
-        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,deathrate = deathrates[modelkey],lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
+        drt = deathrates.get(modelkey,0)
+        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,deathrate = drt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
 
 
     return surfmods,masterlist,master_y0
