@@ -19,6 +19,61 @@ def prep_cobrapy_models(models,
                         deathrates = None):
 
 
+    """
+    
+    Creates a set of SurfMod objects from a set of cobrapy GSMs, and interprets the media (either given by the user or inferred from the cobrapy models) to create an initial metbaolite concentration. 
+
+    :param media: Growth media used for the simulation. If None, averages the media dicts packaged with the GSMs used. Can be keyed by metabolite name, ID, or exchange reaction ID. Alternatively, passing the string "minimal" attempts to define a minimal growth media for each microbe and averages that. Default None.
+    :type media: dict or str
+
+    :param upper_bound_functions: Upper bound functions for exchange reactions. Can be strings with same options as ``ub_funs`` or dicts of user defined functions. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
+    :type upper_bound_functions: dict[str] or dict[dict[function]]
+    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``.  Default ``linearRand``
+    :type ub_funs: str
+    :param lower_bound_functions: Lower bound functions for exchange reactions. Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
+    :type lower_bound_functions: dict[str] or dict[dict[function]]    
+    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. Default ``constant``
+    :type lb_funs: str
+    :param upper_bound_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
+    :type upper_bound_functions_dt: dict[dict[function]]
+    :param lower_bound_functions_dt: kwargs.get(lower_bound_functions_dt)
+    :type lower_bound_functions_dt: dict[dict[function]]
+    :param linearScale: Uniform coefficient for exchange reaction bounds if ``lb_funs`` or ``ub_funs`` (or entries in ``upper_bound_functions`` or ``lower_bound_functions``) are "linearScale". Default 1.0
+    :type linearScale: float
+
+    :param deathrates: Decay rate for each community member, given as dictionary keyed by community member names. Defaul all 0
+    :type deathrates: dict[str,float]
+
+    :param met_filter: If ``met_filter_sense`` == "exclude", list of metabolites to treat as infinitely supplied (i.e. ignored in the dynamics). If ``met_filter_sense`` == "include", all other metabolites will be treated as infinitely supplied (i.e. ignored in the dynamics). Default None
+    :type met_filter: list
+    :param met_filter_sense: Choice of "include" or "exclude" for metabolite filter. If left as None, no filter will be done. Default None
+    :type met_filter: str
+
+    :param forceOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSM include such bounds. Default True
+    :type forceOns: bool
+
+    :param flobj: File object to write logging to. If None, writes to stdout. Default None
+    :type flobj: File
+
+    :return: Tuple of SurfMods, metabolite names, and intitial metabolite concentrations
+    :rtype: tuple[list[SurfMods],list[str],array[float]]
+
+    Upper and lower bound functions can be user defined seperately for each bound and each model with a dict (keyed by model name) of dicts (keyed by metabolite name). Values in these dicts can be functions (in which case the 
+    user must provide the derivative of the function with respect to time in ``upper_bound_functions_dt`` or ``lower_bound_functions_dt``) or a choice of predifined functions (see below). Alternatively, functions can be chosen
+    for each model using the predefined function with a dict (keyed by model name) of options from the predefined list. Finally, functions can be chosen to be the same for each model by passing an option from the predefined functions
+    to ``ub_funs`` and/or ``lb_funs`` and passing None to ``upper_bound_functions`` and/or ``lower_bound_functions``.
+
+    The predifined options are:
+
+    - *constant*\ : Bounds do not depend on the metabolites. 
+    - *linearRand*\ : Bounds are linear in the corresponding metabolite with a random constant of proportionality
+    - *linearScale*\ : Bounds are linear in teh corresponding metabolite with a uniform constant given by ``linearScale``
+    - *hill1Rand*\ : Bounds follow a Hill function of the corresponding metabolite with exponent 1 and random Kd
+    - *hill11*\ : Bounds follow a Hill function of the corresponding metabolite with exponent 1 and Kd 1
+
+    """
+
+
     #can provide metabolite uptake dictionary as dict of dicts {model_key1:{metabolite1:val,metabolite2:val}}
 
                         # upper_bound_functions = {},

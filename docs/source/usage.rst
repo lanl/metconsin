@@ -6,13 +6,23 @@ Usage
 Installation
 ------------
 
-To use MetConSIN, install from github:
+To use MetConSIN, clone from github:
 
 .. code-block:: console
 
     $ git clone https://github.com/jdbrunner/metconsin.git
 
 (We plan to add pip installation in the future)
+
+You will also need to add the directory to your python path, for example using
+
+.. code-block:: python
+
+    import sys
+    import os
+    sys.path.append(os.path.join(os.path.expanduser("~"),location,"metconsin"))
+
+where ``location`` is the path to the folder that you cloned MetConSIN into.
 
 **Dependencies**
 

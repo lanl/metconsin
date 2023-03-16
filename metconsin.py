@@ -292,6 +292,10 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :type community_members: list[str]
     :param model_info_file: path to csv with GEM info. csv file should contain a column called "Species" with names that include the names in ``desired_models``, and a column called "File" that contains the path to a GSM in xml or json form (note that .mat is not currently supported).
     :type model_info_file: str
+
+    :param initial_abundance: intial abundances (treated as absolute) of the community to be simulated. Should be a dictionary keyed by community members. Default uniform community
+    :type initial_abundance: dict[str,float]
+
     :param endtime: Simulation length. Default 10**-2
     :type endtime: float
     :param resolution: Time-resolution of the dynamics output. Default 0.1
@@ -386,7 +390,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     forceOns = kwargs.get("forceOns",True)
     findwaves_report = kwargs.get("findwaves_report",False)
     debugging = kwargs.get("debugging",False)
-
+    initial_abundance = kwargs.get("initial_abundance",None)
 
 
 
@@ -479,7 +483,12 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     y0 = np.array([y0dict[met] for met in metlist])
 
     model_list = [model for model in models.values()]
-    x0 = np.array([1 for i in range(len(model_list))])
+    if isinstance(initial_abundance,dict):
+        x0 = np.array([initial_abundance.get(mod,0) for mod in model_list])
+    else:
+        x0 = np.ones(len(model_list))
+
+
 
 
 
@@ -532,8 +541,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         except:
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
-            interval_lens[ky] = final_interval_weight
             total_interval = t0/(1-final_interval_weight)
+            interval_lens[ky] = total_interval-t0
 
 
         if dynamics_t.shape[1]:#skip if the interval is too small to contain any of the dynamics (this has to be due to roundoff error - there should be a point at each basis change time.)
@@ -569,21 +578,27 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
                 speciesHeuristic[ky] = {"nodes":ssnodes,"edges":ssnet,"adjacency":ssadj}
     
-    avg_micmetnet_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,total_interval,"micmet")
-    if rflag:
-        mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
+    if total_interval == 0:
+        print("Average network making - Total interval 0")
+    else:
+        for ky,val in interval_lens.items():
+            interval_lens[ky] = val/total_interval
+        
+        avg_micmetnet_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,total_interval,"micmet")
+        if rflag:
+            mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
 
-    avg_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,total_interval,"micmet")
-    if rflag:
-        mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
+        avg_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,total_interval,"micmet")
+        if rflag:
+            mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
 
-    avg_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,total_interval,"metmet")
-    if rflag:
-        met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
+        avg_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,total_interval,"metmet")
+        if rflag:
+            met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
 
-    avg_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,total_interval,"spc")
-    if rflag:
-        speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
+        avg_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,total_interval,"spc")
+        if rflag:
+            speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
 
 
 
@@ -741,16 +756,21 @@ def save_metconsin(metconsin_return,flder):
         plt.close()
 
 
-def dynamic_fba(community_members,model_info_file,**kwargs):
+def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
 
     '''
 
-    Does Full Simulation, makes networks for each time interval.
+    Does Full Simulation only, does not make networks. Requires initial community composition (treats as absolute). Initial metabolites can be modified with the ``media`` parameter.
 
     :param community_members: list of models of taxa in the community of interest
     :type community_members: list[str]
     :param model_info_file: path to csv with GEM info. csv file should contain a column called "Species" with names that include the names in ``desired_models``, and a column called "File" that contains the path to a GSM in xml or json form (note that .mat is not currently supported).
     :type model_info_file: str
+
+    :param initial_abundance: intial abundances (treated as absolute) of the community to be simulated. Should be a dictionary keyed by community members.
+    :type initial_abundance: dict[str,float]
+
+
     :param save_tsvs: Whether or not to save the dynamics as .tsv files. Default False
     :type save_tsvs: bool
     :param save_folder: desired path to folder with saved .tsv files. Default DFBA
@@ -932,8 +952,9 @@ def dynamic_fba(community_members,model_info_file,**kwargs):
     y0 = np.array([y0dict[met] for met in metlist])
 
     model_list = [model for model in models.values()]
-    x0 = np.array([1 for i in range(len(model_list))])
 
+
+    x0 = np.array([initial_abundance.get(mod,0) for mod in model_list])
 
 
     dynamics = surf.surfin_fba(model_list,x0,y0,endtime,

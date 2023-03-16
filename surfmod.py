@@ -6,29 +6,62 @@ from numba import jit
 import sys
 
 class SurfMod:
-    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivatives,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto",forcedOns = True):
 
-        #put the model in standard form by forming the system
-        # [GamStar -GamStar I 0 0 0 0 0 0]         [f(y)]
-        # [-GamStar GamStar 0 I 0 0 0 0 0] [v_f]   [g(y)]
-        # [I         0      0 0 I 0 0 0 0] [v_r] = [interior_ubs]
-        # [0         I      0 0 0 I 0 0 0] [s]     [interior_lbs]
-        # [GamDag  -GamDag  0 0 0 0 I 0 0]         [0]
-        # [-GamDag GamDag   0 0 0 0 0 I 0]         [0]   
-        # [    Forced On    0 0 0 0 0 0 I]         [ON]
+    """
 
-        # where f,g are the upper/lower exchange bounds, and are functions of the
-        #environmental metabolites.
+    SurfMod objects are the genome-scale metabolic models put in the form that 
+    surfin_fba and metconsin can use. This means forming the constraint matrices of the model, 
+    and tracking the optimal bases 
 
-        #All that matters is Ker(GammaDagger), so we can replace GammaDagger with a new
-        #matrix with orthonormal rows that has the same kernal.
+    :param exchanged_metabolites: list of metabolites (by name) that the model exchanges with its environment
+    :param gamStar: Stoichiometry of the exchanged metabolites in the internal reactions
+    :param gamDag: Stoichiometry of the internal metabolites in the internal reactions
+    :param objective: Growth objective for FBA
+    :param intrn_order: List (in order) of internal reactions.
+    :param interior_lbs: Lower bounds of internal reactions
+    :param interior_ubs: Upper bounds of internal reactions
+    :param exterior_lbfuns: List of functions for lower bounds of exchange reactions
+    :param exterior_ubfuns: List of functions for upper bounds of exchange reactions
+    :param exterior_lbfuns_derivative: Time-Derivatives of the lower bound functions
+    :param exterior_ubfuns_derivative: Time-Derivatives of the upper bound functions
+    :param lbfuntype: Kind of lower bound functions - can be constant, linear, hill or user 
+    :param ubfuntype: Kind of upper bound functions - can be constant, linear, hill or user 
+    :param Name: Name of the model (e.g. taxa name or accession number associated with genome)
+    :param deathrate: Decay rate for the model
+    :param gamma_star_indices: Order of exchanged metabolites in internal stoichiometry
+    :param forcedOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSMs include such bounds. Default True
+    :type exchanged_metabolites: list[str]
+    :type gamStar: Numpy Array
+    :type gamDag: Numpy Array
+    :type objective: Numpy Array
+    :type intrn_order: list[str]
+    :type interior_lbs: Numpy Array
+    :type interior_ubs: Numpy Array
+    :type exterior_lbfuns: list[functions]
+    :type exterior_ubfuns: list[functions]
+    :type exterior_lbfuns_derivative: list[functions]
+    :type exterior_ubfuns_derivative: list[functions]
+    :type lbfuntype: str
+    :type ubfuntype: str
+    :type Name: str 
+    :type deathrate: float
+    :type gamma_star_indices: list[int] or str
+    :type forcedOns: bool
 
-        self.ezero = 10**-7
+    """
+
+    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivative,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto",forcedOns = True):
+
+        
 
         if Name == None:
             self.Name = ''.join([str(np.random.choice(list('abcdefghijklmnopqrstuvwxyz123456789'))) for n in range(5)])
+            """Name of the model"""
         else:
             self.Name = Name
+
+        self.ezero = 10**-7
+        """Rounding Precision"""
 
         Z = la.null_space(gamDag.astype(float))
         gamDagtT = la.null_space(Z.T)
@@ -38,10 +71,12 @@ class SurfMod:
         num_internal = gamDag.shape[0]
 
         self.GammaStar = np.concatenate([gamStar.astype(float), -gamStar.astype(float)],axis = 1)
+        """Stoichiometry of the exchanged metabolites in the internal reactions"""
 
         if isinstance(gamma_star_indices,str):
             if gamma_star_indices == "Auto":
                 self.ExchangeOrder = np.arange(gamStar.shape[0]).astype(int)
+                """Ordering of the exchanged metabolites to match internal stoichiometry"""
             else:
                 print("Cannot understand exchange mapping. Assuming 1:1 and in order, using default (Auto)")
                 self.ExchangeOrder = np.arange(gamStar.shape[0]).astype(int)
@@ -53,9 +88,13 @@ class SurfMod:
 
 
         self.GammaDagger = np.concatenate([gamDag.astype(float), -gamDag.astype(float)],axis = 1)#gamDag.astype(float)
+        """Stoichiometry of the internal metabolites in the internal reactions"""
         self.num_fluxes = 2*num_v
+        """Number of internal reactions (with forward and reverse reactions seperated)"""
         self.num_exch_rxns = num_exch
+        """Number of exchange reactions"""
         self.num_internal_metabolites = num_internal
+        """Number of internal metabolites"""
 
         # self.total_var = 6*num_v + 2*num_exch
         rw1 = self.GammaStar#, np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
@@ -70,12 +109,17 @@ class SurfMod:
         # self.expandGammaStar = np.concatenate([gamStar.astype(float),-gamStar.astype(float),np.zeros((num_exch,2*num_v + 2*num_exch))],axis = 1)
 
         self.objective = np.concatenate([-np.array(objective).astype(float),np.array(objective).astype(float)])
+        """FBA objective vector"""
 
         self.flux_order = intrn_order
+        """List (providing ordering) of internal reactions"""
 
         self.exchange_bounds = np.concatenate([exterior_ubfuns,exterior_lbfuns])
+        """All exchange bound functions"""
         self.lower_exch_type = lbfuntype
+        """Kind of exchange lower bounds"""
         self.upper_exch_type = ubfuntype
+        """Kind of exchange upper bounds"""
 
 
         interior_ubs_min0 = np.array([max(bd,0) for bd in interior_ubs])
@@ -129,7 +173,9 @@ class SurfMod:
                     print("{} Internal reverse reactions forced on : {}\nBounds are ({},{})".format(self.Name,bd+len(interior_lbs),-np.minimum(interior_ubs[bd],interior_lbs_min0[bd]),interior_lbs_min0[bd]))
 
             self.ForcedOn = fon
+            """Internal reactions that are forced on."""
             self.ForcedOff = foff
+            """Internal reactions that are forced off (due to opposite reaction being forced on)."""
 
         else:
             self.ForcedOn = []
@@ -137,37 +183,75 @@ class SurfMod:
 
         std_form_mat = np.concatenate([prob_mat,np.eye(prob_mat.shape[0])],axis = 1)
         self.solver_constraint_matrix = prob_mat
+        """Constraint matrix for FBA passed to linear solver (does not include slack columns)"""
         self.standard_form_constraint_matrix = std_form_mat
+        """Standard form constraint matrix for FBA (does include slack columns)"""
         self.internal_bounds = all_internal
+        """All bounds on internal reactions"""
         self.num_constr = std_form_mat.shape[0]
+        """Total number of constraints in the FBA problem"""
         self.total_vars = std_form_mat.shape[1]
+        """Total number of variables (including slacks) in the FBA problem"""
 
-        self.exchange_bounds_dt = np.concatenate([exterior_ubfuns_derivatives,exterior_lbfuns_derivative])
+        self.exchange_bounds_dt = np.concatenate([exterior_ubfuns_derivative,exterior_lbfuns_derivative])
+        """All exchange bound deratives"""
 
 
 
 
         self.deathrate = deathrate
+        """Decay (or death) rate of the model."""
+    
         self.exchanged_metabolites = exchanged_metabolites
+        """list of metabolites (by name) that the model exchanges with its environment"""
 
         self.current_basis_full = None
+        """Index in the standard form constraint matrix of the current FBA optimal basis"""
+
         self.current_basis = None
+        """Reduced current optimal basis of FBA problem. Reduction eliminates slack columns from the basis, and only rows of constraints without basic slacks.
+        Saved as QR factorization of the reduced basis as a tuple (Q,R,(rows,columns))"""
 
         self.essential_basis = None
+        """The variables that must be included the basis (non-zero variables)"""
 
         self.inter_flux = None
+        """The current fluxes of the internal reactions (updated by :py:func:`compute_internal_flux <surfmod.SurfMod.compute_internal_flux>`)"""
+
         self.slack_vals = None
+        """The current values of the slack variables of the FBA problem (updated by :py:func:`compute_slacks <surfmod.SurfMod.compute_slacks>`)"""
 
         self.feasible = True
-
+        """Whether or not a feasible solution to FBA (and a basis for forward simulation) can be found."""
 
     def fba_gb(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
 
-        '''
+        """
+        Perform FBA and minimize total flux, or use different secondary objective if given. Gurobi.
 
-        Perform FBA and minimize total flux, or use different secondary objective if given. Uses Gurobi.
+        :param master_metabolite_con: The concentration of the external metabolites
+        :type master_metabolite_con: array[float]
+        :param secondobj: Secondary objective for FBA optimization (if "total", minimize total flux). Can be given as an objective vector of the string "total"
+        :type secondobj: array[float]
 
-        '''
+        :param flobj: File object to write logging to. If None, writes to stdout. Default None
+        :type flobj: File
+        
+        :param report_activity: Whether or not to log progress. Default True
+        :type report_activity: bool
+
+        :return: FBA objective value after optimization(s), or error string
+        :rtype: float
+
+        **Modifies** 
+
+        -  :py:obj:`essential_basis <surfmod.SurfMod.essential_basis>` 
+        -  :py:obj:`current_basis_full <surfmod.SurfMod.current_basis_full>` 
+        -  :py:obj:`inter_flux <surfmod.SurfMod.inter_flux>` 
+        -  :py:obj:`slack_vals <surfmod.SurfMod.slack_vals>` 
+        -  :py:obj:`feasible <surfmod.SurfMod.feasible>` (if infeasible)
+
+        """        
 
         try:
             import gurobipy as gb
@@ -448,16 +532,37 @@ class SurfMod:
             return -val
         else:
             self.feasible = False
-            return np.array(["failed to prep"])
-
+            return "failed to prep"
 
     def fba_clp(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
 
-        '''
+        """
+        Perform FBA and minimize total flux, or use different secondary objective if given. Uses CyLP (open source).
 
-        Perform FBA and minimize total flux, or use different secondary objective if given. Uses CyLP (open source)
+        :param master_metabolite_con: The concentration of the external metabolites
+        :type master_metabolite_con: array[float]
+        :param secondobj: Secondary objective for FBA optimization (if "total", minimize total flux). Can be given as an objective vector of the string "total"
+        :type secondobj: array[float]
 
-        '''
+        :param flobj: File object to write logging to. If None, writes to stdout. Default None
+        :type flobj: File
+        
+        :param report_activity: Whether or not to log progress. Default True
+        :type report_activity: bool
+
+        :return: FBA objective value after optimization(s), or error string
+        :rtype: float
+
+        **Modifies** 
+
+        -  :py:obj:`essential_basis <surfmod.SurfMod.essential_basis>` 
+        -  :py:obj:`current_basis_full <surfmod.SurfMod.current_basis_full>` 
+        -  :py:obj:`inter_flux <surfmod.SurfMod.inter_flux>` 
+        -  :py:obj:`slack_vals <surfmod.SurfMod.slack_vals>` 
+        -  :py:obj:`feasible <surfmod.SurfMod.feasible>` (if infeasible)
+
+        """        
+       
         from cylp.cy.CyClpSimplex import CyClpSimplex
         from cylp.py.modeling.CyLPModel import CyLPArray
 
@@ -663,8 +768,33 @@ class SurfMod:
             self.feasible = False
             return np.array(["failed to prep"])
 
-
     def findWave(self,master_metabolite_con,master_metabolite_con_dt,details = False, flobj = None):
+
+        """
+        Finds a basis for forward simulation (see :ref:`surfinfba`). 
+
+        :param master_metabolite_con: The concentration of the external metabolites
+        :type master_metabolite_con: array[float]
+        :param master_metabolite_con_dt: The rate of change of the concentration of the external metabolites
+        :type master_metabolite_con_dt: array[float]
+
+        :param flobj: File object to write logging to. If None, writes to stdout. Default None
+        :type flobj: File
+        
+        :param details: Whether or not to log progress. Default False.
+        :type details: bool
+
+        :return: Flag indicating if the function changed the basis
+        :rtype: bool
+
+        **Modifies** 
+
+        -  :py:obj:`current_basis_full <surfmod.SurfMod.current_basis_full>`
+        -  :py:obj:`current_basis <surfmod.SurfMod.current_basis>`
+        -  :py:obj:`feasible <surfmod.SurfMod.feasible>` (if infeasible)
+
+        """
+
 
         all_current_vars = np.concatenate([self.inter_flux,self.slack_vals])
 
@@ -676,8 +806,6 @@ class SurfMod:
 
         basisinds = self.current_basis_full.copy()
 
-        # svd = np.linalg.svd(self.standard_form_constraint_matrix[:,basisinds],compute_uv = False)
-        # print("Minimum singular value: {}".format(min(svd)))
 
         essential_indx = np.array([i for i in range(len(basisinds)) if (basisinds[i] in self.essential_basis)])#location of essentials within beta
         
@@ -753,6 +881,35 @@ class SurfMod:
 
     def solve_phaseone(self,Abeta,Vbeta,essential_indx,basisinds,details,bound_rhs_dt,flobj):
 
+        """
+        Solves the phase-one problem as described in :py:func:`findWave <surfmod.SurfMod.findWave>`
+
+        
+        :param Abeta: Current basis matrix (columns of standard form matrix)
+        :type Abeta: array[float]
+
+        :param Vbeta: Solution to solve(Abeta,bounds_rhs_dt)
+        :type Vbeta: array[float]
+
+        :param essential_indx: location of essentials within basisinds
+        :type essential_indx: array[int]
+        
+        :param basisinds: copy of current full basis index
+        :type basisinds: array[int]
+
+        :param bound_rhs_dt: time-derivatives of the bounds evaluated at the current time/state
+        :type bound_rhs_dt: array[float]
+
+        :param details: Whether or not to log progress
+        :type details: bool
+
+        :param flobj: File object to write logging to. If None, writes to stdout. Default None
+        :type flobj: File
+
+        :return: index of the basis that satisfies the phase-one problem, and the objective value of the phase-one problem (which should be 0)
+        :rtype: tuple[array[int],float]
+        """
+
         Abarnp1 = np.array([np.dot(-Abeta,np.ones(Abeta.shape[0]))]).T
         Aplus = np.concatenate([self.standard_form_constraint_matrix,Abarnp1],axis = 1)
         #get most negative entry that isn't in the essential basis and switch it with n+1
@@ -806,6 +963,40 @@ class SurfMod:
         return basisinds,objval
 
     def solve_minmax(self,basisinds,bound_rhs_dt,all_current_vars,essential_indx,details,flobj,constrained = False):
+
+        """
+        Solves the final optimization problem described in :py:func:`findWave <surfmod.SurfMod.findWave>`
+
+        :param essential_indx: location of essentials within basisinds
+        :type essential_indx: array[int]
+        
+        :param basisinds: copy of current full basis index
+        :type basisinds: array[int]
+
+        :param bound_rhs_dt: time-derivatives of the bounds evaluated at the current time/state
+        :type bound_rhs_dt: array[float]
+
+        :param all_current_vars: current values of variables (including slacks)
+        :type all_current_vars: array[float]
+        
+        :param details: Whether or not to log progress
+        :type details: bool
+
+        :param flobj: File object to write logging to. If None, writes to stdout. Default None
+        :type flobj: File
+
+        :param constrained: Whether to constrain the minmax pivoting to insure the maximum never increases. Default False
+        :type constrained: bool
+
+        :return: index of the basis that satisfies the phase-one problem, and the objective value of the phase-one problem (which should be 0)
+        :rtype: tuple[array[int],float]
+
+        **Modifies** 
+
+        -  :py:obj:`current_basis_full <surfmod.SurfMod.current_basis_full>`
+        -  :py:obj:`current_basis <surfmod.SurfMod.current_basis>`
+
+        """
 
         keeptrying = True
         numof = 0
@@ -898,7 +1089,18 @@ class SurfMod:
 
         '''
         Compute current fluxes (not including slacks) from current basis & metabolite concentration - uses reduced basis.
+
+        :param master_metabolite_con: external metabolite concentrations
+        :type master_metabolite_con: array[float]
+
+        :return: None
+
+        **Modifies** 
+
+        -  :py:obj:`inter_flux <surfmod.SurfMod.inter_flux>`
+
         '''
+
         metabolite_con = master_metabolite_con[self.ExchangeOrder]
         exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
         bound_rhs = np.concatenate([exchg_bds,self.internal_bounds])
@@ -916,8 +1118,19 @@ class SurfMod:
         self.inter_flux = all_vars#compute_if(bound_rhs.astype(np.float64),self.current_basis,self.num_fluxes)
 
     def compute_slacks(self,master_metabolite_con):
+        '''
+        Compute current slack values from current basis & metabolite concentration - uses reduced basis.
 
-        '''Compute the values of the slack variables'''
+        :param master_metabolite_con: external metabolite concentrations
+        :type master_metabolite_con: array[float]
+
+        :return: None
+
+        **Modifies** 
+
+        -  :py:obj:`slack_vals <surfmod.SurfMod.slack_vals>`
+
+        '''
 
         metabolite_con = master_metabolite_con[self.ExchangeOrder]
         exchg_bds = np.array([bd(metabolite_con) for bd in self.exchange_bounds])
@@ -936,28 +1149,43 @@ class SurfMod:
 
         self.slack_vals = all_slks
 
-@jit(nopython=True)
-def compute_if(bound_rhs,current_basis,num_fluxes):
-    '''
-    Compute current fluxes (not including slacks) from current basis & metabolite concentration - uses reduced basis.
-    '''
-    # metabolite_con = master_metabolite_con[ExchangeOrder]
-    # exchg_bds = np.array([bd(metabolite_con) for bd in exchange_bounds])
-    # bound_rhs = np.concatenate([exchg_bds,internal_bounds])
+# @jit(nopython=True)
+# def compute_if(bound_rhs,current_basis,num_fluxes):
+#     '''
+#     Compute current fluxes (not including slacks) from current basis & metabolite concentration - uses reduced basis.
+#     '''
+#     # metabolite_con = master_metabolite_con[ExchangeOrder]
+#     # exchg_bds = np.array([bd(metabolite_con) for bd in exchange_bounds])
+#     # bound_rhs = np.concatenate([exchg_bds,internal_bounds])
 
-    Q,R,beta = current_basis
+#     Q,R,beta = current_basis
 
-    if len(beta[0]):
-        fl_beta = np.linalg.solve(R,np.dot(Q.T,bound_rhs[beta[0]]))
-    else:
-        fl_beta = np.empty(0,np.float64)
+#     if len(beta[0]):
+#         fl_beta = np.linalg.solve(R,np.dot(Q.T,bound_rhs[beta[0]]))
+#     else:
+#         fl_beta = np.empty(0,np.float64)
 
-    all_vars = np.zeros(num_fluxes)#np.zeros(self.total_var)
-    all_vars[beta[1]] = fl_beta
+#     all_vars = np.zeros(num_fluxes)#np.zeros(self.total_var)
+#     all_vars[beta[1]] = fl_beta
 
-    return all_vars
+#     return all_vars
 
 def getReduced(basisinds,num_fluxes,A):
+
+    """
+    Form Reduced current optimal basis of FBA problem. Reduction eliminates slack columns from the basis, and only rows of constraints without basic slacks.
+
+    :param basisinds: Index of a complete basis for a model
+    :type basisinds: array[int]
+    :param num_fluxes: number of internal fluxes in a model
+    :type num_fluxes: int
+    :param A: Standard form consraint matrix of a model (e.g. :py:obj:`standard_form_constraint_matrix <surfmod.SurfMod.standard_form_constraint_matrix>`)
+    :type A: array[float]
+
+    :return: QR factorization of the reduced basis and row/column indices (Q,R,(rows,columns))
+    :rtype: tuple[array[float],array[float],tuple[array[int],array[int]]]
+    """
+
     rowsToDelete = np.array([i-num_fluxes for i in basisinds if i>=num_fluxes])
     rowsToInclude = np.array([i for i in range(A.shape[0]) if i not in rowsToDelete])
     colsToInclude = np.array([i for i in basisinds if i<num_fluxes])
@@ -971,31 +1199,53 @@ def getReduced(basisinds,num_fluxes,A):
         reducedbeta = (list(rowsToInclude),list(colsToInclude))
     return (Q,R,reducedbeta)
 
-def remove_licol(fullmat,indexes,essentials,fluxes):
-    mat = fullmat[:,indexes]
-    if mat.shape[0] == mat.shape[1]:
-        return indexes,None
-    slv = la.null_space(mat).T[0]
-    non_essentials = np.array([x for x in range(len(indexes)) if indexes[x] not in essentials])
-    #and remove any column with a non-zero, as long as it isn't ''essential"
-    nonzero = np.where(slv.round(7).astype(bool)*np.array([(x not in essentials) for x in indexes]))[0]#[-1]
+# def remove_licol(fullmat,indexes,essentials,fluxes):
+#     mat = fullmat[:,indexes]
+#     if mat.shape[0] == mat.shape[1]:
+#         return indexes,None
+#     slv = la.null_space(mat).T[0]
+#     non_essentials = np.array([x for x in range(len(indexes)) if indexes[x] not in essentials])
+#     #and remove any column with a non-zero, as long as it isn't ''essential"
+#     nonzero = np.where(slv.round(7).astype(bool)*np.array([(x not in essentials) for x in indexes]))[0]#[-1]
 
-    # all_errs = np.array([np.linalg.norm(fluxes[j]*np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
-    all_errs = np.array([np.linalg.norm(np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
+#     # all_errs = np.array([np.linalg.norm(fluxes[j]*np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
+#     all_errs = np.array([np.linalg.norm(np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
 
-    if len(nonzero):
-        # remove where it will have the smallest error. Error vector is er = v * np.linalg.solve(A,y) where
-        # v is the flux value at the index removed, y is the 
-        # column removed and A is the remaining matrix. 
-        rmvit = nonzero[np.argmin(all_errs[nonzero])]
-        # rmvit = nonzero[np.argmax(slv[nonzero])]
-        return np.delete(indexes,rmvit),rmvit
-    else:
-        print("Failed to find initial basis after secondary objective.")
-        return None,None
+#     if len(nonzero):
+#         # remove where it will have the smallest error. Error vector is er = v * np.linalg.solve(A,y) where
+#         # v is the flux value at the index removed, y is the 
+#         # column removed and A is the remaining matrix. 
+#         rmvit = nonzero[np.argmin(all_errs[nonzero])]
+#         # rmvit = nonzero[np.argmax(slv[nonzero])]
+#         return np.delete(indexes,rmvit),rmvit
+#     else:
+#         print("Failed to find initial basis after secondary objective.")
+#         return None,None
 
 
 def pivot_nojit(c,A,beta,b,preferred,muststay = None):
+
+    """
+    Pivoting step in the simplex algorithm for a linear program, with option to prevent some indices from pivoting out. 
+    Used for the phase-one problem in :py:func:`findWaves <surfmod.SurfMod.findWaves>`. Does not use Numba.
+
+    :param c: objective vector
+    :type c: array[float]
+    :param A: Constraint Matrix
+    :type A: array[float]
+    :param beta: Current basis indices
+    :type beta: array[int]
+    :param b: constraint values (right-hand side)
+    :type b: array[float]
+    :param preferred: index of a variable we would prefer to have leave the basis (e.g. the stopping condition for the phase-one problem)
+    :type preferred: int
+    :param muststay: indices that must not be pivoted out the basis.
+    :type muststay: array[int]
+    
+    :return: index to pivot in, location in current basis of index to pivot out, flag indicating if optimum has been reached, change in the objective value
+    :rtype: tuple[int,int,bool,float]
+    """
+
     if muststay == None:
         muststay = []
     #get eta
@@ -1038,9 +1288,26 @@ def pivot_nojit(c,A,beta,b,preferred,muststay = None):
 
 @jit(nopython=True)
 def minmaxpivot(x,v,A,beta,b,muststay):
-    ''''
-    pivot to reduce max(v'x) - actually just going to reduce the element that is currently max. Could actually
-    increase the overall max...is there a better way?
+    '''
+    Pivot to try to reduce max(v'x) - actually just reduces the element that is currently max. Works like a normal step of the simplex algorithm after choosing
+    e_i as an objective, where e_i is the elementary vector corresponding to the current largest component of x.
+
+    :param x: current solution to the optimization
+    :type x: array[float]
+    :param v: weights for optimization 
+    :type v: array[float]
+    :param A: Constraint Matrix
+    :type A: array[float]
+    :param beta: Current basis indices
+    :type beta: array[int]
+    :param b: constraint values (right-hand side)
+    :type b: array[float]
+    :param muststay: indices that must not be pivoted out the basis.
+    :type muststay: array[int]
+
+    :return: index to pivot in, location in current basis of index to pivot out, flag indicating if optimum has been reached, change in the objective value
+    :rtype: tuple[int,int,bool,float]
+
     '''
 
     if max(v) < 10**-8:
@@ -1106,7 +1373,26 @@ def minmaxpivot(x,v,A,beta,b,muststay):
 
 @jit(nopython=True)
 def pivot(c,A,beta,b,preferred,muststay):
+    """
+    Pivoting step in the simplex algorithm for a linear program, with option to prevent some indices from pivoting out. 
+    Used for the phase-one problem in :py:func:`findWaves <surfmod.SurfMod.findWaves>`. Written to use Numba for speed
 
+    :param c: objective vector
+    :type c: array[float]
+    :param A: Constraint Matrix
+    :type A: array[float]
+    :param beta: Current basis indices
+    :type beta: array[int]
+    :param b: constraint values (right-hand side)
+    :type b: array[float]
+    :param preferred: index of a variable we would prefer to have leave the basis (e.g. the stopping condition for the phase-one problem)
+    :type preferred: int
+    :param muststay: indices that must not be pivoted out the basis.
+    :type muststay: array[int]
+
+    :return: index to pivot in, location in current basis of index to pivot out, flag indicating if optimum has been reached, change in the objective value
+    :rtype: tuple[int,int,bool,float]
+    """
     #get eta
     eta = np.array([i for i in range(A.shape[1]) if (i not in beta)])
     #compute A^-1_beta * A
@@ -1171,6 +1457,22 @@ def pivot(c,A,beta,b,preferred,muststay):
 
 @jit(nopython=True)
 def conditionargmin(arr,condition_arr,exclude):
+
+    """
+
+    Locate the minimum in a array that meets a condition
+
+    :param arr: Array to find minimum in
+    :type arr: array[float]
+    :param condition_arr: indicator of which elements meet the condition
+    :type condition_arr: array[bool]
+    :param exclude: indices to ignore in finding the min
+    :type exclued: array[bool]
+
+    :return: index of the conditional min
+    :rtype: int
+    """
+
     ok_inds = np.where(np.array(condition_arr))[0]
     ok_inds = np.array([i for i in ok_inds if i not in exclude])
     if len(ok_inds):
@@ -1185,8 +1487,25 @@ def conditionargmin(arr,condition_arr,exclude):
         return len(arr)
 
 
-
 def compute_objval(c,A,beta,b):
+
+    """
+    Compute objective value for a linear program given the objective vector, constraints, and optimal basis.
+
+    :param c: objective vector
+    :type c: array[float]
+    :param A: Constraint Matrix
+    :type A: array[float]
+    :param beta: Current basis indices
+    :type beta: array[int]
+    :param b: constraint values (right-hand side)
+    :type b: array[float]
+
+    :return: objective value
+    :rtype: float
+    """    
+
+
     xbeta = np.linalg.solve(A[:,beta],b)
     x = np.zeros_like(c)
     x[beta] = xbeta
@@ -1195,9 +1514,28 @@ def compute_objval(c,A,beta,b):
     
 @jit(nopython=True)
 def minmaxpivot_constrained(w,v,A,beta,b,muststay):
-    ''''
-    pivot to reduce max(v*x) - actually just going to reduce the element that is currently max. Constrain the other elements of v*x
-    by the current max. This ends up looking like a single pivot of an LP solve but we have to add particular constraints each time.
+    '''
+
+    Pivot to try to reduce max(v'x) - actually just reduces the element that is currently max. Constrain the other elements of v*x
+    by the current max. This ends up looking like a single pivot of an LP solve but we have to change the objective and
+    add particular constraints each time. 
+
+    :param w: current solution to the optimization
+    :type w: array[float]
+    :param v: weights for optimization 
+    :type v: array[float]
+    :param A: Constraint Matrix
+    :type A: array[float]
+    :param beta: Current basis indices
+    :type beta: array[int]
+    :param b: constraint values (right-hand side)
+    :type b: array[float]
+    :param muststay: indices that must not be pivoted out the basis.
+    :type muststay: array[int]
+
+    :return: index to pivot in, location in current basis of index to pivot out, flag indicating if optimum has been reached, change in the objective value
+    :rtype: tuple[int,int,bool,float]
+
     '''
 
     #compute primal basic solution

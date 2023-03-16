@@ -11,6 +11,26 @@ import scipy as sp
 
 def species_metabolite_network(metlist,metcons,community,report_activity = True,flobj = None):
 
+    """
+    Constructs microbe-metabolite and metabolite-metabolite networks from a set of SurfMod models (with forward-simulation bases). The microbe-metabolite network will have duplicate edges with
+    different mediating metabolites (see :ref:`metconsin`)
+
+    :param metlist: list of metabolites in the environment
+    :type metlist: list[str]
+    :param metcons: metabolite concentrations at the start of the interval on which the bases are valid
+    :type metcons: array[float]
+    :param community: SurfMod models in the microbial community. These should have bases defined.
+    :type community: list[SurfMod] or dict[str,SurfMod]
+    :param report_activity: Whether or not to log progress
+    :type report_activity: bool
+    :param flobj: File object to write logging to. If None, writes to stdout. Default None
+    :type flobj: File
+
+    :return: Node table for microbe-metabolite network, Edge table for microbe-metabolite network, Edge table for metabolite-metabolite network, Node table for metabolite-metabolite network
+    :rtype: tuple[pandas dataframe]
+    """
+
+
     #let community be dict or listlike - going to use as listlike
     if isinstance(community,dict):
         models = list(community.values())
@@ -212,9 +232,25 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
 
     return node_table,met_med_net,met_met_edges,met_met_nodes
 
-
-
 def trim_network(edges,nodes,dynamics):
+
+    """
+
+    Trims out nodes in a microbe-metabolite or metabolite-metabolite network by removing nodes that are not present (according to the given dynamics). Removes edges associated with those nodes.
+
+    :param edges: List of edges of the network
+    :type edges: pandas dataframe
+    :param nodes: List of nodes of the network
+    :type nodes: pandas dataframe
+    :param dynamics: Dynamic simulation result containing values of node variables
+    :type dynamics: pandas dataframe
+
+    :return: Edges of trimmed network, Nodes of trimmed network
+    :rtype: tuple[pandas dataframe]
+
+    """
+
+
     newnodes = nodes.copy()
     newedges = edges.copy()
     dropped = 0
@@ -231,6 +267,16 @@ def trim_network(edges,nodes,dynamics):
     return newedges,newnodes
 
 def make_medmet_summ(medmet_full):
+
+    """
+    Makes microbe-metabolite summary network by collapsing all edges between two metabolites (i.e. edges with seperate mediating metabolites) into a single edge.
+
+    :param medmet_full: The full list of network edges
+    :type medmet_full: pandas dataframe
+
+    :return: The new list of network edges, with only unique (source,target) pairs
+    :rtype: pandas dataframe
+    """    
     
     medmet_summ = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","ABSRootWeight","SignedRootWeight"])
     
@@ -245,9 +291,33 @@ def make_medmet_summ(medmet_full):
     return medmet_summ
 
 def heuristic_ss(metmed,nodes,report_activity = False):
+    
     '''
-    metmed should have columns ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight"","ABSRootWeight","SignedRootWeight"]
+
+    Creates a microbe-microbe interaction network heuristically using any length-2 paths in the microbe-metabolite network
+
+    :param metmed: list of edges in the microbe-metabolite network
+    :type metmed: pandas dataframe
+    :param nodes: list of nodes of the microbe-metabolite network
+    :type nodes: pandas dataframe
+    :param report_activity: Whether or not to log progress
+    :type report_activity: bool
+    :return: 
+    :rtype: tuple[pandas dataframe]
+    
+    ``metmed`` should have the following columns: 
+
+    - Source
+    - Target
+    - SourceType
+    - Weight
+    - ABS_Weight
+    - Sign_Weight
+    - ABSRootWeight
+    - SignedRootWeight
+    
     '''
+
     nodetable = nodes[nodes["Type"] == "Microbe"]
     edge_table = pd.DataFrame(columns = ["Source","Target","Weight","Metabolites","ABSWeight","SignWeight","ABSRootWeight","SignedRootWeight"],dtype = object)
     adjacency = pd.DataFrame(columns = nodetable["Name"],index = nodetable["Name"])
@@ -281,20 +351,53 @@ def heuristic_ss(metmed,nodes,report_activity = False):
     return edge_table,nodetable,adjacency
 
 
-def average_network(networks,interval_times,total_interval,network_type):
+def average_network(networks,interval_times,network_type):
+
+    """
+    Creates time-averaged network from sequence of networks and time-interval lengths.
+
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+    :param network_type: type of network (micmet, metmet, or spc)
+    :type network_type: str
+
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :rtype: tuple[pandas dataframe,pandas dataframe, bool]
+
+    options for ``network_type`` are:
+
+    - micmet: microbe-metabolite network
+    - metmet: metabolite-metabolite network
+    - spc: microbe-microbe network
+
+    """
+
+
     if network_type == "micmet":
-        return average_network_micmet(networks,interval_times,total_interval)
+        return average_network_micmet(networks,interval_times)
     elif network_type == "metmet":
-        return average_network_metmet(networks,interval_times,total_interval)
+        return average_network_metmet(networks,interval_times)
     elif network_type == "spc":
-        return average_network_spc(networks,interval_times,total_interval)
+        return average_network_spc(networks,interval_times)
     else:
         return None,None,False
 
-def average_network_micmet(networks,interval_times,total_interval):
-    if total_interval == 0:
-        print("Average network making - Total interval 0")
-        return None,None,False
+def average_network_micmet(networks,interval_times):
+
+    """
+    Creates time-averaged network from sequence of microbe-metabolite networks and time-interval lengths.
+
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :rtype: tuple[pandas dataframe,pandas dataframe, bool]
+    """
+
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
@@ -327,6 +430,17 @@ def average_network_micmet(networks,interval_times,total_interval):
     return avg_network,node_table,True
 
 def make_avg_micmet_node_table(avg_edges):
+
+    """
+    Creates a node table for the time-averaged microbe-metabolite network
+
+    :param avg_edges: the time-averaged network edges
+    :type avg_edges: pandas dataframe
+
+    :return: node table
+    :rtype: pandas dataframe
+    """
+
     all_nodes = np.unique(list(avg_edges["Source"]) + list(avg_edges["Target"]))
     node_table = pd.DataFrame(index =all_nodes, columns = ["In","Out","All","Type"])
     for nd in all_nodes:
@@ -349,12 +463,20 @@ def make_avg_micmet_node_table(avg_edges):
         node_table.loc[nd] = [".".join(ins),".".join(outs),".".join(ins)+".".join(outs),ndtype]
     return node_table
 
+def average_network_metmet(networks,interval_times):
 
+    """
+    Creates time-averaged network from sequence of metabolite-metabolite networks and time-interval lengths.
 
-def average_network_metmet(networks,interval_times,total_interval):
-    if total_interval == 0:
-        print("Average network making - Total interval 0")
-        return None,None,False
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :rtype: tuple[pandas dataframe,pandas dataframe, bool]
+    """
+
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
@@ -377,6 +499,18 @@ def average_network_metmet(networks,interval_times,total_interval):
     return avg_network,node_table,True
 
 def make_avg_metmet_node_table(networks,interval_times):
+
+    """
+    Creates time-averaged metabolite-metabolite node table from sequence of metabolite-metabolite node tables and time-interval lengths.
+
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+
+    :return: time-averaged node table
+    :rtype: pandas dataframe
+    """
 
     node_tab = pd.DataFrame()
 
@@ -415,10 +549,20 @@ def make_avg_metmet_node_table(networks,interval_times):
 
     return node_tab
 
-def average_network_spc(networks,interval_times,total_interval):
-    if total_interval == 0:
-        print("Average network making - Total interval 0")
-        return None,None,False
+def average_network_spc(networks,interval_times):
+
+    """
+    Creates time-averaged network from sequence of microbe-microbe networks and time-interval lengths.
+
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :rtype: tuple[pandas dataframe,pandas dataframe, bool]
+    """
+
     all_networks = pd.DataFrame(dtype = float)
     # metabs = pd.DataFrame()
     for ky in networks.keys():
@@ -447,6 +591,19 @@ def average_network_spc(networks,interval_times,total_interval):
     return avg_network,node_table,True
 
 def make_avg_spc_node_table(networks,interval_times):
+
+
+    """
+    Creates time-averaged microbe-microbe node table from sequence of microbe-microbe node tables and time-interval lengths.
+
+    :param networks: Set of networks to average, given as dicts with "edges" and "nodes" as keys, in a dict keyed by some label that matches the time interval labels
+    :type networks: dict[dict[pandas dataframe]]
+    :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
+    :type interval_times: dict[float]
+
+    :return: time-averaged node table
+    :rtype: pandas dataframe
+    """
 
     node_tab = pd.DataFrame()
 

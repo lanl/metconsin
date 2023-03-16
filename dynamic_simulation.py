@@ -9,6 +9,28 @@ from scipy.optimize import root_scalar
 
 
 def evolve_community(t,s,models,metabolite_in,metabolite_out):
+
+    """
+
+    ODE right hand side to be integrated during intervals of smoothness in dynamic FBA.
+
+    :param t: time-point in simulation
+    :type t: float
+    :param s: current value of the state vector of the simulation (biomass of all taxa and metabolites)
+    :type s: array[float]
+    :param models: GSMs used in simulation
+    :type models: list[SurfMod]
+    :param yi: metabolite inflow 
+    :type yi: array[float]
+    :param yo: metabolite outflow 
+    :type yo: array[float]
+
+    :return: value of the vector field at the current time-point and system state
+    :rtype: array[float]
+
+    """
+
+
     x = s[:len(models)]
     y = s[len(models):]
     xdot = np.zeros_like(x)
@@ -27,6 +49,34 @@ def evolve_community(t,s,models,metabolite_in,metabolite_out):
     return np.concatenate([xdot,ydot])
 
 def all_vs(t,s,models,yi,yo):
+
+    """
+
+    Computes a flattened array of all the fluxes of all the models so that ``scipy.integrate.solve_ivp`` can track for a 
+    stopping condition on integration (infeasibility of one of the fluxes)
+
+    :param t: time-point in simulation
+    :type t: float
+    :param s: current value of the state vector of the simulation (biomass of all taxa and metabolites)
+    :type s: array[float]
+    :param models: GSMs used in simulation
+    :type models: list[SurfMod]
+    :param yi: metabolite inflow (unused but this function must have the same parameters as the function being integrated)
+    :type yi: array[float]
+    :param yo: metabolite outflow (unused but this function must have the same parameters as the function being integrated)
+    :type yo: array[float]
+
+    :return: minimum flux across all models, with a small perturbation added so that the integrator only stops if this minimum 
+    becomes strictly negative.
+    :rtype: float
+
+    **Modifies** 
+    
+    - ``model.inter_flux`` for each model (see :py:func:`model.compute_internal_flux <surfmod.SurfMod.compute_internal_flux>`)
+    - ``model.slack_vals`` for each model (see :py:func:`model.compute_slacks <surfmod.SurfMod.compute_slacks>`)
+
+    """
+
     y = s[len(models):]
     v = np.array([])
     for i in range(len(models)):
@@ -37,12 +87,53 @@ def all_vs(t,s,models,yi,yo):
     return min(v) + 10**-8
 
 def get_var_i(t,i,sln,mod,nummods):
+
+    """
+    
+    Function to get fluxes so that they can be checked for feasibility in :py:func:`find_stop <dynamic_simulation.find_stop>` 
+
+    :param t: time-point in the simulation at which to compute a flux
+    :type t: float
+    :param mod: GSM for which to compute a flux
+    :type mod: SurfMod
+    :param i: index of a flux in the GSM
+    :type i: int
+    :param sln: ODE solution including the time-point t
+    :type sln: solve_ivp solution object
+    :param nummods: The number of taxa in the community
+    :type nummods: int
+
+    :return: flux value of flux i at time t for model mod
+    :rtype: float
+
+    """
+
     y = sln(t)[nummods:]
     mod.compute_internal_flux(y)
     mod.compute_slacks(y)
     return np.concatenate([mod.inter_flux,mod.slack_vals])[i]
 
 def find_stop(t0,t1,sln,models):
+    """
+
+    Uses ``scipy.optimize.root_scalar`` to refine the estimate of when a flux because infeasible and a new basis was needed within
+    an interval of smooth forward ODE solving. If the interval is legnth 0, a warning is printed and the stop time is returned as the
+    start of the interval.
+
+    :param t0: lower bound of time interval
+    :type t0: float
+    :param t1: upper bound of time interval
+    :type t1: float
+    :param sln: ODE solution to dynamic FBA within the interval
+    :type sln: solve_ivp solution object
+    :param models: GSMs used in the simulation
+    :type models: list[SurfMod]
+    :return: minimum time at which any model flux became infeasible.
+    :rtype: float
+
+    """
+
+
     if t0==t1:
         print("[find_stop] No Interval")
         return t0
@@ -61,8 +152,59 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
 
     '''
     
-    surfin_fba
+    Runs the surfin_fba method to generate dymamic FBA simulations, saving bases used for constructing networks. Initializes the simulation
+    using flux balance analysis (with the method :py:func:`fba_gb <surfmod.SurfMod.fba_gb>` or :py:func:`fba_clp <surfmod.SurfMod.fba_clo>`) 
+    and the :py:func:`findwaves <surfmod.SurfMod.findwaves>` method of the SurfMod class and simulates forward until a flux is no longer
+    feasible. It then reuses :py:func:`findwaves <surfmod.SurfMod.findwaves>` to find a new basis for the model with an infeasible flux. 
+    It also attempts to find new bases for all the other models, in case there is a basis which will last longer before infeasibility. 
+    Tracks which bases changed and saves the indices of the old bases for network building, if that option is True. Infeasibility of a flux 
+    is first detected by the ODE solver, using the ``events`` option for ``scipy.integrate.solve_ivp``, and then refined using 
+    :py:func:`find_stop <dynamic_simulation.find_stop>`. If the solutions reaches the prescribed end-time or cannot find new bases
+    for simulation, it stops.
 
+    :param models: list of GSMs used in simulation, as SurfMod objects
+    :type community_members: list[SurfMod]
+    :param x0: Starting community abundances (treated as absolute abundances.) Array with same length as models, in order of models.
+    :type x0: numpy array
+    :param y0: Starting metabolite concentrations. Size of array depends on models.
+    :type y0: numpy array
+    :param endtime: Simulation length. Default 10**-2
+    :type endtime: float
+    :param resolution: Time-resolution of the dynamics output. Default 0.1
+    :type resolution: float
+    :param inflow: Inflow rate for each metabolite. Default all 0
+    :type inflow: array[float]
+    :param outflow: Outflow rate for each metabolite. Default all 0
+    :type outflow: array[float]
+    :param solver: LP solver to use (currently supports ``gurobi`` and ``clp``). Default ``gurobi``
+    :type solver: str
+    :param save_bases: Whether or not to save information about the bases used in simulation. Default True
+    :type save_bases: bool
+    :param track_fluxes: Whether or not to save the exchange fluxes computed during the simulation. Default True
+    :type track_fluxes: bool
+    :param save_internal_flux: Whether or not to save the internal fluxes computed during the simulation. Default True
+    :type save_internal_flux: bool
+    :param flobj: File object to write logging to. If None, writes to stdout. Default None
+    :type flobj: File
+    :param report_activity: Whether or not to log simulation progress. Default True
+    :type report_activity: bool
+    :param fwreport: Whether or not to log details of basis finding. Default False
+    :type fwreport: bool
+    :param debugging: Turn on some debugging prints. Default False
+    :type debugging: bool
+
+    
+    :return: Dictionary containing the simulation. Keys are :
+
+    - *t*\ : timepoints for the simulation. Numpy array length T
+    - *x*\ : dynamics of the microbial taxa. Numpy array shape NumTaxa x T 
+    - *y*\ : dynamics of the metabolites. Numpy array shape NumMetabolites x T
+    - *bt*\ : list of times a basis was recomputed.
+    - *basis* (if ``save_basis``): bases used
+    - *Exchflux* (if ``track_fluxes``): Exchange fluxes - dict of arrays
+    - *Intflux* (if ``save_internal_flux``): Internal fluxes - dict of arrays
+
+    :rtype: dict 
 
     '''
     

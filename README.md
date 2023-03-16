@@ -11,6 +11,9 @@ MetConSIN requires [Gurobi](https://www.gurobi.com/documentation/9.5/) and gurob
 
 Metconsin also requires [numba](https://numba.pydata.org/).
 
+## Documentation
+Documentation is being written using Sphinx and saved in the docs folder. To compile the docs, install [Sphinx](https://www.sphinx-doc.org/en/master/index.html), navigate to the docs folder, and run "make html".
+
 ## Basis of the Method
 Dynamic FBA can be written:
 
