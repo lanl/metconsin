@@ -571,7 +571,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
                 met_med_net,node_table = mn.trim_network(met_med_net,node_table,dynamics_t)
                 met_med_net_summary = mn.make_medmet_summ(met_med_net)
-                ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network)
+                ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network,flobj = flobj)
 
                 met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
                 mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
@@ -584,19 +584,19 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         for ky,val in interval_lens.items():
             interval_lens[ky] = val/total_interval
         
-        avg_micmetnet_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,total_interval,"micmet")
+        avg_micmetnet_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
         if rflag:
             mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
 
-        avg_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,total_interval,"micmet")
+        avg_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,"micmet")
         if rflag:
             mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
 
-        avg_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,total_interval,"metmet")
+        avg_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,"metmet")
         if rflag:
             met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
 
-        avg_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,total_interval,"spc")
+        avg_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,"spc")
         if rflag:
             speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
 

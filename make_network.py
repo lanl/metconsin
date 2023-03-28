@@ -290,7 +290,7 @@ def make_medmet_summ(medmet_full):
     
     return medmet_summ
 
-def heuristic_ss(metmed,nodes,report_activity = False):
+def heuristic_ss(metmed,nodes,report_activity = False,flobj = None):
     
     '''
 
@@ -326,7 +326,11 @@ def heuristic_ss(metmed,nodes,report_activity = False):
         selfloops = metmed[metmed["Source"]==metmed["Target"]]
         for tgnd in adjacency.index:
             if report_activity:
-                print("Target: {}".format(tgnd))
+                try:
+                    flobj.write("[heuristic_ss] Target: {}\n".format(tgnd))
+                except:
+                    print("[heuristic_ss] Target: {}".format(tgnd))
+
             #rows will be targets
             allmediators = metmed_woself[metmed_woself["Target"]==tgnd]#list of metabolites that effect it.
             allsrces = metmed_woself[[(tg in allmediators["Source"].values) for tg in metmed_woself["Target"]]]#list of sources for those metabolites

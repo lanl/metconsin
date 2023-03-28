@@ -1,0 +1,93 @@
+	bc1011	bc1015	In	Out	All
+1,2-Diacyl-sn-glycerol dioctadecanoyl_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+4-Hydroxybenzoate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+5-Aminolevulinate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+AMP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Acetate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Adenine_e0	0.0	0.0			
+Adenosine_e0	0.0	0.0	bc1011		bc1011
+Ala-Ala_e0	0.0	0.0	bc1015		bc1015
+Arsenate_e0	0.0	0.0	bc1015		bc1015
+Arsenite_e0	0.0	0.0	bc1015		bc1015
+BET_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+BIOT_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+CMP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+CO2_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Ca2+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Cbl_e0	0.0	0.0			
+Chorismate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Cl-_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Co2+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+CoA_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Cu2+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Cytosine_e0	0.0	0.0			
+D-Alanine_e0	0.0	0.0	bc1011		bc1011
+D-Arabinose_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+D-Glucose_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+D-Serine_e0	0.0	0.0			
+Deoxycytidine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Deoxyguanosine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Enterobactin_e0	0.0	0.0			
+Fe-enterochlin_e0	0.0	0.0			
+Folate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Formate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+GTP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Glycerol_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Glycine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+H+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+H2O_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Heme_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+K+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Alanine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Arginine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Asparagine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Aspartate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Cysteine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Glutamate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Glutamine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Histidine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Isoleucine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Leucine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Lysine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Methionine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Phenylalanine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Proline_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Serine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Threonine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Tryptophan_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Tyrosine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+L-Valine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Methanol_e0	0.0	0.0			
+Mg_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Mn2+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Myristic acid_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+N-Acetyl-D-glucosamine_e0	0.0	0.0	bc1015		bc1015
+NADP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+NH3_e0	0.0	0.0	bc1015		bc1015
+Na+_e0	0.0	0.0			
+Niacin_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Nicotinamide ribonucleotide_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Nitrate_e0	0.0	0.0			
+Nitrite_e0	0.0	0.0	bc1011		bc1011
+O2_e0	0.15278557913560092	0.15324853629746116	bc1011.bc1015	bc1011.bc1015	bc1011.bc1015bc1011.bc1015
+Oxidized glutathione_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+PAN_e0	0.0	0.0			
+PPi_e0	0.0	0.0	bc1015		bc1015
+Putrescine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Pyridoxal_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Riboflavin_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+S-Adenosyl-L-methionine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Spermidine_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Sulfate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+TRHL_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+TTP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Thiamin_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+UMP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+Uracil_e0	0.0	0.0			
+Zn2+_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+chromate_e0	0.0	0.0			
+dATP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+dGTP_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+ddca_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+fe3_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015
+meso-2,6-Diaminopimelate_e0	0.0	0.0	bc1011.bc1015		bc1011.bc1015

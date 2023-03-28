@@ -24,6 +24,7 @@ Contents
 
    usage
    method
+   tutorial
    metconsin_fun
    prep_models
    simulation

@@ -28,6 +28,8 @@ where ``location`` is the path to the folder that you cloned MetConSIN into.
 
 MetConSIN requires `Gurobi <https://www.gurobi.com/documentation/9.5/>`_ and gurobi's python package for linear the programming (basis finding) steps. Alternatively, MetConSIN can use the open source `CyLP <http://mpy.github.io/CyLPdoc/index.html>`_, but this is much slower.
 
+For COBRA models, MetConSIN uses the `cobrapy <https://opencobra.github.io/cobrapy/>`_ package.
+
 Metconsin also uses `numba <https://numba.pydata.org/>`_ to speed up computation.
 
 

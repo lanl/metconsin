@@ -151,7 +151,7 @@ def prep_cobrapy_models(models,
         idtonm = dict(zip(exchng_metabolite_ids,exchng_metabolite_names))
         nmtoid = dict(zip(exchng_metabolite_names,exchng_metabolite_ids))
 
-        if len(media):#if we're given a media, I'm assuming it's keyed by metabolite name, ID, or exchange reaction ID
+        if len(media):#if we're given a media, I'm assuming it's keyed by metabolite name, ID, or exchange reaction ID. IF THIS IS THE CASE, THE KEYS MUST MATCH METABOLITE NAMES or METABOLITE IDS or REACTION IDs THAT ARE IN THE MODEL.
             environment = media
         else:#otherwise the media file associated with the model is keyed by reaction ID
             environment = {}
@@ -161,11 +161,11 @@ def prep_cobrapy_models(models,
 
         y_init = {}
         for metabo in exchng_metabolite_names:
-            if metabo in environment.keys():
+            if metabo in environment.keys():#environment is keyed by metabolite name.
                 y_init[metabo] = environment[metabo]
-            elif nmtoid[metabo] in environment.keys():
+            elif nmtoid[metabo] in environment.keys():#environment is keyed by metabolite ID
                 y_init[metabo] = environment[nmtoid[metabo]]
-            elif any([nmtoid[metabo] in rx.reactants for rx in model.reactions]):
+            elif any([nmtoid[metabo] in rx.reactants for rx in model.reactions]):#environment is keyed by exchange reaction ID
                 y_init[metabo] = np.mean([environment[rx.id] for rx in model.reactions if metabo in rx.reactants])
 
 

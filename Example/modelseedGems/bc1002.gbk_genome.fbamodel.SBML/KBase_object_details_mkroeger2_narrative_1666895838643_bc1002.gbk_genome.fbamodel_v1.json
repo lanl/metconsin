@@ -1,0 +1,109 @@
+{
+    "metadata": [
+        [
+            119,
+            "bc1002.gbk_genome.fbamodel",
+            "KBaseFBA.FBAModel-14.0",
+            "2022-11-03T16:21:49+0000",
+            1,
+            "jdbrunner",
+            129906,
+            "mkroeger2:narrative_1666895838643",
+            "2705ca264b76fc9bbeb59eba8ebd9ae6",
+            394782,
+            {
+                "Genome": "129906/23/1",
+                "Name": "bc1002.gbk_genome.fbamodel",
+                "Number biomasses": "1",
+                "Number compartments": "2",
+                "Number compounds": "407",
+                "Number gapfills": "2",
+                "Number gapgens": "0",
+                "Number reactions": "286",
+                "Source": "KBase",
+                "Source ID": "bc1002.gbk_genome.fbamodel",
+                "Type": "GenomeScale"
+            }
+        ]
+    ],
+    "provenance": [
+        {
+            "copy_source_inaccessible": 0,
+            "created": "2022-11-03T16:21:48+0000",
+            "creator": "jdbrunner",
+            "epoch": 1667492508988,
+            "extracted_ids": {},
+            "info": [
+                119,
+                "bc1002.gbk_genome.fbamodel",
+                "KBaseFBA.FBAModel-14.0",
+                "2022-11-03T16:21:49+0000",
+                1,
+                "jdbrunner",
+                129906,
+                "mkroeger2:narrative_1666895838643",
+                "2705ca264b76fc9bbeb59eba8ebd9ae6",
+                394782,
+                {
+                    "Genome": "129906/23/1",
+                    "Name": "bc1002.gbk_genome.fbamodel",
+                    "Number biomasses": "1",
+                    "Number compartments": "2",
+                    "Number compounds": "407",
+                    "Number gapfills": "2",
+                    "Number gapgens": "0",
+                    "Number reactions": "286",
+                    "Source": "KBase",
+                    "Source ID": "bc1002.gbk_genome.fbamodel",
+                    "Type": "GenomeScale"
+                }
+            ],
+            "orig_wsid": 129906,
+            "path": [
+                "129906/119/1"
+            ],
+            "provenance": [
+                {
+                    "custom": {},
+                    "external_data": [],
+                    "input_ws_objects": [],
+                    "intermediate_incoming": [],
+                    "intermediate_outgoing": [],
+                    "method": "build_multiple_metabolic_models",
+                    "method_params": [
+                        {
+                            "custom_bound_list": [],
+                            "gapfill_model": 1,
+                            "genome_ids": [
+                                "129906/26/2",
+                                "129906/28/2",
+                                "129906/21/1",
+                                "129906/17/1",
+                                "129906/9/1",
+                                "129906/27/1",
+                                "129906/25/1",
+                                "129906/24/1",
+                                "129906/23/1",
+                                "129906/20/1"
+                            ],
+                            "genome_text": null,
+                            "media_id": null,
+                            "media_supplement_list": "",
+                            "minimum_target_flux": 0.1,
+                            "template_id": "auto",
+                            "workspace": "mkroeger2:narrative_1666895838643"
+                        }
+                    ],
+                    "resolved_ws_objects": [],
+                    "service": "fba_tools",
+                    "subactions": []
+                }
+            ],
+            "refs": [
+                "262/535/3",
+                "129906/23/1",
+                "262/34/1"
+            ]
+        }
+    ]
+}
