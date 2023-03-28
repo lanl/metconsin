@@ -48,7 +48,7 @@ if __name__ == "__main__":
       print("Error: No model of species " + mod)
 
   drs = dict([(mod,2) for mod in desired_models])
-  models,metlist,y0dict = pr.prep_cobrapy_models(cobra_models,ub_funs = "linearScale",forceOns=True,deathrates=drs)#"linearRand")#hill11
+  models,metlist,y0dict = pr.prep_cobrapy_models(cobra_models,ub_funs = "linear",forceOns=True,deathrates=drs)#"linearRand")#hill11
 
   # y0dict['1,5-Diaminopentane'] =  0.9042818633990344
   # y0dict['Acetate'] =  0.6377115946128331

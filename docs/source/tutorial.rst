@@ -23,6 +23,7 @@ To complete the tutorial, we need to import the following modules:
     import matplotlib.pyplot as plt
     import cobra as cb
     import contextlib
+    import json
 
 Additionally, we have to add the metconsin package to our path, if it is not there already. The following code 
 
@@ -52,6 +53,20 @@ It is simple to import the growth media using pandas and convert to a dictionary
 .. code-block:: python
 
     growth_media = pd.read_csv("growth_media.tsv",sep = '\t',index_col = 0).squeeze("columns").to_dict()
+
+
+Setting metabolic uptake rate parameters
+---------------------------------------------
+
+Dynamic FBA requires some mapping from the environmental metabolites to a set of bounds on the exchange reaction. In this tutorial, we assume that lower bounds are constant, and upper bounds are simply linear in the amount of metabolite available. By defualt, 
+MetConSIN will assume the constants of parameters of these linear functions are uniformly 1. However, we'd like to load in some parameters that we have perhaps fit to data (or, in this case, chosen at random from the interval :math:`[0.5:1.5]`). The parameters should
+be passed as a dictionary keyed by the model names. Each entry in that dictionary can either be an array, ordered according to the model's ordering of the metabolites (which we probably don't want to try to figure out) or, more conveniently, a dictionary keyed by metabolite
+names. Python dictionaries can be easily saved and loaded using the ``.json`` file format.
+
+.. code-block:: python:
+
+    with open("exchange_bounds.json") as fl:
+        uptake_params = json.load(fl)
 
 
 Running MetConSIN simulations

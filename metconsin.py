@@ -34,20 +34,27 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
     :type metabolite_inflow: array[float]
     :param metabolite_outflow: Outflow rate for each metabolite. Default all 0
     :type metabolite_outflow: array[float]
-    :param upper_bound_functions: Upper bound functions for exchange reactions. Can be strings with same options as ``ub_funs`` or dicts of user defined functions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
-    :type upper_bound_functions: dict[str] or dict[dict[function]]
-    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``linearRand``
+
+    
+    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``.  Default ``linear``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type ub_funs: str
-    :param lower_bound_functions: Lower bound functions for exchange reactions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
-    :type lower_bound_functions: dict[str] or dict[dict[function]]    
-    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``constant``
+    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``. Default ``constant``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type lb_funs: str
-    :param upper_bound_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
-    :type upper_bound_functions_dt: dict[dict[function]]
-    :param lower_bound_functions_dt: kwargs.get(lower_bound_functions_dt)
-    :type lower_bound_functions_dt: dict[dict[function]]
-    :param linearScale: Uniform coefficient for exchange reaction bounds if ``lb_funs`` or ``ub_funs`` (or entries in ``upper_bound_functions`` or ``lower_bound_functions``) are "linearScale". Default 1.0
-    :type linearScale: float
+    :param ub_params: Parameters to use for upper bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type ub_params: dict
+    :param lb_params: Parameters to use for lower bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type lb_params: dict
+
+    :param upper_bound_user_functions: User-defined upper bound functions for exchange reactions. **Ignored** unless ``ub_funs`` == ``user``. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
+    :type upper_bound_user_functions: dict[str,array of lambdas]
+    :param lower_bound_user_functions: User-defined lower bound functions for exchange reactions. **Ignored** unless ``lb_funs`` == ``user``.Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
+    :type lower_bound_user_functions: dict[str,array of lambdas]    
+    :param upper_bound_user_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
+    :type upper_bound_user_functions_dt:  dict[str,array of lambdas]
+    :param lower_bound_user_functions_dt: kwargs.get(lower_bound_functions_dt)
+    :type lower_bound_user_functions_dt:  dict[str,array of lambdas]
+    
+    
     :param solver: LP solver to use (currently supports ``gurobi`` and ``clp``). Default ``gurobi``
     :type solver: str
     :param met_filter: If ``met_filter_sense`` == "exclude", list of metabolites to treat as infinitely supplied (i.e. ignored in the dynamics). If ``met_filter_sense`` == "include", all other metabolites will be treated as infinitely supplied (i.e. ignored in the dynamics). Default None
@@ -70,6 +77,16 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
     :type returnNets: bool
 
     
+    .. note::
+
+        When setting bound functions and parameters, any models left out of a parameter dictionary will use default parameters for the choice of function type. Currently, the only way to use different function **types** for each model is to use user defined functions. 
+        
+    .. warning::
+
+        When creating user defined functions, pay attention to issues with variable scope! See `python docs <https://docs.python.org/3.4/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result>`_ for more information.
+
+
+    
     :return: Dictionary containing the simulation and networks. Keys are :
 
     - *Resource Mediated Nodes*\ : Node data for microbe-metabolite network
@@ -85,47 +102,19 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
 
     '''
 
-    # secondobj = "total",
-    # trimit = True,
-    # returnNets = False
-    # ):
 
     metabolite_inflow = kwargs.get("metabolite_inflow")
     metabolite_outflow = kwargs.get("metabolite_outflow")
     solver = kwargs.get("solver",'gurobi')
     flobj = kwargs.get("flobj")
-    upper_bound_functions = kwargs.get("upper_bound_functions")
-    lower_bound_functions = kwargs.get("lower_bound_functions")
-    upper_bound_functions_dt = kwargs.get("upper_bound_functions_dt")
-    lower_bound_functions_dt = kwargs.get("lower_bound_functions_dt")
     media = kwargs.get("media")
-    met_filter = kwargs.get("met_filter")
-    met_filter_sense = kwargs.get("met_filter_sense","exclude")
-    lb_funs = kwargs.get("lb_funs","constant")
-    ub_funs = kwargs.get("ub_funs","linearRand")
-    linearScale=kwargs.get("linearScale",1.0)
     report_activity = kwargs.get("report_activity",True)
     report_activity_network= kwargs.get("report_activity_network",True)
-    forceOns = kwargs.get("forceOns",True)
     secondobj = kwargs.get("secondobj","total")
     trimit = kwargs.get("trimit",True)
     returnNets = kwargs.get("returnNets",False)
 
 
-
-
-    if media == None:
-        media = {}
-    if upper_bound_functions == None:
-        upper_bound_functions = {}
-    if lower_bound_functions == None:
-        lower_bound_functions = {}
-    if upper_bound_functions_dt == None:
-        upper_bound_functions_dt = {}
-    if lower_bound_functions_dt == None:
-        lower_bound_functions_dt = {}
-    if met_filter == None:
-        met_filter = []
 
 
     start_time = time.time()
@@ -159,9 +148,8 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
                 cobra_models[model].medium = min_med
             except:
                 pass
-        media_input = {}
-    else:
-        media_input = media
+        kwargs["media"] = {}
+
 
     for mod in cobra_models.keys():
         print(mod," COBRA initial growth rate: ",cobra_models[mod].slim_optimize())
@@ -170,20 +158,7 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
     # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
 
 
-
-
-    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,
-                                                    upper_bound_functions = upper_bound_functions,
-                                                    lower_bound_functions = lower_bound_functions,
-                                                    upper_bound_functions_dt = upper_bound_functions_dt,
-                                                    lower_bound_functions_dt = lower_bound_functions_dt,
-                                                    media = media_input, 
-                                                    met_filter = met_filter,
-                                                    met_filter_sense = met_filter_sense, 
-                                                    lb_funs = lb_funs, 
-                                                    ub_funs = ub_funs,
-                                                    linearScale=linearScale,
-                                                    forceOns=forceOns)
+    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,**kwargs)
 
     y0 = np.array([y0dict[met] for met in metlist])
     ydot0 = np.zeros_like(y0)
@@ -308,20 +283,27 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :type metabolite_outflow: array[float]
     :param model_deathrates: Decay rate for each community member, given as dictionary keyed by community member names. Defaul all 0
     :type model_deathrates: dict[str,float]
-    :param upper_bound_functions: Upper bound functions for exchange reactions. Can be strings with same options as ``ub_funs`` or dicts of user defined functions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
-    :type upper_bound_functions: dict[str] or dict[dict[function]]
-    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``linearRand``
+
+
+    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``.  Default ``linear``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type ub_funs: str
-    :param lower_bound_functions: Lower bound functions for exchange reactions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
-    :type lower_bound_functions: dict[str] or dict[dict[function]]    
-    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``constant``
+    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``. Default ``constant``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type lb_funs: str
-    :param upper_bound_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
-    :type upper_bound_functions_dt: dict[dict[function]]
-    :param lower_bound_functions_dt: kwargs.get(lower_bound_functions_dt)
-    :type lower_bound_functions_dt: dict[dict[function]]
-    :param linearScale: Uniform coefficient for exchange reaction bounds if ``lb_funs`` or ``ub_funs`` (or entries in ``upper_bound_functions`` or ``lower_bound_functions``) are "linearScale". Default 1.0
-    :type linearScale: float
+    :param ub_params: Parameters to use for upper bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type ub_params: dict
+    :param lb_params: Parameters to use for lower bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type lb_params: dict
+
+    :param upper_bound_user_functions: User-defined upper bound functions for exchange reactions. **Ignored** unless ``ub_funs`` == ``user``. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
+    :type upper_bound_user_functions: dict[str,array of lambdas]
+    :param lower_bound_user_functions: User-defined lower bound functions for exchange reactions. **Ignored** unless ``lb_funs`` == ``user``.Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
+    :type lower_bound_user_functions: dict[str,array of lambdas]    
+    :param upper_bound_user_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
+    :type upper_bound_user_functions_dt:  dict[str,array of lambdas]
+    :param lower_bound_user_functions_dt: kwargs.get(lower_bound_functions_dt)
+    :type lower_bound_user_functions_dt:  dict[str,array of lambdas]
+
+
     :param solver: LP solver to use (currently supports ``gurobi`` and ``clp``). Default ``gurobi``
     :type solver: str
     :param met_filter: If ``met_filter_sense`` == "exclude", list of metabolites to treat as infinitely supplied (i.e. ignored in the dynamics). If ``met_filter_sense`` == "include", all other metabolites will be treated as infinitely supplied (i.e. ignored in the dynamics). Default None
@@ -347,6 +329,15 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :param forceOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSM include such bounds. Default True
     :type forceOns: bool
 
+    .. note::
+
+        When setting bound functions and parameters, any models left out of a parameter dictionary will use default parameters for the choice of function type. Currently, the only way to use different function **types** for each model is to use user defined functions. 
+        
+    .. warning::
+
+        When creating user defined functions, pay attention to issues with variable scope! See `python docs <https://docs.python.org/3.4/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result>`_ for more information.
+
+
     :return: Dictionary containing the simulation and networks. Keys are :
 
     - *Microbes*\ : dynamics of the microbial taxa, as a pandas dataframe
@@ -355,7 +346,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     - *MetMetNetworks*\ : Metabolite-Metabolite networks defined by the dfba sequence of ODEs (keyed by time interval)
     - *SpcMetNetworkSummaries*\ : Microbe-Metabolite networks defined by the dfba sequence of ODEs with all edges between two nodes collapsed to one edge (keyed by time interval)
     - *SpcMetNetworks*\ : Microbe-Metabolite networks defined by the dfba sequence of ODEs (keyed by time interval)
-    - *BasisChanges*\ : Times that the system updated a basis
+    - *BasisChanges*\ : Times that the system updated a basis with bools indicating if a particular model updated at that time.
     - *ExchangeFluxes*\ (if ``track_fluxes`` == True): Exchange fluxes at each time-point for each taxa.
     - *InternalFluxes*\ (in ``save_internal_flux`` == True): Internal fluxes at each time-point for each taxa.
 
@@ -368,48 +359,22 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     final_interval_weight = kwargs.get("final_interval_weight",0.1)
     metabolite_inflow = kwargs.get("metabolite_inflow")
     metabolite_outflow = kwargs.get("metabolite_outflow")
-    model_deathrates = kwargs.get("model_deathrates")
     solver = kwargs.get("solver",'gurobi')
     flobj = kwargs.get("flobj")
     endtime = kwargs.get("endtime",10**-2)
-    upper_bound_functions = kwargs.get("upper_bound_functions")
-    lower_bound_functions = kwargs.get("lower_bound_functions")
-    upper_bound_functions_dt = kwargs.get("upper_bound_functions_dt")
-    lower_bound_functions_dt = kwargs.get("lower_bound_functions_dt")
-    media = kwargs.get("media")
-    met_filter = kwargs.get("met_filter")
-    met_filter_sense = kwargs.get("met_filter_sense","exclude")
-    lb_funs = kwargs.get("lb_funs","constant")
-    ub_funs = kwargs.get("ub_funs","linearRand")
-    linearScale=kwargs.get("linearScale",1.0)
+    media = kwargs.get("media",{})
     track_fluxes = kwargs.get("track_fluxes",True)
     save_internal_flux = kwargs.get("save_internal_flux",True) 
     resolution = kwargs.get("resolution",0.1)
     report_activity = kwargs.get("report_activity",True)
     report_activity_network= kwargs.get("report_activity_network",True)
-    forceOns = kwargs.get("forceOns",True)
     findwaves_report = kwargs.get("findwaves_report",False)
     debugging = kwargs.get("debugging",False)
     initial_abundance = kwargs.get("initial_abundance",None)
 
 
 
-
     start_time = time.time()
-
-
-    if media == None:
-        media = {}
-    if upper_bound_functions == None:
-        upper_bound_functions = {}
-    if lower_bound_functions == None:
-        lower_bound_functions = {}
-    if upper_bound_functions_dt == None:
-        upper_bound_functions_dt = {}
-    if lower_bound_functions_dt == None:
-        lower_bound_functions_dt = {}
-    if met_filter == None:
-        met_filter = []
 
 
     cobra_models = {}
@@ -446,9 +411,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 cobra_models[model].medium = min_med
             except:
                 pass
-        media_input = {}
-    else:
-        media_input = media
+        kwargs["media"] = {}
 
     for mod in cobra_models.keys():
         cbgr = cobra_models[mod].slim_optimize()
@@ -457,23 +420,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         except:
             print("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
 
-    #returns dict of surfmods, list of metabolites, and concentration of metabolites.
-    # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
-
-    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,
-                                                    deathrates=model_deathrates,
-                                                    upper_bound_functions = upper_bound_functions,
-                                                    lower_bound_functions = lower_bound_functions,
-                                                    upper_bound_functions_dt = upper_bound_functions_dt,
-                                                    lower_bound_functions_dt = lower_bound_functions_dt,
-                                                    media = media_input, 
-                                                    met_filter = met_filter,
-                                                    met_filter_sense = met_filter_sense, 
-                                                    lb_funs = lb_funs, 
-                                                    ub_funs = ub_funs,
-                                                    linearScale=linearScale,
-                                                    forceOns=forceOns,
-                                                    flobj=flobj)
+    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,**kwargs)
 
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.
@@ -530,6 +477,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     interval_lens = {}
     total_interval = 0
 
+    basis_change_info = pd.DataFrame(columns = basis_change_times,index = [model.Name for model in model_list]).fillna(0).astype(bool)
+
     for i in range(len(basis_change_times)):
         #get the times - if we're on the last one there's no "end time"
         t0 = basis_change_times[i]
@@ -549,6 +498,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             for model in model_list:
                 #dynamics["basis"][model.Name] is a list of tuples of (basis change time, index of reduced basis - rows/columns)
                 modbc = [bc[0] for bc in dynamics["bases"][model.Name]]#list of times this model changed basis
+                if t0 in modbc:
+                    basis_change_info.loc[model.Name,t0] = True
                 lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][-1]#this is the index in dynamics["basis"][model.Name] of the basis this model is using at this time interval
 
                 #now we set the basis for the model to be the one it was using in this time interval
@@ -602,7 +553,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
 
 
 
-    all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_times}
+    all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_info}
 
     if track_fluxes:
         exchg_fluxes = {}
@@ -721,7 +672,7 @@ def save_metconsin(metconsin_return,flder):
     x_pl = metconsin_return["Microbes"].copy()
     x_pl.columns = np.array(metconsin_return["Microbes"].columns).astype(float).round(4)
     ax = x_pl.T.plot(figsize = (20,10))
-    for bt in metconsin_return["BasisChanges"]:
+    for bt in metconsin_return["BasisChanges"].columns:
         ax.axvline(x = bt,linestyle = ":")
     ax.legend(prop={'size': 30},loc = 2)
     plt.savefig(os.path.join(flder,"Microbes.png"))
@@ -736,7 +687,7 @@ def save_metconsin(metconsin_return,flder):
     else:
         ax = y_pl.T.plot(figsize = (20,10))
     
-    for bt in metconsin_return["BasisChanges"]:
+    for bt in metconsin_return["BasisChanges"].columns:
         ax.axvline(x = bt,linestyle = ":")
     ax.legend(prop={'size': 15})
     plt.savefig(os.path.join(flder,"Metabolites.png"))
@@ -749,7 +700,7 @@ def save_metconsin(metconsin_return,flder):
             ax = exchpl.loc[nonzero_mets].T.plot(figsize = (20,10))
         else:
             ax = exchpl.T.plot(figsize = (20,10))
-        for bt in metconsin_return["BasisChanges"]:
+        for bt in metconsin_return["BasisChanges"].columns:
             ax.axvline(x = bt,linestyle = ":")
         ax.legend(prop={'size': 15})
         plt.savefig(os.path.join(exchange_flux_flder,model + "Exchange.png"))
@@ -787,20 +738,28 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
     :type metabolite_outflow: array[float]
     :param model_deathrates: Decay rate for each community member, given as dictionary keyed by community member names. Defaul all 0
     :type model_deathrates: dict[str,float]
-    :param upper_bound_functions: Upper bound functions for exchange reactions. Can be strings with same options as ``ub_funs`` or dicts of user defined functions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
-    :type upper_bound_functions: dict[str] or dict[dict[function]]
-    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``linearRand``
+
+
+    :param ub_funs: General function to use for upper bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``.  Default ``linear``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type ub_funs: str
-    :param lower_bound_functions: Lower bound functions for exchange reactions. See documentation of prep_models.prep_cobrapy_models for details. Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
-    :type lower_bound_functions: dict[str] or dict[dict[function]]    
-    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``constant``, ``linearRand``, ``linearScale``, ``hill1Rand``, ``hill11``. See documentation of prep_models.prep_cobrapy_models for details. Default ``constant``
+    :param lb_funs: General function to use for lower bounds on exchange reactions. Options are ``model``, ``constant``, ``linear``, ``hill``, or ``user``. Default ``constant``. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`.
     :type lb_funs: str
-    :param upper_bound_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
-    :type upper_bound_functions_dt: dict[dict[function]]
-    :param lower_bound_functions_dt: kwargs.get(lower_bound_functions_dt)
-    :type lower_bound_functions_dt: dict[dict[function]]
-    :param linearScale: Uniform coefficient for exchange reaction bounds if ``lb_funs`` or ``ub_funs`` (or entries in ``upper_bound_functions`` or ``lower_bound_functions``) are "linearScale". Default 1.0
-    :type linearScale: float
+    :param ub_params: Parameters to use for upper bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type ub_params: dict
+    :param lb_params: Parameters to use for lower bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>`..
+    :type lb_params: dict
+
+    :param upper_bound_user_functions: User-defined upper bound functions for exchange reactions. **Ignored** unless ``ub_funs`` == ``user``. Any model not included (which can be all models), will default to functions defined by the ``ub_funs`` parameter. Default None.
+    :type upper_bound_user_functions: dict[str,array of lambdas]
+    :param lower_bound_user_functions: User-defined lower bound functions for exchange reactions. **Ignored** unless ``lb_funs`` == ``user``.Any model not included (which can be all models), will default to functions defined by the ``lb_funs`` parameter. Default None.
+    :type lower_bound_user_functions: dict[str,array of lambdas]    
+    :param upper_bound_user_functions_dt: Derivatives of user defined upper_bound_functions_dt. Default None
+    :type upper_bound_user_functions_dt:  dict[str,array of lambdas]
+    :param lower_bound_user_functions_dt: kwargs.get(lower_bound_functions_dt)
+    :type lower_bound_user_functions_dt:  dict[str,array of lambdas]
+
+
+
     :param solver: LP solver to use (currently supports ``gurobi`` and ``clp``). Default ``gurobi``
     :type solver: str
     :param met_filter: If ``met_filter_sense`` == "exclude", list of metabolites to treat as infinitely supplied (i.e. ignored in the dynamics). If ``met_filter_sense`` == "include", all other metabolites will be treated as infinitely supplied (i.e. ignored in the dynamics). Default None
@@ -822,6 +781,15 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
     :param forceOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSM include such bounds. Default True
     :type forceOns: bool
 
+    .. note::
+
+        When setting bound functions and parameters, any models left out of a parameter dictionary will use default parameters for the choice of function type. Currently, the only way to use different function **types** for each model is to use user defined functions. 
+        
+    .. warning::
+
+        When creating user defined functions, pay attention to issues with variable scope! See `python docs <https://docs.python.org/3.4/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result>`_ for more information.
+
+
     :return: Dictionary containing the simulation and networks. Keys are :
 
     - *Microbes*\ : dynamics of the microbial taxa, as a pandas dataframe
@@ -838,20 +806,10 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
 
     metabolite_inflow = kwargs.get("metabolite_inflow")
     metabolite_outflow = kwargs.get("metabolite_outflow")
-    model_deathrates = kwargs.get("model_deathrates")
     solver = kwargs.get("solver",'gurobi')
     flobj = kwargs.get("flobj")
     endtime = kwargs.get("endtime",10**-2)
-    upper_bound_functions = kwargs.get("upper_bound_functions")
-    lower_bound_functions = kwargs.get("lower_bound_functions")
-    upper_bound_functions_dt = kwargs.get("upper_bound_functions_dt")
-    lower_bound_functions_dt = kwargs.get("lower_bound_functions_dt")
-    media = kwargs.get("media")
-    met_filter = kwargs.get("met_filter")
-    met_filter_sense = kwargs.get("met_filter_sense","exclude")
-    lb_funs = kwargs.get("lb_funs","constant")
-    ub_funs = kwargs.get("ub_funs","linearRand")
-    linearScale=kwargs.get("linearScale",1.0)
+    media = kwargs.get("media",{})
     track_fluxes = kwargs.get("track_fluxes",True)
     save_internal_flux = kwargs.get("save_internal_flux",True) 
     resolution = kwargs.get("resolution",0.1)
@@ -867,18 +825,7 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
     start_time = time.time()
 
 
-    if media == None:
-        media = {}
-    if upper_bound_functions == None:
-        upper_bound_functions = {}
-    if lower_bound_functions == None:
-        lower_bound_functions = {}
-    if upper_bound_functions_dt == None:
-        upper_bound_functions_dt = {}
-    if lower_bound_functions_dt == None:
-        lower_bound_functions_dt = {}
-    if met_filter == None:
-        met_filter = []
+
 
 
     cobra_models = {}
@@ -915,9 +862,8 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
                 cobra_models[model].medium = min_med
             except:
                 pass
-        media_input = {}
-    else:
-        media_input = media
+        kwargs["media"] = {}
+
 
     for mod in cobra_models.keys():
         cbgr = cobra_models[mod].slim_optimize()
@@ -927,22 +873,9 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
             print("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
 
     #returns dict of surfmods, list of metabolites, and concentration of metabolites.
-    # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
 
-    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,
-                                                    deathrates=model_deathrates,
-                                                    upper_bound_functions = upper_bound_functions,
-                                                    lower_bound_functions = lower_bound_functions,
-                                                    upper_bound_functions_dt = upper_bound_functions_dt,
-                                                    lower_bound_functions_dt = lower_bound_functions_dt,
-                                                    media = media_input, 
-                                                    met_filter = met_filter,
-                                                    met_filter_sense = met_filter_sense, 
-                                                    lb_funs = lb_funs, 
-                                                    ub_funs = ub_funs,
-                                                    linearScale=linearScale,
-                                                    forceOns=forceOns,
-                                                    flobj=flobj)
+
+    models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,**kwargs)
 
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.

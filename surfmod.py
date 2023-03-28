@@ -224,6 +224,7 @@ class SurfMod:
         self.feasible = True
         """Whether or not a feasible solution to FBA (and a basis for forward simulation) can be found."""
 
+
     def fba_gb(self,master_metabolite_con,secondobj = "total",report_activity = True,flobj = None):
 
         """
@@ -397,8 +398,8 @@ class SurfMod:
                 allconts = growth.getConstrs()
 
                 slkvals = np.array([cn.getAttr(gb.GRB.Attr.Slack) for cn in allconts])
+                slkvals = slkvals[:-1]#don't include the added constraint
                 all_vars = np.concatenate([fluxes,slkvals])
-                all_vars = all_vars[:-1]#don't include the added constraint
 
                 basisinfo =  np.concatenate([np.array(allvars.getAttr(gb.GRB.Attr.VBasis)),np.array([cn.getAttr(gb.GRB.Attr.CBasis) for cn in allconts])])
 
@@ -411,10 +412,9 @@ class SurfMod:
             if dosec:
 
                 if basisinfo[-1]==0:
-                    ##the secondary obj. slack is basic. Simply remove it.
+                    ##the secondary obj. slack is basic. Simply don't include it.
                     thebasis = np.where(basisinfo[:-1] == 0)[0]
                 else:
-
                     ##We need to add the secondary obj slack to the basis by pivoting so that we can then remove it (with no replacement)
                     # Really we just need to identify an index we can remove without changing either objective value.
                     augrow = np.concatenate([obje, np.zeros(self.solver_constraint_matrix.shape[0])])
@@ -429,9 +429,9 @@ class SurfMod:
 
                     if report_activity:
                         try:
-                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs[:-1] - np.concatenate([fluxes,slkvals]))))
                         except:
-                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs[:-1] - np.concatenate([fluxes,slkvals]))))
 
                     new_growth_obj = np.dot(new_flxs[:len(obje)],obje)
                     new_total_flux = np.sum(new_flxs[:len(obje)])
@@ -444,9 +444,6 @@ class SurfMod:
                     if np.min(new_flxs)<-10**-6:
                         print("{} [fba_gb] Start Basis - negative minimum flux: {} at index {}".format(self.Name,np.min(new_flxs),np.argmin(new_flxs)))
 
-                    # neg_flx = np.where(new_flxs<-10**-6)[0]
-                    # for nf in neg_flx:
-                    #     print("Start Basis: Negative flux at {} = {}".format(nf,new_flxs[nf]))
 
 
                     Abarm1 = np.linalg.solve(augM[:,start_basis],augM[:,-1])
@@ -480,9 +477,9 @@ class SurfMod:
                     
                     if report_activity:
                         try:
-                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                            flobj.write("{} [fba_gb] Distance from all_vars: {}\n".format(self.Name,np.linalg.norm(new_flxs[:-1] - np.concatenate([fluxes,slkvals]))))
                         except:
-                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs - np.concatenate([fluxes,slkvals]))))
+                            print("{} [fba_gb] Distance from all_vars: {}".format(self.Name,np.linalg.norm(new_flxs[:-1] - np.concatenate([fluxes,slkvals]))))
 
                     fluxes = new_flxs[:len(fluxes)]
                     slkvals = new_flxs[:len(fluxes):-1]
@@ -501,10 +498,6 @@ class SurfMod:
                     if np.min(new_flxs)<-10**-6:
                         print("{} [fba_gb] New Basis negative minimum flux: {} at index {}".format(self.Name,np.min(new_flxs),np.argmin(new_flxs)))
 
-                    # neg_flx = np.where(new_flxs<-10**-6)[0]
-                    # for nf in neg_flx:
-                    #     print("Negative flux at {} = {}".format(nf,new_flxs[nf]))
-
 
             else:
                 thebasis = np.where(basisinfo == 0)[0]
@@ -512,7 +505,8 @@ class SurfMod:
 
             self.current_basis_full = thebasis
 
-            
+
+
             self.inter_flux = fluxes
             self.slack_vals = slkvals
 
@@ -675,6 +669,7 @@ class SurfMod:
                 if basisinfo[-1]:
                     ##the secondary obj. slack is basic. Simply remove it.
                     thebasis = np.where(basisinfo[:-1])[0]
+                    slkvals = slkvals[:-1]
                 else:
 
 
