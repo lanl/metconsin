@@ -15,23 +15,23 @@ To complete the tutorial, we need to import the following modules:
 
     import sys
     import os
-    from metconsin import metconsin_sim,save_metconsin
     import pandas as pd
     from pathlib import Path
     import datetime as dt
     import numpy as np
     import matplotlib.pyplot as plt
-    import cobra as cb
-    import contextlib
     import json
+    import seaborn as sb
 
-Additionally, we have to add the metconsin package to our path, if it is not there already. The following code 
+Additionally, we have to add the metconsin package to our path, if it is not there already. The following code adds the current parent directory to the path, which is the 
+``metconsin`` directory if run from the ``Example`` sub-directorie.
 
 .. code-block:: python
 
     current = os.path.dirname(os.path.realpath(__file__))
     parent = os.path.dirname(current)
     sys.path.append(parent)
+    from metconsin import metconsin_sim,save_metconsin
 
 
 
@@ -46,7 +46,7 @@ In our example, we use a ``.tsv`` file for the media, so that it can be easily o
 
 .. warning::
 
-    It is not uncommon for metabolite names to contain commas (,) so comma-separated files should be avoided.
+    It is not uncommon for metabolite names to contain commas, so comma-separated files should be avoided.
 
 It is simple to import the growth media using pandas and convert to a dictionary:
 
@@ -63,10 +63,13 @@ MetConSIN will assume the constants of parameters of these linear functions are 
 be passed as a dictionary keyed by the model names. Each entry in that dictionary can either be an array, ordered according to the model's ordering of the metabolites (which we probably don't want to try to figure out) or, more conveniently, a dictionary keyed by metabolite
 names. Python dictionaries can be easily saved and loaded using the ``.json`` file format.
 
-.. code-block:: python:
+.. code-block:: python
 
     with open("exchange_bounds.json") as fl:
         uptake_params = json.load(fl)
+
+
+Currently, MetConSIN supports constant bounds, linear bounds, or Hill function bounds by keyword, as well as allowing user defined bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>` for details on how to use other bounds.
 
 
 Running MetConSIN simulations
@@ -97,12 +100,16 @@ Next, we create a directory for MetConSIN to save the results in. We also save t
         fl.write("{}".format(growth_media))
 
 
-Finally, we call :py:func:`metconsin_sim <metconsin.metconsin_sim>`, passing our growth media, how long we'd like the simulation to run for, as well as a choice of metabolic uptake bound functions.
+To run MetConSIN, we call :py:func:`metconsin_sim <metconsin.metconsin_sim>`, passing our growth media, how long we'd like the simulation to run for, as well as a choice of metabolic uptake bound functions.
 
 .. code-block:: python
 
+    initial_abundance = dict([(sp,0.1) for sp in species])
+
     with open("example.log",'w') as fl:
-        metconsin_return = metconsin_sim(species,model_info_fl,endtime = 2,media = growth_media, ub_funs = "linearScale",linearScale=1.0,flobj = fl,resolution=0.01)
+        metconsin_return = metconsin_sim(species,model_info_fl,initial_abundance = initial_abundance,endtime = 2,media = growth_media, ub_funs = "linear",ub_params = uptake_params,flobj = fl,resolution = 0.01)
+
+We set the intial abundance of each microbe using a dictionary keyed by the microbe names.
 
 By default, MetConSIN prints a log of its activity. Here, we redirect this log to the file ``example.log`` by passing the file with the ``flobj`` parameter.
 
@@ -115,10 +122,169 @@ The results can be saved using the :py:func:`save_metconsin <metconsin.save_metc
     save_metconsin(metconsin_return, flder)
 
 :py:func:`save_metconsin <metconsin.save_metconsin>` saves the simulation dynamics in two tab-separated files: ``Microbes.tsv`` and ``Metabolites.tsv`` with rows corresponding to state variables (microbes or metabolites) and columns
-corresponding to time-points. It also creates plots of the simulation dynamics (although these are not publication quality) and saves a list of times that the bases were changed for any microbe.
-
-.. note::
-
-    To-Do: Include which bases were changed at these times.
+corresponding to time-points. It also creates plots of the simulation dynamics (although these are not publication quality) and saves a list of times that the bases were changed for any microbe (as a table of bools indexed by model with columns basis change times.)
 
 Finally, it creates a set of sub-directories to save internal and exchange fluxes, as well as the sequence of interaction networks.
+
+Improved Plotting
+--------------------
+
+While :py:func:`save_metconsin <metconsin.save_metconsin>` plots the simulation, it may not produce the nicest looking plots. Because we have only 10 species in our simulation,
+we can use a 10-color set (matplotlib's ``tab10`` colormap) to color-code the vertical lines we use to indicate basis changes:
+
+.. code-block:: python
+
+    fig,ax = plt.subplots(figsize = (30,10))
+    metconsin_return["Microbes"].T.plot(ax = ax,colormap = "tab10")
+    ax.set_xlim(0,4)
+    bottom,top = ax.get_ylim()
+    yy = np.linspace(bottom,top,50)
+    cx = np.arange(0,1,0.1)
+    cmap = plt.cm.tab10.colors
+    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
+    for ti in metconsin_return["BasisChanges"].columns:
+        chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
+        if len(chngat) > 1 or len(chngat) == 0:
+            col = (0,0,0)
+        else:
+            col = cdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,"o",color = col)
+
+Furthermore, the ``Metabolite.png`` plot produced by :py:func:`save_metconsin <metconsin.save_metconsin>` plots all of environmental metabolites, which is too many for a 
+useful figure. Instead, let's only plot the metabolites that are produced:
+
+.. code-block:: python
+
+    fig,ax = plt.subplots(figsize = (30,10))
+    f = lambda x: np.any(x>x[0])
+    produced = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
+    produced.T.plot(ax = ax,colormap = "tab20")#,legend = False)
+    ax.set_xlim(0,4)
+    bottom,top = ax.get_ylim()
+    yy = np.linspace(bottom,top,50)
+    cx = np.arange(0,1,0.1)
+    cmap = plt.cm.tab10.colors
+    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
+    for ti in metconsin_return["BasisChanges"].columns:
+        chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
+        if len(chngat) > 1 or len(chngat) == 0:
+            col = (0,0,0)
+        else:
+            col = cdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,"o",color = col)
+    plt.savefig("produced_metabolites.png")
+
+
+.. code-block:: python
+
+    fig,ax = plt.subplots(figsize = (30,10))
+    f = lambda x: np.any(x<0.8*x[0])
+    consumed = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
+    consumed.T.plot(ax = ax,colormap = "tab20")#,legend = False)
+    ax.set_xlim(0,4)
+    bottom,top = ax.get_ylim()
+    yy = np.linspace(bottom,top,50)
+    cx = np.arange(0,1,0.1)
+    cmap = plt.cm.tab10.colors
+    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
+    for ti in metconsin_return["BasisChanges"].columns:
+        chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
+        if len(chngat) > 1 or len(chngat) == 0:
+            col = (0,0,0)
+        else:
+            col = cdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,"o",color = col)
+    plt.savefig("consumed_metabolites.png")
+
+
+Analyzing the networks
+---------------------------
+
+To demonstrate the value of MetConSIN, we include some network analysis of the networks we created.
+
+The Species-Metabolite networks
++++++++++++++++++++++++++++++++++
+
+The specie-metabolite networks are bipartite networks of microbes and metabolites. In this tutorial, we explore the network connectivity of the microbe nodes using 
+a couple of helper functions - :py:func:`make_microbe_table <analysis_helpers.make_microbe_table>` and :py:func:`make_microbe_growthlimiter <analysis_helpers.make_microbe_growthlimiter>`.
+
+These functions identify the metabolites that have a direct effect on microbial growth (the rate-limiting metabolites) in each time range. The following code creates tables of 
+rate limiting-metabolites for each microbe in our community, and plots the coefficients for those rate-limiting metabolites in the growth equation of the microbe.
+
+.. code-block:: python
+
+    for mic in species:
+        microbe_results = ah.make_microbe_table(mic,metconsin_return["SpcMetNetworks"])
+        microbe_results.to_csv("{}_networkinfo.tsv".format(mic),sep = '\t')
+        grth_cos = ah.make_microbe_growthlimiter(mic,metconsin_return["SpcMetNetworks"])
+        fig,ax = plt.subplots(figsize = (20,10))
+        sb.barplot(data = grth_cos,y = "Coefficient",x = "TimeRange",hue = "Metabolite",ax=ax)
+        ax.set_title("{} Limiting Metabolites".format(mic))
+        plt.savefig("{}_limiting_metabolites.png".format(mic))
+
+The next block of code finds the set of metabolites which appear as rate limiting for any microbe in any time-range. It then makes a table for each limiting metabolite of coefficients in the growth
+equation of each microbe at each time range, and plots the result.
+
+.. code-block:: python
+
+    all_limiters = []
+    for ky in metconsin_return["SpcMetNetworks"].keys():
+        df = metconsin_return["SpcMetNetworks"][ky]['edges']
+        all_limiters += list(df[df["SourceType"] == "Metabolite"]["Source"])
+    all_limiters = np.unique(all_limiters)
+
+    for limi in all_limiters:
+        limtab = ah.make_limiter_table(limi,metconsin_return["SpcMetNetworks"],species)
+        limtab.to_csv("{}_limiter.csv".format(limi),sep = '\t')
+        fig,ax = plt.subplots(figsize = (20,10))
+        grth_cos = ah.make_limiter_plot(limi,metconsin_return["SpcMetNetworks"])
+        sb.barplot(data = grth_cos,y = "Coefficient",x = "TimeRange",hue = "Model",ax=ax)
+        ax.legend(loc=2)
+        ax.set_title("{} As Growth Limiter".format(limi))
+        plt.savefig("{}_limiter_plot.png".format(limi))
+
+Metabolite-Metabolite networks
++++++++++++++++++++++++++++++++++++
+
+The last analysis we will present is of the metabolite-metabolite networks. Here, we have a weighted, directed network suitable for many network analysis algorithms. Additionally,
+there is a set of such networks. We will inspect how these networks change across the time-intervals of simulation by looking for the edges with the highest variance in weight, as well
+as the nodes (i.e. metabolites) with the highest variance in degree.
+
+The highest variance edges can be found by sorting the average network.
+
+.. code-block:: python
+
+    metconsin_return["MetMetNetworks"]['Combined']['edges'].sort_values("Variance",ascending=False).head(10).to_latex(os.path.join(flder,"MetMetHighestVarEdges.tex"))
+
+The last block of code uses :py:func:`node_in_stat_distribution <analysis_helpers.node_in_stat_distribution>` and :py:func:`node_out_stat_distribution <analysis_helpers.node_out_stat_distribution>`
+to create tables that summarize the degrees of the nodes across the networks (in and out seperately). We find the average and the variance of the following for each node
+
+- Number of edges connected to the node
+- Sum of the weights of those edges
+- Sum of the absolute value of the weights of those edges
+- Sum of the weights of the positive weighted edges connected to the node
+- Sum of the absolute value of the weights of the negative weighted edges connected to the node
+
+We then sort by highest variance total weight.
+
+.. code-block:: python
+
+    ### The network making cleans up the names.
+    metabolite_list = [met.replace("_e0","").replace("_e","") for met in np.array(metconsin_return["Metabolites"].index)]
+
+    avg_in_degrees, var_in_degrees, in_zeros = ah.node_in_stat_distribution(metabolite_list,metconsin_return["MetMetNetworks"])
+    avg_out_degrees, var_out_degrees, in_zeros = ah.node_out_stat_distribution(metabolite_list,metconsin_return["MetMetNetworks"])
+
+    avg_in_degrees.to_csv(os.path.join(flder,"MetMetNodeInAvg.tsv",sep = '\t'))
+    var_in_degrees.to_csv(os.path.join(flder,"MetMetNodeInVar.tsv",sep = '\t'))
+
+    avg_out_degrees.to_csv(os.path.join(flder,"MetMetNodeOutAvg.tsv",sep = '\t'))
+    var_out_degrees.to_csv(os.path.join(flder,"MetMetNodeOutVar.tsv",sep = '\t'))
+
+    highest_in_var = var_in_degrees.sort_values("SumWeight",ascending = False).head(10)
+    highest_in_var.to_latex(os.path.join(flder,"highest_node_in_variance.tex"))
+    avg_in_degrees.loc[highest_in_var.index].to_latex(os.path.join(flder,"highest_node_in_var_average.tex"))
+
+    highest_out_var = var_out_degrees.sort_values("SumWeight",ascending = False).head(10)
+    highest_out_var.to_latex(os.path.join(flder,"highest_node_out_variance.tex"))
+    avg_out_degrees.loc[highest_out_var.index].to_latex(os.path.join(flder,"highest_node_out_var_average.tex"))

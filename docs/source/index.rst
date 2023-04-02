@@ -31,6 +31,7 @@ Contents
    make_network_funs
    surfmod
    surfmod_helpers
+   analysis_helpers
    api
 
 

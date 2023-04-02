@@ -431,7 +431,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
 
     model_list = [model for model in models.values()]
     if isinstance(initial_abundance,dict):
-        x0 = np.array([initial_abundance.get(mod,0) for mod in model_list])
+        x0 = np.array([initial_abundance.get(mod.Name,0) for mod in model_list])
     else:
         x0 = np.ones(len(model_list))
 
@@ -645,7 +645,7 @@ def save_metconsin(metconsin_return,flder):
             metconsin_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksNodesAvg.tsv"),sep="\t")
             Path(os.path.join(micmic_folder,ky)).mkdir(parents=True, exist_ok=True)
             metconsin_return["SpeciesNetwork"][ky]["edges"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkEdgesAvg.tsv"),sep="\t",index = False)
-            metconsin_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkNodes"+ky+".tsv"),sep="\t")
+            metconsin_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkNodesAvg.tsv"),sep="\t")
 
     if "ExchangeFluxes" in metconsin_return.keys():
 

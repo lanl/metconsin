@@ -9,3 +9,5 @@ API
    prep_models
    surfmod
    make_network
+   analysis_helpers
+   
