@@ -9,10 +9,20 @@ Clone from github. We plan to add pip install in the future
 ## Dependencies
 MetConSIN requires [Gurobi](https://www.gurobi.com/documentation/9.5/) and gurobi's python package. Alternatively, MetConSIN can use the open source [CyLP](http://mpy.github.io/CyLPdoc/index.html), but this is much slower.
 
-Metconsin also requires [numba](https://numba.pydata.org/).
+Metconsin also requires [numba](https://numba.pydata.org/) and [cobrapy](https://opencobra.github.io/cobrapy/).
 
 ## Documentation
 Documentation is being written using Sphinx and saved in the docs folder. To compile the docs, install [Sphinx](https://www.sphinx-doc.org/en/master/index.html), navigate to the docs folder, and run "make html".
+
+## How to use? 
+
+Please see the DOCs. There's a *usage* page and a *tutorial* page. Quick start is:
+
+	from metconsin import metconsin_sim,save_metconsin
+	metconsin_return = metconsin_sim(community_members,model_info_file,**kwargs)
+	save_metconsin(metconsin_return,"results")
+	
+You must provide a list of community members and a corresponding file indicating paths to metabolic models for those community members. *kwargs* include initial conditions, simulation length, simulation resolution, etc.
 
 ## Basis of the Method
 Dynamic FBA can be written:
@@ -46,10 +56,8 @@ MetConSIN interprets these ODEs as networks of interactions, which it builds for
 ## References
 James D. Brunner and Nicholas Chia. Minimizing the number of optimizations for efficient community dynamic flux balance analysis. PLOS Computational Biology, 16(9):1-20, 09 2020. doi: 10.1371/journal.  pcbi.1007786. [Link](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007786)
 
-## TO DO (3/14/2023):
+## TO DO (4/3/2023):
 
-* Documentation
-* Helper function for saving networks
 * pip installation
 * Build in standard environments
     - Western
