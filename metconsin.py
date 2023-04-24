@@ -479,6 +479,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
 
     basis_change_info = pd.DataFrame(columns = basis_change_times,index = [model.Name for model in model_list]).fillna(0).astype(bool)
 
+
     for i in range(len(basis_change_times)):
         #get the times - if we're on the last one there's no "end time"
         t0 = basis_change_times[i]
@@ -491,6 +492,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             ky = "{:.4f}".format(t0)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
             total_interval = t0/(1-final_interval_weight)
+            if t0 == 0:
+                total_interval = 1
             interval_lens[ky] = total_interval-t0
 
 

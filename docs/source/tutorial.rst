@@ -1,8 +1,12 @@
 Tutorial
 ============
 
-This tutorial is meant to explain the example script provided in the ``Example`` directory. This example simulates and creates networks for a community of 10 organisms isolated from soil. Genome-scale models for the 10 organisms are provided in the 
+This tutorial is meant to explain the example script ``Ten_Taxa_Example.py`` provided in the ``Example`` directory. This example simulates and creates networks for a community of 10 organisms isolated from soil. Genome-scale models for the 10 organisms are provided in the 
 ``modelseedGems`` directory, and information about these models is contained in ``ModelSeed_info.csv``.
+
+.. note:: 
+
+    We also include a second example, ``Community_Comparison_Example.py``, which simply repeats the procedure with two subsets of the models used in ``Ten_Taxa_Example.py``.
 
 The tutorial includes setting a user-defined growth media, simulating and saving networks, computing some basic network statistics, and comparing networks.
 
@@ -53,6 +57,22 @@ It is simple to import the growth media using pandas and convert to a dictionary
 .. code-block:: python
 
     growth_media = pd.read_csv("growth_media.tsv",sep = '\t',index_col = 0).squeeze("columns").to_dict()
+
+The growth media supplied simply assumes 100 units of each metabolite exchanged by any of the models is available. We can adjust the growth media by editing the resulting dictionary. Here, we limit glucose and oxygen..
+
+.. code-block:: python 
+
+    growth_media["D-Glucose_e0"] = 10
+    growth_media["O2_e0"] = 10
+
+.. note::
+
+    Metabolite names need to match the names of the exchanged metabolite stored in the cobrapy model, meaning that there will be a ``_e0`` or ``_e`` appended to the names. We plan to correct this in future versions so that MetConSIN will recognize metabolites without the appended ``_e0`` or ``_e``. 
+
+.. warning::
+
+    All models in the community must use the same exchanged metabolite tag (e.g. ``_e0``).
+
 
 
 Setting metabolic uptake rate parameters

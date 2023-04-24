@@ -34,9 +34,8 @@ if __name__=="__main__":
 
     flder = "ExampleResults_{}s_{}".format(len(species),tmlabel.strftime("%a%B%d_%Y_%H.%M"))
 
-
+    # We can change the environment by metabolite ID
     growth_media["D-Glucose_e0"] = 10
-    growth_media["Fumerate_e0"] = 10
     growth_media["O2_e0"] = 10
 
 
@@ -61,22 +60,28 @@ if __name__=="__main__":
     font = {'size': 20}
 
     plt.rc('font', **font)
-    
-    fig,ax = plt.subplots(figsize = (30,10))
-    metconsin_return["Microbes"].T.plot(ax = ax,colormap = "tab10")
+
+    styles = ['o','v','^','>','<','s','P','*','X','D']
+    fig,ax = plt.subplots(figsize = (27,9))
+    fltered = metconsin_return["Microbes"].T.iloc[np.linspace(0,metconsin_return["Microbes"].shape[1]-1,23).astype(int)]
+    fltered.plot(ax = ax,colormap = "tab10",style=styles,ms=10)
+    metconsin_return["Microbes"].T.plot(ax = ax,colormap = "tab10",legend = False)
     ax.set_xlim(0,4)
     bottom,top = ax.get_ylim()
-    yy = np.linspace(bottom,top,50)
+    yy = np.linspace(bottom,top,20)
     cx = np.arange(0,1,0.1)
     cmap = plt.cm.tab10.colors
     cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
+    sdict = dict([(metconsin_return["Microbes"].index[i],styles[i]) for i in range(10)])
     for ti in metconsin_return["BasisChanges"].columns:
         chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
         if len(chngat) > 1 or len(chngat) == 0:
             col = (0,0,0)
+            stl = ':'
         else:
             col = cdict[chngat[0]]
-        ax.plot([ti]*len(yy),yy,"o",color = col)
+            stl = sdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
     plt.savefig(os.path.join(flder,"color_coded_microbes.png"))
 
     fig,ax = plt.subplots(figsize = (30,10))
