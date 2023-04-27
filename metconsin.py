@@ -277,10 +277,10 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :type resolution: float
     :param media: Growth media used for the simulation. If None, averages the media dicts packaged with the GSMs used. Can be keyed by metabolite name, ID, or exchange reaction ID. Alternatively, passing the string "minimal" attempts to define a minimal growth media for each microbe and averages that. Default None.
     :type media: dict or str
-    :param metabolite_inflow: Inflow rate for each metabolite. Default all 0
-    :type metabolite_inflow: array[float]
-    :param metabolite_outflow: Outflow rate for each metabolite. Default all 0
-    :type metabolite_outflow: array[float]
+    :param metabolite_inflow: Inflow rate for each metabolite. Dictionary keyed like media. Default all 0
+    :type metabolite_inflow: dict
+    :param metabolite_outflow: Outflow rate for each metabolite. Dictionary keyed like media. Default all 0
+    :type metabolite_outflow: dict
     :param model_deathrates: Decay rate for each community member, given as dictionary keyed by community member names. Defaul all 0
     :type model_deathrates: dict[str,float]
 
@@ -357,8 +357,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     
 
     final_interval_weight = kwargs.get("final_interval_weight",0.1)
-    metabolite_inflow = kwargs.get("metabolite_inflow")
-    metabolite_outflow = kwargs.get("metabolite_outflow")
+    metabolite_inflow = kwargs.get("metabolite_inflow",{})
+    metabolite_outflow = kwargs.get("metabolite_outflow",{})
     solver = kwargs.get("solver",'gurobi')
     flobj = kwargs.get("flobj")
     endtime = kwargs.get("endtime",10**-2)
@@ -436,12 +436,28 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         x0 = np.ones(len(model_list))
 
 
+    inflow = np.zeros_like(y0)
+    for ky,val in metabolite_inflow.items():
+        try:
+            i = list(metlist).index(ky)
+        except ValueError:
+            print("No {} in metlist, leaving inflow at 0. Did you forget a compartment tag?".format(ky))
+            break
+        inflow[i] = val
 
+    outflow = np.zeros_like(y0)
+    for ky,val in metabolite_outflow.items():
+        try:
+            i = list(metlist).index(ky)
+        except ValueError:
+            print("No {} in metlist, leaving outflow at 0. Did you forget a compartment tag?".format(ky))
+            break
+        outflow[i] = val
 
 
     dynamics = surf.surfin_fba(model_list,x0,y0,endtime,
-                                inflow = metabolite_inflow,
-                                outflow = metabolite_outflow,
+                                inflow = inflow,
+                                outflow = outflow,
                                 solver = solver,
                                 save_bases = True,
                                 track_fluxes = track_fluxes,
@@ -477,7 +493,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     interval_lens = {}
     total_interval = 0
 
-    basis_change_info = pd.DataFrame(columns = basis_change_times,index = [model.Name for model in model_list]).fillna(0).astype(bool)
+    basis_change_info = pd.DataFrame(columns = np.unique(np.array(basis_change_times).round(6)),index = [model.Name for model in model_list]).fillna(0).astype(bool)
 
 
     for i in range(len(basis_change_times)):
@@ -502,7 +518,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 #dynamics["basis"][model.Name] is a list of tuples of (basis change time, index of reduced basis - rows/columns)
                 modbc = [bc[0] for bc in dynamics["bases"][model.Name]]#list of times this model changed basis
                 if t0 in modbc:
-                    basis_change_info.loc[model.Name,t0] = True
+                    basis_change_info.loc[model.Name,t0.round(6)] = True
                 lastone = [indx for indx in range(len(modbc)) if modbc[indx] <= t0][-1]#this is the index in dynamics["basis"][model.Name] of the basis this model is using at this time interval
 
                 #now we set the basis for the model to be the one it was using in this time interval

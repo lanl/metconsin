@@ -35,7 +35,29 @@ def make_microbe_table(microbe,spc_met_networks):
     network_keys = list(spc_met_networks.keys())
     try:
         network_keys.remove("Combined")
+        ky = "Combined"
+        combined_info = pd.Series()
+
+        netx_graph = nx.from_pandas_edgelist(spc_met_networks[ky]['edges'],source = 'Source',target = 'Target',edge_attr = ["SourceType","Weight"],create_using=nx.DiGraph)
+        edge_out_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Source"] == microbe]
+        edge_in_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Target"] == microbe]
+        node_info = spc_met_networks[ky]['nodes'].loc[microbe]
+        combined_info.loc["TotalOutCoefficients"] = edge_out_info["Weight"].sum()
+        combined_info.loc["TotalProductionCoefficients"] = edge_out_info[edge_out_info["Weight"]>0]["Weight"].sum()
+        combined_info.loc["TotalConsumptionCoefficients"] = edge_out_info[edge_out_info["Weight"]<0]["Weight"].sum()
+        combined_info.loc["LimitingMetabolites"] = ".".join(edge_in_info["Source"].values)
+        for met in edge_in_info["Source"].values:
+            #.iloc[0] is fine because there should only be one...
+            combined_info.loc["GrowthCoefficient_{}".format(met)] = edge_in_info[edge_in_info["Source"] == met]["Weight"].iloc[0]
+        combined_info.loc["Produces"] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Target"].values))
+        combined_info.loc["ProductionCofactors"] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Cofactor"].values))
+        combined_info.loc["Consumes"] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Target"].values))
+        combined_info.loc["ConsumptionCofactors"] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Cofactor"].values))
+        combined_info.loc["BipartiteClusteringCoefficient"] = bipartite.clustering(netx_graph).get(microbe,0)
+
+
     except:
+        combined_info = None
         pass
     microbe_table = pd.DataFrame(columns = network_keys)
     for ky in network_keys:     
@@ -57,7 +79,7 @@ def make_microbe_table(microbe,spc_met_networks):
         microbe_table.loc["ConsumptionCofactors",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Cofactor"].values))
         microbe_table.loc["BipartiteClusteringCoefficient",ky] = bipartite.clustering(netx_graph).get(microbe,0)
         microbe_table.loc["TimeRange",ky] = ky
-    return microbe_table.fillna(0)
+    return microbe_table.fillna(0),combined_info
 
 def make_microbe_growthlimiter(microbe,spc_met_networks):
 
@@ -106,15 +128,20 @@ def make_limiter_table(met,spc_met_networks,models):
 
     network_keys = list(spc_met_networks.keys())
     try:
+        avg_lim = pd.Series(index = models)
+        comb_edges_out = spc_met_networks[ky]["edges"][spc_met_networks[ky]["edges"]["Source"] == met]
+        for mod in comb_edges_out["Target"]:
+            avg_lim.loc[mod] = out_edges[out_edges["Target"] == mod]["Weight"].iloc[0]
         network_keys.remove("Combined")
     except:
+        avg_lim = None
         pass
     limiter_table = pd.DataFrame(columns = models,index = network_keys)
     for ky in network_keys:
         out_edges = spc_met_networks[ky]["edges"][spc_met_networks[ky]["edges"]["Source"] == met]
         for mod in out_edges["Target"]:
             limiter_table.loc[ky,mod] = out_edges[out_edges["Target"] == mod]["Weight"].iloc[0]
-    return limiter_table.fillna(0)
+    return limiter_table.fillna(0),avg_lim
 
 def make_limiter_plot(met,spc_met_networks):
 
