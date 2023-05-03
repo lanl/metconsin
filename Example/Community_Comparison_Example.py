@@ -60,8 +60,8 @@ if __name__=="__main__":
     pflder = "ComparisonExampleResults_{}_{}".format(mednm,tmlabel.strftime("%a%B%d_%Y_%H.%M"))
 
     # We can change the environment by metabolite ID
-    growth_media["D-Glucose_e0"] = 10
-    growth_media["O2_e0"] = 10
+    # growth_media["D-Glucose_e0"] = 10
+    # growth_media["O2_e0"] = 10
 
 
     Path(pflder).mkdir(parents=True, exist_ok=True)
