@@ -52,7 +52,7 @@ if __name__=="__main__":
     growth_media = pd.read_csv(growth_media_fl,sep = '\t',index_col = 0).squeeze("columns").to_dict()
 
 
-    with open("exchange_bounds.json") as fl:
+    with open("exchange_bounds_uniform.json") as fl:
         uptake_params = json.load(fl)
 
     tmlabel = dt.datetime.now()
