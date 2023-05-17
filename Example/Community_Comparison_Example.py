@@ -12,6 +12,7 @@ from matplotlib.colors import ListedColormap
 
 from itertools import combinations as com
 
+import seaborn as sn
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
@@ -27,6 +28,43 @@ def all_combos_of(li):
 
     return [i for l in all_combos_nested for i in l]
 
+
+def get_plain(network):
+    plain = network["Weight"].copy()
+    plain.index = [network.loc[rw,"Source"] + "##" + network.loc[rw,"Target"] + "##" + network.loc[rw,"Cofactor"] for rw in network.index]
+    return plain
+
+def get_diff(network1,network2,txa):
+    p1 = get_plain(network1)
+    p2 = get_plain(network2)
+    p1_fl = [rw for rw in p1.index if txa in rw]
+    p2_fl = [rw for rw in p2.index if txa in rw]
+    
+    inters = [rw for rw in p1_fl if rw in p2_fl]
+    just1 = [rw for rw in p1_fl if rw not in inters]
+    just2 = [rw for rw in p2_fl if rw not in inters]
+    
+    inters2 = pd.DataFrame(columns = [1,2], index = inters)
+    inters2[1] = p1.loc[inters]
+    inters2[2] = p2.loc[inters]
+    
+    diff = 2*(inters2[1].abs() - inters2[2].abs())/(inters2[1].abs() + inters2[2].abs())
+    
+    return inters2,diff,p1.loc[just1],p2.loc[just2]
+    
+    
+def all_diffs(networks,txa):
+    txnets = [ky for ky in networks.keys() if txa in ky]
+    txnets = sorted(txnets,key=len)
+    tax_comps = pd.DataFrame(index = txnets,columns = txnets)
+    for i,rw in enumerate(txnets):
+        for cli in range(i):
+            col = txnets[cli]
+            dif = get_diff(networks[rw],networks[col],txa)[1].mean()
+            tax_comps.loc[rw,col] = dif
+            tax_comps.loc[col,rw] = -dif
+    return tax_comps.fillna(0)
+
 if __name__=="__main__":
 
     model_info_fl = "ModelSeed_info.csv"
@@ -34,13 +72,9 @@ if __name__=="__main__":
     et = 2.5
 
 
-    # species1 = ["bc1011","bc1008","bc1016"]#['bc1011', 'bc1015', 'bc1003', 'bc1002', 'bc1010', 'bc1008','bc1012', 'bc1016', 'bc1001', 'bc1009']
-    # species2 = ["bc1011","bc1008","bc1012"]
-
     list_of_sp = ['bc1001', 'bc1002', 'bc1003', 'bc1008', 'bc1009','bc1010', 'bc1011', 'bc1012', 'bc1015', 'bc1016']
 
-    sets_of_sp = all_combos_of(["bc1008","bc1016","bc1015","bc1009","bc1012"]) + [list_of_sp] 
-    # sets_of_sp = all_combos_of(["bc1001","bc1002","bc1003","bc1010","bc1011"]) + [list_of_sp]
+    sets_of_sp = all_combos_of(["bc1001","bc1008","bc1016","bc1015","bc1009"]) + [list_of_sp]   
 
     if len(sys.argv) > 1:
         growth_media_fl = sys.argv[1]
@@ -57,7 +91,7 @@ if __name__=="__main__":
 
     tmlabel = dt.datetime.now()
 
-    pflder = "ComparisonExampleResults_{}_{}".format(mednm,tmlabel.strftime("%a%B%d_%Y_%H.%M"))
+    pflder = "ExampleResults_{}_{}".format(mednm,tmlabel.strftime("%a%B%d_%Y_%H.%M"))
 
     # We can change the environment by metabolite ID
     # growth_media["D-Glucose_e0"] = 10
@@ -77,6 +111,8 @@ if __name__=="__main__":
     metabolite_consumption_df = pd.DataFrame(columns = ["_".join(sps) for sps in sets_of_sp])
     average_network_info = dict([(spec,pd.DataFrame()) for spec in list_of_sp])
 
+    avg_networks = {}
+
     for si,species in enumerate(sets_of_sp):
 
         print(species)
@@ -92,14 +128,16 @@ if __name__=="__main__":
         initial_abundance = dict([(sp,0.1) for sp in species])
 
 
-        oxygen_in = {"O2_e0":10}
+        oxygen_in = {"O2_e0":100}
 
         with open(os.path.join(flder,"metabolite_inflow.txt"),'w') as fl:
             fl.write("{}".format(oxygen_in))
 
         with open(os.path.join(flder,"example.log"),'w') as fl:
-            metconsin_return = metconsin_sim(species,model_info_fl,initial_abundance = initial_abundance,endtime = et,media = growth_media,metabolite_inflow = oxygen_in, ub_funs = "linear",ub_params = uptake_params,flobj = fl,resolution = 0.01)
+            metconsin_return = metconsin_sim(species,model_info_fl,initial_abundance = initial_abundance,endtime = et,media = growth_media,metabolite_inflow = oxygen_in, ub_funs = "linear",flobj = fl,resolution = 0.01,ub_params = uptake_params)
                                                 
+
+        avg_networks["_".join(species)] = metconsin_return["SpcMetNetworks"]["Combined"]
 
         flder2 = os.path.join(flder,"full_sim")#
 
@@ -116,17 +154,16 @@ if __name__=="__main__":
         font = {'size': 20}
 
         plt.rc('font', **font)
-        
-        # cdict = cdicts[si]
-        # sdict = sdicts[si]
-        cmap = tuple([cdict[sp] for sp in species])#cmaps[si]
+
+        cmap = tuple([cdict[sp] for sp in species])
 
         fig,ax = plt.subplots(figsize = (27,9))
         fltered = metconsin_return["Microbes"].T.iloc[np.linspace(0,metconsin_return["Microbes"].shape[1]-1,23).astype(int)]
         fltered.plot(ax = ax,colormap = ListedColormap(cmap),style=sdict,ms=10)
         metconsin_return["Microbes"].T.plot(ax = ax,colormap = ListedColormap(cmap),legend = False)
-        ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],et))
-        ax.set_ylim(0,1.75)
+        ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+        ax.set_xlabel("Simulation Time")
+        ax.set_ylabel("Simulated Biomass")
         bottom,top = ax.get_ylim()
         yy = np.linspace(bottom,top,20)
         cx = np.arange(0,1,0.1)
@@ -139,43 +176,56 @@ if __name__=="__main__":
                 col = cdict[chngat[0]]
                 stl = sdict[chngat[0]]
             ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
-        plt.savefig(os.path.join(flder,"color_coded_microbes.png"))
+        plt.savefig(os.path.join(flder,"microbes.png"))
         plt.close()
 
-        fig,ax = plt.subplots(figsize = (30,10))
-        f = lambda x: np.any(x>x[0])
-        produced = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
-        produced.T.plot(ax = ax,colormap = "tab20")#,legend = False)
-        ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],et))
+        ## Plot only the metabolites that changed significantly
+        f1 = lambda x: np.any(x>1.1*x[0])
+        produced = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f1,axis = 1)]
+        f2 = lambda x: np.any(x<0.9*x[0])
+        consumed = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f2,axis = 1)]
+        reldf = pd.concat([produced,consumed])
+        mcldict = dict([(reldf.index[i],plt.cm.jet(i/len(reldf))) for i in range(len(reldf))])
+
+        fig,ax = plt.subplots(figsize = (27,9))
+        cmap = tuple([mcldict[met] for met in produced.index])
+        produced.T.plot(ax = ax,colormap = ListedColormap(cmap),linewidth = 5,style = ['-',':','-.','--','-o'],ms = 10)#,legend = False)
+        ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+        ax.set_xlabel("Simulation Time")
+        ax.set_ylabel("Simulated Biomass")
         bottom,top = ax.get_ylim()
-        yy = np.linspace(bottom,top,50)
+        yy = np.linspace(bottom,top,20)
         cx = np.arange(0,1,0.1)
         for ti in metconsin_return["BasisChanges"].columns:
             chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
             if len(chngat) > 1 or len(chngat) == 0:
                 col = (0,0,0)
+                stl = ':'
             else:
                 col = cdict[chngat[0]]
-            ax.plot([ti]*len(yy),yy,"o",color = col)
+                stl = sdict[chngat[0]]
+            ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
         plt.savefig(os.path.join(flder,"produced_metabolites.png"))
         plt.close()
 
-        fig,ax = plt.subplots(figsize = (30,10))
-        f = lambda x: np.any(x<0.8*x[0])
-        consumed = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
-        consumed.T.plot(ax = ax,colormap = "tab20")#,legend = False)
-        ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],et))
+        fig,ax = plt.subplots(figsize = (27,9))
+        cmap = tuple([mcldict[met] for met in consumed.index])
+        consumed.T.plot(ax = ax,colormap = ListedColormap(cmap),linewidth = 5,style = ['-',':','-.','--','-o'],ms = 10)#,legend = False)
+        ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+        ax.set_xlabel("Simulation Time")
+        ax.set_ylabel("Simulated Biomass")
         bottom,top = ax.get_ylim()
-        yy = np.linspace(bottom,top,50)
+        yy = np.linspace(bottom,top,20)
         cx = np.arange(0,1,0.1)
-
         for ti in metconsin_return["BasisChanges"].columns:
             chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
             if len(chngat) > 1 or len(chngat) == 0:
                 col = (0,0,0)
+                stl = ':'
             else:
                 col = cdict[chngat[0]]
-            ax.plot([ti]*len(yy),yy,"o",color = col)
+                stl = sdict[chngat[0]]
+            ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
         plt.savefig(os.path.join(flder,"consumed_metabolites.png"))
         plt.close()
 
@@ -247,5 +297,22 @@ if __name__=="__main__":
     final_growth_df.to_csv(os.path.join(pflder,"final_growth.tsv"),sep = '\t')
     final_met_df.to_csv(os.path.join(pflder,"final_metabolite_concentrations.tsv"),sep='\t')
     metabolite_consumption_df.to_csv(os.path.join(pflder,"metabolite_consumption.tsv"),sep = '\t')
+
+    ntflder = os.path.join(pflder,"NetworkAverages")
+    Path(ntflder).mkdir(parents=True, exist_ok=True)
+
     for mic,table in average_network_info.items():
-        table.to_csv(os.path.join(pflder,"average_network_info_{}.tsv".format(mic)),sep = '\t')
+        table.to_csv(os.path.join(ntflder,"average_network_info_{}.tsv".format(mic)),sep = '\t')
+
+    chngsflder = os.path.join(pflder,"StrengthComparisons")
+    Path(chngsflder).mkdir(parents=True, exist_ok=True)
+
+    for mic in ["bc1001","bc1008","bc1016","bc1015","bc1009"]:
+        df = all_diffs(avg_networks,'bc1001')
+        fig,ax = plt.subplots(figsize = (17,15))
+        sn.heatmap(df,cmap = 'cividis',ax=ax)
+        ax.set_xticklabels([" ,".join([str(int(tx[-2:])) for tx in rw.split("_")]) for rw in df.index])
+        ax.set_yticklabels([" ,".join([str(int(tx[-2:])) for tx in rw.split("_")]) for rw in df.index])
+        df.to_csv(os.path.join(chngsflder,"{}.tsv".format(mic)),sep = '\t')
+        plt.savefig(os.path.join(chngsflder,"{}.png".format(mic)))
+        plt.close()

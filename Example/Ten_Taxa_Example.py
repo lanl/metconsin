@@ -8,6 +8,11 @@ import matplotlib.pyplot as plt
 import json
 import seaborn as sb
 
+from matplotlib.colors import ListedColormap
+
+from itertools import combinations as com
+
+import seaborn as sn
 
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
@@ -17,14 +22,15 @@ sys.path.append(parent)
 from metconsin import metconsin_sim,save_metconsin
 import analysis_helpers as ah
 
+
 if __name__=="__main__":
-
-
-    endti = 10
 
     model_info_fl = "ModelSeed_info.csv"
 
-    species = ['bc1011', 'bc1015', 'bc1003', 'bc1002', 'bc1010', 'bc1008','bc1012', 'bc1016', 'bc1001', 'bc1009']
+    et = 2.5
+
+
+    species = ['bc1001', 'bc1002', 'bc1003', 'bc1008', 'bc1009','bc1010', 'bc1011', 'bc1012', 'bc1015', 'bc1016']
 
     if len(sys.argv) > 1:
         growth_media_fl = sys.argv[1]
@@ -36,19 +42,26 @@ if __name__=="__main__":
     growth_media = pd.read_csv(growth_media_fl,sep = '\t',index_col = 0).squeeze("columns").to_dict()
 
 
-    with open("exchange_bounds.json") as fl:
+    with open("exchange_bounds_uniform.json") as fl:
         uptake_params = json.load(fl)
 
     tmlabel = dt.datetime.now()
 
-    flder = "ExampleResults_{}s_{}_{}".format(len(species),mednm,tmlabel.strftime("%a%B%d_%Y_%H.%M"))
+    flder = "ExampleResults_{}_{}".format(mednm,tmlabel.strftime("%a%B%d_%Y_%H.%M"))
 
-    # We can change the environment by metabolite ID, but we don't need to do that here:
+    # We can change the environment by metabolite ID
     # growth_media["D-Glucose_e0"] = 10
     # growth_media["O2_e0"] = 10
 
 
     Path(flder).mkdir(parents=True, exist_ok=True)
+
+    oricmap = plt.cm.tab10.colors
+    cdict = dict([(species[i],oricmap[i]) for i in range(len(species))])
+
+    styles = ['o','v','^','>','<','s','P','*','X','D']
+    sdict = dict([(species[i],styles[i]) for i in range(len(species))])
+
 
     with open(os.path.join(flder,"species.txt"),'w') as fl:
         fl.write("\n".join(species))
@@ -57,37 +70,39 @@ if __name__=="__main__":
 
     initial_abundance = dict([(sp,0.1) for sp in species])
 
-    #We need to flow in oxygen, which is treated like any other metabolite.
+
     oxygen_in = {"O2_e0":100}
 
     with open(os.path.join(flder,"metabolite_inflow.txt"),'w') as fl:
         fl.write("{}".format(oxygen_in))
 
     with open(os.path.join(flder,"example.log"),'w') as fl:
-        metconsin_return = metconsin_sim(species,model_info_fl,initial_abundance = initial_abundance,endtime = endti,media = growth_media,metabolite_inflow = oxygen_in,ub_funs = "linear",ub_params = uptake_params,flobj = fl,resolution = 0.01)
-                                                
-        
+        metconsin_return = metconsin_sim(species,model_info_fl,initial_abundance = initial_abundance,endtime = et,media = growth_media,metabolite_inflow = oxygen_in, ub_funs = "linear",flobj = fl,resolution = 0.01,ub_params = uptake_params)
+                                            
+
+
     flder2 = os.path.join(flder,"full_sim")#
 
     save_metconsin(metconsin_return, flder2)
+
 
     #### Prettier plotting:
     font = {'size': 20}
 
     plt.rc('font', **font)
 
-    styles = ['o','v','^','>','<','s','P','*','X','D']
+    cmap = tuple([cdict[sp] for sp in species])
+
     fig,ax = plt.subplots(figsize = (27,9))
     fltered = metconsin_return["Microbes"].T.iloc[np.linspace(0,metconsin_return["Microbes"].shape[1]-1,23).astype(int)]
-    fltered.plot(ax = ax,colormap = "tab10",style=styles,ms=10)
-    metconsin_return["Microbes"].T.plot(ax = ax,colormap = "tab10",legend = False)
-    ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],endti))
+    fltered.plot(ax = ax,colormap = ListedColormap(cmap),style=sdict,ms=10)
+    metconsin_return["Microbes"].T.plot(ax = ax,colormap = ListedColormap(cmap),legend = False)
+    ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+    ax.set_xlabel("Simulation Time")
+    ax.set_ylabel("Simulated Biomass")
     bottom,top = ax.get_ylim()
     yy = np.linspace(bottom,top,20)
     cx = np.arange(0,1,0.1)
-    cmap = plt.cm.tab10.colors
-    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
-    sdict = dict([(metconsin_return["Microbes"].index[i],styles[i]) for i in range(10)])
     for ti in metconsin_return["BasisChanges"].columns:
         chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
         if len(chngat) > 1 or len(chngat) == 0:
@@ -97,46 +112,56 @@ if __name__=="__main__":
             col = cdict[chngat[0]]
             stl = sdict[chngat[0]]
         ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
-    plt.savefig(os.path.join(flder,"color_coded_microbes.png"))
+    plt.savefig(os.path.join(flder,"microbes.png"))
     plt.close()
 
-    fig,ax = plt.subplots(figsize = (30,10))
-    f = lambda x: np.any(x>x[0])
-    produced = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
-    produced.T.plot(ax = ax,colormap = "tab20")#,legend = False)
-    ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],endti))
+    ## Plot only the metabolites that changed significantly
+    f1 = lambda x: np.any(x>1.1*x[0])
+    produced = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f1,axis = 1)]
+    f2 = lambda x: np.any(x<0.9*x[0])
+    consumed = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f2,axis = 1)]
+    reldf = pd.concat([produced,consumed])
+    mcldict = dict([(reldf.index[i],plt.cm.jet(i/len(reldf))) for i in range(len(reldf))])
+
+    fig,ax = plt.subplots(figsize = (27,9))
+    cmap = tuple([mcldict[met] for met in produced.index])
+    produced.T.plot(ax = ax,colormap = ListedColormap(cmap),linewidth = 5,style = ['-',':','-.','--','-o'],ms = 10)#,legend = False)
+    ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+    ax.set_xlabel("Simulation Time")
+    ax.set_ylabel("Simulated Biomass")
     bottom,top = ax.get_ylim()
-    yy = np.linspace(bottom,top,50)
+    yy = np.linspace(bottom,top,20)
     cx = np.arange(0,1,0.1)
-    cmap = plt.cm.tab10.colors
-    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
     for ti in metconsin_return["BasisChanges"].columns:
         chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
         if len(chngat) > 1 or len(chngat) == 0:
             col = (0,0,0)
+            stl = ':'
         else:
             col = cdict[chngat[0]]
-        ax.plot([ti]*len(yy),yy,"o",color = col)
+            stl = sdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
     plt.savefig(os.path.join(flder,"produced_metabolites.png"))
     plt.close()
 
-    fig,ax = plt.subplots(figsize = (30,10))
-    f = lambda x: np.any(x<0.8*x[0])
-    consumed = metconsin_return["Metabolites"][metconsin_return["Metabolites"].apply(f,axis = 1)]
-    consumed.T.plot(ax = ax,colormap = "tab20")#,legend = False)
-    ax.set_xlim(0,min(metconsin_return["Microbes"].columns[-1],endti))
+    fig,ax = plt.subplots(figsize = (27,9))
+    cmap = tuple([mcldict[met] for met in consumed.index])
+    consumed.T.plot(ax = ax,colormap = ListedColormap(cmap),linewidth = 5,style = ['-',':','-.','--','-o'],ms = 10)#,legend = False)
+    ax.set_xlim(0,0.7)#min(metconsin_return["Microbes"].columns[-1],et))
+    ax.set_xlabel("Simulation Time")
+    ax.set_ylabel("Simulated Biomass")
     bottom,top = ax.get_ylim()
-    yy = np.linspace(bottom,top,50)
+    yy = np.linspace(bottom,top,20)
     cx = np.arange(0,1,0.1)
-    cmap = plt.cm.tab10.colors
-    cdict = dict([(metconsin_return["Microbes"].index[i],cmap[i]) for i in range(10)])
     for ti in metconsin_return["BasisChanges"].columns:
         chngat = metconsin_return["BasisChanges"][metconsin_return["BasisChanges"][ti]].index
         if len(chngat) > 1 or len(chngat) == 0:
             col = (0,0,0)
+            stl = ':'
         else:
             col = cdict[chngat[0]]
-        ax.plot([ti]*len(yy),yy,"o",color = col)
+            stl = sdict[chngat[0]]
+        ax.plot([ti]*len(yy),yy,stl,color = col,ms=10)
     plt.savefig(os.path.join(flder,"consumed_metabolites.png"))
     plt.close()
 
@@ -144,8 +169,10 @@ if __name__=="__main__":
 
 
     for mic in species:
-        microbe_results,_ = ah.make_microbe_table(mic,metconsin_return["SpcMetNetworks"])
+        microbe_results,microb_combined = ah.make_microbe_table(mic,metconsin_return["SpcMetNetworks"])
         microbe_results.to_csv(os.path.join(flder,"{}_networkinfo.tsv".format(mic)),sep = '\t')
+
+
         grth_cos = ah.make_microbe_growthlimiter(mic,metconsin_return["SpcMetNetworks"])
         fig,ax = plt.subplots(figsize = (20,10))
         sb.barplot(data = grth_cos,y = "Coefficient",x = "TimeRange",hue = "Metabolite",ax=ax)
@@ -160,8 +187,8 @@ if __name__=="__main__":
     all_limiters = np.unique(all_limiters)
 
     for limi in all_limiters:
-        limtab,_ = ah.make_limiter_table(limi,metconsin_return["SpcMetNetworks"],species)
-        limtab.to_csv(os.path.join(flder,"{}_limiter.csv".format(limi)),sep = '\t')
+        limtab,avg_use = ah.make_limiter_table(limi,metconsin_return["SpcMetNetworks"],species)
+        limtab.to_csv(os.path.join(flder,"{}_limiter.tsv".format(limi)),sep = '\t')
         fig,ax = plt.subplots(figsize = (20,10))
         grth_cos = ah.make_limiter_plot(limi,metconsin_return["SpcMetNetworks"])
         sb.barplot(data = grth_cos,y = "Coefficient",x = "TimeRange",hue = "Model",ax=ax)
