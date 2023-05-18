@@ -1,5 +1,5 @@
-Dynamic Simulation
-=======================
+Dynamic Simulation (SurfinFBA)
+=====================================
 
 Main Function
 --------------

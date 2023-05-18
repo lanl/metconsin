@@ -2,7 +2,7 @@ Tutorial
 ============
 
 This tutorial is meant to explain the example script ``Ten_Taxa_Example.py`` provided in the ``Example`` directory. This example simulates and creates networks for a community of 10 organisms isolated from soil. Genome-scale models for the 10 organisms are provided in the 
-``modelseedGems`` directory, and information about these models is contained in ``ModelSeed_info.csv``.
+``modelseedGems`` directory, and information about these models is contained in ``ModelSeed_info.csv``. We also provide another example, ``Community_Comparison_Example.py`` that was used to test the method on various subsets of the 10 organisms for the tool publication. 
 
 .. note:: 
 
@@ -56,14 +56,20 @@ It is simple to import the growth media using pandas and convert to a dictionary
 
 .. code-block:: python
 
-    growth_media = pd.read_csv("growth_media.tsv",sep = '\t',index_col = 0).squeeze("columns").to_dict()
+    growth_media = pd.read_csv("uniform_media.tsv",sep = '\t',index_col = 0).squeeze("columns").to_dict()
 
-The growth media supplied simply assumes 100 units of each metabolite exchanged by any of the models is available. We can adjust the growth media by editing the resulting dictionary. Here, we limit glucose and oxygen..
+The growth media supplied simply assumes 100 units of each metabolite exchanged by any of the models is available. We can adjust the growth media by editing the resulting dictionary. Here, we might want to limit glucose.
 
 .. code-block:: python 
 
     growth_media["D-Glucose_e0"] = 10
-    growth_media["O2_e0"] = 10
+
+Alternatively, we could add some flow of metabolites. To simulate an aerobic environment, we can provide a constant flow of oxygen into the simulation. To do this, we simply create a dictionary of our desired flows, and give this to MetConSIN:
+
+.. code-block:: python
+
+    oxygen_in = {"O2_e0":100}
+
 
 .. note::
 
@@ -79,15 +85,21 @@ Setting metabolic uptake rate parameters
 ---------------------------------------------
 
 Dynamic FBA requires some mapping from the environmental metabolites to a set of bounds on the exchange reaction. In this tutorial, we assume that lower bounds are constant, and upper bounds are simply linear in the amount of metabolite available. By defualt, 
-MetConSIN will assume the constants of parameters of these linear functions are uniformly 1. However, we'd like to load in some parameters that we have perhaps fit to data (or, in this case, chosen at random from the interval :math:`[0.5:1.5]`). The parameters should
+MetConSIN will assume the constants of parameters of these linear functions are uniformly 1. However, if we'd like to load in some parameters that we have perhaps fit to data. The parameters should
 be passed as a dictionary keyed by the model names. Each entry in that dictionary can either be an array, ordered according to the model's ordering of the metabolites (which we probably don't want to try to figure out) or, more conveniently, a dictionary keyed by metabolite
-names. Python dictionaries can be easily saved and loaded using the ``.json`` file format.
+names. Python dictionaries can be easily saved and loaded using the ``.json`` file format. For example:
 
 .. code-block:: python
 
-    with open("exchange_bounds.json") as fl:
+    with open("exchange_bounds_uniform.json") as fl:
         uptake_params = json.load(fl)
 
+loads a set of parameters that are all uniformly 1. For parameters chosen at random from the interval :math:`[0.5:1.5]`, you can instead do
+
+.. code-block:: python
+
+    with open("exchange_bounds_made_up.json") as fl:
+        uptake_params = json.load(fl)
 
 Currently, MetConSIN supports constant bounds, linear bounds, or Hill function bounds by keyword, as well as allowing user defined bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>` for details on how to use other bounds.
 
