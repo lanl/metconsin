@@ -59,11 +59,6 @@ James D. Brunner and Nicholas Chia. Minimizing the number of optimizations for e
 ## TO DO (4/3/2023):
 
 * pip installation
-* Build in standard environments
-    - Western
-    - High Fiber
-    - M9 media
-
 
 ## Future Plans:
 

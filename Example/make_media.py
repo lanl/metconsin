@@ -1,11 +1,16 @@
 import sys
 import os
-sys.path.append(os.path.join(os.path.expanduser("~"),"Documents","metabolic_networks","metconsin"))
 import pandas as pd
 import numpy as np
 import cobra as cb
 import contextlib
 import json
+
+
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+
 
 if __name__=="__main__":
 

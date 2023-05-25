@@ -82,3 +82,15 @@ For example, to simulate with dFBA and store the microbial and metabolic dynamic
     dynamics = dynamic_fba(community_members,model_info_file)
     Microbes = dynamics["Microbes"]
     Metabolites = dynamics["Metabolites"]
+
+Using AGORA media
+--------------------
+
+We include a script in ``AGORA_Media`` to download the full set of media files avaialble at `AGORA <https://www.vmh.life/>`_. Navigating to the ``AGORA_Media`` directory and running this script with 
+
+.. code-block:: console
+
+    $ python download_media.py
+
+will download all avaialble media as well as metadata. In the `Example` directory, we include a script that creates an environment for use with MetConSIN based on an AGORA diet. This script requires us to specify the 
+type of model we are using (in the Example, this is modelSEED) so that we can match metabolite IDs between the models used and the media file.
