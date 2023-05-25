@@ -1,7 +1,7 @@
-﻿analysis\_helpers
-=================
+﻿metconsin.analysis\_helpers
+===========================
 
-.. automodule:: analysis_helpers
+.. automodule:: metconsin.analysis_helpers
 
    
    

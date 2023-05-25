@@ -62,7 +62,7 @@ corresponding index set so that
     \vec{\psi}=B^{-1}\vec{c}^*(\vec{y})
 
 is an optimal solution to the linear program (where :math:`\vec{c}^*` is a subset of the constraints corresponding to the relevant index set), and this will *remain* an optimal solution for some time interval, 
-even as :math:`\vec{y}` changes. We showed that if we have an FBA solution, we can find the basis :math:`B` by solving a second optimization problem. This is carried out by :py:func:`findWave <surfmod.SurfMod.findWave>`,
+even as :math:`\vec{y}` changes. We showed that if we have an FBA solution, we can find the basis :math:`B` by solving a second optimization problem. This is carried out by :py:func:`findWave <metconsin.surfmod.SurfMod.findWave>`,
 which attempts to maximize the length of the time interval on which a basis will give optimal solutions. Conveniently, the basis will give optimal solutions as long as it gives feasible solutions (which after we reformulate 
 the problem simply means the fluxes are non-negative), so we can roughly estimate the time until a new basis is needed using the derivative of the constraints. 
 
@@ -88,10 +88,10 @@ that provides a feasible solution to
     \omega_j >= 0 \text{ if } \psi_j = 0
 
 such that the set of indices of the non-zero :math:`\psi` is a subset of the basic index set (these must be in the basis we choose). This is accomplished by
-solving a phase-one problem in :py:func:`solve_phaseone <surfmod.SurfMod.solve_phaseone>`.
+solving a phase-one problem in :py:func:`solve_phaseone <metconsin.surfmod.SurfMod.solve_phaseone>`.
 
 Next, we can improve on our choice of basis by maximimizing the minimum (over the variables) estimated time to infeasibility. This is done by
-:py:func:`solve_minmax <surfmod.SurfMod.solve_minmax>`
+:py:func:`solve_minmax <metconsin.surfmod.SurfMod.solve_minmax>`
 
 Once we haved a basis for each taxa, the differential algebraic system becomes the system of ODEs
 
@@ -100,9 +100,9 @@ Once we haved a basis for each taxa, the differential algebraic system becomes t
     \frac{dx_i }{dt}= x_i (\vec{\gamma}_i\cdot B_i^{-1}\vec{c}^*_i(\vec{y})) \\
     \frac{d\vec{y}}{dt} = -\sum_{i=1}^p x_i \Gamma^*_i B_i^{-1}\vec{c}^*_i(\vec{y})
 
-:py:func:`surfin_fba <dynamic_simulation.surfin_fba>` works by computing and FBA solution for each taxa and calling :py:func:`findWave <surfmod.SurfMod.findWave>` for each taxa to construct the above ODE.
+:py:func:`surfin_fba <metconsin.dynamic_simulation.surfin_fba>` works by computing and FBA solution for each taxa and calling :py:func:`findWave <metconsin.surfmod.SurfMod.findWave>` for each taxa to construct the above ODE.
 It then simulates forward according to this ODE until some flux value for some taxa becomes infeasible. At that point, an optimal solution is already available from the forward simulation, so the method only needs to
-call :py:func:`findWave <surfmod.SurfMod.findWave>` to find a new basis for forward simulation. Simulation continues in this manner until a given stop time is reached or no such basis can be found (implying that the 
+call :py:func:`findWave <metconsin.surfmod.SurfMod.findWave>` to find a new basis for forward simulation. Simulation continues in this manner until a given stop time is reached or no such basis can be found (implying that the 
 FBA problem itself has no valid solution).
 
 .. _metconsin:
@@ -121,10 +121,10 @@ well as an ermergen network of interactions between metabolites (as mediated by 
 
 In this form, we can interpret the term :math:`a_{ij}x_i c_{ij}(y_j)` as edges from :math:`y_j` to :math:`x_i`, becuase they represent the effect of :math:`y_j` on the growth of :math:`x_i`. Additionally, the terms
 :math:`D_{il}x_i` and :math:`b_{ijl}x_ic_{ij}(y_j)` represent the effect of :math:`x_i` on the available :math:`y_l` (e.g. production or consumption) and so can be interpreted as edges from :math:`x_i` to :math:`y_l`. This is
-the basis of how :py:func:`species_metabolite_network <make_network.species_metabolite_network>` creates a microbe-metabolite network. Notice that in the terms :math:`b_{ijl}x_ic_{ij}(y_j)`, the interacton we define between
+the basis of how :py:func:`species_metabolite_network <metconsin.make_network.species_metabolite_network>` creates a microbe-metabolite network. Notice that in the terms :math:`b_{ijl}x_ic_{ij}(y_j)`, the interacton we define between
 :math:`x_i` and :math:`y_l` also involves :math:`y_j`. We say that :math:`y_j` mediates this interaction, and label the edge with :math:`y_j`.
 
-The terms :math:`b_{ijl}x_ic_{ij}(y_j)` can also be interpreted as the effect of :math:`y_j` on :math:`y_l`, allowing :py:func:`species_metabolite_network <make_network.species_metabolite_network>` to also create a
+The terms :math:`b_{ijl}x_ic_{ij}(y_j)` can also be interpreted as the effect of :math:`y_j` on :math:`y_l`, allowing :py:func:`species_metabolite_network <metconsin.make_network.species_metabolite_network>` to also create a
 metabolite-metabolite network. 
 
 

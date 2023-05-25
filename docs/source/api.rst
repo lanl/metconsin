@@ -1,13 +1,13 @@
 API
-===
+====
 
 .. autosummary::
    :toctree: generated
 
-   metconsin
-   dynamic_simulation
-   prep_models
-   surfmod
-   make_network
-   analysis_helpers
+   metconsin.metconsin
+   metconsin.dynamic_simulation
+   metconsin.prep_models
+   metconsin.surfmod
+   metconsin.make_network
+   metconsin.analysis_helpers
    

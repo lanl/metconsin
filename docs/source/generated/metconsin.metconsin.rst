@@ -1,7 +1,7 @@
-﻿metconsin
-=========
+﻿metconsin.metconsin
+===================
 
-.. automodule:: metconsin
+.. automodule:: metconsin.metconsin
 
    
    

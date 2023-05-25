@@ -4,7 +4,7 @@
 The goal of this project is to generate microbial interaction networks using constraint based metabolic modeling. To do this, MetConSIN uses the dynamic FBA system. 
 
 ## Installation
-Clone from github. We plan to add pip install in the future
+For now, clone from github. We plan to add pip install in the future
 
 ## Dependencies
 MetConSIN requires [Gurobi](https://www.gurobi.com/documentation/9.5/) and gurobi's python package. Alternatively, MetConSIN can use the open source [CyLP](http://mpy.github.io/CyLPdoc/index.html), but this is much slower.

@@ -2,16 +2,16 @@ SurfMod Helper Functions
 ===========================
 
 
-.. autofunction:: surfmod.getReduced
+.. autofunction:: metconsin.surfmod.getReduced
 
-.. autofunction:: surfmod.pivot
+.. autofunction:: metconsin.surfmod.pivot
 
-.. autofunction:: surfmod.pivot_nojit
+.. autofunction:: metconsin.surfmod.pivot_nojit
 
-.. autofunction:: surfmod.minmaxpivot
+.. autofunction:: metconsin.surfmod.minmaxpivot
 
-.. autofunction:: surfmod.minmaxpivot_constrained
+.. autofunction:: metconsin.surfmod.minmaxpivot_constrained
 
-.. autofunction:: surfmod.compute_objval
+.. autofunction:: metconsin.surfmod.compute_objval
 
-.. autofunction:: surfmod.conditionargmin
+.. autofunction:: metconsin.surfmod.conditionargmin

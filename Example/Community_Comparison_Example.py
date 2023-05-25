@@ -20,7 +20,7 @@ sys.path.append(parent)
 
 
 from metconsin import metconsin_sim,save_metconsin
-import analysis_helpers as ah
+from metconsin import analysis_helpers as ah
 
 def all_combos_of(li):
 

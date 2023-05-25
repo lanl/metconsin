@@ -1,6 +1,6 @@
 import numpy as np
-import scipy as sp
-from surfmod import *
+# import scipy as sp
+from .surfmod import *
 import pandas as pd
 
 def prep_cobrapy_models(models,**kwargs):

@@ -36,7 +36,7 @@ environmental metabolites.
 Also, we don't care about :math:`\Gamma^{\dagger}` except for its kernal (see :doc:`method`), so we can replace :math:`\Gamma^{\dagger}` with a new
 matrix with orthonormal rows that has the same kernal.
 
-.. autoclass:: surfmod.SurfMod
+.. autoclass:: metconsin.surfmod.SurfMod
     :members:
 
 .. Class Functions

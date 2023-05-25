@@ -1,6 +1,6 @@
-import surfmod as sm
-import prep_models as pr
-import make_network as mn
+# from . import surfmod as sm
+# from . import prep_models as pr
+# from . import make_network as mn
 import time
 import pandas as pd
 from scipy.integrate import solve_ivp

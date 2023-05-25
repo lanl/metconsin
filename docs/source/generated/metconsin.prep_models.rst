@@ -1,7 +1,7 @@
-﻿prep\_models
-============
+﻿metconsin.prep\_models
+======================
 
-.. automodule:: prep_models
+.. automodule:: metconsin.prep_models
 
    
    

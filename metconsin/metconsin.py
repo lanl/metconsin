@@ -1,7 +1,7 @@
-import make_network as mn
-import surfmod as sm
-import prep_models as pr
-import dynamic_simulation as surf
+from . import make_network as mn
+# import surfmod as sm
+from . import prep_models as pr
+from . import dynamic_simulation as surf
 import time
 import pandas as pd
 import cobra as cb

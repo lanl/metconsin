@@ -1,10 +1,10 @@
 Main MetConSIN Functions
 ==========================
 
-.. autofunction:: metconsin.metconsin_sim
+.. autofunction:: metconsin.metconsin.metconsin_sim
 
-.. autofunction:: metconsin.save_metconsin
+.. autofunction:: metconsin.metconsin.save_metconsin
 
-.. autofunction:: metconsin.metconsin_network
+.. autofunction:: metconsin.metconsin.metconsin_network
 
-.. autofunction:: metconsin.dynamic_fba
+.. autofunction:: metconsin.metconsin.dynamic_fba

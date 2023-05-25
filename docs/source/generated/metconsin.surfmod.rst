@@ -1,7 +1,7 @@
-﻿surfmod
-=======
+﻿metconsin.surfmod
+=================
 
-.. automodule:: surfmod
+.. automodule:: metconsin.surfmod
 
    
    

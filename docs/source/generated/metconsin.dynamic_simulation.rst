@@ -1,7 +1,7 @@
-﻿dynamic\_simulation
-===================
+﻿metconsin.dynamic\_simulation
+=============================
 
-.. automodule:: dynamic_simulation
+.. automodule:: metconsin.dynamic_simulation
 
    
    

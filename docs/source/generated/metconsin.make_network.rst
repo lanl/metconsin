@@ -1,7 +1,7 @@
-﻿make\_network
-=============
+﻿metconsin.make\_network
+=======================
 
-.. automodule:: make_network
+.. automodule:: metconsin.make_network
 
    
    

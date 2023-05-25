@@ -36,6 +36,7 @@ Additionally, we have to add the metconsin package to our path, if it is not the
     parent = os.path.dirname(current)
     sys.path.append(parent)
     from metconsin import metconsin_sim,save_metconsin
+    from metconsin import analysis_helpers as ah
 
 
 
@@ -101,7 +102,7 @@ loads a set of parameters that are all uniformly 1. For parameters chosen at ran
     with open("exchange_bounds_made_up.json") as fl:
         uptake_params = json.load(fl)
 
-Currently, MetConSIN supports constant bounds, linear bounds, or Hill function bounds by keyword, as well as allowing user defined bound functions. See :py:func:`prep_cobrapy_models <prep_models.prep_cobrapy_models>` for details on how to use other bounds.
+Currently, MetConSIN supports constant bounds, linear bounds, or Hill function bounds by keyword, as well as allowing user defined bound functions. See :py:func:`prep_cobrapy_models <metconsin.prep_models.prep_cobrapy_models>` for details on how to use other bounds.
 
 
 Running MetConSIN simulations
@@ -132,7 +133,7 @@ Next, we create a directory for MetConSIN to save the results in. We also save t
         fl.write("{}".format(growth_media))
 
 
-To run MetConSIN, we call :py:func:`metconsin_sim <metconsin.metconsin_sim>`, passing our growth media, how long we'd like the simulation to run for, as well as a choice of metabolic uptake bound functions.
+To run MetConSIN, we call :py:func:`metconsin_sim <metconsin.metconsin.metconsin_sim>`, passing our growth media, how long we'd like the simulation to run for, as well as a choice of metabolic uptake bound functions.
 
 .. code-block:: python
 
@@ -145,7 +146,7 @@ We set the intial abundance of each microbe using a dictionary keyed by the micr
 
 By default, MetConSIN prints a log of its activity. Here, we redirect this log to the file ``example.log`` by passing the file with the ``flobj`` parameter.
 
-The results can be saved using the :py:func:`save_metconsin <metconsin.save_metconsin>` function:
+The results can be saved using the :py:func:`save_metconsin <metconsin.metconsin.save_metconsin>` function:
 
 .. code-block:: python
 
@@ -153,7 +154,7 @@ The results can be saved using the :py:func:`save_metconsin <metconsin.save_metc
 
     save_metconsin(metconsin_return, flder)
 
-:py:func:`save_metconsin <metconsin.save_metconsin>` saves the simulation dynamics in two tab-separated files: ``Microbes.tsv`` and ``Metabolites.tsv`` with rows corresponding to state variables (microbes or metabolites) and columns
+:py:func:`save_metconsin <metconsin.metconsin.save_metconsin>` saves the simulation dynamics in two tab-separated files: ``Microbes.tsv`` and ``Metabolites.tsv`` with rows corresponding to state variables (microbes or metabolites) and columns
 corresponding to time-points. It also creates plots of the simulation dynamics (although these are not publication quality) and saves a list of times that the bases were changed for any microbe (as a table of bools indexed by model with columns basis change times.)
 
 Finally, it creates a set of sub-directories to save internal and exchange fluxes, as well as the sequence of interaction networks.
@@ -161,7 +162,7 @@ Finally, it creates a set of sub-directories to save internal and exchange fluxe
 Improved Plotting
 --------------------
 
-While :py:func:`save_metconsin <metconsin.save_metconsin>` plots the simulation, it may not produce the nicest looking plots. Because we have only 10 species in our simulation,
+While :py:func:`save_metconsin <metconsin.metconsin.save_metconsin>` plots the simulation, it may not produce the nicest looking plots. Because we have only 10 species in our simulation,
 we can use a 10-color set (matplotlib's ``tab10`` colormap) to color-code the vertical lines we use to indicate basis changes:
 
 .. code-block:: python
@@ -182,7 +183,7 @@ we can use a 10-color set (matplotlib's ``tab10`` colormap) to color-code the ve
             col = cdict[chngat[0]]
         ax.plot([ti]*len(yy),yy,"o",color = col)
 
-Furthermore, the ``Metabolite.png`` plot produced by :py:func:`save_metconsin <metconsin.save_metconsin>` plots all of environmental metabolites, which is too many for a 
+Furthermore, the ``Metabolite.png`` plot produced by :py:func:`save_metconsin <metconsin.metconsin.save_metconsin>` plots all of environmental metabolites, which is too many for a 
 useful figure. Instead, let's only plot the metabolites that are produced:
 
 .. code-block:: python
@@ -238,7 +239,7 @@ The Species-Metabolite networks
 +++++++++++++++++++++++++++++++++
 
 The specie-metabolite networks are bipartite networks of microbes and metabolites. In this tutorial, we explore the network connectivity of the microbe nodes using 
-a couple of helper functions - :py:func:`make_microbe_table <analysis_helpers.make_microbe_table>` and :py:func:`make_microbe_growthlimiter <analysis_helpers.make_microbe_growthlimiter>`.
+a couple of helper functions - :py:func:`make_microbe_table <metconsin.analysis_helpers.make_microbe_table>` and :py:func:`make_microbe_growthlimiter <metconsin.analysis_helpers.make_microbe_growthlimiter>`.
 
 These functions identify the metabolites that have a direct effect on microbial growth (the rate-limiting metabolites) in each time range. The following code creates tables of 
 rate limiting-metabolites for each microbe in our community, and plots the coefficients for those rate-limiting metabolites in the growth equation of the microbe.
@@ -288,7 +289,7 @@ The highest variance edges can be found by sorting the average network.
 
     metconsin_return["MetMetNetworks"]['Combined']['edges'].sort_values("Variance",ascending=False).head(10).to_latex(os.path.join(flder,"MetMetHighestVarEdges.tex"))
 
-The last block of code uses :py:func:`node_in_stat_distribution <analysis_helpers.node_in_stat_distribution>` and :py:func:`node_out_stat_distribution <analysis_helpers.node_out_stat_distribution>`
+The last block of code uses :py:func:`node_in_stat_distribution <metconsin.analysis_helpers.node_in_stat_distribution>` and :py:func:`node_out_stat_distribution <metconsin.analysis_helpers.node_out_stat_distribution>`
 to create tables that summarize the degrees of the nodes across the networks (in and out seperately). We find the average and the variance of the following for each node
 
 - Number of edges connected to the node

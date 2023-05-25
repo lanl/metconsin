@@ -14,7 +14,7 @@ To use MetConSIN, clone from github:
 
 (We plan to add pip installation in the future)
 
-You will also need to add the directory to your python path, for example using
+Because we haven't implemented pip installation yet, you will need to add the directory to your python path. This can be done within the script using
 
 .. code-block:: python
 
@@ -22,7 +22,7 @@ You will also need to add the directory to your python path, for example using
     import os
     sys.path.append(os.path.join(os.path.expanduser("~"),location,"metconsin"))
 
-where ``location`` is the path to the folder that you cloned MetConSIN into.
+where ``location`` is the path to the folder that you cloned MetConSIN into. Alternatively, make sure the ``metconsin`` directory is in your ``$PATH`` variable.
 
 **Dependencies**
 
@@ -32,11 +32,15 @@ For COBRA models, MetConSIN uses the `cobrapy <https://opencobra.github.io/cobra
 
 Metconsin also uses `numba <https://numba.pydata.org/>`_ to speed up computation.
 
+.. note:: 
+
+    We do not currently support CPLEX, because we do not have access to a CPLEX license. Earlier versions of SurfinFBA supported CPLEX, but these versions are now depreciated.
+
 
 Generating Simulations and Networks
 -------------------------------------
 
-The basic usage of MetConSIN is to generate a dynamic FBA simulation and the corresponding sequence of networks using the :py:func:`metconsin_sim <metconsin.metconsin_sim>` function
+The basic usage of MetConSIN is to generate a dynamic FBA simulation and the corresponding sequence of networks using the :py:func:`metconsin_sim <metconsin.metconsin.metconsin_sim>` function
 
 .. code-block:: python
 
@@ -58,7 +62,7 @@ where ``community_members`` is a list of the taxa in the community being modeled
     - *ExchangeFluxes*\ (if ``track_fluxes`` == True): Exchange fluxes at each time-point for each taxa.
     - *InternalFluxes*\ (in ``save_internal_flux`` == True): Internal fluxes at each time-point for each taxa.
 
-The networks are contained in dictionaries keyed by "edges" and "nodes", corresponding to a list of edges and list of nodes as pandas dataframes. The :py:func:`save_metconsin <metconsin.save_metconsin>` function will save the results in a directory. Networks and simulated dynamics will be saved as .tsv files and plots will be made of the dynamics.
+The networks are contained in dictionaries keyed by "edges" and "nodes", corresponding to a list of edges and list of nodes as pandas dataframes. The :py:func:`save_metconsin <metconsin.metconsin.save_metconsin>` function will save the results in a directory. Networks and simulated dynamics will be saved as .tsv files and plots will be made of the dynamics.
 
 Alternatively, one can do the following:
 
@@ -69,7 +73,7 @@ Alternatively, one can do the following:
 
 to use the :py:func:`metconsin_network <metconsin.metconsin_network>` function to construct and save a single set of networks corresponding to the initial media. Note that these networks may not be stable.
 
-Our previous dynamic FBA simulator, surfinFBA is included in this project. To compute a dynamic FBA simulation (without generating the corresponding networks), use :py:func:`dynamic_fba <metconsin.dynamic_fba>`. Its usage is similar to :py:func:`metconsin_sim <metconsin.metconsin_sim>`, but it returns (and optionally saves to .tsv files) just the dynamics of the simulation. 
+Our previous dynamic FBA simulator, surfinFBA is included in this project. To compute a dynamic FBA simulation (without generating the corresponding networks), use :py:func:`dynamic_fba <metconsin.metconsin.dynamic_fba>`. Its usage is similar to :py:func:`metconsin_sim <metconsin.metconsin.metconsin_sim>`, but it returns (and optionally saves to .tsv files) just the dynamics of the simulation. 
 For example, to simulate with dFBA and store the microbial and metabolic dynamics in pandas dataframes, simply run:
 
 .. code-block:: python
