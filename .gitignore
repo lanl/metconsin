@@ -133,3 +133,9 @@ dmypy.json
 
 # Mac DS_STORE
 .DS_Store
+.DS_STORE
+
+#Media Files (can be downloaded by user)
+AGORA_Media/diet_list.json
+AGORA_Media/*.tsv
+
