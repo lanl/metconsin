@@ -2,6 +2,7 @@ import numpy as np
 # import scipy as sp
 from .surfmod import *
 import pandas as pd
+import cobra as cb
 
 def prep_cobrapy_models(models,**kwargs):
 
@@ -9,6 +10,9 @@ def prep_cobrapy_models(models,**kwargs):
     """
     
     Creates a set of SurfMod objects from a set of cobrapy GSMs, and interprets the media (either given by the user or inferred from the cobrapy models) to create an initial metbaolite concentration. 
+
+    :param models: Set of cobrapy models for the community to be simulated
+    :type models: dict[cobra model]
 
     :param media: Growth media used for the simulation. If None, averages the media dicts packaged with the GSMs used. Can be keyed by metabolite name, ID, or exchange reaction ID. Alternatively, passing the string "minimal" attempts to define a minimal growth media for each microbe and averages that. Default None.
     :type media: dict or str
@@ -422,3 +426,102 @@ def prep_cobrapy_models(models,**kwargs):
 
 
     return surfmods,masterlist,master_y0
+
+def make_media(models,media_df = None,metabolite_id_type="metabolite",default_proportion = 0.1,minimal=False,minimal_grth=None):
+
+    """Creates an initial environment state from a given media table. Given media must include "fluxValue" column that will be used to determine initial availability, and a column that maps the metabolite to its ID in the models used. 
+
+    :param models: Set of cobrapy models for the community to be simulated
+    :type models: dict[cobra model]
+
+    :param media_df: Table (or path to .csv or .tsv containing table) defining a media. If none is supplied, environment is based on media files for models supplied. Default None.
+    :type media_df: pandas.DataFrame
+
+    :param metabolite_id_type: Column heading of ``media_df`` that labels the metabolites in such a way as to mactch the labeling in the models. **We assume this is the same for all models**. Default "metabolite"
+    :type metabolite_id_type: str
+
+    :param default_proportion: For exchanged metabolites not found in the supplied media, the environment will contain concentration of the metbaolite equal to the max flux value in the model medias across models times this parameter. Default 0.1
+    :type default_proportion: float
+
+    :param minimal: Option to compute minimal growth media and use to set environment. Default False
+    :type minimal: bool
+
+    :param minimal_grth: Option to constrain initial growth when computing minimal media. If None, uses model growth from model default media. Default None.
+    :type minimial_grth: float
+
+    .. note:: 
+
+        Setting default_proportion to 0 will result in an environment set exactly by the provided table, but may result in 0 growth.
+
+    :return: pandas series with initial environmental metabolite concentrations
+    :rtype: pandas.Series
+    """
+
+    if not isinstance(models,dict):
+        modeldict = {}
+        for mod in models:
+            modeldict[mod.name] = mod
+        models = modeldict
+
+
+
+    all_medias = pd.DataFrame()
+    met_ids = pd.Series(dtype=str)
+
+    for modelkey in models.keys():
+
+        model = models[modelkey]
+
+        #list all reactions the model claims are exchange.
+        exchng_reactions = [rxn.id for rxn in model.reactions if 'EX_' in rxn.id]#
+
+
+        exchng_metabolite_ids_wrx = [(rx,metab.id) for rx in exchng_reactions for metab in model.reactions.get_by_id(rx).reactants] #
+        exchng_metabolite_ids = [t[1] for t in exchng_metabolite_ids_wrx]
+
+        exchng_metabolite_names = [model.metabolites.get_by_id(metab).name for metab in exchng_metabolite_ids]
+
+        if minimal:
+            minimal_ok = True
+            if minimal_grth == None:
+                minimal_grth = model.slim_optimize()
+            mod_min_med = cb.medium.minimal_medium(model,minimal_grth,minimize_components=10)
+            if not (isinstance(mod_min_med,pd.DataFrame) or isinstance(mod_min_med,pd.Series)):
+                print("Failed to minimize medium for {}. Using default medium.".format(modelkey))
+                minimal_ok = False
+
+
+        for mi,met in enumerate(exchng_metabolite_names):
+
+            if met not in met_ids.index:
+                met_ids.loc[met] = exchng_metabolite_ids[mi]
+
+            rxns = [r for r in model.medium.keys() if met in [m.name for m in model.reactions.get_by_id(r).reactants]]
+            if len(rxns):
+                if minimal_ok:
+                    all_medias.loc[met,modelkey] = np.mean([mod_min_med.loc[r] if r in mod_min_med.index else 0 for r in rxns])
+                else:
+                    all_medias.loc[met,modelkey] = np.mean([model.medium[r] if r in model.medium.keys() else 0 for r in rxns])
+            else:
+                all_medias.loc[met,modelkey] = 0
+
+    intitial_media = default_proportion*all_medias.fillna(0).max(axis = 1)
+    media = intitial_media.copy()
+
+    if isinstance(media_df,str):
+
+        if media_df.split(".")[-1] == "csv":
+            sp = ","
+        else:
+            sp = "\t"
+
+        media_df = pd.read_csv(media_df,index_col = 0, sep = sp)
+
+    if isinstance(media_df,pd.DataFrame):
+
+        for met in intitial_media.index:
+            metid = met_ids.loc[met].split("_")[0]
+            if metid in media_df[metabolite_id_type].values:
+                media.loc[met] = media_df[media_df[metabolite_id_type] == metid]["fluxValue"].iloc[0]
+
+    return media

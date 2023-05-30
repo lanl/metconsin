@@ -13,6 +13,7 @@
 
    .. autosummary::
    
+      make_media
       prep_cobrapy_models
    
    

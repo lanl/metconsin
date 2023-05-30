@@ -34,7 +34,7 @@ Metconsin also uses `numba <https://numba.pydata.org/>`_ to speed up computation
 
 .. note:: 
 
-    We do not currently support CPLEX, because we do not have access to a CPLEX license. Earlier versions of SurfinFBA supported CPLEX, but these versions are now depreciated.
+    We do not currently support CPLEX, because we do not have access to a CPLEX license. Earlier versions of SurfinFBA supported CPLEX, but these versions are now depreciated. And not available in this package.
 
 
 Generating Simulations and Networks
@@ -92,5 +92,4 @@ We include a script in ``AGORA_Media`` to download the full set of media files a
 
     $ python download_media.py
 
-will download all avaialble media as well as metadata. In the `Example` directory, we include a script that creates an environment for use with MetConSIN based on an AGORA diet. This script requires us to specify the 
-type of model we are using (in the Example, this is modelSEED) so that we can match metabolite IDs between the models used and the media file.
+will download all avaialble media as well as metadata. Then, :py:func:`make_media<metconsin.prep_models.make_media>` can be used to set the simulation environment based on a downloaded media.
