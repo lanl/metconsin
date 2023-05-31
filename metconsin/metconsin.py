@@ -12,6 +12,99 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
+def metconsin_environment(community_members,model_info_file,**kwargs):
+    """
+    Generates an intitial environment dictionary suitable for loading into metconsin with the community members to be simulated.
+
+    :param community_members: list of models of taxa in the community of interest
+    :type community_members: list[str]
+    :param model_info_file: path to csv with GEM info. csv file should contain a column called "Species" with names that include the names in ``desired_models``, and a column called "File" that contains the path to a GSM in xml or json form (note that .mat is not currently supported).
+    :type model_info_file: str
+
+    :param media_source: Source of desired environment. Can be a path to a file with a media table, a choice of media from the AGORA list (see below), ``minimal`` for an environment created from minimal media, or None for uniform availability of metabolites. Default None.
+    :type media_source: str
+
+    :param metabolite_id_type: Column heading of ``media_source`` that labels the metabolites in such a way as to mactch the labeling in the models. **We assume this is the same for all models**. Default "metabolite"
+    :type metabolite_id_type: str
+
+    :param default_proportion: For exchanged metabolites not found in the supplied media, the environment will contain concentration of the metbaolite equal to the max flux value in the model medias across models times this parameter. Default 0.1
+    :type default_proportion: float
+    :param intitial_growth: Option to constrain initial growth when computing minimal media. If None, uses model growth from model default media. Default None.
+    :type intitial_growth: float
+
+    .. note::
+
+        The available media in the AGORA folder (once :py:func:`get_AGORA_diets` has been run) can be seen at the `AGORA website <https://www.vmh.life/#nutrition>`_. Rerun :py:func:`get_AGORA_diets` for up to date media.
+
+    :return: dictionary describing initial environment for community
+    :rtype: dict
+    """
+
+    media_file = kwargs.get("media_source")
+    met_id_col = kwargs.get("metabolite_id_type","metabolite")
+    default_proportion = kwargs.get("default_proportion",0.1)
+    minimal_grth = kwargs.get("intitial_growth")
+
+    cobra_models = {}
+
+    model_info = pd.read_csv(model_info_file)
+
+    for mod in community_members:
+        if any(model_info.Species == mod):
+            flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
+            if flnm.split(".")[-1] == "json":
+                with contextlib.redirect_stderr(None):
+                    cobra_models[mod] = cb.io.load_json_model(flnm)
+            elif flnm.split(".")[-1] == "xml":
+                with contextlib.redirect_stderr(None):
+                    cobra_models[mod] = cb.io.read_sbml_model(flnm)
+            if not cobra_models[mod].name:
+                cobra_models[mod].name = mod
+        else:
+            print("Error: No model of species " + mod)
+
+    if media_file == "minimal":
+
+        print("[metconsin_environment] Creating environment from minimal media.")
+        growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth).to_dict()
+
+    current = os.path.dirname(os.path.realpath(__file__))
+    parent = os.path.dirname(current)
+    agora_flder = "AGORA_Media"
+    agora_media_loc = os.path.join(parent,agora_flder)
+
+    if isinstance(media_file,str):
+
+        if "{}_AGORA.tsv".format(media_file) in os.listdir(agora_media_loc):
+            media_file = os.path.join(agora_media_loc,"{}_AGORA.tsv".format(media_file))
+
+        if "{}_AGORA.tsv".format(media_file.replace(" ","_")) in os.listdir(agora_media_loc):
+            media_file = os.path.join(agora_media_loc,"{}_AGORA.tsv".format(media_file.replace(" ","_")))
+
+        if media_file in os.listdir(agora_media_loc):
+            media_file = os.path.join(agora_media_loc,media_file)
+
+        if media_file == "minimal":
+            print("[metconsin_environment] Creating environment from minimal media.")
+            growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth).to_dict()
+        elif os.path.isfile(media_file):
+            print("[metconsin_environment] Creating environment from file {}".format(media_file))
+            growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion).to_dict()
+        else:
+            print("[metconsin_environment] No file {}. Creating default environment from model mediums".format(media_file))
+            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+
+    elif media_file == None:
+        print("[metconsin_environment] Creating default environment from model mediums")
+        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+
+    else:
+        print("[metconsin_environment] Parameter media_file should be a str or None. Creating default environment from model mediums")
+        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+
+    return growth_media
+
+
 
 def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
 

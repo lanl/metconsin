@@ -8,3 +8,5 @@ Main MetConSIN Functions
 .. autofunction:: metconsin.metconsin.metconsin_network
 
 .. autofunction:: metconsin.metconsin.dynamic_fba
+
+.. autofunction:: metconsin.metconsin.metconsin_environment

@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import json
 import sys
+import os
+
+from tqdm import tqdm
 
 
 def get_AGORA_diets():
@@ -27,10 +30,11 @@ def get_AGORA_diets():
     # print(diet_list.json()['results'][0].keys())
 
     diet_dfs = {}
-
+    print("[get_AGORA_diets] Downloading diets:")
     for df in diet_list.json()['results']:
 
-        print(df['name'])
+        
+        print(" - {}".format(df['name']))
 
         diet = rq.get("https://www.vmh.life/_api/dietflux/?diet={}&page_size=1000".format(df['name']))
 
@@ -46,10 +50,8 @@ def get_AGORA_diets():
 
     all_metabolites = np.unique(all_diets.index)
 
-
-    for metab in all_metabolites:
-
-        print(metab)
+    print("[get_AGORA_diets] Adding metabolite ID information. Please wait...")
+    for metab in tqdm(all_metabolites):
 
         matab_info = rq.get("https://www.vmh.life/_api/metabolites/?abbreviation={}".format(metab))
 
@@ -61,13 +63,17 @@ def get_AGORA_diets():
         all_diets.loc[metab,"miriam"] = matab_info.json()['results'][0]['miriam']
 
 
+    print("[get_AGORA_diets] Saving.")
     for diet_nm in np.unique(all_diets['diet']):
 
         dietdf = all_diets[all_diets['diet'] == diet_nm]
 
         svnm = diet_nm.replace(",","").replace(" ","_")
 
-        dietdf.to_csv("{}_AGORA.tsv".format(svnm),sep = '\t')
+        currentdir = os.path.dirname(os.path.realpath(__file__))
+
+
+        dietdf.to_csv(os.path.join(currentdir,"{}_AGORA.tsv".format(svnm)),sep = '\t')
 
 if __name__ == "__main__":
 

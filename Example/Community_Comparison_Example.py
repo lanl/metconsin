@@ -23,7 +23,7 @@ parent = os.path.dirname(current)
 sys.path.append(parent)
 
 
-from metconsin import metconsin_sim,save_metconsin,make_media
+from metconsin import metconsin_sim,save_metconsin,metconsin_environment
 from metconsin import analysis_helpers as ah
 
 def all_combos_of(li):
@@ -81,52 +81,9 @@ if __name__=="__main__":
     sets_of_sp = all_combos_of(["bc1001","bc1008","bc1016","bc1015","bc1009"]) + [list_of_sp]   
 
 
+    mednm = "Default"
 
-
-
-
-    agora_flder = "AGORA_Media"
-    agora_media_loc = os.path.join(parent,agora_flder)
-
-    cobra_models = {}
-
-    model_info = pd.read_csv(model_info_fl)
-
-    for mod in list_of_sp:
-        if any(model_info.Species == mod):
-            flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
-            if flnm.split(".")[-1] == "json":
-                with contextlib.redirect_stderr(None):
-                    cobra_models[mod] = cb.io.load_json_model(flnm)
-            elif flnm.split(".")[-1] == "xml":
-                with contextlib.redirect_stderr(None):
-                    cobra_models[mod] = cb.io.read_sbml_model(flnm)
-            if not cobra_models[mod].name:
-                cobra_models[mod].name = mod
-        else:
-            print("Error: No model of species " + mod)
-
-    if len(sys.argv) > 1:
-        agora_media_nm = sys.argv[1]
-    else:
-        agora_media_nm = ""
-        mednm = "Default"
-
-    if "{}_AGORA.tsv".format(agora_media_nm) in os.listdir(agora_media_loc):
-        agora_media_nm = "{}_AGORA.tsv".format(agora_media_nm)
-        
-
-    if agora_media_nm in os.listdir(agora_media_loc):
-        agora_media = pd.read_csv(os.path.join(agora_media_loc,agora_media_nm),index_col = 0, sep = '\t')
-        growth_media = make_media(cobra_models,media_df = agora_media,metabolite_id_type="modelSeedID").to_dict()
-        mednm = agora_media_nm.split(".")[0]
-
-
-
-    else:
-        print("Cannot find media file {}, using default environment from model mediums".format(os.path.join(agora_media_loc,agora_media_nm)))
-        growth_media = make_media(cobra_models).to_dict()
-
+    growth_media = metconsin_environment(list_of_sp,model_info_fl,metabolite_id_type = 'modelSeedID')
 
 
     with open("exchange_bounds_uniform.json") as fl:

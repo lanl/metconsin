@@ -43,76 +43,17 @@ Additionally, we have to add the metconsin package to our path, if it is not the
 
 
 Setting a user-defined growth environment
-------------------------------------------
+-------------------------------------------
 
-A user-defined environment for MetConSIN takes the form of a dictionary keyed by metabolite names with values corresponding to initial metbaolite concentrations. The :py:func:`make_media<metconsin.prep_models.make_media>` can create an environment dictionary using the mediums from the models, by 
-using minimal mediums from the models, or using a pre-defined environment. To do this, we first load the models of the community: 
-
-.. code-block:: python
-
-    species = ['bc1011', 'bc1015', 'bc1003', 'bc1002', 'bc1010', 'bc1008','bc1012', 'bc1016', 'bc1001', 'bc1009']
-
-    agora_flder = "AGORA_Media"
-    agora_media_loc = os.path.join(parent,agora_flder)
-
-    cobra_models = {}
-
-    model_info = pd.read_csv(model_info_fl)
-
-    for mod in species:
-        if any(model_info.Species == mod):
-            flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
-            if flnm.split(".")[-1] == "json":
-                with contextlib.redirect_stderr(None):
-                    cobra_models[mod] = cb.io.load_json_model(flnm)
-            elif flnm.split(".")[-1] == "xml":
-                with contextlib.redirect_stderr(None):
-                    cobra_models[mod] = cb.io.read_sbml_model(flnm)
-            if not cobra_models[mod].name:
-                cobra_models[mod].name = mod
-        else:
-            print("Error: No model of species " + mod)
-
-The example script takes the choice of media as a command line argument. This can be the name of a diet in the ``AGORA_Media`` folder, the word ``minimal``, or nothing for the model mediums loaded with the models.
-
-If we are using media defined by a table (e.g. from the AGORA diet choices), we load the appropriate table:
+A user-defined environment for MetConSIN takes the form of a dictionary keyed by metabolite names with values corresponding to initial metbaolite concentrations. The :py:func:`metconsin_environment<metconsin.metconsin.metconsin_environment>` function can create an environment dictionary using the mediums from the models, by 
+using minimal mediums from the models, or using a pre-defined environment. In this tutorial, we simply use the media defined in the models, but scaled down to 10% of the flux value.
 
 .. code-block:: python
 
-    if len(sys.argv) > 1:
-        agora_media_nm = sys.argv[1]
-    else:
-        agora_media_nm = ""
-        
-    if "{}_AGORA.tsv".format(agora_media_nm) in os.listdir(agora_media_loc):
-        agora_media_nm = "{}_AGORA.tsv".format(agora_media_nm)
-        
+    mednm = "Default"
+    growth_media = metconsin_environment(species,model_info_fl,metabolite_id_type = 'modelSeedID')
 
-    if agora_media_nm in os.listdir(agora_media_loc):
-        agora_media = pd.read_csv(os.path.join(agora_media_loc,agora_media_nm),index_col = 0, sep = '\t')
-        growth_media = make_media(cobra_models,media_df = agora_media,metabolite_id_type="modelSeedID").to_dict()
-        mednm = agora_media_nm.split(".")[0]
-
-Alternatively, we might want to use a minimal media that allows each model to grow initially at 10 mass/time:
-
-.. code-block:: python
-
-    elif agora_media_nm == "minimal":
-        print("Using minimal media.")
-        growth_media = make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=10).to_dict()
-        mednm = "minimal"
-
-Or we might wish to simply use the media defined in the models, but scaled down to 10% of the flux value.
-
-.. code-block:: python
-
-    else:
-        if agora_media_nm != "":
-            print("Cannot find media file {}, using default environment from model mediums".format(os.path.join(agora_media_loc,agora_media_nm)))
-        else:
-            print("Using default model medias.")
-        growth_media = make_media(cobra_models,default_proportion = 0.1).to_dict()
-        mednm = "Default"
+See :doc:`usage` on using other media for details on how to use other media files, including those found at the `AGORA website <https://www.vmh.life/#nutrition>`_
 
 We can adjust the environment by editing the resulting dictionary. Here, we might want to limit glucose.
 

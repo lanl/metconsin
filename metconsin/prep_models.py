@@ -481,6 +481,7 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
 
         exchng_metabolite_names = [model.metabolites.get_by_id(metab).name for metab in exchng_metabolite_ids]
 
+        minimal_ok = False
         if minimal:
             minimal_ok = True
             if minimal_grth == None:
