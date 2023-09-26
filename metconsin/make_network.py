@@ -451,7 +451,7 @@ def average_network_micmet(networks,interval_times):
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_micmet_node_table(avg_network)
-    return avg_network,node_table,True
+    return avg_network,all_networks,node_table,True
 
 def make_avg_micmet_node_table(avg_edges):
 
@@ -525,7 +525,7 @@ def average_network_metmet(networks,interval_times):
     avg_network.index = np.arange(len(avg_network))
 
     node_table = make_avg_metmet_node_table(networks,interval_times)
-    return avg_network,node_table,True
+    return avg_network,all_networks,node_table,True
 
 def make_avg_metmet_node_table(networks,interval_times):
 
@@ -617,7 +617,7 @@ def average_network_spc(networks,interval_times):
 
     node_table = make_avg_spc_node_table(networks,interval_times)
 
-    return avg_network,node_table,True
+    return avg_network,all_networks,node_table,True
 
 def make_avg_spc_node_table(networks,interval_times):
 

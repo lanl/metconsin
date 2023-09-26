@@ -139,3 +139,5 @@ dmypy.json
 AGORA_Media/diet_list.json
 AGORA_Media/*.tsv
 
+testing_euler.ipynb
+testing_metconsin.ipynb

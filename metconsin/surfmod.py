@@ -50,7 +50,7 @@ class SurfMod:
 
     """
 
-    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivative,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto",forcedOns = True):
+    def __init__(self,exchanged_metabolites,gamStar,gamDag,objective,intrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative,exterior_ubfuns_derivative,internal_mets = None,lbfuntype = "",ubfuntype = "",Name = None,deathrate = 0,gamma_star_indices = "Auto",forcedOns = True):
 
         
 
@@ -62,6 +62,7 @@ class SurfMod:
 
         self.ezero = 10**-7
         """Rounding Precision"""
+
 
         Z = la.null_space(gamDag.astype(float))
         gamDagtT = la.null_space(Z.T)
@@ -95,6 +96,8 @@ class SurfMod:
         """Number of exchange reactions"""
         self.num_internal_metabolites = num_internal
         """Number of internal metabolites"""
+        self.internal_metabolites = internal_mets
+        """Names of internal metabolites ordered to match gamDag"""
 
         # self.total_var = 6*num_v + 2*num_exch
         rw1 = self.GammaStar#, np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
@@ -111,7 +114,7 @@ class SurfMod:
         self.objective = np.concatenate([-np.array(objective).astype(float),np.array(objective).astype(float)])
         """FBA objective vector"""
 
-        self.flux_order = intrn_order
+        self.flux_order = np.concatenate([intrn_order,["{}_R".format(rx) for rx in intrn_order]])
         """List (providing ordering) of internal reactions"""
 
         self.exchange_bounds = np.concatenate([exterior_ubfuns,exterior_lbfuns])

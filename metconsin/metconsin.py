@@ -10,6 +10,19 @@ import contextlib
 import os
 from pathlib import Path
 import matplotlib.pyplot as plt
+import json
+from functools import singledispatch
+
+@singledispatch
+def to_serializable(val):
+    """Used by default."""
+    return str(val)
+
+
+@to_serializable.register(np.float32)
+def ts_float32(val):
+    """Used if *val* is an instance of numpy.float32."""
+    return np.float64(val)
 
 
 def metconsin_environment(community_members,model_info_file,**kwargs):
@@ -421,6 +434,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :type debugging: bool
     :param forceOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSM include such bounds. Default True
     :type forceOns: bool
+    :param refine_intervals: whether to look for interval endtimes earlier than provided by solve_ivp "events". Default False
+    :type refine_intervals: bool
 
     .. note::
 
@@ -440,10 +455,17 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     - *SpcMetNetworkSummaries*\ : Microbe-Metabolite networks defined by the dfba sequence of ODEs with all edges between two nodes collapsed to one edge (keyed by time interval)
     - *SpcMetNetworks*\ : Microbe-Metabolite networks defined by the dfba sequence of ODEs (keyed by time interval)
     - *BasisChanges*\ : Times that the system updated a basis with bools indicating if a particular model updated at that time.
+    - *InternalBasisDifferences*\ : List of constraints/variables that are activated/deactivated at each basis change for each model.
+    - *BasisChangeCause*\ : List of bounds that were violated leading a basis change.
     - *ExchangeFluxes*\ (if ``track_fluxes`` == True): Exchange fluxes at each time-point for each taxa.
     - *InternalFluxes*\ (in ``save_internal_flux`` == True): Internal fluxes at each time-point for each taxa.
 
     :rtype: dict 
+
+    .. note::
+
+        Networks include ``Average``, ``Combined``, and ``Difference`` networks along with individual networks. ``Average`` is time-weighted average, ``Combined`` includes edge weights for each time interval in a single table, and ``Difference`` is the change in edge weights 
+        at a basis change, Old - New.
 
     '''
 
@@ -464,6 +486,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     findwaves_report = kwargs.get("findwaves_report",False)
     debugging = kwargs.get("debugging",False)
     initial_abundance = kwargs.get("initial_abundance",None)
+    refine_stoptime = kwargs.get("refine_intervals",False)
 
 
 
@@ -515,6 +538,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
 
     models,metlist,y0dict =  pr.prep_cobrapy_models(cobra_models,**kwargs)
 
+
     #for new network after perturbing metabolites, we only need to update mets0.
     #mets establishes an ordering of metabolites.
     #Next establish an ordering of microbes. Note, this won't necessarily be predictable, python
@@ -559,7 +583,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                                 report_activity = report_activity, 
                                 flobj = flobj,
                                 fwreport = findwaves_report,
-                                debugging=debugging)
+                                debugging=debugging,
+                                refine_intervals = refine_stoptime)
 
 
 
@@ -587,6 +612,27 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     total_interval = 0
 
     basis_change_info = pd.DataFrame(columns = np.unique(np.array(basis_change_times).round(6)),index = [model.Name for model in model_list]).fillna(0).astype(bool)
+    ## To add: 
+    ##         - details of network change - difference in edge strengths - dataframe for each model with columns=times index=metabolites
+    ##                                                                    - seperate dataframe for incoming edges?
+    ##                      Change "Combined" network to "average". Add "Combined" network with columns for each interval
+    ##                                          Add "Difference" network with differnce in each edge at each basis change.
+
+    basis_change_differences = dict([(mod.Name,{}) for mod in model_list])
+    for model in model_list:
+        dif = {}
+        for i in range(1,len(dynamics["bases"][model.Name])):
+            tp = dynamics["bases"][model.Name][i]
+            ptp = dynamics["bases"][model.Name][i-1]
+            tdi_act = {}
+            tdi_act["Constraints"] = [get_constr_desc(j,model,metlist) for j in set(tp[1][0]).difference(set(ptp[1][0]))]
+            tdi_act["Fluxes"] = [model.flux_order[j] for j in set(tp[1][1]).difference(set(ptp[1][1]))]
+            tdi_dact = {}
+            tdi_dact["Constraints"] = [get_constr_desc(j,model,metlist) for j in set(ptp[1][0]).difference(set(tp[1][0]))]
+            tdi_dact["Fluxes"] = [model.flux_order[j] for j in set(ptp[1][1]).difference(set(tp[1][1]))]
+            dif[tp[0]] = {"Activated":tdi_act,"Deactivated":tdi_dact}
+        basis_change_differences[model.Name] = dif
+
 
 
     for i in range(len(basis_change_times)):
@@ -598,7 +644,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))&(np.array(all_sim.columns.astype(float)).round(6)<=t1)]
             interval_lens[ky] = t1-t0
         except:
-            ky = "{:.4f}".format(t0)
+            ky = "{:.4f}-{:.4f}".format(t0,endtime)
             dynamics_t = all_sim.loc[:,(t0 <= np.array(all_sim.columns.astype(float)).round(6))]
             total_interval = t0/(1-final_interval_weight)
             if t0 == 0:
@@ -647,26 +693,66 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         for ky,val in interval_lens.items():
             interval_lens[ky] = val/total_interval
         
-        avg_micmetnet_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
+        avg_micmetnet_sum,comb_micmet_net_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
         if rflag:
-            mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
+            mic_met_sum_nets["Average"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
+            diff_micmet_net_sum = make_diff_df(comb_micmet_net_sum)
+            comb_micmet_net_sum["Source"] = [i.split("##")[0] for i in comb_micmet_net_sum.index]
+            comb_micmet_net_sum["Target"] = [i.split("##")[1] for i in comb_micmet_net_sum.index]
+            mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":comb_micmet_net_sum}
+            mic_met_sum_nets["Difference"] = {"nodes":avg_micmet_summ_nodes,"edges":diff_micmet_net_sum}
 
-        avg_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,"micmet")
-        if rflag:
-            mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
 
-        avg_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,"metmet")
-        if rflag:
-            met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
 
-        avg_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,"spc")
+        avg_micmetnet,comb_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,"micmet")
         if rflag:
-            speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
+            mic_met_nets["Average"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
+            diff_micmet_net = make_diff_df(comb_micmetnet)
+            comb_micmetnet["Source"] = [i.split("##")[0] for i in comb_micmetnet.index]
+            comb_micmetnet["Target"] = [i.split("##")[1] for i in comb_micmetnet.index]
+            mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":comb_micmetnet}
+            mic_met_nets["Difference"] = {"nodes":avg_micmet_nodes,"edges":diff_micmet_net}
+
+
+        avg_metmetnet,comb_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,"metmet")
+        if rflag:
+            met_met_nets["Average"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
+            diff_metmetnet = make_diff_df(comb_metmetnet)
+            comb_metmetnet["Source"] = [i.split("##")[0] for i in comb_metmetnet.index]
+            comb_metmetnet["Target"] = [i.split("##")[1] for i in comb_metmetnet.index]
+            met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":comb_metmetnet}
+            met_met_nets["Difference"] = {"nodes":avg_metmet_nodes,"edges":diff_metmetnet}
+
+
+        avg_spec,comb_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,"spc")
+        if rflag:
+            speciesHeuristic["Average"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
+            diff_spec = make_diff_df(comb_spec)
+            comb_spec["Source"] = [i.split("##")[0] for i in comb_spec.index]
+            comb_spec["Target"] = [i.split("##")[1] for i in comb_spec.index]
+            speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
+            speciesHeuristic["Difference"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
+
 
 
 
     all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_info}
+    bfcause = dynamics["bf"]
+    all_return["InternalBasisDifferences"] = basis_change_differences
 
+    basis_change_cause = {}
+    for ky,val in bfcause.items():
+        bc = {}
+        for b in val:
+            mky = b[0]
+            fs = {}
+            fs["Internal Flux Below 0"] = [models[mky].flux_order[j] for j in b[1]]
+            fs["Constraint Violated"] = [get_constr_desc(j,models[mky],metlist) for j in b[2]]
+            bc[mky] = fs
+        basis_change_cause[ky] = bc
+
+
+    all_return["BasisChangeCause"] = basis_change_cause
     if track_fluxes:
         exchg_fluxes = {}
         for model in model_list:
@@ -721,6 +807,10 @@ def save_metconsin(metconsin_return,flder):
     metconsin_return["Microbes"].to_csv(os.path.join(flder,"Microbes.tsv"),sep="\t")
     metconsin_return["Metabolites"].to_csv(os.path.join(flder,"Metabolites.tsv"),sep="\t")
 
+    with open(os.path.join(flder,"BasisChangeCauses.json"),'w') as fl:
+        json.dump(metconsin_return["BasisChangeCause"],fl, default=to_serializable)
+    with open(os.path.join(flder,"InternalBasisDifferences.json"),'w') as fl:
+        json.dump(metconsin_return["InternalBasisDifferences"],fl, default=to_serializable)
 
     pd.DataFrame(metconsin_return["BasisChanges"]).to_csv(os.path.join(flder,"BasisTimes.tsv"),sep = "\t")
 
@@ -735,7 +825,7 @@ def save_metconsin(metconsin_return,flder):
 
 
     for ky in metconsin_return["MetMetNetworks"].keys():
-        if ky != "Combined":
+        if ky not in ["Combined","Average","Difference"]:
             Path(os.path.join(metmet_folder,ky)).mkdir(parents=True, exist_ok=True)
             metconsin_return["MetMetNetworks"][ky]["edges"].to_csv(os.path.join(metmet_folder,ky,"MetMetEdges"+ky+".tsv"),sep="\t")
             metconsin_return["MetMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmet_folder,ky,"MetMetNodes"+ky+".tsv"),sep="\t")
@@ -817,7 +907,6 @@ def save_metconsin(metconsin_return,flder):
         ax.legend(prop={'size': 15})
         plt.savefig(os.path.join(exchange_flux_flder,model + "Exchange.png"))
         plt.close()
-
 
 def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
 
@@ -1089,3 +1178,62 @@ def dynamic_fba(community_members,model_info_file,initial_abundance,**kwargs):
         print("[MetConSIN] Complete in ",int(minuts)," minutes, ",sec," seconds.")
 
     return all_return
+
+def get_constr_desc(j,mod,metablist):
+
+    '''Creates a description of constraint j in model
+    
+    :param j: constraint number in ordering of model.prob_mat
+    :type j: int
+    :param mod: model of interest
+    :type mod: SurfMod
+    :param metablist: list of exchanged metablites
+    :type metablist: listlike
+
+    :return: description of constraint
+    :rtype: str
+    
+    '''
+
+    if j < mod.num_exch_rxns:
+        mj = mod.ExchangeOrder[j]
+        met = metablist[mj]
+        return "{} exchange upper bound".format(met)
+    elif mod.num_exch_rxns <= j < 2*mod.num_exch_rxns:
+        mj = mod.ExchangeOrder[j-mod.num_exch_rxns]
+        met = metablist[mj]
+        return "{} exchange lower bound".format(met)
+    elif 2*mod.num_exch_rxns <= j < 2*mod.num_exch_rxns + mod.num_fluxes:
+        return "{} upper bound".format(mod.flux_order[j-2*mod.num_exch_rxns])
+    else:
+        tj = j - 2*mod.num_exch_rxns + mod.num_fluxes
+        if tj < mod.num_internal_metabolites:
+            return "{} equilibrium".format(mod.internal_metabolites[tj])
+        else:
+            return "{} equilibrium".format(mod.internal_metabolites[tj - mod.num_internal_metabolites])
+        
+def make_diff_df(df):
+
+    '''
+    Makes the ``Difference`` networks table.
+
+    :param df: DataFrame indexed by edges in the network set, with a column for each time interval
+    :type df: pd.DataFrame
+
+    :return: DataFrame indexed by edges in the network set, with a column for each transition. Values are old network edge weight minus new.
+    :rtype: pd.DataFrame
+    
+    '''
+
+    ddf = pd.DataFrame(index = df.index,columns = [col.split("-")[1] for col in df.columns])
+    for col in ddf.columns:
+        starts = [c for c in df.columns if c.split("-")[0] == col]
+        if len(starts):
+            c1 = starts[0]
+            c2 = [c for c in df.columns if c.split("-")[1] == col][0]
+            ddf[col] = df[c1]-df[c2]
+        else:
+            ddf.drop(col,axis =1,inplace = True)
+    ddf["Source"] = [i.split("##")[0] for i in ddf.index]
+    ddf["Target"] = [i.split("##")[1] for i in ddf.index]
+    return ddf

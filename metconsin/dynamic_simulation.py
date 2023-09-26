@@ -86,10 +86,37 @@ def all_vs(t,s,models,yi,yo):
         v = np.append(v,np.concatenate([model.inter_flux,model.slack_vals]))#[model.current_basis[2]]
     return min(v) + 10**-8
 
+def get_mod_v(s,model,nummods):
+
+    '''
+    returns vector of all internal fluxes for a model (including slack values) in order to find infeasibility as a stopping condition on integration
+
+    :param s: current value of the state vector of the simulation (biomass of all taxa and metabolites)
+    :type s: array[float]
+    :param model: GSM used in the simulation
+    :type model: SurfMod
+
+    :return: internal flux vector as [model.interflux,model.slack_vals]
+    :rtype: array[float]
+
+    **Modifies** 
+    
+    - ``model.inter_flux`` for each model (see :py:func:`model.compute_internal_flux <surfmod.SurfMod.compute_internal_flux>`)
+    - ``model.slack_vals`` for each model (see :py:func:`model.compute_slacks <surfmod.SurfMod.compute_slacks>`)
+
+    '''
+    y = s[nummods:]
+    model.compute_internal_flux(y)
+    model.compute_slacks(y)
+    v = np.concatenate([model.inter_flux,model.slack_vals])
+    return v
+
 def get_var_i(t,i,sln,mod,nummods):
 
     """
     
+    CURRENTLY UNUSED
+
     Function to get fluxes so that they can be checked for feasibility in :py:func:`find_stop <dynamic_simulation.find_stop>` 
 
     :param t: time-point in the simulation at which to compute a flux
@@ -115,7 +142,6 @@ def get_var_i(t,i,sln,mod,nummods):
 
 def find_stop(t0,t1,sln,models):
     """
-
     Uses ``scipy.optimize.root_scalar`` to refine the estimate of when a flux because infeasible and a new basis was needed within
     an interval of smooth forward ODE solving. If the interval is legnth 0, a warning is printed and the stop time is returned as the
     start of the interval.
@@ -141,8 +167,9 @@ def find_stop(t0,t1,sln,models):
     j = 0
     for mod in models:
         for i in range(mod.total_vars):
-            if min(abs(get_var_i(t0,i,sln,mod,len(models))),abs(get_var_i(t1,i,sln,mod,len(models)))) > 10**-7 and (get_var_i(t0,i,sln,mod,len(models))*get_var_i(t1,i,sln,mod,len(models)) < 0):
+            if min(abs(get_var_i(t0,i,sln,mod,len(models))),abs(get_var_i(t1,i,sln,mod,len(models)))) > 10**-8 and (get_var_i(t0,i,sln,mod,len(models))*get_var_i(t1,i,sln,mod,len(models)) < 0):
                 all_roots[j] = root_scalar(get_var_i,args = (i,sln,mod,len(models)),bracket=[t0,t1]).root
+                print("AN EARLIER STOP: {} - {}".format(t1,all_roots[j]))
             j+=1
     return min(all_roots)
 
@@ -192,6 +219,8 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
     :type fwreport: bool
     :param debugging: Turn on some debugging prints. Default False
     :type debugging: bool
+    :param refine_intervals: whether to look for interval endtimes earlier than provided by solve_ivp "events". Default False
+    :type refine_intervals: bool
 
     
     :return: Dictionary containing the simulation. Keys are :
@@ -200,6 +229,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
     - *x*\ : dynamics of the microbial taxa. Numpy array shape NumTaxa x T 
     - *y*\ : dynamics of the metabolites. Numpy array shape NumMetabolites x T
     - *bt*\ : list of times a basis was recomputed.
+    - *bf*\ : dict indicating which flux of which model triggered the basis change.
     - *basis* (if ``save_basis``): bases used
     - *Exchflux* (if ``track_fluxes``): Exchange fluxes - dict of arrays
     - *Intflux* (if ``save_internal_flux``): Internal fluxes - dict of arrays
@@ -220,7 +250,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
     debugging = kwargs.get("debugging",False)
     inflow = kwargs.get("inflow",None)
     outflow = kwargs.get("outflow",None)
-
+    refine_stoptime = kwargs.get("refine_intervals",False)
 
     t1 = time.time()
     if report_activity:
@@ -338,6 +368,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
         intfluxes = dict([(model.Name,[]) for model in models])
     t_c = 0
     basis_change = [t_c]
+    basis_reason = {}
 
     catch_badLP = False
     stops = 0
@@ -351,6 +382,9 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
 
         all_vs.terminal = True
         # all_vs.direction = -1
+        # stp_events = [lambda t,s,mods,yi,yo,mod = mod,i=i : get_mod_v(s,mod,len(models))[i]+10**-8 for mod in models for i in range(mod.total_vars)]
+        # for ev in stp_events:
+        #     ev.terminal = True
         if all([mod.feasible for mod in models]):
             ode_solver = "Radau"
             if report_activity:
@@ -361,9 +395,21 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
             interval = solve_ivp(evolve_community, (t_c,endtime), s0, args=(models,inflow,outflow),events=all_vs,dense_output = True, method=ode_solver)
             if interval.status == -1:
                 break
-            stptime = find_stop(t_c, interval.t[-1],interval.sol,models)#interval.t[-1]#find_event(interval,models)
+            stptime = interval.t[-1]#find_stop(t_c, interval.t[-1],interval.sol,models)##find_event(interval,models)
+            ### If we're worried that solve_ivp's root finder isn't good enough, we can use find_stop to get even more precise
+            if refine_stoptime:
+                stptime = find_stop(t_c, interval.t[-1],interval.sol,models)
+            
+            stpflux = []
+            for mod in models:
+                whr_viol = np.where(get_mod_v(interval.y[:,-1],mod,len(models))+10**-8 < 0)[0]
+                if len(whr_viol):
+                    whc_viol_v = [j for j in whr_viol if j<len(mod.flux_order)]
+                    whc_viol_c = [j-len(mod.flux_order) for j in whr_viol if j>=len(mod.flux_order)]
+                    stpflux += [(mod.Name,whc_viol_v,whc_viol_c)]
         else:
             stptime = t_c
+            stpflux = None
 
         
         if stptime == t_c:
@@ -426,6 +472,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
                     print("surfin_fba: Finding New Basis at time ",t_c)
             yd = evolve_community(t_c,s0,models,inflow,outflow)[len(models):]
             basis_change += [t_c]
+            basis_reason[t_c] = stpflux
             for model in models:
 
 
@@ -490,7 +537,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
 
 
     try:
-        retdict = {"t":np.concatenate(t),"x":np.concatenate(x,axis = 1),"y":np.concatenate(y,axis = 1),"bt":np.array(basis_change)}
+        retdict = {"t":np.concatenate(t),"x":np.concatenate(x,axis = 1),"y":np.concatenate(y,axis = 1),"bt":np.array(basis_change),"bf":basis_reason}
     except:
         retdict = {"t":[0],"x":np.array([x0]).T,"y":np.array([y0]).T,"bt":[]}
     if track_fluxes:

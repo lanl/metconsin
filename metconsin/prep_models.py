@@ -51,7 +51,7 @@ def prep_cobrapy_models(models,**kwargs):
     :type flobj: File
 
     :return: Tuple of SurfMods, metabolite names, and intitial metabolite concentrations
-    :rtype: tuple[list[SurfMods],list[str],array[float]]
+    :rtype: tuple[list[SurfMods],list[str],dict[str:float]]
 
     Upper and lower bound functions can be user defined seperately for each bound and each model with a dict (keyed by model name) of arrays of lambda functions. The 
     user must provide the derivative of the functions with respect to time in ``upper_bound_functions_dt`` and/or ``lower_bound_functions_dt``. 
@@ -98,7 +98,7 @@ def prep_cobrapy_models(models,**kwargs):
     met_filter_sense = kwargs.get("met_filter_sense","exclude")
 
     flobj = kwargs.get("flobj")
-    deathrates = kwargs.get("deathrates")
+    deathrates = kwargs.get("model_deathrates")
 
 
     if deathrates == None:
@@ -422,7 +422,7 @@ def prep_cobrapy_models(models,**kwargs):
 
         #SurfMod(gamStar,gamDag,objective,intrn_order,exrn_order,interior_lbs,interior_ubs,exterior_lbfuns,exterior_ubfuns,exterior_lbfuns_derivative = [],exterior_ubfuns_derivatives = [],exchanged_metabolites,Name = None,deathrate = 0)
         drt = deathrates.get(modelkey,0)
-        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,deathrate = drt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
+        surfmods[modelkey] = SurfMod(metaabs[model.name],GammaStarar,GammaDaggerar,lilgamma,internal_reactions,internal_lower_bounds,internal_upper_bounds,exlb,exub,exlbdt,exubdt,internal_mets = internal_metabs,deathrate = drt,lbfuntype = lftype,ubfuntype = uftype,Name = model.name, gamma_star_indices = gammaStarOrder, forcedOns=forceOns)
 
 
     return surfmods,masterlist,master_y0
