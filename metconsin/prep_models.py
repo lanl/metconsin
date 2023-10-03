@@ -125,7 +125,9 @@ def prep_cobrapy_models(models,**kwargs):
         model = models[modelkey]
 
         #list all reactions the model claims are exchange.
-        exchng_reactions = [rxn.id for rxn in model.reactions if 'EX_' in rxn.id]#
+        exchng_reactions = [rxn.id for rxn in model.exchanges]#[rxn.id for rxn in model.reactions if 'EX_' in rxn.id]#
+        if not len(exchng_reactions):
+            exchng_reactions = [rxn.id for rxn in model.reactions if 'EX_' in rxn.id]
 
 
         exchng_metabolite_ids_wrx = [(rx,metab.id) for rx in exchng_reactions for metab in model.reactions.get_by_id(rx).reactants] #
@@ -256,6 +258,9 @@ def prep_cobrapy_models(models,**kwargs):
         growth_col = pd.Series(np.zeros(len(internal_reactions)),index = GammaDagger.columns)
         for rxn in util.solver.linear_reaction_coefficients(model).keys():
             growth_col.loc[rxn.id] = util.solver.linear_reaction_coefficients(model)[rxn]
+
+        if len(growth_col) != len(internal_reactions):
+            print("[prep_cobrapy_models] ERROR: Objective function is wrong size. This can be caused by the biomass reaction being included in model.exchanges, or labeled EX_ with empty model.exchanges.")
 
 
         lilgamma = growth_col.values

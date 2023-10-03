@@ -139,5 +139,12 @@ dmypy.json
 AGORA_Media/diet_list.json
 AGORA_Media/*.tsv
 
+Example/.*
+Example/ExampleResults*
+Example/maldonado.gomez_networks/
+Example/testing_COMETS.ipynb
+Example/testing_direct_solve.ipynb
+Example/weiss_et_al
+
 testing_euler.ipynb
 testing_metconsin.ipynb

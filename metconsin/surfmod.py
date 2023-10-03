@@ -97,7 +97,7 @@ class SurfMod:
         self.num_internal_metabolites = num_internal
         """Number of internal metabolites"""
         self.internal_metabolites = internal_mets
-        """Names of internal metabolites ordered to match gamDag"""
+        """Names of internal metabolites - Note: ``self.GammaDagger`` rows will not match this list because we replace the internal stoichiometry with an equivalent orthogonal balance matrix."""
 
         # self.total_var = 6*num_v + 2*num_exch
         rw1 = self.GammaStar#, np.eye(num_exch),np.zeros((num_exch,num_exch+2*num_v))], axis = 1)
@@ -1147,26 +1147,6 @@ class SurfMod:
 
         self.slack_vals = all_slks
 
-# @jit(nopython=True)
-# def compute_if(bound_rhs,current_basis,num_fluxes):
-#     '''
-#     Compute current fluxes (not including slacks) from current basis & metabolite concentration - uses reduced basis.
-#     '''
-#     # metabolite_con = master_metabolite_con[ExchangeOrder]
-#     # exchg_bds = np.array([bd(metabolite_con) for bd in exchange_bounds])
-#     # bound_rhs = np.concatenate([exchg_bds,internal_bounds])
-
-#     Q,R,beta = current_basis
-
-#     if len(beta[0]):
-#         fl_beta = np.linalg.solve(R,np.dot(Q.T,bound_rhs[beta[0]]))
-#     else:
-#         fl_beta = np.empty(0,np.float64)
-
-#     all_vars = np.zeros(num_fluxes)#np.zeros(self.total_var)
-#     all_vars[beta[1]] = fl_beta
-
-#     return all_vars
 
 def getReduced(basisinds,num_fluxes,A):
 
@@ -1197,28 +1177,6 @@ def getReduced(basisinds,num_fluxes,A):
         reducedbeta = (list(rowsToInclude),list(colsToInclude))
     return (Q,R,reducedbeta)
 
-# def remove_licol(fullmat,indexes,essentials,fluxes):
-#     mat = fullmat[:,indexes]
-#     if mat.shape[0] == mat.shape[1]:
-#         return indexes,None
-#     slv = la.null_space(mat).T[0]
-#     non_essentials = np.array([x for x in range(len(indexes)) if indexes[x] not in essentials])
-#     #and remove any column with a non-zero, as long as it isn't ''essential"
-#     nonzero = np.where(slv.round(7).astype(bool)*np.array([(x not in essentials) for x in indexes]))[0]#[-1]
-
-#     # all_errs = np.array([np.linalg.norm(fluxes[j]*np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
-#     all_errs = np.array([np.linalg.norm(np.delete(slv,j)/slv[j]) if slv[j].round(10) else 100 for j in range(len(slv))])
-
-#     if len(nonzero):
-#         # remove where it will have the smallest error. Error vector is er = v * np.linalg.solve(A,y) where
-#         # v is the flux value at the index removed, y is the 
-#         # column removed and A is the remaining matrix. 
-#         rmvit = nonzero[np.argmin(all_errs[nonzero])]
-#         # rmvit = nonzero[np.argmax(slv[nonzero])]
-#         return np.delete(indexes,rmvit),rmvit
-#     else:
-#         print("Failed to find initial basis after secondary objective.")
-#         return None,None
 
 
 def pivot_nojit(c,A,beta,b,preferred,muststay = None):

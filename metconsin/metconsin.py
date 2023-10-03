@@ -71,10 +71,10 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
             elif flnm.split(".")[-1] == "xml":
                 with contextlib.redirect_stderr(None):
                     cobra_models[mod] = cb.io.read_sbml_model(flnm)
-            if not cobra_models[mod].name:
-                cobra_models[mod].name = mod
+            # if not cobra_models[mod].name:
+            cobra_models[mod].name = mod
         else:
-            print("Error: No model of species " + mod)
+            print("[MetConSIN Environment] Error: No model of species " + mod)
 
     if media_file == "minimal":
 
@@ -91,15 +91,18 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
         if "{}_AGORA.tsv".format(media_file) in os.listdir(agora_media_loc):
             media_file = os.path.join(agora_media_loc,"{}_AGORA.tsv".format(media_file))
 
-        if "{}_AGORA.tsv".format(media_file.replace(" ","_")) in os.listdir(agora_media_loc):
+        elif "{}_AGORA.tsv".format(media_file.replace(" ","_")) in os.listdir(agora_media_loc):
             media_file = os.path.join(agora_media_loc,"{}_AGORA.tsv".format(media_file.replace(" ","_")))
 
-        if media_file in os.listdir(agora_media_loc):
+        elif media_file in os.listdir(agora_media_loc):
             media_file = os.path.join(agora_media_loc,media_file)
 
-        if media_file == "minimal":
+        elif media_file.lower() == "minimal":
             print("[metconsin_environment] Creating environment from minimal media.")
             growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth).to_dict()
+        elif media_file.lower() == "default":
+            print("[metconsin_environment] Creating default environment from model mediums")
+            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
         elif os.path.isfile(media_file):
             print("[metconsin_environment] Creating environment from file {}".format(media_file))
             growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion).to_dict()
@@ -238,13 +241,16 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
             elif flnm.split(".")[-1] == "xml":
                 with contextlib.redirect_stderr(None):
                     cobra_models[mod] = cb.io.read_sbml_model(flnm)
-            if not cobra_models[mod].name:
-                cobra_models[mod].name = mod
+            # if not cobra_models[mod].name:
+            cobra_models[mod].name = mod
         else:
-            print("Error: No model of species " + mod)
+            print("[MetConSIN Network] Error: No model of species " + mod)
 
 
-    print("Loaded " + str(len(cobra_models)) + " models successfully")
+    try:
+        flobj.write("[MetConSIN Network] Loaded " + str(len(cobra_models)) + " models successfully\n")
+    except:
+        print("[MetConSIN Network] Loaded " + str(len(cobra_models)) + " models successfully")
 
     if media == "minimal":
         for model in cobra_models.keys():
@@ -258,7 +264,10 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
 
 
     for mod in cobra_models.keys():
-        print(mod," COBRA initial growth rate: ",cobra_models[mod].slim_optimize())
+        try:
+            flobj.write("[MetConSIN Network] {} COBRA initial growth rate: {}\n".format(mod,cobra_models[mod].slim_optimize()))
+        except:
+            print("[MetConSIN Network] {} COBRA initial growth rate: {}".format(mod,cobra_models[mod].slim_optimize()))
 
     #returns dict of surfmods, list of metabolites, and concentration of metabolites.
     # models,mets,mets0 = prep_cobrapy_models(cobra_models,uptake_dicts = uptake_dicts ,random_kappas=random_kappas)
@@ -287,7 +296,11 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
 
         model.ezero  = 10**-8
 
-        print("Testing Initial: {}".format(ky))
+        try:
+            flobj.write("[MetConSIN Network] Testing Initial: {}\n".format(ky))
+        except:
+            print("[MetConSIN Network] Testing Initial: {}".format(ky))
+
 
         metabolite_con = y0[model.ExchangeOrder]
         exchg_bds = np.array([bd(metabolite_con) for bd in model.exchange_bounds])
@@ -308,7 +321,10 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
 
     for ky,model in models.items():
         
-        print("Findwaves: {}".format(ky))
+        try:
+            flobj.write("[MetConSIN Network] Findwaves: {}\n".format(ky))
+        except:
+            print("[MetConSIN Network] Findwaves: {}".format(ky))
 
         model.findWave(y0,ydot0,details = report_activity,flobj = flobj)
 
@@ -319,7 +335,8 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
       os.mkdir(save_folder)
     except:
       pass
-    rmnodes,rmfull,rmsumm,mmedges,mmnodes = mn.species_metabolite_network(metlist,y0,models,report_activity=report_activity_network,flobj=flobj)
+    rmnodes,rmfull,mmedges,mmnodes = mn.species_metabolite_network(metlist,y0,models,report_activity=report_activity_network,flobj=flobj)
+    rmsumm = mn.make_medmet_summ(rmfull)
 
     if trimit:
 
@@ -333,11 +350,11 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
         mmedges,mmnodes = mn.trim_network(mmedges,mmnodes,dynamics)
         rmfull,_ = mn.trim_network(rmfull,rmnodes,dynamics)
         rmsumm,rmnodes = mn.trim_network(rmsumm,rmnodes,dynamics)
+    nz_out = [i for i in rmsumm.index if rmnodes.loc[rmsumm.loc[i,'Target'],"OutAmount"] > 0]
+    rm_remove_noout = rmsumm.loc[nz_out]
 
     ssnet,ssnodes,ssadj=mn.heuristic_ss(rmsumm,rmnodes,report_activity=report_activity_network)
 
-    rmsumm
-    ssnet
 
     rmnodes.to_csv(os.path.join(save_folder,"microbe_metabolite_nodes.tsv"),sep = '\t')
     rmfull.to_csv(os.path.join(save_folder,"microbe_metabolite_full_edges.tsv"),sep = '\t')
@@ -347,6 +364,7 @@ def metconsin_network(community_members,model_info_file, save_folder,**kwargs):
     ssnet.to_csv(os.path.join(save_folder,"microbe_microbe_edges.tsv"),sep = '\t')
     ssnodes.to_csv(os.path.join(save_folder,"microbe_microbe_nodes.tsv"),sep = '\t')
     ssadj.to_csv(os.path.join(save_folder,"microbe_microbe_adjacency.tsv"),sep = '\t')
+    rm_remove_noout.to_csv(os.path.join(save_folder,"microbe_metabolite_no_out_removed.tsv",sep='\t'))
 
 
     minuts,sec = divmod(time.time() - start_time, 60)
@@ -436,6 +454,10 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     :type forceOns: bool
     :param refine_intervals: whether to look for interval endtimes earlier than provided by solve_ivp "events". Default False
     :type refine_intervals: bool
+    :param modelColhead: Column header for model filepaths in model info file. Defaul "File"
+    :type modelColhead: str
+    :param nameColhead: Column header for species names in model info file - column contents should contain ``community_members``. Defual "Species"
+    :type nameColhead: str
 
     .. note::
 
@@ -487,6 +509,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     debugging = kwargs.get("debugging",False)
     initial_abundance = kwargs.get("initial_abundance",None)
     refine_stoptime = kwargs.get("refine_intervals",False)
+    model_fl_colhead = kwargs.get("modelColhead","File")
+    model_fl_nmhead = kwargs.get("nameColhead","Species")
 
 
 
@@ -498,16 +522,16 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     model_info = pd.read_csv(model_info_file)
 
     for mod in community_members:
-        if any(model_info.Species == mod):
-            flnm = model_info.loc[model_info.Species == mod,'File'].iloc[0]
+        if any(model_info[model_fl_nmhead] == mod):
+            flnm = model_info.loc[model_info[model_fl_nmhead] == mod,model_fl_colhead].iloc[0]
             if flnm.split(".")[-1] == "json":
                 with contextlib.redirect_stderr(None):
                     cobra_models[mod] = cb.io.load_json_model(flnm)
             elif flnm.split(".")[-1] == "xml":
                 with contextlib.redirect_stderr(None):
                     cobra_models[mod] = cb.io.read_sbml_model(flnm)
-            if not cobra_models[mod].name:
-                cobra_models[mod].name = mod
+            # if not cobra_models[mod].name:
+            cobra_models[mod].name = mod
         else:
             print("Error: No model of species " + mod)
 
@@ -606,17 +630,14 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
 
     met_met_nets = {}
     mic_met_sum_nets = {}
+    mic_met_no_out_rmvd = {}
     mic_met_nets = {}
     speciesHeuristic = {}
     interval_lens = {}
     total_interval = 0
 
     basis_change_info = pd.DataFrame(columns = np.unique(np.array(basis_change_times).round(6)),index = [model.Name for model in model_list]).fillna(0).astype(bool)
-    ## To add: 
-    ##         - details of network change - difference in edge strengths - dataframe for each model with columns=times index=metabolites
-    ##                                                                    - seperate dataframe for incoming edges?
-    ##                      Change "Combined" network to "average". Add "Combined" network with columns for each interval
-    ##                                          Add "Difference" network with differnce in each edge at each basis change.
+
 
     basis_change_differences = dict([(mod.Name,{}) for mod in model_list])
     for model in model_list:
@@ -680,10 +701,15 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
                 met_med_net,node_table = mn.trim_network(met_med_net,node_table,dynamics_t)
                 met_med_net_summary = mn.make_medmet_summ(met_med_net)
+
+                nz_out = [i for i in met_med_net_summary.index if node_table.loc[met_med_net_summary.loc[i,'Target'],"OutAmount"] > 0]
+                no_out_rmvd = met_med_net_summary.loc[nz_out]
+
                 ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network,flobj = flobj)
 
                 met_met_nets[ky] = {"nodes":met_met_nodes,"edges":met_met_edges}
                 mic_met_sum_nets[ky] = {"nodes":node_table,"edges":met_med_net_summary}
+                mic_met_no_out_rmvd[ky] = {"nodes":node_table,"edges":no_out_rmvd}
                 mic_met_nets[ky] = {"nodes":node_table,"edges":met_med_net}
                 speciesHeuristic[ky] = {"nodes":ssnodes,"edges":ssnet,"adjacency":ssadj}
     
@@ -701,7 +727,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             comb_micmet_net_sum["Target"] = [i.split("##")[1] for i in comb_micmet_net_sum.index]
             mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":comb_micmet_net_sum}
             mic_met_sum_nets["Difference"] = {"nodes":avg_micmet_summ_nodes,"edges":diff_micmet_net_sum}
-
+            nz_out = [i for i in avg_micmetnet_sum.index if avg_micmet_summ_nodes.loc[avg_micmetnet_sum.loc[i,'Target'],"OutAmount"] > 0]
+            mic_met_no_out_rmvd["Average"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum.loc[nz_out]}
 
 
         avg_micmetnet,comb_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,"micmet")
@@ -731,12 +758,19 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             comb_spec["Source"] = [i.split("##")[0] for i in comb_spec.index]
             comb_spec["Target"] = [i.split("##")[1] for i in comb_spec.index]
             speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
-            speciesHeuristic["Difference"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
+            speciesHeuristic["Difference"] = {"nodes":avg_spc_nodes,"edges":diff_spec}
 
 
 
 
-    all_return = {"Microbes":x_sim,"Metabolites":y_sim,"SpeciesNetwork":speciesHeuristic,"MetMetNetworks":met_met_nets, "SpcMetNetworkSummaries":mic_met_sum_nets,"SpcMetNetworks":mic_met_nets, "BasisChanges":basis_change_info}
+    all_return = {"Microbes":x_sim,
+                  "Metabolites":y_sim,
+                  "SpeciesNetwork":speciesHeuristic,
+                  "MetMetNetworks":met_met_nets, 
+                  "SpcMetNetworkSummaries":mic_met_sum_nets,
+                  "SpcMetNetworkNoOutRemoved":mic_met_no_out_rmvd,
+                  "SpcMetNetworks":mic_met_nets, 
+                  "BasisChanges":basis_change_info}
     bfcause = dynamics["bf"]
     all_return["InternalBasisDifferences"] = basis_change_differences
 
@@ -825,29 +859,19 @@ def save_metconsin(metconsin_return,flder):
 
 
     for ky in metconsin_return["MetMetNetworks"].keys():
-        if ky not in ["Combined","Average","Difference"]:
-            Path(os.path.join(metmet_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["MetMetNetworks"][ky]["edges"].to_csv(os.path.join(metmet_folder,ky,"MetMetEdges"+ky+".tsv"),sep="\t")
-            metconsin_return["MetMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmet_folder,ky,"MetMetNodes"+ky+".tsv"),sep="\t")
-            Path(os.path.join(metmic_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["SpcMetNetworkSummaries"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdgesSummary"+ky+".tsv"),sep="\t")
-            metconsin_return["SpcMetNetworks"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdges"+ky+".tsv"),sep="\t")
-            metconsin_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksNodes"+ky+".tsv"),sep="\t")
-            Path(os.path.join(micmic_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["SpeciesNetwork"][ky]["edges"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkEdges"+ky+".tsv"),sep="\t")
-            metconsin_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkNodes"+ky+".tsv"),sep="\t")
-        else:
-            # {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
-            Path(os.path.join(metmet_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["MetMetNetworks"][ky]["edges"].to_csv(os.path.join(metmet_folder,ky,"MetMetEdgesAvg.tsv"),sep="\t")
-            metconsin_return["MetMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmet_folder,ky,"MetMetNodes.tsv"),sep="\t")
-            Path(os.path.join(metmic_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["SpcMetNetworkSummaries"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdgesSummaryAvg.tsv"),sep="\t")
-            metconsin_return["SpcMetNetworks"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdgesAvg.tsv"),sep="\t")
-            metconsin_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksNodesAvg.tsv"),sep="\t")
-            Path(os.path.join(micmic_folder,ky)).mkdir(parents=True, exist_ok=True)
-            metconsin_return["SpeciesNetwork"][ky]["edges"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkEdgesAvg.tsv"),sep="\t",index = False)
-            metconsin_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkNodesAvg.tsv"),sep="\t")
+        Path(os.path.join(metmet_folder,ky)).mkdir(parents=True, exist_ok=True)
+        metconsin_return["MetMetNetworks"][ky]["edges"].to_csv(os.path.join(metmet_folder,ky,"MetMetEdges"+ky+".tsv"),sep="\t")
+        metconsin_return["MetMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmet_folder,ky,"MetMetNodes"+ky+".tsv"),sep="\t")
+        Path(os.path.join(metmic_folder,ky)).mkdir(parents=True, exist_ok=True)
+        metconsin_return["SpcMetNetworkSummaries"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdgesSummary"+ky+".tsv"),sep="\t")
+        if ky not in ["Combined","Difference"]:
+            metconsin_return["SpcMetNetworkNoOutRemoved"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdgesNoOutRemoved"+ky+".tsv"),sep="\t")
+        metconsin_return["SpcMetNetworks"][ky]["edges"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksEdges"+ky+".tsv"),sep="\t")
+        metconsin_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmic_folder,ky,"SpcMetNetworksNodes"+ky+".tsv"),sep="\t")
+        Path(os.path.join(micmic_folder,ky)).mkdir(parents=True, exist_ok=True)
+        metconsin_return["SpeciesNetwork"][ky]["edges"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkEdges"+ky+".tsv"),sep="\t")
+        metconsin_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,ky,"SpeciesNetworkNodes"+ky+".tsv"),sep="\t")
+
 
     if "ExchangeFluxes" in metconsin_return.keys():
 
@@ -1206,11 +1230,7 @@ def get_constr_desc(j,mod,metablist):
     elif 2*mod.num_exch_rxns <= j < 2*mod.num_exch_rxns + mod.num_fluxes:
         return "{} upper bound".format(mod.flux_order[j-2*mod.num_exch_rxns])
     else:
-        tj = j - 2*mod.num_exch_rxns + mod.num_fluxes
-        if tj < mod.num_internal_metabolites:
-            return "{} equilibrium".format(mod.internal_metabolites[tj])
-        else:
-            return "{} equilibrium".format(mod.internal_metabolites[tj - mod.num_internal_metabolites])
+        return "Internal chemical equilibrium"
         
 def make_diff_df(df):
 
@@ -1220,20 +1240,19 @@ def make_diff_df(df):
     :param df: DataFrame indexed by edges in the network set, with a column for each time interval
     :type df: pd.DataFrame
 
-    :return: DataFrame indexed by edges in the network set, with a column for each transition. Values are old network edge weight minus new.
+    :return: DataFrame indexed by edges in the network set, with a column for each transition. Values are new network edge weight minus old.
     :rtype: pd.DataFrame
     
     '''
 
-    ddf = pd.DataFrame(index = df.index,columns = [col.split("-")[1] for col in df.columns])
-    for col in ddf.columns:
-        starts = [c for c in df.columns if c.split("-")[0] == col]
-        if len(starts):
-            c1 = starts[0]
-            c2 = [c for c in df.columns if c.split("-")[1] == col][0]
-            ddf[col] = df[c1]-df[c2]
-        else:
-            ddf.drop(col,axis =1,inplace = True)
+    ddf = pd.DataFrame(index = df.index)
+    for i in range(df.shape[1]-1):
+        c1 = df.columns[i]
+        c2 = df.columns[i+1]
+        col = c1.split("-")[1]
+
+        ddf[col] = df[c2]-df[c1]
+
     ddf["Source"] = [i.split("##")[0] for i in ddf.index]
     ddf["Target"] = [i.split("##")[1] for i in ddf.index]
     return ddf

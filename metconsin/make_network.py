@@ -217,12 +217,15 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
     met_met_edges["Source"] = met_met_edges["Source"].apply(lambda s:s.replace("_e",""))
     met_met_edges["Target"] = met_met_edges["Target"].apply(lambda s:s.replace("_e",""))
 
-    associated = pd.DataFrame(index = node_table.index,columns = ["In","Out","All"])
+    associated = pd.DataFrame(index = node_table.index,columns = ["In","InAmount","Out","OutAmount","All","AllAmount"])
     for ndinx in node_table.index:
         nd = node_table.loc[ndinx,"Name"].replace("_e0","").replace("_e","")
         associated.loc[ndinx,"Out"] = ".".join(np.unique(list(met_med_net.loc[met_med_net["Source"] == nd]["Target"])))
+        associated.loc[ndinx,"OutAmount"] = len(np.unique(list(met_med_net.loc[met_med_net["Source"] == nd]["Target"])))
         associated.loc[ndinx,"In"] = ".".join(np.unique(list(met_med_net.loc[met_med_net["Target"] == nd]["Source"])))
+        associated.loc[ndinx,"InAmount"] = len(np.unique(list(met_med_net.loc[met_med_net["Target"] == nd]["Source"])))
         associated.loc[ndinx,"All"] = associated.loc[ndinx,"Out"] + associated.loc[ndinx,"In"]#np.concatenate([associated.loc[ndinx,"Out"],associated.loc[ndinx,"In"]])
+        associated.loc[ndinx,"AllAmount"] = associated.loc[ndinx,"OutAmount"] + associated.loc[ndinx,"InAmount"]
 
     associated.fillna("",inplace = True)
 
@@ -466,7 +469,7 @@ def make_avg_micmet_node_table(avg_edges):
     """
 
     all_nodes = np.unique(list(avg_edges["Source"]) + list(avg_edges["Target"]))
-    node_table = pd.DataFrame(index =all_nodes, columns = ["In","Out","All","Type"])
+    node_table = pd.DataFrame(index =all_nodes, columns = ["In","InAmount","Out","OutAmount","All","AllAmount","Type"])
     for nd in all_nodes:
         ##As Source:
         assrc = avg_edges[avg_edges["Source"] == nd]
@@ -484,7 +487,7 @@ def make_avg_micmet_node_table(avg_edges):
                     ndtype = "Microbe"
                 outs = ''
             ins  = list(astrgt["Source"])
-        node_table.loc[nd] = [".".join(ins),".".join(outs),".".join(ins)+".".join(outs),ndtype]
+        node_table.loc[nd] = [".".join(ins),len(ins),".".join(outs),len(outs),".".join(ins)+".".join(outs),len(ins)+len(outs),ndtype]
     return node_table
 
 def average_network_metmet(networks,interval_times):
@@ -573,8 +576,11 @@ def make_avg_metmet_node_table(networks,interval_times):
     a_node_tab.fillna("",inplace = True)
 
     node_tab["In"] = [".".join(pd.unique(i_node_tab.loc[rw])) for rw in i_node_tab.index]
+    node_tab["InAmount"] = [len(pd.unique(i_node_tab.loc[rw])) for rw in i_node_tab.index]
     node_tab["Out"] = [".".join(pd.unique(o_node_tab.loc[rw])) for rw in o_node_tab.index]
+    node_tab["OutAmount"] = [len(pd.unique(o_node_tab.loc[rw])) for rw in o_node_tab.index]
     node_tab["All"] = [".".join(pd.unique(a_node_tab.loc[rw])) for rw in a_node_tab.index]
+    node_tab["AllAmount"] = [len(pd.unique(a_node_tab.loc[rw])) for rw in a_node_tab.index]
 
     return node_tab
 
@@ -663,8 +669,14 @@ def make_avg_spc_node_table(networks,interval_times):
     a_node_tab.fillna("",inplace = True)
 
     node_tab["In"] = [".".join(pd.unique(i_node_tab.loc[rw])) for rw in i_node_tab.index]
+    node_tab["InAmount"] = [len(pd.unique(i_node_tab.loc[rw])) for rw in i_node_tab.index]
+
     node_tab["Out"] = [".".join(pd.unique(o_node_tab.loc[rw])) for rw in o_node_tab.index]
+    node_tab["OutAmount"] = [len(pd.unique(o_node_tab.loc[rw])) for rw in o_node_tab.index]
+
     node_tab["All"] = [".".join(pd.unique(a_node_tab.loc[rw])) for rw in a_node_tab.index]
+    node_tab["AllAmount"] = [len(pd.unique(a_node_tab.loc[rw])) for rw in a_node_tab.index]
+
 
     return node_tab
 

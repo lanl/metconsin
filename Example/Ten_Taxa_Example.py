@@ -36,12 +36,12 @@ if __name__=="__main__":
 
     model_info_fl = "ModelSeed_info.csv"
 
-    species = ['bc1011', 'bc1015', 'bc1003', 'bc1002', 'bc1010', 'bc1008','bc1012', 'bc1016', 'bc1001', 'bc1009']
+    species = ['bc1001','bc1002', 'bc1003', 'bc1008', 'bc1009', 'bc1010','bc1011','bc1012','bc1015', 'bc1016']
 
 
     mednm = "Default"
 
-    growth_media = metconsin_environment(species,model_info_fl,metabolite_id_type = 'modelSeedID')
+    growth_media = metconsin_environment(species,model_info_fl,media_source=mednm,metabolite_id_type = 'modelSeedID')
 
 
     with open("exchange_bounds_uniform.json") as fl:
@@ -184,8 +184,9 @@ if __name__=="__main__":
 
     all_limiters = []
     for ky in metconsin_return["SpcMetNetworks"].keys():
-        df = metconsin_return["SpcMetNetworks"][ky]['edges']
-        all_limiters += list(df[df["SourceType"] == "Metabolite"]["Source"])
+        if ky not in ["Difference","Combined"]:
+            df = metconsin_return["SpcMetNetworks"][ky]['edges']
+            all_limiters += list(df[df["SourceType"] == "Metabolite"]["Source"])
     all_limiters = np.unique(all_limiters)
 
     for limi in all_limiters:
@@ -201,7 +202,7 @@ if __name__=="__main__":
 
     ##### Finally we look at the metabolite-metabolite network
 
-    metconsin_return["MetMetNetworks"]['Combined']['edges'].sort_values("Variance",ascending=False).head(10).to_latex(os.path.join(flder,"MetMetHighestVarEdges.tex"))
+    metconsin_return["MetMetNetworks"]['Average']['edges'].sort_values("Variance",ascending=False).head(10).to_latex(os.path.join(flder,"MetMetHighestVarEdges.tex"))
 
     ### The network making cleans up the names.
     metabolite_list = [met.replace("_e0","").replace("_e","") for met in np.array(metconsin_return["Metabolites"].index)]

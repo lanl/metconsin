@@ -34,8 +34,8 @@ def make_microbe_table(microbe,spc_met_networks):
 
     network_keys = list(spc_met_networks.keys())
     try:
-        network_keys.remove("Combined")
-        ky = "Combined"
+        network_keys.remove("Average")
+        ky = "Average"
         combined_info = pd.Series()
 
         netx_graph = nx.from_pandas_edgelist(spc_met_networks[ky]['edges'],source = 'Source',target = 'Target',edge_attr = ["SourceType","Weight"],create_using=nx.DiGraph)
@@ -61,24 +61,25 @@ def make_microbe_table(microbe,spc_met_networks):
         pass
     microbe_table = pd.DataFrame(columns = network_keys)
     for ky in network_keys:     
-        netx_graph = nx.from_pandas_edgelist(spc_met_networks[ky]['edges'],source = 'Source',target = 'Target',edge_attr = ["SourceType","Weight"],create_using=nx.DiGraph)
-        edge_out_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Source"] == microbe]
-        edge_in_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Target"] == microbe]
-        node_info = spc_met_networks[ky]['nodes'].loc[microbe]
-        microbe_table.loc["TotalOutCoefficients",ky] = edge_out_info["Weight"].sum()
-        microbe_table.loc["TotalProductionCoefficients",ky] = edge_out_info[edge_out_info["Weight"]>0]["Weight"].sum()
-        microbe_table.loc["TotalConsumptionCoefficients",ky] = edge_out_info[edge_out_info["Weight"]<0]["Weight"].sum()
-        microbe_table.loc["LimitingMetabolites",ky] = ".".join(edge_in_info["Source"].values)
-        for met in edge_in_info["Source"].values:
-            #.iloc[0] is fine because there should only be one...
-            microbe_table.loc["GrowthCoefficient_{}".format(met),ky] = edge_in_info[edge_in_info["Source"] == met]["Weight"].iloc[0]
-        microbe_table.loc["IntrinsicGrowth",ky] = node_info["IntrinsicGrowth"]
-        microbe_table.loc["Produces",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Target"].values))
-        microbe_table.loc["ProductionCofactors",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Cofactor"].values))
-        microbe_table.loc["Consumes",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Target"].values))
-        microbe_table.loc["ConsumptionCofactors",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Cofactor"].values))
-        microbe_table.loc["BipartiteClusteringCoefficient",ky] = bipartite.clustering(netx_graph).get(microbe,0)
-        microbe_table.loc["TimeRange",ky] = ky
+        if ky not in ["Average","Difference","Combined"]:
+            netx_graph = nx.from_pandas_edgelist(spc_met_networks[ky]['edges'],source = 'Source',target = 'Target',edge_attr = ["SourceType","Weight"],create_using=nx.DiGraph)
+            edge_out_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Source"] == microbe]
+            edge_in_info = spc_met_networks[ky]['edges'][spc_met_networks[ky]['edges']["Target"] == microbe]
+            node_info = spc_met_networks[ky]['nodes'].loc[microbe]
+            microbe_table.loc["TotalOutCoefficients",ky] = edge_out_info["Weight"].sum()
+            microbe_table.loc["TotalProductionCoefficients",ky] = edge_out_info[edge_out_info["Weight"]>0]["Weight"].sum()
+            microbe_table.loc["TotalConsumptionCoefficients",ky] = edge_out_info[edge_out_info["Weight"]<0]["Weight"].sum()
+            microbe_table.loc["LimitingMetabolites",ky] = ".".join(edge_in_info["Source"].values)
+            for met in edge_in_info["Source"].values:
+                #.iloc[0] is fine because there should only be one...
+                microbe_table.loc["GrowthCoefficient_{}".format(met),ky] = edge_in_info[edge_in_info["Source"] == met]["Weight"].iloc[0]
+            microbe_table.loc["IntrinsicGrowth",ky] = node_info["IntrinsicGrowth"]
+            microbe_table.loc["Produces",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Target"].values))
+            microbe_table.loc["ProductionCofactors",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] > 0]["Cofactor"].values))
+            microbe_table.loc["Consumes",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Target"].values))
+            microbe_table.loc["ConsumptionCofactors",ky] = ".".join(np.unique(edge_out_info[edge_out_info["Weight"] < 0]["Cofactor"].values))
+            microbe_table.loc["BipartiteClusteringCoefficient",ky] = bipartite.clustering(netx_graph).get(microbe,0)
+            microbe_table.loc["TimeRange",ky] = ky
     return microbe_table.fillna(0),combined_info
 
 def make_microbe_growthlimiter(microbe,spc_met_networks):
@@ -98,6 +99,14 @@ def make_microbe_growthlimiter(microbe,spc_met_networks):
     network_keys = list(spc_met_networks.keys())
     try:
         network_keys.remove("Combined")
+    except:
+        pass
+    try:
+        network_keys.remove("Average")
+    except:
+        pass
+    try:
+        network_keys.remove("Difference")
     except:
         pass
     microbe_limiter_table = pd.DataFrame(columns = ["Metabolite","Coefficient","TimeRange"])
@@ -128,11 +137,19 @@ def make_limiter_table(met,spc_met_networks,models):
 
     network_keys = list(spc_met_networks.keys())
     try:
+        network_keys.remove("Combined")
+    except:
+        pass
+    try:
+        network_keys.remove("Difference")
+    except:
+        pass
+    try:
         avg_lim = pd.Series(index = models)
-        comb_edges_out = spc_met_networks[ky]["edges"][spc_met_networks[ky]["edges"]["Source"] == met]
+        comb_edges_out = spc_met_networks["Average"]["edges"][spc_met_networks["Average"]["edges"]["Source"] == met]
         for mod in comb_edges_out["Target"]:
             avg_lim.loc[mod] = out_edges[out_edges["Target"] == mod]["Weight"].iloc[0]
-        network_keys.remove("Combined")
+        network_keys.remove("Average")
     except:
         avg_lim = None
         pass
@@ -159,6 +176,14 @@ def make_limiter_plot(met,spc_met_networks):
     network_keys = list(spc_met_networks.keys())
     try:
         network_keys.remove("Combined")
+    except:
+        pass
+    try:
+        network_keys.remove("Average")
+    except:
+        pass
+    try:
+        network_keys.remove("Difference")
     except:
         pass
     limiter_plot = pd.DataFrame(columns = ["Model","Coefficient","TimeRange"])
@@ -234,6 +259,14 @@ def node_in_stat_distribution(metabolite_list,network_set):
         netkeys.remove("Combined")
     except:
         pass
+    try:
+        netkeys.remove("Average")
+    except:
+        pass
+    try:
+        netkeys.remove("Difference")
+    except:
+        pass
     avg_in_degrees = pd.DataFrame(index = metabolite_list, columns = ["NumberEdges","SumWeight","SumAbsWeight","PositiveSumWeight","NegativeSumWeight"])
     var_in_degrees = pd.DataFrame(index = metabolite_list, columns = ["NumberEdges","SumWeight","SumAbsWeight","PositiveSumWeight","NegativeSumWeight"])
     for met in metabolite_list:
@@ -270,6 +303,14 @@ def node_out_stat_distribution(metabolite_list,network_set):
     netkeys = list(network_set.keys())
     try:
         netkeys.remove("Combined")
+    except:
+        pass
+    try:
+        netkeys.remove("Average")
+    except:
+        pass
+    try:
+        netkeys.remove("Difference")
     except:
         pass
     avg_out_degrees = pd.DataFrame(index = metabolite_list, columns = ["NumberEdges","SumWeight","SumAbsWeight","PositiveSumWeight","NegativeSumWeight"])
