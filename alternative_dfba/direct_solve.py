@@ -7,6 +7,11 @@ import sys
 import os
 from scipy.integrate import solve_ivp
 
+from pathlib import Path
+import matplotlib.pyplot as plt
+import json
+
+
 current = os.path.dirname(os.path.realpath(__file__))
 parent = os.path.dirname(current)
 sys.path.append(parent)
@@ -90,6 +95,8 @@ def direct_solve(community_members,model_info_file,**kwargs):
     :type debugging: bool
     :param forceOns: Whether or not to allow internal reactions to be forced on (with a positive lower bound). Many GSM include such bounds. Default True
     :type forceOns: bool
+    :param ode_solver: choice of ODE solver used by scipy.solve_ivp. Default Radau
+    :type ode_solver: str
 
     .. note::
 
@@ -152,9 +159,9 @@ def direct_solve(community_members,model_info_file,**kwargs):
 
     
     try:
-        flobj.write("[MetConSIN] Loaded " + str(len(cobra_models)) + " models successfully\n")
+        flobj.write("[direct_solve] Loaded " + str(len(cobra_models)) + " models successfully\n")
     except:
-        print("[MetConSIN] Loaded " + str(len(cobra_models)) + " models successfully")
+        print("[direct_solve] Loaded " + str(len(cobra_models)) + " models successfully")
 
 
     if media == "minimal":
@@ -170,9 +177,9 @@ def direct_solve(community_members,model_info_file,**kwargs):
     for mod in cobra_models.keys():
         cbgr = cobra_models[mod].slim_optimize()
         try:
-            flobj.write("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
+            flobj.write("[direct_solve] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
         except:
-            print("[MetConSIN] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
+            print("[direct_solve] {} COBRA initial growth rate: {}\n".format(mod,cbgr))
 
 
 
@@ -210,7 +217,7 @@ def direct_solve(community_members,model_info_file,**kwargs):
                 exchng_metabolite_names_flt = [met for met in exchng_metabolite_names if met in met_filter]
             else:
                 exchng_metabolite_names_flt = exchng_metabolite_names
-                print("[prep_cobrapy_models] Must specify sense of metabolite filter - exclude or include.\n No filtering done.")
+                print("[direct_solve] Must specify sense of metabolite filter - exclude or include.\n No filtering done.")
             exchng_metabolite_ids_flt = [metid for metid in exchng_metabolite_ids if model.metabolites.get_by_id(metid).name in exchng_metabolite_names_flt]
             exchng_reactions_flt = [rxid for rxid in exchng_reactions if all([metid in exchng_metabolite_ids_flt for metid in model.reactions.get_by_id(rxid).reactants])]
 
@@ -248,6 +255,13 @@ def direct_solve(community_members,model_info_file,**kwargs):
     exchng_ids = [ex_rxns[sp] for sp in community_members]
     deathrates = [deathrates[sp] if sp in deathrates.keys() else 0 for sp in community_members]
 
+
+    ode_solver = kwargs.get("ode_solver","Radau")
+    try:
+        flobj.write("[direct_solve] Simulating Forward with scipy.solve_ivp using {} solver\n".format(ode_solver))
+    except:
+        print("[direct_solve] Simulating Forward with scipy.solve_ivp using {} solver".format(ode_solver))
+
     sol = solve_ivp(
         fun=dfba_system,
         args=(cobramods,surfmods,exchng_ids,inflow,outflow,deathrates),
@@ -263,14 +277,49 @@ def direct_solve(community_members,model_info_file,**kwargs):
     microbes = pd.DataFrame(sol.y[:len(community_members)].round(7),index = community_members,columns = sol.t)
     metabolites = pd.DataFrame(sol.y[len(community_members):].round(7),index = metlist,columns = sol.t)
 
+    try:
+        flobj.write("[direct_solve] Making Networks\n")
+    except:
+        print("[direct_solve] Making Networks")
+
     spc_met_nets = {}
     spc_spc_nets = {}
     for tm in networktimes:
-        i = np.where(sol.t <= tm)[0][-1]
-        spmet,nodes = infer_network(sol.y[:,i],cobramods,surfmods,exchng_ids,community_members,metlist)
-        spsp,_,_= mn.heuristic_ss(spmet,nodes,report_activity = False,flobj = None)
-        spc_met_nets[tm] = spmet
-        spc_spc_nets[tm] = spsp
+        if tm <= sol.t[-1]:
+            i = np.where(sol.t <= tm)[0][-1]
+            spmet,nodes = infer_network(sol.y[:,i],cobramods,surfmods,exchng_ids,community_members,metlist)
+            spsp,spnds,spsadj= mn.heuristic_ss(spmet,nodes,report_activity = False,flobj = None)
+            spc_met_nets[tm] = {'nodes':nodes,'edges':spmet}
+            spc_spc_nets[tm] = {'nodes':spnds,'edges':spsp,'adjacency':spsadj}
+
+    if networktimes[0] > sol.t[-1]:
+        print("Average network making - No Network Times Simulated")
+    else:
+        if len(networktimes) >=2:
+            interval_lens = dict([(ky,networktimes[1]-networktimes[0]) for ky in networktimes])
+        else:
+            interval_lens = {networktimes[0]:sol.t[-1]}
+        
+        avg_micmetnet_sum,comb_micmet_net_sum,avg_micmet_summ_nodes,rflag = mn.average_network(spc_met_nets,interval_lens,"micmet")
+        if rflag:
+            spc_met_nets["Average"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
+            diff_micmet_net_sum = mn.make_diff_df(comb_micmet_net_sum)
+            comb_micmet_net_sum["Source"] = [i.split("##")[0] for i in comb_micmet_net_sum.index]
+            comb_micmet_net_sum["Target"] = [i.split("##")[1] for i in comb_micmet_net_sum.index]
+            spc_met_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":comb_micmet_net_sum}
+            spc_met_nets["Difference"] = {"nodes":avg_micmet_summ_nodes,"edges":diff_micmet_net_sum}
+
+        avg_spec,comb_spec,avg_spc_nodes,rflag = mn.average_network(spc_spc_nets,interval_lens,"spc",make_node_table=False)
+        if rflag:
+            spc_spc_nets["Average"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
+            diff_spec = mn.make_diff_df(comb_spec)
+            comb_spec["Source"] = [i.split("##")[0] for i in comb_spec.index]
+            comb_spec["Target"] = [i.split("##")[1] for i in comb_spec.index]
+            spc_spc_nets["Combined"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
+            spc_spc_nets["Difference"] = {"nodes":avg_spc_nodes,"edges":diff_spec}
+
+
+
 
     return {"Microbes":microbes,"Metabolites":metabolites,"SpcMetNetworks":spc_met_nets,"SpeciesNetwork":spc_spc_nets,"SolverStatus":sol.status}
 
@@ -327,7 +376,7 @@ def infer_network(z,cobramods,surfmods,exchng_ids,modnames,metlist):
     net = pd.DataFrame(columns = ["Source","Target","SourceType","Weight","ABS_Weight","Sign_Weight","ABSRootWeight","SignedRootWeight"])
     nodes = pd.DataFrame(columns = ["Type","Name"])
     for m in metlist:
-        nodes.loc[m] = ["Metabolite",m]
+        nodes.loc[m] = ["Metabolite",m.replace("_e0","")]
     for i,cmod in enumerate(cobramods):
         nodes.loc[modnames[i]] = ["Microbe",modnames[i]]
         cmod.medium = make_new_media(y,surfmods[i],exchng_ids[i])
@@ -336,7 +385,67 @@ def infer_network(z,cobramods,surfmods,exchng_ids,modnames,metlist):
             y_dt = np.array([np.round(get_flux(j,surfmods[i],exchng_ids[i],opt),8) for j in range(len(y))])
             for j,m in enumerate(metlist):
                 if y_dt[j]:
-                    net.loc["{}##{}".format(modnames[i],m)] = [modnames[i],m,"Microbe",y_dt[j],np.abs(y_dt[j]),np.sign(y_dt[j]),np.sqrt(np.abs(y_dt[j])),np.sign(y_dt[j])*np.sqrt(np.abs(y_dt[j]))]
+                    net.loc["{}##{}".format(modnames[i],m.replace("_e0",""))] = [modnames[i],m.replace("_e0",""),"Microbe",y_dt[j],np.abs(y_dt[j]),np.sign(y_dt[j]),np.sqrt(np.abs(y_dt[j])),np.sign(y_dt[j])*np.sqrt(np.abs(y_dt[j]))]
                 if y_dt[j] < 0:
-                    net.loc["{}##{}".format(m,modnames[i])] = [m,modnames[i],"Metabolite",-y_dt[j],np.abs(y_dt[j]),-np.sign(y_dt[j]),np.sqrt(np.abs(y_dt[j])),-np.sign(y_dt[j])*np.sqrt(np.abs(y_dt[j]))]
+                    net.loc["{}##{}".format(m.replace("_e0",""),modnames[i])] = [m.replace("_e0",""),modnames[i],"Metabolite",-y_dt[j],np.abs(y_dt[j]),-np.sign(y_dt[j]),np.sqrt(np.abs(y_dt[j])),-np.sign(y_dt[j])*np.sqrt(np.abs(y_dt[j]))]
     return net,nodes
+
+def save_directsolve(direct_sol_return,flder):
+
+    '''
+    
+    Saves the output of MetConSIN simulation in directory ``flder``. Creates subdirs for each network type with subdirs labeled by time interval containing a network (edges and nodes as seperate .tsv files)
+    Also saves dynamics, with microbe and metabolite dynamics seperate, and plots them. Saves fluxes if those are included in the metconsin return
+
+    :param direct_sol_return: the output of metconsin_sim
+    :type direct_sol_return: dict 
+    :param flder: desired path to output folder
+    :type flder: path 
+    :return: None
+    
+
+    '''
+
+
+    Path(flder).mkdir(parents=True, exist_ok=True)
+
+    direct_sol_return["Microbes"].to_csv(os.path.join(flder,"Microbes.tsv"),sep="\t")
+    direct_sol_return["Metabolites"].to_csv(os.path.join(flder,"Metabolites.tsv"),sep="\t")
+
+    metmic_folder = os.path.join(flder,"SpcMetNetworks")
+    metmet_folder = os.path.join(flder,"MetaboliteNetworks")
+    micmic_folder = os.path.join(flder,"SpeciesNetworks")
+
+    Path(metmic_folder).mkdir(parents=True, exist_ok=True)
+    Path(metmet_folder).mkdir(parents=True, exist_ok=True)
+    Path(micmic_folder).mkdir(parents=True, exist_ok=True)
+
+
+
+    for ky in direct_sol_return["SpcMetNetworks"].keys():
+        Path(os.path.join(metmic_folder,"{}".format(ky))).mkdir(parents=True, exist_ok=True)
+        direct_sol_return["SpcMetNetworks"][ky]["edges"].to_csv(os.path.join(metmic_folder,"{}".format(ky),"SpcMetNetworksEdges_{}.tsv".format(ky)),sep="\t")
+        direct_sol_return["SpcMetNetworks"][ky]["nodes"].to_csv(os.path.join(metmic_folder,"{}".format(ky),"SpcMetNetworksNodes_{}.tsv".format(ky)),sep="\t")
+        Path(os.path.join(micmic_folder,"{}".format(ky))).mkdir(parents=True, exist_ok=True)
+        direct_sol_return["SpeciesNetwork"][ky]["edges"].to_csv(os.path.join(micmic_folder,"{}".format(ky),"SpeciesNetworkEdges_{}.tsv".format(ky)),sep="\t")
+        direct_sol_return["SpeciesNetwork"][ky]["nodes"].to_csv(os.path.join(micmic_folder,"{}".format(ky),"SpeciesNetworkNodes_{}.tsv".format(ky)),sep="\t")
+
+
+
+
+    x_pl = direct_sol_return["Microbes"].copy()
+    x_pl.columns = np.array(direct_sol_return["Microbes"].columns).astype(float).round(4)
+    ax = x_pl.T.plot(figsize = (20,10))
+    ax.legend(prop={'size': 30},loc = 2)
+    plt.savefig(os.path.join(flder,"Microbes.png"))
+    plt.close()
+
+    nonzero_mets = np.array([max(direct_sol_return["Metabolites"].loc[nd]) >10**-6 for nd in direct_sol_return["Metabolites"].index])
+
+    y_pl = direct_sol_return["Metabolites"].copy()
+    y_pl.columns = np.array(direct_sol_return["Metabolites"].columns).astype(float).round(4)
+    if sum(nonzero_mets):
+        ax = y_pl.loc[nonzero_mets].T.plot(figsize = (20,10))
+    else:
+        ax = y_pl.T.plot(figsize = (20,10))
+    

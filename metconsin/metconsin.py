@@ -722,7 +722,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         avg_micmetnet_sum,comb_micmet_net_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
         if rflag:
             mic_met_sum_nets["Average"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
-            diff_micmet_net_sum = make_diff_df(comb_micmet_net_sum)
+            diff_micmet_net_sum = mn.make_diff_df(comb_micmet_net_sum)
             comb_micmet_net_sum["Source"] = [i.split("##")[0] for i in comb_micmet_net_sum.index]
             comb_micmet_net_sum["Target"] = [i.split("##")[1] for i in comb_micmet_net_sum.index]
             mic_met_sum_nets["Combined"] = {"nodes":avg_micmet_summ_nodes,"edges":comb_micmet_net_sum}
@@ -734,7 +734,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         avg_micmetnet,comb_micmetnet,avg_micmet_nodes,rflag = mn.average_network(mic_met_nets,interval_lens,"micmet")
         if rflag:
             mic_met_nets["Average"] = {"nodes":avg_micmet_nodes,"edges":avg_micmetnet}
-            diff_micmet_net = make_diff_df(comb_micmetnet)
+            diff_micmet_net = mn.make_diff_df(comb_micmetnet)
             comb_micmetnet["Source"] = [i.split("##")[0] for i in comb_micmetnet.index]
             comb_micmetnet["Target"] = [i.split("##")[1] for i in comb_micmetnet.index]
             mic_met_nets["Combined"] = {"nodes":avg_micmet_nodes,"edges":comb_micmetnet}
@@ -744,7 +744,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         avg_metmetnet,comb_metmetnet,avg_metmet_nodes,rflag = mn.average_network(met_met_nets,interval_lens,"metmet")
         if rflag:
             met_met_nets["Average"] = {"nodes":avg_metmet_nodes,"edges":avg_metmetnet}
-            diff_metmetnet = make_diff_df(comb_metmetnet)
+            diff_metmetnet = mn.make_diff_df(comb_metmetnet)
             comb_metmetnet["Source"] = [i.split("##")[0] for i in comb_metmetnet.index]
             comb_metmetnet["Target"] = [i.split("##")[1] for i in comb_metmetnet.index]
             met_met_nets["Combined"] = {"nodes":avg_metmet_nodes,"edges":comb_metmetnet}
@@ -754,7 +754,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         avg_spec,comb_spec,avg_spc_nodes,rflag = mn.average_network(speciesHeuristic,interval_lens,"spc")
         if rflag:
             speciesHeuristic["Average"] = {"nodes":avg_spc_nodes,"edges":avg_spec}
-            diff_spec = make_diff_df(comb_spec)
+            diff_spec = mn.make_diff_df(comb_spec)
             comb_spec["Source"] = [i.split("##")[0] for i in comb_spec.index]
             comb_spec["Target"] = [i.split("##")[1] for i in comb_spec.index]
             speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
@@ -1232,27 +1232,3 @@ def get_constr_desc(j,mod,metablist):
     else:
         return "Internal chemical equilibrium"
         
-def make_diff_df(df):
-
-    '''
-    Makes the ``Difference`` networks table.
-
-    :param df: DataFrame indexed by edges in the network set, with a column for each time interval
-    :type df: pd.DataFrame
-
-    :return: DataFrame indexed by edges in the network set, with a column for each transition. Values are new network edge weight minus old.
-    :rtype: pd.DataFrame
-    
-    '''
-
-    ddf = pd.DataFrame(index = df.index)
-    for i in range(df.shape[1]-1):
-        c1 = df.columns[i]
-        c2 = df.columns[i+1]
-        col = c1.split("-")[1]
-
-        ddf[col] = df[c2]-df[c1]
-
-    ddf["Source"] = [i.split("##")[0] for i in ddf.index]
-    ddf["Target"] = [i.split("##")[1] for i in ddf.index]
-    return ddf

@@ -221,7 +221,8 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
     :type debugging: bool
     :param refine_intervals: whether to look for interval endtimes earlier than provided by solve_ivp "events". Default False
     :type refine_intervals: bool
-
+    :param ode_solver: choice of ODE solver used by scipy.solve_ivp. Default Radau
+    :type ode_solver: str
     
     :return: Dictionary containing the simulation. Keys are :
 
@@ -386,7 +387,7 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
         # for ev in stp_events:
         #     ev.terminal = True
         if all([mod.feasible for mod in models]):
-            ode_solver = "Radau"
+            ode_solver = kwargs.get("ode_solver","Radau")
             if report_activity:
                 try:
                     flobj.write("surfin_fba: Solving IVP using {} solver\n".format(ode_solver))

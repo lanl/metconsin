@@ -378,7 +378,7 @@ def heuristic_ss(metmed,nodes,report_activity = False,flobj = None):
     return edge_table,nodetable,adjacency
 
 
-def average_network(networks,interval_times,network_type):
+def average_network(networks,interval_times,network_type,make_node_table=True):
 
     """
     Creates time-averaged network from sequence of networks and time-interval lengths.
@@ -407,7 +407,7 @@ def average_network(networks,interval_times,network_type):
     elif network_type == "metmet":
         return average_network_metmet(networks,interval_times)
     elif network_type == "spc":
-        return average_network_spc(networks,interval_times)
+        return average_network_spc(networks,interval_times,make_node_table=make_node_table)
     else:
         return None,None,False
 
@@ -584,7 +584,7 @@ def make_avg_metmet_node_table(networks,interval_times):
 
     return node_tab
 
-def average_network_spc(networks,interval_times):
+def average_network_spc(networks,interval_times,make_node_table=True):
 
     """
     Creates time-averaged network from sequence of microbe-microbe networks and time-interval lengths.
@@ -602,6 +602,8 @@ def average_network_spc(networks,interval_times):
     # metabs = pd.DataFrame()
     for ky in networks.keys():
         edges = networks[ky]["edges"]
+        if not make_node_table:
+            node_table = networks[ky]["nodes"]
         weights = edges["Weight"]
         weights.index = ["##".join(edges.loc[rw,["Source","Target","Metabolites"]]) for rw in edges.index]
         # mets = edges["Metabolites"]
@@ -621,7 +623,9 @@ def average_network_spc(networks,interval_times):
         avg_network.loc[rw] = [source,target,metabolites,we,varwe,np.abs(we),np.sign(we),np.sqrt(np.abs(we)),np.sign(we)*np.sqrt(np.abs(we))]
     avg_network.index = np.arange(len(avg_network))
 
-    node_table = make_avg_spc_node_table(networks,interval_times)
+    if make_node_table:
+        node_table = make_avg_spc_node_table(networks,interval_times)
+
 
     return avg_network,all_networks,node_table,True
 
@@ -679,6 +683,35 @@ def make_avg_spc_node_table(networks,interval_times):
 
 
     return node_tab
+
+def make_diff_df(df):
+
+    '''
+    Makes the ``Difference`` networks table.
+
+    :param df: DataFrame indexed by edges in the network set, with a column for each time interval
+    :type df: pd.DataFrame
+
+    :return: DataFrame indexed by edges in the network set, with a column for each transition. Values are new network edge weight minus old.
+    :rtype: pd.DataFrame
+    
+    '''
+
+    ddf = pd.DataFrame(index = df.index)
+    for i in range(df.shape[1]-1):
+        c1 = df.columns[i]
+        c2 = df.columns[i+1]
+        if isinstance(c1,str) and ("-" in c1):
+            col = c1.split("-")[1]
+        else:
+            col = c2
+
+        ddf[col] = df[c2]-df[c1]
+
+    ddf["Source"] = [i.split("##")[0] for i in ddf.index]
+    ddf["Target"] = [i.split("##")[1] for i in ddf.index]
+    return ddf
+
 
 # Consider a dynamical system that can be written as
 #
