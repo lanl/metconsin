@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	-96.79614651871672	PAN	96.79614651871672	-1.0	9.838503266184178	-9.838503266184178
+Limosilactobacillus_reuteri_I49->Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	-96.79614651724027	Riboflavin	96.79614651724027	-1.0	9.838503266109143	-9.838503266109143

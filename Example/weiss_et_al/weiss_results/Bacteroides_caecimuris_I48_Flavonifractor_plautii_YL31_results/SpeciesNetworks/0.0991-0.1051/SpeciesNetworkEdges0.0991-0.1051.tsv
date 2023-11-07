@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Flavonifractor_plautii_YL31->Bacteroides_caecimuris_I48	Flavonifractor_plautii_YL31	Bacteroides_caecimuris_I48	-126.68907411366449	PAN	126.68907411366449	-1.0	11.255624110357653	-11.255624110357653
+Bacteroides_caecimuris_I48->Flavonifractor_plautii_YL31	Bacteroides_caecimuris_I48	Flavonifractor_plautii_YL31	-126.68907411816751	Riboflavin	126.68907411816751	-1.0	11.255624110557687	-11.255624110557687

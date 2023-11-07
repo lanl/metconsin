@@ -1,0 +1,5 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterocloster_clostridioformis_YL32	Clostridium_innocuum_I46	PAN	-116.18280419997811	832.8705255306265	116.18280419997811	-1.0	10.778812745380547	-10.778812745380547
+1	Clostridium_innocuum_I46	Enterocloster_clostridioformis_YL32	PAN	-117.16114792357897	615.9475222462302	117.16114792357897	-1.0	10.824100328599092	-10.824100328599092
+2	Enterocloster_clostridioformis_YL32	Clostridium_innocuum_I46	Folate-e0.Spermidine-e0.Thiamin-e0	-1.3249134851008938e-17	2.5298524832898848e-30	1.3249134851008938e-17	-1.0	3.6399361053470346e-09	-3.6399361053470346e-09
+3	Enterocloster_clostridioformis_YL32	Clostridium_innocuum_I46	Putrescine-e0.L-Aspartate-e0.L-Malate-e0.L-Glutamate-e0.L-Asparagine-e0.L-Threonine-e0.Fumarate-e0.Spermidine-e0	0.0966656810397799	504.22015107346783	0.0966656810397799	1.0	0.31091105004451014	0.31091105004451014

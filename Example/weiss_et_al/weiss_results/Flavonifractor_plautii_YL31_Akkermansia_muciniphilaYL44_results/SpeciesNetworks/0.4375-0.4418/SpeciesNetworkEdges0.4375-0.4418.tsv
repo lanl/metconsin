@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Flavonifractor_plautii_YL31	Akkermansia_muciniphilaYL44	Flavonifractor_plautii_YL31	-126.68907411827281	Riboflavin	126.68907411827281	-1.0	11.255624110562364	-11.255624110562364
+Flavonifractor_plautii_YL31->Akkermansia_muciniphilaYL44	Flavonifractor_plautii_YL31	Akkermansia_muciniphilaYL44	-126.68907411814592	Riboflavin	126.68907411814592	-1.0	11.255624110556727	-11.255624110556727

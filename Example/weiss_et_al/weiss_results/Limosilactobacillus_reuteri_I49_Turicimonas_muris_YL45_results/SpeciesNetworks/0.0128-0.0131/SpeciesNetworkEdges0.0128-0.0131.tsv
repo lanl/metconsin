@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Limosilactobacillus_reuteri_I49	Turicimonas_muris_YL45	Limosilactobacillus_reuteri_I49	-96.79614651929596	PAN	96.79614651929596	-1.0	9.838503266213614	-9.838503266213614
+Limosilactobacillus_reuteri_I49->Turicimonas_muris_YL45	Limosilactobacillus_reuteri_I49	Turicimonas_muris_YL45	-126.68907411739626	Riboflavin	126.68907411739626	-1.0	11.255624110523426	-11.255624110523426

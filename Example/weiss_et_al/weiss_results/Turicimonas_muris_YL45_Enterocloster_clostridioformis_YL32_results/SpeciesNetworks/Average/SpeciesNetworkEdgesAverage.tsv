@@ -1,0 +1,4 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Turicimonas_muris_YL45	Enterocloster_clostridioformis_YL32	PAN	-1.820305853633041	227.2503421865627	1.820305853633041	-1.0	1.3491871084594016	-1.3491871084594016
+1	Turicimonas_muris_YL45	Enterocloster_clostridioformis_YL32	O2-e0.L-Glutamate-e0.L-Serine-e0	-0.2579986244062585	153.73440218672462	0.2579986244062585	-1.0	0.5079356498674399	-0.5079356498674399
+2	Turicimonas_muris_YL45	Enterocloster_clostridioformis_YL32	L-Aspartate-e0.L-Asparagine-e0.Fumarate-e0.O2-e0.Spermidine-e0.L-Glutamate-e0.L-Serine-e0	-0.28860350181627276	330.4211512902183	0.28860350181627276	-1.0	0.5372182999640581	-0.5372182999640581

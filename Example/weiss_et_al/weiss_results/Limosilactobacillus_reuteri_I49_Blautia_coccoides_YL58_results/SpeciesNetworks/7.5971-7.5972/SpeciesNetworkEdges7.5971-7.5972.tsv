@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	196.5096793370736	Urea-e0.L-Asparagine-e0.D-Glucose-e0.Riboflavin.L-Arginine-e0.Folate-e0	196.5096793370736	1.0	14.018191015144344	14.018191015144344
+Limosilactobacillus_reuteri_I49->Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	-2.2794701549930503	PAN	2.2794701549930503	-1.0	1.5097914276459017	-1.5097914276459017

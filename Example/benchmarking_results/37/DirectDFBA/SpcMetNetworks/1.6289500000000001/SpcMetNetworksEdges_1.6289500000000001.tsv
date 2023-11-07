@@ -1,0 +1,7 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+bc1016##H+	bc1016	H+	Microbe	1e-08	1e-08	1.0	0.0001	0.0001
+bc1008##H+	bc1008	H+	Microbe	1e-08	1e-08	1.0	0.0001	0.0001
+bc1009##CO2	bc1009	CO2	Microbe	1e-08	1e-08	1.0	0.0001	0.0001
+bc1009##H2O	bc1009	H2O	Microbe	1e-08	1e-08	1.0	0.0001	0.0001
+bc1009##O2	bc1009	O2	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+O2##bc1009	O2	bc1009	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001

@@ -1,0 +1,79 @@
+	In	InAmount	Out	OutAmount	All	AllAmount	Type
+1,2-Diacyl-sn-glycerol dioctadecanoyl	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+4-Hydroxybenzoate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+5-Aminolevulinate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+AMP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Acetate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Ala-Ala	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+BET	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+BIOT	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+CMP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+CO2	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Ca2+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Chorismate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Cl-	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Co2+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+CoA	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Cu2+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+D-Arabinose	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+D-Glucose	bc1003.bc1009.bc1003.bc1009	4	bc1003.bc1009	2	bc1003.bc1009.bc1003.bc1009bc1003.bc1009	6	Metabolite
+Deoxycytidine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Deoxyguanosine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Folate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Formate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+GTP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Glycerol	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Glycine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+H+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+H2O	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Heme	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+K+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Alanine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Arginine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Asparagine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Aspartate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Cysteine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Glutamate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Glutamine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Histidine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Isoleucine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Leucine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Lysine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Methionine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Phenylalanine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Proline	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Serine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Threonine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Tryptophan	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Tyrosine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+L-Valine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Mg	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Mn2+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Myristic acid	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+N-Acetyl-D-glucosamine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+NADP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+NH3	bc1009.bc1009	2		0	bc1009.bc1009	2	Metabolite
+Niacin	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Nicotinamide ribonucleotide	bc1003.bc1003	2		0	bc1003.bc1003	2	Metabolite
+Nitrite	bc1003.bc1003	2		0	bc1003.bc1003	2	Metabolite
+O2	bc1003.bc1009.bc1003.bc1009	4	bc1003.bc1009	2	bc1003.bc1009.bc1003.bc1009bc1003.bc1009	6	Metabolite
+Oxidized glutathione	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+PPi	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Putrescine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Pyridoxal	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Riboflavin	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+S-Adenosyl-L-methionine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Spermidine	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Sulfate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+TRHL	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+TTP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Thiamin	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+UMP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+Zn2+	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+bc1003	O2.D-Glucose	2	dATP.Co2+.Deoxycytidine.Mg.L-Aspartate.5-Aminolevulinate.Glycine.Chorismate.Folate.L-Histidine.Myristic acid.Heme.L-Proline.Oxidized glutathione.L-Arginine.CMP.Thiamin.Mn2+.GTP.L-Alanine.H+.Sulfate.L-Tyrosine.L-Lysine.AMP.L-Glutamate.Riboflavin.UMP.BIOT.1,2-Diacyl-sn-glycerol dioctadecanoyl.CO2.dGTP.Putrescine.L-Glutamine.Ala-Ala.fe3.CoA.Zn2+.4-Hydroxybenzoate.NADP.Nicotinamide ribonucleotide.Spermidine.L-Threonine.ddca.N-Acetyl-D-glucosamine.BET.L-Isoleucine.L-Tryptophan.Acetate.Niacin.Ca2+.PPi.L-Phenylalanine.K+.Formate.Glycerol.L-Asparagine.O2.D-Arabinose.TTP.S-Adenosyl-L-methionine.TRHL.D-Glucose.Cu2+.L-Cysteine.Pyridoxal.Deoxyguanosine.Cl-.Nitrite.L-Leucine.L-Valine.L-Serine.meso-2,6-Diaminopimelate.H2O.L-Methionine.dATP.Co2+.Deoxycytidine.Mg.L-Aspartate.5-Aminolevulinate.Glycine.Chorismate.Folate.L-Histidine.Myristic acid.Heme.L-Proline.Oxidized glutathione.L-Arginine.CMP.Thiamin.Mn2+.GTP.L-Alanine.H+.Sulfate.L-Tyrosine.L-Lysine.AMP.L-Glutamate.Riboflavin.UMP.BIOT.1,2-Diacyl-sn-glycerol dioctadecanoyl.CO2.dGTP.Putrescine.L-Glutamine.Ala-Ala.fe3.CoA.Zn2+.4-Hydroxybenzoate.NADP.Nicotinamide ribonucleotide.Spermidine.L-Threonine.ddca.N-Acetyl-D-glucosamine.BET.L-Isoleucine.L-Tryptophan.Acetate.Niacin.Ca2+.PPi.L-Phenylalanine.K+.Formate.Glycerol.L-Asparagine.O2.D-Arabinose.TTP.S-Adenosyl-L-methionine.TRHL.D-Glucose.Cu2+.L-Cysteine.Pyridoxal.Deoxyguanosine.Cl-.Nitrite.L-Leucine.L-Valine.L-Serine.meso-2,6-Diaminopimelate.H2O.L-Methionine	150	O2.D-GlucosedATP.Co2+.Deoxycytidine.Mg.L-Aspartate.5-Aminolevulinate.Glycine.Chorismate.Folate.L-Histidine.Myristic acid.Heme.L-Proline.Oxidized glutathione.L-Arginine.CMP.Thiamin.Mn2+.GTP.L-Alanine.H+.Sulfate.L-Tyrosine.L-Lysine.AMP.L-Glutamate.Riboflavin.UMP.BIOT.1,2-Diacyl-sn-glycerol dioctadecanoyl.CO2.dGTP.Putrescine.L-Glutamine.Ala-Ala.fe3.CoA.Zn2+.4-Hydroxybenzoate.NADP.Nicotinamide ribonucleotide.Spermidine.L-Threonine.ddca.N-Acetyl-D-glucosamine.BET.L-Isoleucine.L-Tryptophan.Acetate.Niacin.Ca2+.PPi.L-Phenylalanine.K+.Formate.Glycerol.L-Asparagine.O2.D-Arabinose.TTP.S-Adenosyl-L-methionine.TRHL.D-Glucose.Cu2+.L-Cysteine.Pyridoxal.Deoxyguanosine.Cl-.Nitrite.L-Leucine.L-Valine.L-Serine.meso-2,6-Diaminopimelate.H2O.L-Methionine.dATP.Co2+.Deoxycytidine.Mg.L-Aspartate.5-Aminolevulinate.Glycine.Chorismate.Folate.L-Histidine.Myristic acid.Heme.L-Proline.Oxidized glutathione.L-Arginine.CMP.Thiamin.Mn2+.GTP.L-Alanine.H+.Sulfate.L-Tyrosine.L-Lysine.AMP.L-Glutamate.Riboflavin.UMP.BIOT.1,2-Diacyl-sn-glycerol dioctadecanoyl.CO2.dGTP.Putrescine.L-Glutamine.Ala-Ala.fe3.CoA.Zn2+.4-Hydroxybenzoate.NADP.Nicotinamide ribonucleotide.Spermidine.L-Threonine.ddca.N-Acetyl-D-glucosamine.BET.L-Isoleucine.L-Tryptophan.Acetate.Niacin.Ca2+.PPi.L-Phenylalanine.K+.Formate.Glycerol.L-Asparagine.O2.D-Arabinose.TTP.S-Adenosyl-L-methionine.TRHL.D-Glucose.Cu2+.L-Cysteine.Pyridoxal.Deoxyguanosine.Cl-.Nitrite.L-Leucine.L-Valine.L-Serine.meso-2,6-Diaminopimelate.H2O.L-Methionine	152	Microbe
+bc1009	O2.D-Glucose	2	5-Aminolevulinate.D-Glucose.L-Methionine.L-Alanine.Mg.Cl-.CoA.L-Lysine.meso-2,6-Diaminopimelate.Oxidized glutathione.fe3.Pyridoxal.L-Proline.BIOT.L-Arginine.CMP.Ca2+.1,2-Diacyl-sn-glycerol dioctadecanoyl.L-Glutamate.Glycine.D-Arabinose.L-Leucine.L-Tyrosine.Cu2+.PPi.O2.Ala-Ala.L-Isoleucine.dGTP.Folate.Thiamin.TRHL.L-Cysteine.Deoxycytidine.AMP.Deoxyguanosine.L-Glutamine.TTP.4-Hydroxybenzoate.CO2.Putrescine.NADP.Acetate.L-Phenylalanine.Mn2+.Glycerol.GTP.L-Tryptophan.Riboflavin.L-Valine.Spermidine.NH3.L-Serine.Sulfate.H+.UMP.Formate.K+.S-Adenosyl-L-methionine.Myristic acid.Niacin.Co2+.L-Asparagine.Heme.L-Histidine.Chorismate.H2O.BET.Zn2+.L-Threonine.dATP.L-Aspartate.N-Acetyl-D-glucosamine.ddca.5-Aminolevulinate.D-Glucose.L-Methionine.L-Alanine.Mg.Cl-.CoA.L-Lysine.meso-2,6-Diaminopimelate.Oxidized glutathione.fe3.Pyridoxal.L-Proline.BIOT.L-Arginine.CMP.Ca2+.1,2-Diacyl-sn-glycerol dioctadecanoyl.L-Glutamate.Glycine.D-Arabinose.L-Leucine.L-Tyrosine.Cu2+.PPi.Ala-Ala.L-Isoleucine.dGTP.Folate.Thiamin.TRHL.L-Cysteine.Deoxycytidine.AMP.Deoxyguanosine.L-Glutamine.TTP.4-Hydroxybenzoate.CO2.Putrescine.NADP.Acetate.L-Phenylalanine.Mn2+.Glycerol.GTP.L-Tryptophan.Riboflavin.L-Valine.Spermidine.NH3.L-Serine.Sulfate.H+.UMP.Formate.K+.S-Adenosyl-L-methionine.Myristic acid.Niacin.Co2+.L-Asparagine.Heme.L-Histidine.Chorismate.H2O.BET.Zn2+.L-Threonine.dATP.L-Aspartate.N-Acetyl-D-glucosamine.ddca.O2	148	O2.D-Glucose5-Aminolevulinate.D-Glucose.L-Methionine.L-Alanine.Mg.Cl-.CoA.L-Lysine.meso-2,6-Diaminopimelate.Oxidized glutathione.fe3.Pyridoxal.L-Proline.BIOT.L-Arginine.CMP.Ca2+.1,2-Diacyl-sn-glycerol dioctadecanoyl.L-Glutamate.Glycine.D-Arabinose.L-Leucine.L-Tyrosine.Cu2+.PPi.O2.Ala-Ala.L-Isoleucine.dGTP.Folate.Thiamin.TRHL.L-Cysteine.Deoxycytidine.AMP.Deoxyguanosine.L-Glutamine.TTP.4-Hydroxybenzoate.CO2.Putrescine.NADP.Acetate.L-Phenylalanine.Mn2+.Glycerol.GTP.L-Tryptophan.Riboflavin.L-Valine.Spermidine.NH3.L-Serine.Sulfate.H+.UMP.Formate.K+.S-Adenosyl-L-methionine.Myristic acid.Niacin.Co2+.L-Asparagine.Heme.L-Histidine.Chorismate.H2O.BET.Zn2+.L-Threonine.dATP.L-Aspartate.N-Acetyl-D-glucosamine.ddca.5-Aminolevulinate.D-Glucose.L-Methionine.L-Alanine.Mg.Cl-.CoA.L-Lysine.meso-2,6-Diaminopimelate.Oxidized glutathione.fe3.Pyridoxal.L-Proline.BIOT.L-Arginine.CMP.Ca2+.1,2-Diacyl-sn-glycerol dioctadecanoyl.L-Glutamate.Glycine.D-Arabinose.L-Leucine.L-Tyrosine.Cu2+.PPi.Ala-Ala.L-Isoleucine.dGTP.Folate.Thiamin.TRHL.L-Cysteine.Deoxycytidine.AMP.Deoxyguanosine.L-Glutamine.TTP.4-Hydroxybenzoate.CO2.Putrescine.NADP.Acetate.L-Phenylalanine.Mn2+.Glycerol.GTP.L-Tryptophan.Riboflavin.L-Valine.Spermidine.NH3.L-Serine.Sulfate.H+.UMP.Formate.K+.S-Adenosyl-L-methionine.Myristic acid.Niacin.Co2+.L-Asparagine.Heme.L-Histidine.Chorismate.H2O.BET.Zn2+.L-Threonine.dATP.L-Aspartate.N-Acetyl-D-glucosamine.ddca.O2	150	Microbe
+dATP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+dGTP	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+ddca	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+fe3	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite
+meso-2,6-Diaminopimelate	bc1003.bc1009.bc1003.bc1009	4		0	bc1003.bc1009.bc1003.bc1009	4	Metabolite

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Akkermansia_muciniphilaYL44	Turicimonas_muris_YL45	Akkermansia_muciniphilaYL44	-84.45938274537572	Folate	84.45938274537572	-1.0	9.190178602474258	-9.190178602474258
+Akkermansia_muciniphilaYL44->Turicimonas_muris_YL45	Akkermansia_muciniphilaYL44	Turicimonas_muris_YL45	-84.45938274545757	Riboflavin	84.45938274545757	-1.0	9.190178602478712	-9.190178602478712

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	-15.142393493089118	D-Glucose-e0.Riboflavin	15.142393493089118	-1.0	3.8913228461654423	-3.8913228461654423
+Clostridium_innocuum_I46->Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	-1.0584797410408002	PAN	1.0584797410408002	-1.0	1.0288244461718434	-1.0288244461718434

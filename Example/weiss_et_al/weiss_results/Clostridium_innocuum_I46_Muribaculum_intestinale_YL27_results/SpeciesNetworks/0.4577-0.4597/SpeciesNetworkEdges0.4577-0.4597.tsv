@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	11.58427110420948	D-Glucose-e0.O2-e0.L-Cysteine-e0.L-Aspartate-e0	11.58427110420948	1.0	3.4035674085008925	3.4035674085008925
+Clostridium_innocuum_I46->Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	-1.7077419054359886	D-Ribose-e0	1.7077419054359886	-1.0	1.306805993801677	-1.306805993801677

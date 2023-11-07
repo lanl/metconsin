@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Muribaculum_intestinale_YL27	Blautia_coccoides_YL58	Muribaculum_intestinale_YL27	-126.68907411838967	PAN	126.68907411838967	-1.0	11.255624110567556	-11.255624110567556
+Muribaculum_intestinale_YL27->Blautia_coccoides_YL58	Muribaculum_intestinale_YL27	Blautia_coccoides_YL58	-96.79614652099322	PAN	96.79614652099322	-1.0	9.83850326629987	-9.83850326629987

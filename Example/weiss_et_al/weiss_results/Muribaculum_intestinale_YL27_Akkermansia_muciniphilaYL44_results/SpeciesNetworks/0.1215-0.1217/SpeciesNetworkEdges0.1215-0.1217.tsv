@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Muribaculum_intestinale_YL27	Akkermansia_muciniphilaYL44	Muribaculum_intestinale_YL27	-126.6890741165255	PAN	126.6890741165255	-1.0	11.255624110484744	-11.255624110484744
+Muribaculum_intestinale_YL27->Akkermansia_muciniphilaYL44	Muribaculum_intestinale_YL27	Akkermansia_muciniphilaYL44	-126.68907411748884	Riboflavin	126.68907411748884	-1.0	11.255624110527538	-11.255624110527538

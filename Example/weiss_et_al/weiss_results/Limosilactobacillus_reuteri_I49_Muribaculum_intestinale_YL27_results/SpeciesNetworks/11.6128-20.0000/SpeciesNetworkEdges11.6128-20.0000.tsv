@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	-96.7961465161551	PAN	96.7961465161551	-1.0	9.838503266053994	-9.838503266053994
+Limosilactobacillus_reuteri_I49->Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	-126.68907411644318	PAN	126.68907411644318	-1.0	11.255624110481088	-11.255624110481088

@@ -1,0 +1,135 @@
+	Avg_Bacteroides_caecimuris_I48	Var_Bacteroides_caecimuris_I48	Avg_Blautia_coccoides_YL58	Var_Blautia_coccoides_YL58	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Acetate-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+CO2-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnitine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	0.000321114977121325	2.944785138751232e-05	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.003489387858289126	0.003477210472309043	2.003233412731925	0.0034772762158242834	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+D-Mannose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Folate	0.001337979073042786	0.0005112474199165345	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.003489387858289126	0.003477210472309043	1.003361400295107	0.003477226965346875	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+Folate-e0	0.0	0.0	-1.8720427176163412e-12	2.9508619235956805e-30	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+Galactose-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+H2-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+H2O-e0	0.0	0.0	0.0	0.0	1.0000419984361488	0.00016997348468158338	0.0	0.0	1.0000419984361488	0.00016997348468158338	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Blautia_coccoides_YL58	2		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Blautia_coccoides_YL58	2
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+K+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Alanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0004816724659551179	6.625766562141455e-05	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.003489387858289126	0.003477210472309043	2.003233412731925	0.0034772762158242834	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+L-Aspartate-e0	0.00032111497730939086	2.9447851387307952e-05	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.003489387858289126	0.003477210472309043	2.003233412731925	0.0034772762158242834	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Glycine	0.0	0.0	0.0	0.0	0.029522540676462993	0.02865084871701704	0.0	0.0	0.029522540676462993	0.02865084871701704	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Lactate-e0	0.0	0.0	1.1645337943302723e-12	3.857488038538392e-31	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+L-Proline	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Serine	0.00016055748865677797	7.361962846829566e-06	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.003489387858289126	0.003477210472309043	1.003361400295107	0.003477226965346875	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+L-Serine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Threonine	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Threonine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	4.941806121109621e-13	5.683900887346861e-30	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+NH3-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Na+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Neu5Ac-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Niacin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	-0.00032111497745983416	2.9447851387107785e-05	-4.0331135862381564e-17	9.401280549003407e-28	1.9997440248736358	6.55148791541168e-08	0.003489387858289126	0.003477210472309043	2.003233412731925	0.0034772762158242834	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	3.7401833438751764	459.8496030022667	96.78375781875701	0.00015346031648237344	1.9997440248736358	6.55148791541168e-08	1.0293945531132809	0.02865086606294346	3.0291385779869167	0.028650999027115043	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Blautia_coccoides_YL58	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Blautia_coccoides_YL58Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	-2.693675545877314e-12	1.8718475564174496e-30	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+Putrescine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	122.49162569514205	512.1034010409895	-1.3725918846873387e-11	5.899182771153709e-29	1.9997440248736358	6.55148791541168e-08	0.9703494717603549	0.028650864128530202	2.9700934966339907	0.028650993223875244	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.00010703832562947574	3.2719834875610968e-06	2.342494237019523e-12	1.3198339500680886e-30	1.9997440248736358	6.55148791541168e-08	0.003489387858289126	0.003477210472309043	2.003233412731925	0.0034772762158242834	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Succinate-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Sucrose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose-e0	-2.7907154114725775e-13	2.7938723461160028e-27	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Thiamin-e0	0.0	0.0	-5.7760772897357135e-12	2.7372188629798095e-29	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Uracil-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+Urea-e0	0.0	0.0	0.0	0.0	0.9998720124368179	1.63787197885292e-08	0.0	0.0	0.9998720124368179	1.63787197885292e-08	Blautia_coccoides_YL58	1		1	Blautia_coccoides_YL58	1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9997440248736358	6.55148791541168e-08	0.0	0.0	1.9997440248736358	6.55148791541168e-08	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1		1	Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Formate-e0	0.0	0.0	0.0	0.0	0.9998702822494282	1.7465630588458034e-06	0.0	0.0	0.9998702822494282	1.7465630588458034e-06	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Glycerol-e0	0.00016055748869984703	7.361962846840967e-06	0.0	0.0	0.9990521055453648	0.0008192509099613608	0.003489387858289126	0.003477210472309043	1.0025414934036538	0.004302184175230339	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	3
+Sorbitol-e0-e0	0.0	0.0	0.0	0.0	0.02859904933747759	0.02778103903272251	0.0	0.0	0.02859904933747759	0.02778103903272251	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+XAN-e0	0.0	0.0	0.0	0.0	0.9998702822494282	1.7465630588458034e-06	0.0	0.0	0.9998702822494282	1.7465630588458034e-06	.Blautia_coccoides_YL58	2		1	.Blautia_coccoides_YL58	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9994040528749737	0.0006798938941741825	0.0	0.0	1.9994040528749737	0.0006798938941741825	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2		1	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	0.9997020264374868	0.00016997347354354562	0.0	0.0	0.9997020264374868	0.00016997347354354562	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9997020264374868	0.00016997347354354562	0.0	0.0	0.9997020264374868	0.00016997347354354562	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+1,2-Propanediol-e0	0.0	0.0	0.0	0.0	0.19999999999999996	0.35999488049747264	0.0	0.0	0.19999999999999996	0.35999488049747264	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2		1	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Formaldehyde-e0	0.0	0.0	0.0	0.0	0.19999999999999996	0.35999488049747264	0.0	0.0	0.19999999999999996	0.35999488049747264	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2		1	.Bacteroides_caecimuris_I48.Blautia_coccoides_YL58	2
+Xylitol-e0	0.0	0.0	0.0	0.0	0.09999999999999998	0.08999872012436816	0.0	0.0	0.09999999999999998	0.08999872012436816	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Flavonifractor_plautii_YL31	Bifidobacterium_animalis_YL2	Flavonifractor_plautii_YL31	-126.6890741181237	Riboflavin	126.6890741181237	-1.0	11.25562411055574	-11.25562411055574
+Flavonifractor_plautii_YL31->Bifidobacterium_animalis_YL2	Flavonifractor_plautii_YL31	Bifidobacterium_animalis_YL2	-96.79614651722756	Riboflavin	96.79614651722756	-1.0	9.838503266108496	-9.838503266108496

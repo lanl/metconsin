@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Muribaculum_intestinale_YL27	Turicimonas_muris_YL45	Muribaculum_intestinale_YL27	-126.68907411969258	Riboflavin	126.68907411969258	-1.0	11.255624110625433	-11.255624110625433
+Muribaculum_intestinale_YL27->Turicimonas_muris_YL45	Muribaculum_intestinale_YL27	Turicimonas_muris_YL45	-126.6890741175594	Riboflavin	126.6890741175594	-1.0	11.255624110530674	-11.255624110530674

@@ -1,0 +1,140 @@
+	Avg_Flavonifractor_plautii_YL31	Var_Flavonifractor_plautii_YL31	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	0.0	0.0	0.0	0.0	0.015359133814183535	0.015115916181528976	0.0	0.0	0.015359133814183535	0.015115916181528976	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cytosine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+D-Glucose-e0	0.0	0.0	0.0005055108673558891	0.00027609216842827656	1.9379860248030094	0.0037264885205822813	0.0023521238004696205	0.002346419768360536	1.940338148603479	0.006081953929344003	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+D-Mannose-e0	-1.1029481367928551e-11	6.6073042366174975e-24	0.0005055108676491756	0.00027609216842798784	1.9379860248030094	0.0037264885205822813	0.0023521238004696205	0.002346419768360536	1.940338148603479	0.006081953929344003	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Folate	0.0	0.0	71.50468671615488	767.7478375479905	0.9689930124015047	0.0009316221301455703	0.8489631036562159	0.10587682716394417	1.8179561160577207	0.10844089205667075	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Folate-e0	79.9637900685099	161.21950771554427	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.9467721346100927	0.02260069448894793	1.9157651470115973	0.02535283309654867	Flavonifractor_plautii_YL31	1	.Flavonifractor_plautii_YL31	2	Flavonifractor_plautii_YL31.Flavonifractor_plautii_YL31Flavonifractor_plautii_YL31	2
+Galactose-e0	0.0	0.0	0.0003557917527480538	0.0002642593737055306	0.9689930124015047	0.0009316221301455703	0.00047879203344283847	0.0004785556835335506	0.9694718044349475	0.0014110984668693604	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.8717040405951261	0.088274890587136	0.0	0.0	0.8717040405951261	0.088274890587136	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+Glycine-e0	0.0	0.0	1.075555051417294e-12	4.59924696161446e-25	1.7607703443932203	0.14788146056859522	0.0	0.0	1.7607703443932203	0.14788146056859522	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31	2		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	0.9760280974391465	0.007929207665165942	0.0	0.0	0.9760280974391465	0.007929207665165942	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	-2.0023163173800673e-12	4.084671815000096e-24	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	4.4358081938810005e-13	1.965625688099517e-25	0.8246043113340759	0.1235481493117247	0.0	0.0	0.8246043113340759	0.1235481493117247	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Arginine-e0	3.2303580999271435e-11	4.5697129774239325e-23	1.5951308714394382e-12	6.370559726195658e-25	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	0.007056509203526986	0.007005170909458469	0.0	0.0	0.007056509203526986	0.007005170909458469	Flavonifractor_plautii_YL31.	2		1	Flavonifractor_plautii_YL31.	2
+L-Aspartate-e0	0.0	0.0	0.0002683163657949357	4.1268174732605824e-05	1.9379860248030094	0.0037264885205822813	0.0023521238004696205	0.002346419768360536	1.940338148603479	0.006081953929344003	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+L-Cysteine-e0	0.0	0.0	4.98769744606515e-13	1.1715950902473757e-25	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.9440491413220097	0.025186040324139677	0.0	0.0	0.9440491413220097	0.025186040324139677	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.9540626698432061	0.015603428576465737	0.0	0.0	0.9540626698432061	0.015603428576465737	Flavonifractor_plautii_YL31.	2		1	Flavonifractor_plautii_YL31.	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.935133045870159	0.006560103788041331	0.0	0.0	1.935133045870159	0.006560103788041331	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+L-Proline	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Serine	0.0	0.0	0.00025275543568440084	6.902304210603888e-05	0.9689930124015047	0.0009316221301455703	0.0023521238004696205	0.002346419768360536	0.9713451362019744	0.0032825647187066922	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+L-Serine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Threonine	0.0	0.0	6.402720576135971e-13	1.358232972603602e-25	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	1.455482754520315e-11	9.303644242760567e-24	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Na+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	0.0	0.0	0.0006707909152080842	0.0002579260920777861	0.9689930124015047	0.0009316221301455703	0.0023521238004696205	0.002346419768360536	0.9713451362019744	0.0032825647187066922	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Niacin	-2.3121995886673082e-10	2.293231399089287e-21	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	0.0	0.0	5.477487508480466	663.0046529355725	1.9379860248030094	0.0037264885205822813	0.04323567400446243	0.04130838840705494	1.9812216988074718	0.0452011497911102	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27.	2	Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	-2.201281348025791e-11	2.8446250733458817e-23	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	5.387876085230541e-13	4.2074588471576714e-26	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	2.815142433481361	348.47703027557304	9.729464607471614	1134.9592382140588	1.9379860248030094	0.0037264885205822813	0.10088844429926525	0.0903943621590335	2.0388744691022747	0.09450884071125577	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1	Flavonifractor_plautii_YL31..Muribaculum_intestinale_YL27	3	Flavonifractor_plautii_YL31Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	3
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	4.1000702638022946e-11	6.601512606050632e-23	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0	0.0	0.0010265826670345067	0.0009623431526332263	0.9689930124015047	0.0009316221301455703	0.0023521238004696205	0.002346419768360536	0.9713451362019744	0.0032825647187066922	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Urea-e0	0.0	0.0	0.0	0.0	0.9689930124015047	0.0009316221301455703	0.0	0.0	0.9689930124015047	0.0009316221301455703	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9379860248030094	0.0037264885205822813	0.0	0.0	1.9379860248030094	0.0037264885205822813	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1		1	Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0002527554336849332	6.902304210707204e-05	0.9689930124015047	0.0009316221301455703	0.0023521238004696205	0.002346419768360536	0.9713451362019744	0.0032825647187066922	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Acetate-e0	0.0	0.0	0.0	0.0	1.9379668459965085	0.003764771997781179	0.0	0.0	1.9379668459965085	0.003764771997781179	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+Butyrate-e0	0.0	0.0	0.0	0.0	1.9379668459965085	0.003764771997781179	0.0	0.0	1.9379668459965085	0.003764771997781179	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9379668459965085	0.003764771997781179	0.0	0.0	1.9379668459965085	0.003764771997781179	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.9689834229982542	0.0009411929994452947	0.0	0.0	0.9689834229982542	0.0009411929994452947	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Fumarate-e0	0.0	0.0	-0.0003869136166334713	0.00012931801894644054	1.9379668459965085	0.003764771997781179	0.0023521238004696205	0.002346419768360536	1.940318969796978	0.006120330425905295	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	3
+H2-e0	0.0	0.0	0.0	0.0	0.9829140318917974	0.01469878491369407	0.0	0.0	0.9829140318917974	0.01469878491369407	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+O2-e0	-4.8283204720100546e-14	3.584790178793339e-25	-0.0002683163654579963	4.126817473281463e-05	1.9379668459965085	0.003764771997781179	0.0023521238004696205	0.002346419768360536	1.940318969796978	0.006120330425905295	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	3
+Succinate-e0	0.0	0.0	0.0	0.0	0.9939177046744988	0.025282916992214178	0.0	0.0	0.9939177046744988	0.025282916992214178	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31	3		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Flavonifractor_plautii_YL31	3
+XAN-e0	0.0	0.0	0.0	0.0	0.9689834229982542	0.0009411929994452947	0.0	0.0	0.9689834229982542	0.0009411929994452947	.Flavonifractor_plautii_YL31	2		1	.Flavonifractor_plautii_YL31	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.9684584030179807	0.0014649088619503594	0.0	0.0	0.9684584030179807	0.0014649088619503594	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9369168060359614	0.005859635447801438	0.0	0.0	1.9369168060359614	0.005859635447801438	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9684584030179807	0.0014649088619503594	0.0	0.0	0.9684584030179807	0.0014649088619503594	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+H2S-e0	0.0	0.0	0.0	0.0	1.9188893667554925	0.023442934635173898	0.0	0.0	1.9188893667554925	0.023442934635173898	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+Ornithine-e0	0.0	0.0	0.0	0.0	1.9238730063959555	0.03169289725610874	0.0	0.0	1.9238730063959555	0.03169289725610874	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+NAD-e0-e0	0.0	0.0	0.0	0.0	0.9536338785873212	0.01601800474687473	0.0	0.0	0.9536338785873212	0.01601800474687473	.Flavonifractor_plautii_YL31	2		1	.Flavonifractor_plautii_YL31	2
+Ethanol-e0	0.0	0.0	0.0	0.0	1.6867267067005334	0.4401900937822198	0.0	0.0	1.6867267067005334	0.4401900937822198	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2		1	.Flavonifractor_plautii_YL31.Muribaculum_intestinale_YL27	2
+GABA-e0-e0	0.0	0.0	0.0	0.0	0.8366429554720031	0.11496751492856071	0.0	0.0	0.8366429554720031	0.11496751492856071	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Muribaculum_intestinale_YL27	Bifidobacterium_animalis_YL2	Muribaculum_intestinale_YL27	73.66930360092908	Folate.Fumarate-e0	73.66930360092908	1.0	8.583082406742294	8.583082406742294
+Muribaculum_intestinale_YL27->Bifidobacterium_animalis_YL2	Muribaculum_intestinale_YL27	Bifidobacterium_animalis_YL2	-96.79614651724026	Riboflavin	96.79614651724026	-1.0	9.838503266109143	-9.838503266109143

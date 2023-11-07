@@ -1,0 +1,4 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Blautia_coccoides_YL58	Enterocloster_clostridioformis_YL32	PAN	-88.55223160742304	3297.55260008225	88.55223160742304	-1.0	9.410219530245989	-9.410219530245989
+1	Enterocloster_clostridioformis_YL32	Blautia_coccoides_YL58	PAN	-71.68185335943254	1414.3088750810034	71.68185335943254	-1.0	8.466513648452505	-8.466513648452505
+2	Blautia_coccoides_YL58	Enterocloster_clostridioformis_YL32	D-Glucose-e0.Spermidine-e0.O2-e0.Puryvate.Thiamin-e0.L-Serine-e0.Folate-e0.L-Aspartate-e0	-0.29258391609924866	463.49494841353993	0.29258391609924866	-1.0	0.54091026621728	-0.54091026621728

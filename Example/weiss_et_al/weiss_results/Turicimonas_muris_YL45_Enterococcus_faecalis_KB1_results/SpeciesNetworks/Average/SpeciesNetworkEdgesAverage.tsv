@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Turicimonas_muris_YL45	Enterococcus_faecalis_KB1	Pyridoxal	-40.3881672616544	5824.922004695161	40.3881672616544	-1.0	6.355168547068945	-6.355168547068945
+1	Enterococcus_faecalis_KB1	Turicimonas_muris_YL45	Pyridoxal	-47.956596168795826	9851.318416924738	47.956596168795826	-1.0	6.9250701201356675	-6.9250701201356675

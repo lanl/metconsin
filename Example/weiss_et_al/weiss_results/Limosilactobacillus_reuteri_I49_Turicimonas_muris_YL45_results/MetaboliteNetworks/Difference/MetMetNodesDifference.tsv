@@ -1,0 +1,131 @@
+	Avg_Limosilactobacillus_reuteri_I49	Var_Limosilactobacillus_reuteri_I49	Avg_Turicimonas_muris_YL45	Var_Turicimonas_muris_YL45	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Cl--e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Cytosine	0.05521701968038349	0.027301687490725045	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.10060620637292036	0.09043923571161094	1.0961245175790717	0.09046327268778816	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+D-Glucose-e0	1.1528718911417054e-05	8.021704895477417e-07	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+D-Mannose-e0	3.842906290258275e-06	8.9130054394469e-08	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Folate	0.0	0.0	-2.3484739570177323e-12	4.975381498626516e-24	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Folate-e0	3.842906336623956e-05	8.91300543940175e-06	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Galactose-e0	0.0	0.0	0.0	0.0	0.9932529977761813	0.0022800633038670285	0.0	0.0	0.9932529977761813	0.0022800633038670285	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	0.0	0.0	0.0	0.0	0.9961148374554598	0.0006161882913894709	0.0	0.0	0.9961148374554598	0.0006161882913894709	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+H2O-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+K+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	7.685812700737496e-06	3.565202175755452e-07	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.000165662097171888	0.00016563453024629317	1.9912022845094746	0.0002456299092144029	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+L-Aspartate-e0	0.0	0.0	-1.867414562804655e-14	3.349282115590342e-27	1.9870065836544177	0.004093383044827387	0.0	0.0	1.9870065836544177	0.004093383044827387	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lactate-e0	0.0	0.0	0.0	0.0	0.993047472575038	0.002484602487768635	0.0	0.0	0.993047472575038	0.002484602487768635	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9857570506742683	0.005331130835493264	0.0	0.0	1.9857570506742683	0.005331130835493264	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49	3		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49	3
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Proline-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Serine-e0	0.0	0.0	-1.0787158641234924e-13	3.961873643081627e-27	0.9972742624189532	0.0017729200852265108	0.0	0.0	0.9972742624189532	0.0017729200852265108	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2
+L-Threonine-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose-e0	2.749209179579588	0.9040290143953215	0.0	0.0	0.9928842229762185	0.002647008416477673	0.8897631609628717	0.09453662177240132	1.88264738393909	0.10192780986509672	Limosilactobacillus_reuteri_I49.	2	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49..Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Mg-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Mn2+	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Mn2+-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Na+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Niacin	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	0.43441493584018165	41.86012967438211	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.004487936260602551	0.004467704420466339	1.9955245586729053	0.004548047060180808	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1	Limosilactobacillus_reuteri_I49.	2	Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.08002228498293397	7.739044667914005	0.0	0.0	1.1016908558729948	0.10383652664290946	0.00099233180410056	0.0009913426684717433	1.1026831876770953	0.10626958743562076	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	3	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	5
+Pyridoxal	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Pyruvate-e0	3.842906337002764e-06	8.913005439412314e-08	3.3601238213509856e-14	4.048032817887907e-27	1.9910366224123028	7.998206932107099e-05	0.000165662097171888	0.00016563453024629317	1.9912022845094746	0.0002456299092144029	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+Riboflavin	-8.091720626763515e-15	5.315018591954884e-26	126.1212931142954	0.32093048262403284	1.000005677365165	0.004487315238269051	0.9955183112061514	1.9995517330267746e-05	1.9955239885713167	0.0045474820525549615	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45	2	Turicimonas_muris_YL45	1	Turicimonas_muris_YL45Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Turicimonas_muris_YL45Turicimonas_muris_YL45	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.08006071404655091	7.739049185888928	5.103510642737999e-13	2.683639830033972e-25	1.9910366224123028	7.998206932107099e-05	0.00099233180410056	0.0009913426684717433	1.9920289542164031	0.0010714044638513468	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	1.9214531500667154e-05	2.2282513598559714e-06	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+Thiamine	7.301522067024964e-05	3.217594963618364e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Uracil-e0	0.0	0.0	0.0	0.0	0.9958197837913809	0.0003213889199946176	0.0	0.0	0.9958197837913809	0.0003213889199946176	Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+Urea-e0	-7.685812705808309e-06	3.565202175750609e-07	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.000165662097171888	0.00016563453024629317	0.9956839733033234	0.00018563670240007832	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	0.0	0.0	0.9955183112061514	1.9995517330267746e-05	Turicimonas_muris_YL45	1		1	Turicimonas_muris_YL45	1
+fe3-e0	0.0	0.0	0.0	0.0	1.9910366224123028	7.998206932107099e-05	0.0	0.0	1.9910366224123028	7.998206932107099e-05	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1		1	Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9910357907483673	8.164532967937563e-05	0.0	0.0	1.9910357907483673	8.164532967937563e-05	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9910357907483673	8.164532967937563e-05	0.0	0.0	1.9910357907483673	8.164532967937563e-05	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+D-Lactate-e0	0.0	0.0	3.0694909828103887e-13	1.0311010101558416e-26	1.9910357907483673	8.164532967937563e-05	0.0	0.0	1.9910357907483673	8.164532967937563e-05	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+D-Mannitol-e0	0.0	0.0	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	.Turicimonas_muris_YL45	2		1	.Turicimonas_muris_YL45	2
+Fumarate-e0	0.0	0.0	0.0	0.0	1.9910357907483673	8.164532967937563e-05	0.0	0.0	1.9910357907483673	8.164532967937563e-05	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+O2-e0	-2.3057438074833194e-05	3.208681958178448e-06	0.0	0.0	1.9910357907483673	8.164532967937563e-05	0.000165662097171888	0.00016563453024629317	1.9912014528455395	0.0002472934463580139	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	3
+Sorbitol-e0	0.0	0.0	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	0.0	0.0	0.9955178953741837	2.0411332419843908e-05	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Succinate-e0	0.0	0.0	0.0	0.0	1.9910357907483673	8.164532967937563e-05	0.0	0.0	1.9910357907483673	8.164532967937563e-05	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9908622943480232	0.0004285936655174135	0.0	0.0	1.9908622943480232	0.0004285936655174135	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2		1	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2
+D-Glyceraldehyde-e0	3.842906323334148e-06	8.913005439406779e-08	0.0	0.0	1.9908622943480232	0.0004285936655174135	0.000165662097171888	0.00016563453024629317	1.991027956445195	0.00059429952337453	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Turicimonas_muris_YL45	3
+Glycolate-e0	0.0	0.0	0.0	0.0	0.002383674598973599	0.002377967229851662	0.0	0.0	0.002383674598973599	0.002377967229851662	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Homocysteine-e0	0.0	0.0	0.0	0.0	0.9954311471740116	0.00010714841637935337	0.0	0.0	0.9954311471740116	0.00010714841637935337	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	0.9946489483041334	0.0008885643170320688	0.0	0.0	0.9946489483041334	0.0008885643170320688	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9932529977761813	0.0022800633038670285	0.0	0.0	0.9932529977761813	0.0022800633038670285	.Turicimonas_muris_YL45	2		1	.Turicimonas_muris_YL45	2
+H2S-e0	0.0	0.0	0.0	0.0	0.7626684858069654	0.17839843303240033	0.0	0.0	0.7626684858069654	0.17839843303240033	.Turicimonas_muris_YL45	2		1	.Turicimonas_muris_YL45	2
+Cytidine-e0	0.0	0.0	0.0	0.0	0.11071609600509744	0.09840310530762399	0.0	0.0	0.11071609600509744	0.09840310530762399	.Turicimonas_muris_YL45	2		1	.Turicimonas_muris_YL45	2

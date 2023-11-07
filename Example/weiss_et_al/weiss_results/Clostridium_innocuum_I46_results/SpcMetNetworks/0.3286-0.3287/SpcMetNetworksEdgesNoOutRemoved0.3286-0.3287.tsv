@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+13	N-Acetyl-D-glucosamine-e0	Clostridium_innocuum_I46	Metabolite	18.11734065496572	18.11734065496572	1.0	4.256446951973643	4.256446951973643
+35	Clostridium_innocuum_I46	N-Acetyl-D-glucosamine-e0	Microbe	-0.9999999999999154	0.9999999999999154	-1.0	0.9999999999999577	-0.9999999999999577

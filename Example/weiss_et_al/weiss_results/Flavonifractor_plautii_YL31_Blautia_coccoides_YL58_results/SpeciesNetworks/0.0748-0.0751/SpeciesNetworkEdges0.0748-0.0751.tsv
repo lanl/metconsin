@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	-126.68907411766912	Riboflavin	126.68907411766912	-1.0	11.255624110535546	-11.255624110535546
+Flavonifractor_plautii_YL31->Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	-96.79614651935339	PAN	96.79614651935339	-1.0	9.838503266216533	-9.838503266216533

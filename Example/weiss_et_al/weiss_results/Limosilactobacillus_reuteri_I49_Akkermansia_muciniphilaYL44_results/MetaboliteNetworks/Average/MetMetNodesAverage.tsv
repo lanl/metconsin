@@ -1,0 +1,140 @@
+	Avg_Limosilactobacillus_reuteri_I49	Var_Limosilactobacillus_reuteri_I49	Avg_Akkermansia_muciniphilaYL44	Var_Akkermansia_muciniphilaYL44	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Cl--e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Cytosine	-4.906207970901626e-14	2.6051484155231337e-27	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+D-Glucose-e0	0.0012675630189695113	0.0005621609226714753	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.02392768766248094	0.023344281162489166	1.9859482537061606	0.024793841279744825	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+D-Lactate-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+D-Mannose-e0	0.0002971350141518519	2.9667202066842038e-05	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.02379284259589736	0.023215993170499213	1.0048031256177372	0.023586914494946005	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Folate	0.0	0.0	-2.7486347463014287e-13	2.825110892970542e-29	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Folate-e0	4.478034502301186	118.48988977088682	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.1680783226016076	0.1392915344436782	1.1490886056234475	0.1397665171547064	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Galactose-e0	0.00016850176732547081	0.00021053009151143803	0.0	0.0	0.8491744755408549	0.11438375218165805	0.00013484506658358053	0.00013482653809792912	0.8493093206074386	0.11455490596491767	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	1.5445123007523657e-14	2.231107197094029e-28	0.0	0.0	1.8295528195470057	0.11581078619807837	0.0	0.0	1.8295528195470057	0.11581078619807837	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	2		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+H2O-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Inosine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+K+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	1.5855631968817916	0.23291802254730692	0.0	0.0	1.5855631968817916	0.23291802254730692	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	2		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	2
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	2.8083627747822726e-05	5.848058097549564e-06	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.00013484506658358053	0.00013482653809792912	1.9621554111102633	0.0015500669692542798	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+L-Aspartate-e0	0.00012179866718999065	3.052300915240521e-05	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0007379076346534493	0.0007373527869294857	1.9627584736783332	0.002153463098090749	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+L-Cysteine-e0	-6.960247436502628e-14	3.54091487882597e-27	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	5.616725553762493e-05	2.3392232390187035e-05	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.00013484506658358053	0.00013482653809792912	1.9621554111102633	0.0015500669692542798	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+L-Glutamine-e0	-2.1562158793668487e-13	3.1919791980281527e-26	0.0	0.0	0.6034762454993404	0.2323769235262979	0.0	0.0	0.6034762454993404	0.2323769235262979	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lactate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Proline-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+L-Serine-e0	4.980429400491147e-16	2.068226265421926e-29	0.0	0.0	0.5951254515508958	0.23422547869074242	0.0	0.0	0.5951254515508958	0.23422547869074242	Limosilactobacillus_reuteri_I49.	2		1	Limosilactobacillus_reuteri_I49.	2
+L-Threonine-e0	2.8083627817396244e-05	5.8480580975461346e-06	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.00013484506658358053	0.00013482653809792912	1.9621554111102633	0.0015500669692542798	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+L-Tryptophan	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose-e0	0.4489274148885766	1.1713986653197888	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.16726451962255082	0.13875581681943744	1.1482748026443905	0.13923021260053753	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Na+-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Neu5Ac-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Niacin	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	-0.000754265388564556	8.104776689244974e-05	-4.8714942667215766e-20	3.162416839662424e-33	1.9620205660436798	0.0014150459255886047	0.02392768766248094	0.023344281162489166	1.9859482537061606	0.024793841279744825	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	6.3416789499034945	572.869485498561	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.06551582039275207	0.06114198767735203	2.0275363864364317	0.06265153607280546	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	Limosilactobacillus_reuteri_I49.	2	Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	1.1653641903407066e-13	8.73344587413641e-27	0.0	0.0	0.6017909907647606	0.23276142268538463	0.0	0.0	0.6017909907647606	0.23276142268538463	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyruvate-e0	0.000128324407564854	1.4161213615914175e-05	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.02392768766248094	0.023344281162489166	1.0049379706843207	0.02371529973971984	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Riboflavin	71.84536832185466	1644.7990866533696	124.28328445574888	5.677914758706242	1.9620205660436798	0.0014150459255886047	1.752564851122788	0.1658638264757159	3.7145854171664676	0.16980683749487313	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1	Akkermansia_muciniphilaYL44.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2	Akkermansia_muciniphilaYL44Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.004991846794231037	0.001322654242346277	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.02392768766248094	0.023344281162489166	1.0049379706843207	0.02371529973971984	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0024068016303351644	0.0019089586174850296	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.02392768766248094	0.023344281162489166	1.0049379706843207	0.02371529973971984	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Thiamine	4.481392216946212	118.4606726171082	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.1680783226016076	0.1392915344436782	1.1490886056234475	0.1397665171547064	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Uracil	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Uracil-e0	-1.6826985891734832e-14	3.2384526529830778e-28	0.0	0.0	0.9754694454372416	0.0058593190281228304	0.0	0.0	0.9754694454372416	0.0058593190281228304	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Urea-e0	-0.0011235575549525556	6.984138322466864e-05	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.02392768766248094	0.023344281162489166	1.0049379706843207	0.02371529973971984	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9620205660436798	0.0014150459255886047	0.0	0.0	1.9620205660436798	0.0014150459255886047	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	0.9810110334427821	0.00035451244298312704	0.0	0.0	0.9810110334427821	0.00035451244298312704	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49	2		1	Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49	2
+fucose	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+galactose	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+lactate	0.0	0.0	0.0	0.0	0.9810102830218399	0.00035376148139715116	0.0	0.0	0.9810102830218399	0.00035376148139715116	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9620190652017955	0.0014180454421915602	0.0	0.0	1.9620190652017955	0.0014180454421915602	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9620190652017955	0.0014180454421915602	0.0	0.0	1.9620190652017955	0.0014180454421915602	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+D-Mannitol-e0	0.0	0.0	0.0	0.0	0.9810095326008977	0.00035451136054789005	0.0	0.0	0.9810095326008977	0.00035451136054789005	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Fumarate-e0	-2.178253289572366e-14	7.127724916323225e-28	-3.2666376364798607e-14	7.338863971420812e-31	1.700790289783021	0.19273287531033878	0.0	0.0	1.700790289783021	0.19273287531033878	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	3		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	3
+H2-e0	0.0	0.0	0.0	0.0	0.9810095326008977	0.00035451136054789005	0.0	0.0	0.9810095326008977	0.00035451136054789005	.Akkermansia_muciniphilaYL44	2		1	.Akkermansia_muciniphilaYL44	2
+Sorbitol-e0	0.0	0.0	0.0	0.0	0.9810095326008977	0.00035451136054789005	0.0	0.0	0.9810095326008977	0.00035451136054789005	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Succinate-e0	0.0	0.0	0.0	0.0	1.9620190652017955	0.0014180454421915602	0.0	0.0	1.9620190652017955	0.0014180454421915602	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9613396916147945	0.0027753402711852854	0.0	0.0	1.9613396916147945	0.0027753402711852854	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+Glycolate-e0	2.4137633615571214e-14	1.0787402980257677e-27	0.0	0.0	0.7184733656681327	0.19246682106409402	0.0	0.0	0.7184733656681327	0.19246682106409402	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Homocysteine-e0	0.0	0.0	0.0	0.0	0.9806698458073972	0.0006938350677963214	0.0	0.0	0.9806698458073972	0.0006938350677963214	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	0.9786358013516248	0.0027207854006989656	0.0	0.0	0.9786358013516248	0.0027207854006989656	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+L-Malate-e0	1.2101786050740184e-14	7.1127347803681255e-28	1.7816469756688943e-13	1.3868009917322278e-28	1.7826641230153466	0.1554046035912217	0.0	0.0	1.7826641230153466	0.1554046035912217	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	3		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49.Akkermansia_muciniphilaYL44	3
+H2S-e0	0.0	0.0	0.0	0.0	1.953432372960599	0.018503886474682728	0.0	0.0	1.953432372960599	0.018503886474682728	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2		1	.Akkermansia_muciniphilaYL44.Limosilactobacillus_reuteri_I49	2
+Adenosine-e0	0.0	0.0	0.0	0.0	0.968944736716575	0.012262264007604771	0.0	0.0	0.968944736716575	0.012262264007604771	.Akkermansia_muciniphilaYL44	2		1	.Akkermansia_muciniphilaYL44	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.968944736716575	0.012262264007604771	0.0	0.0	0.968944736716575	0.012262264007604771	.Akkermansia_muciniphilaYL44	2		1	.Akkermansia_muciniphilaYL44	2

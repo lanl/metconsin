@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	-96.79614651671744	PAN	96.79614651671744	-1.0	9.838503266082572	-9.838503266082572
+Limosilactobacillus_reuteri_I49->Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	-96.79614651617075	PAN	96.79614651617075	-1.0	9.838503266054788	-9.838503266054788

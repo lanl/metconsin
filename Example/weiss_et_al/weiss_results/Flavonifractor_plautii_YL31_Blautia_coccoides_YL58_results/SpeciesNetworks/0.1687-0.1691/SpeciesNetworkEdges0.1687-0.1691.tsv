@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	-126.68907411742299	Spermidine-e0	126.68907411742299	-1.0	11.255624110524613	-11.255624110524613
+Flavonifractor_plautii_YL31->Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	-193.59229303901293	PAN	193.59229303901293	-1.0	13.913744752546416	-13.913744752546416

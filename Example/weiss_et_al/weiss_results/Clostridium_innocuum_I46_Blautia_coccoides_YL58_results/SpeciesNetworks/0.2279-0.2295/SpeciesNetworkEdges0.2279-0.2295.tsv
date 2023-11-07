@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Clostridium_innocuum_I46	Blautia_coccoides_YL58	Clostridium_innocuum_I46	-126.68907411836427	PAN	126.68907411836427	-1.0	11.255624110566426	-11.255624110566426
+Clostridium_innocuum_I46->Blautia_coccoides_YL58	Clostridium_innocuum_I46	Blautia_coccoides_YL58	-96.796146521248	PAN	96.796146521248	-1.0	9.838503266312818	-9.838503266312818

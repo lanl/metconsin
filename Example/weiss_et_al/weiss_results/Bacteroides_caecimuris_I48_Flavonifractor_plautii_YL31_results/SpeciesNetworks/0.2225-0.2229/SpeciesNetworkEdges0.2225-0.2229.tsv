@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Flavonifractor_plautii_YL31->Bacteroides_caecimuris_I48	Flavonifractor_plautii_YL31	Bacteroides_caecimuris_I48	129.92759603631413	D-Glucose-e0.O2-e0.Riboflavin.Spermidine-e0.L-Aspartate-e0	129.92759603631413	1.0	11.39857868492007	11.39857868492007
+Bacteroides_caecimuris_I48->Flavonifractor_plautii_YL31	Bacteroides_caecimuris_I48	Flavonifractor_plautii_YL31	-126.68907411775024	Riboflavin	126.68907411775024	-1.0	11.25562411053915	-11.25562411053915

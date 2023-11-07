@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+48	Riboflavin-e0	Enterococcus_faecalis_KB1	Metabolite	96.79614651906991	96.79614651906991	1.0	9.838503266202126	9.838503266202126
+52	Enterococcus_faecalis_KB1	Riboflavin-e0	Microbe	-1.0000000000000808	1.0000000000000808	-1.0	1.0000000000000404	-1.0000000000000404

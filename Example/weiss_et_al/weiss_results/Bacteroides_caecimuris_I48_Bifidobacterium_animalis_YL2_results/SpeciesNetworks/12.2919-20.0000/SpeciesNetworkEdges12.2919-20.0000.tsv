@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Bacteroides_caecimuris_I48	Bifidobacterium_animalis_YL2	Bacteroides_caecimuris_I48	-126.68907411288009	PAN	126.68907411288009	-1.0	11.255624110322808	-11.255624110322808
+Bacteroides_caecimuris_I48->Bifidobacterium_animalis_YL2	Bacteroides_caecimuris_I48	Bifidobacterium_animalis_YL2	-96.7961465151789	Riboflavin	96.7961465151789	-1.0	9.838503266004382	-9.838503266004382

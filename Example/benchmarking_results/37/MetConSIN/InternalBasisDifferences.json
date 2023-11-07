@@ -1,0 +1,1 @@
+{"bc1016": {}, "bc1008": {}, "bc1009": {"0.5208382855551476": {"Activated": {"Constraints": ["D-Glucose_e0 exchange upper bound"], "Fluxes": ["rxn10113_c0"]}, "Deactivated": {"Constraints": [], "Fluxes": []}}, "0.5213887975958228": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2_e0 exchange upper bound"], "Fluxes": ["rxn14419_c0"]}}}}

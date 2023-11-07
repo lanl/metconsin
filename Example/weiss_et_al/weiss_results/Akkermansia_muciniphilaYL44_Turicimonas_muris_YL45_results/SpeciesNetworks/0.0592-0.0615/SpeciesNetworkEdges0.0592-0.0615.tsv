@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Akkermansia_muciniphilaYL44	Turicimonas_muris_YL45	Akkermansia_muciniphilaYL44	-24.885460996262637	O2-e0.D-Glyceraldehyde-e0.L-Glutamate-e0.Folate	24.885460996262637	-1.0	4.988532950303389	-4.988532950303389
+Akkermansia_muciniphilaYL44->Turicimonas_muris_YL45	Akkermansia_muciniphilaYL44	Turicimonas_muris_YL45	0.6427278378266408	Riboflavin	0.6427278378266408	1.0	0.8017030858283138	0.8017030858283138

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	-203.34556281893367	Riboflavin	203.34556281893367	-1.0	14.259928569909937	-14.259928569909937
+Limosilactobacillus_reuteri_I49->Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	-532.2869144367686	PAN	532.2869144367686	-1.0	23.071344010195173	-23.071344010195173

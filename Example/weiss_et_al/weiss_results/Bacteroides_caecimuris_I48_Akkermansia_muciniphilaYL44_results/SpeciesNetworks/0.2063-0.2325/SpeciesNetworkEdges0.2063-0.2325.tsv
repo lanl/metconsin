@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Bacteroides_caecimuris_I48	Akkermansia_muciniphilaYL44	Bacteroides_caecimuris_I48	17.771532327621607	Adenosine-e0.D-Glucose-e0.O2-e0.Riboflavin.Folate.L-Aspartate-e0	17.771532327621607	1.0	4.21562952921881	4.21562952921881
+Bacteroides_caecimuris_I48->Akkermansia_muciniphilaYL44	Bacteroides_caecimuris_I48	Akkermansia_muciniphilaYL44	-126.68907411864978	Riboflavin	126.68907411864978	-1.0	11.25562411057911	-11.25562411057911

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Clostridium_innocuum_I46	Turicimonas_muris_YL45	Clostridium_innocuum_I46	-13.956669475270346	L-Aspartate-e0.Riboflavin.Spermidine-e0	13.956669475270346	-1.0	3.735862614613972	-3.735862614613972
+Clostridium_innocuum_I46->Turicimonas_muris_YL45	Clostridium_innocuum_I46	Turicimonas_muris_YL45	-126.68907411760289	Riboflavin	126.68907411760289	-1.0	11.255624110532604	-11.255624110532604

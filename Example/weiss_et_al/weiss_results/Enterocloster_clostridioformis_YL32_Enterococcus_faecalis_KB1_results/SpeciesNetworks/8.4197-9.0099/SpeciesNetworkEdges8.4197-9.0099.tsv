@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterococcus_faecalis_KB1->Enterocloster_clostridioformis_YL32	Enterococcus_faecalis_KB1	Enterocloster_clostridioformis_YL32	-126.68907411988056	PAN	126.68907411988056	-1.0	11.255624110633784	-11.255624110633784
+Enterocloster_clostridioformis_YL32->Enterococcus_faecalis_KB1	Enterocloster_clostridioformis_YL32	Enterococcus_faecalis_KB1	-96.79614651650351	PAN	96.79614651650351	-1.0	9.838503266071701	-9.838503266071701

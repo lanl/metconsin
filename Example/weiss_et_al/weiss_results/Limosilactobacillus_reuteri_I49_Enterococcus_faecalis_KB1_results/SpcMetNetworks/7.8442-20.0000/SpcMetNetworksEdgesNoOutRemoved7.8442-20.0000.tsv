@@ -1,0 +1,6 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+4	Limosilactobacillus_reuteri_I49	Cytosine	Microbe	-1.0	1.0	-1.0	1.0	-1.0
+76	Riboflavin-e0	Enterococcus_faecalis_KB1	Metabolite	96.79615015554867	96.79615015554867	1.0	9.838503451010661	9.838503451010661
+80	Enterococcus_faecalis_KB1	Riboflavin-e0	Microbe	-0.9999999999999912	0.9999999999999912	-1.0	0.9999999999999956	-0.9999999999999956
+92	Enterococcus_faecalis_KB1	Cytosine	Microbe	-6.580314326545054	6.580314326545054	-1.0	2.5652123355669905	-2.5652123355669905
+98	Cytosine	Limosilactobacillus_reuteri_I49	Metabolite	0.5498248331023694	0.5498248331023694	1.0	0.7415017418066996	0.7415017418066996

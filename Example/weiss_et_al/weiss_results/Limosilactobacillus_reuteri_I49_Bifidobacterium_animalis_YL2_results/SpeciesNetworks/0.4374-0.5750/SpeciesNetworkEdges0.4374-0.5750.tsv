@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	-6.688854957055019	Uracil-e0	6.688854957055019	-1.0	2.586282072213899	-2.586282072213899
+Limosilactobacillus_reuteri_I49->Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	-96.79614651724016	Riboflavin	96.79614651724016	-1.0	9.838503266109138	-9.838503266109138

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	99.08927618249454	Inosine-e0.Succinate-e0.L-Threonine-e0.L-Arginine-e0.Spermidine-e0.O2-e0.Puryvate.5'-Deoxyadenosine-e0	99.08927618249454	1.0	9.954359657079634	9.954359657079634
+Flavonifractor_plautii_YL31->Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	-0.6207508444089141	PAN	0.6207508444089141	-1.0	0.7878774298131113	-0.7878774298131113

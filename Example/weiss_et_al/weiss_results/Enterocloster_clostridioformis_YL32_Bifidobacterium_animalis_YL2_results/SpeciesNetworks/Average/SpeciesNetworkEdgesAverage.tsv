@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Bifidobacterium_animalis_YL2	Enterocloster_clostridioformis_YL32	PAN	-125.143092955254	2.36089199259637	125.143092955254	-1.0	11.186737368654635	-11.186737368654635
+1	Enterocloster_clostridioformis_YL32	Bifidobacterium_animalis_YL2	PAN	-49.514530975159886	2311.2091676745677	49.514530975159886	-1.0	7.036656235397597	-7.036656235397597

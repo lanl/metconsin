@@ -1,0 +1,131 @@
+	Flavonifractor_plautii_YL31	Akkermansia_muciniphilaYL44	In	InAmount	Out	OutAmount	All	AllAmount
+5'-Deoxyadenosine-e0	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+5-Methylthio-D-ribose-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Acetate-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Adenine	0.0	0.0		0		0		0
+Adenosine-e0	-1.1420031587050516e-12	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Anserine	0.0	0.0		0		0		0
+BIOT-e0	0.0	0.0		0		0		0
+Biotin	0.0	0.0		0		0		0
+Butyrate-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+CO2-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Ca2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Carnitine	0.0	0.0		0		0		0
+Carnosine	0.0	0.0		0		0		0
+Cd2+-e0	0.0	0.0		0		0		0
+Cellulose	0.0	0.0		0		0		0
+Cholesterol	0.0	0.0		0		0		0
+Choline	0.0	0.0		0		0		0
+Choline-e0	0.0	0.0		0		0		0
+Chromium	0.0	0.0		0		0		0
+Citrulline	0.0	0.0		0		0		0
+Cl--e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Co2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Creatine	0.0	0.0		0		0		0
+Creatinine	0.0	0.0		0		0		0
+Cu2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Cytosine	0.0	0.0		0		0		0
+Cytosine-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+D-Glucose-e0	0.0	-4.1744385725905886e-14	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+D-Mannose-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Fe2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Folate	0.0	-9.101608355877033e-13	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+Folate-e0	-1.96037630573187e-12	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Formate-e0-e0	-4.0025621705908065e-13	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Fumarate-e0	0.0	-8.067158052682544e-14	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Galactose-e0	0.0	0.0		0		0		0
+Gamma-Tocopherol	0.0	0.0		0		0		0
+Glycine-e0	-4.019284904899223e-13	1.865174681370263e-14	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Guanidine	0.0	0.0		0		0		0
+Guanine	0.0	0.0		0		0		0
+H+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+H2-e0	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+H2O-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+H2S-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Hemin	0.0	0.0		0		0		0
+Hydrocortisone	0.0	0.0		0		0		0
+Hypoxanthine	0.0	0.0		0		0		0
+Inosine-e0	-1.2291556661381264e-12	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+K+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Alanine-e0	-4.154732113903492e-13	8.257283745649602e-14	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Arginine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Ascorbate	0.0	0.0		0		0		0
+L-Asparagine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Aspartate-e0	2.3032964424629654e-13	1.636746294053637e-13	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Cysteine-e0	1.895983370303611e-13	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Cystine	0.0	0.0		0		0		0
+L-Fucose-e0	0.0	0.0		0		0		0
+L-Glutamate-e0	-1.3612444504929044e-12	-2.892130979148533e-13	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Glutamine-e0	-1.2823908601689027e-12	-4.339861803259737e-13	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Histidine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Isoleucine	0.0	0.0		0		0		0
+L-Isoleucine-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+L-Leucine	0.0	0.0		0		0		0
+L-Leucine-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+L-Lysine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Methionine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Phenylalanine	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Proline-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Serine-e0	-1.5725615254424952e-13	2.452898995031205e-13	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Threonine-e0	-4.763411887154234e-13	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+L-Tryptophan	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+L-Tyrosine	0.0	0.0		0		0		0
+L-Tyrosine-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+L-Valine-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Linolenic	0.0	0.0		0		0		0
+Melitose	0.0	0.0		0		0		0
+Methylguanidine	0.0	0.0		0		0		0
+Methylhistidine	0.0	0.0		0		0		0
+Mg-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Mn2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Molybdenum	0.0	0.0		0		0		0
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0		0		0		0
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0		0		0		0
+N-acetyl-D-galactosamine	0.0	0.0		0		0		0
+N-acetyl-D-gluosamine	0.0	0.0		0		0		0
+N-acetylneuraminate (as sialic residue)	0.0	0.0		0		0		0
+NH3-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Na+-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Neu5Ac-e0	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+Niacin	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Nickel	0.0	0.0		0		0		0
+O2-e0	9.38832345198648e-13	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Oleic acid	0.0	0.0		0		0		0
+Ornithine-e0	0.0	-2.592925874012053e-13	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+PAN	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Pb-e0	0.0	0.0		0		0		0
+Pectin	0.0	0.0		0		0		0
+Phosphate-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Phosphoethanolamine	0.0	0.0		0		0		0
+Puryvate	8.942846463355636e-14	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Putrescine	0.0	0.0		0		0		0
+Putrescine-e0	1.0952350137927169e-13	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Pyridoxal	0.0	0.0		0		0		0
+Riboflavin	126.68907411845198	126.68907411812158	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	4
+Selenium	0.0	0.0		0		0		0
+Spermidine	0.0	0.0		0		0		0
+Spermidine-e0	-1.2234414870082588e-12	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Stachyose	0.0	0.0		0		0		0
+Starch	0.0	0.0		0		0		0
+Succinate-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Sucrose	0.0	0.0		0		0		0
+Sulfate-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+Thiamin-e0	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+Uracil	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+Uracil-e0	3.813616089587413e-14	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Urea-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+VitA Retinol	0.0	0.0		0		0		0
+Vitamin K1	0.0	0.0		0		0		0
+Vitamin K3	0.0	0.0		0		0		0
+XAN-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+Zn2+-e0	0.0	0.0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2		0	Akkermansia_muciniphilaYL44.Flavonifractor_plautii_YL31	2
+acetylhexosamine	0.0	0.0		0		0		0
+acgal-e0	0.0	0.0		0		0		0
+acgam-e0	0.0	0.0		0		0		0
+carbonate	0.0	0.0		0		0		0
+core3-e0	0.0	0.0		0		0		0
+core4-e0	0.0	0.0		0		0		0
+fe3-e0	0.0	0.0	Flavonifractor_plautii_YL31	1		0	Flavonifractor_plautii_YL31	1
+fucose	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+galactose	0.0	0.0	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1
+lactate	0.0	1.8356843822786573e-13	Akkermansia_muciniphilaYL44	1		0	Akkermansia_muciniphilaYL44	1

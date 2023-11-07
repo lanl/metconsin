@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Flavonifractor_plautii_YL31->Clostridium_innocuum_I46	Flavonifractor_plautii_YL31	Clostridium_innocuum_I46	-126.68907411887868	PAN	126.68907411887868	-1.0	11.255624110589277	-11.255624110589277
+Clostridium_innocuum_I46->Flavonifractor_plautii_YL31	Clostridium_innocuum_I46	Flavonifractor_plautii_YL31	-126.68907411732204	Riboflavin	126.68907411732204	-1.0	11.25562411052013	-11.25562411052013

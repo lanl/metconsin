@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Blautia_coccoides_YL58	Akkermansia_muciniphilaYL44	Riboflavin	-124.39215339362153	5.180191756304177	124.39215339362153	-1.0	11.153123033196644	-11.153123033196644
+1	Akkermansia_muciniphilaYL44	Blautia_coccoides_YL58	PAN	-95.0411958592363	3.0240129636596342	95.0411958592363	-1.0	9.748907418743718	-9.748907418743718

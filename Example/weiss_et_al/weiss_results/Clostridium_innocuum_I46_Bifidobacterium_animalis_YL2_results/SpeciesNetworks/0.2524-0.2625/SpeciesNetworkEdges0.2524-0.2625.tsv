@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Clostridium_innocuum_I46	Bifidobacterium_animalis_YL2	Clostridium_innocuum_I46	-126.6890740951449	Riboflavin	126.6890740951449	-1.0	11.25562410953497	-11.25562410953497
+Clostridium_innocuum_I46->Bifidobacterium_animalis_YL2	Clostridium_innocuum_I46	Bifidobacterium_animalis_YL2	-96.79614651733598	Riboflavin	96.79614651733598	-1.0	9.838503266114007	-9.838503266114007

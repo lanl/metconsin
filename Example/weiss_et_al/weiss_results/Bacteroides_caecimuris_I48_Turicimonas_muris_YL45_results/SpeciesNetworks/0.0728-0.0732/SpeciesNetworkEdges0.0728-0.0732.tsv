@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Bacteroides_caecimuris_I48	Turicimonas_muris_YL45	Bacteroides_caecimuris_I48	-126.68907412163213	PAN	126.68907412163213	-1.0	11.255624110711592	-11.255624110711592
+Bacteroides_caecimuris_I48->Turicimonas_muris_YL45	Bacteroides_caecimuris_I48	Turicimonas_muris_YL45	-126.6890741173907	Riboflavin	126.6890741173907	-1.0	11.25562411052318	-11.25562411052318

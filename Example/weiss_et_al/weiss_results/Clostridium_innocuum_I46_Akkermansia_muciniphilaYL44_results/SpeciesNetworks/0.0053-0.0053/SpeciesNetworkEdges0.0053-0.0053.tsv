@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Clostridium_innocuum_I46	Akkermansia_muciniphilaYL44	Clostridium_innocuum_I46	117.55681349390115	O2-e0.Riboflavin	117.55681349390115	1.0	10.842361988695137	10.842361988695137
+Clostridium_innocuum_I46->Akkermansia_muciniphilaYL44	Clostridium_innocuum_I46	Akkermansia_muciniphilaYL44	-126.68907411745589	Riboflavin	126.68907411745589	-1.0	11.255624110526075	-11.255624110526075

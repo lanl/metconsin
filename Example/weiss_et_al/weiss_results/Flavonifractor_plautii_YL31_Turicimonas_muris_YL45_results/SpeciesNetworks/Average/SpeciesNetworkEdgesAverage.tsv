@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Turicimonas_muris_YL45	Flavonifractor_plautii_YL31	Riboflavin	-126.68486583909451	1.7709026039324416e-05	126.68486583909451	-1.0	11.255437167835575	-11.255437167835575
+1	Flavonifractor_plautii_YL31	Turicimonas_muris_YL45	Riboflavin	-126.68486583814128	1.7709026039050388e-05	126.68486583814128	-1.0	11.255437167793229	-11.255437167793229

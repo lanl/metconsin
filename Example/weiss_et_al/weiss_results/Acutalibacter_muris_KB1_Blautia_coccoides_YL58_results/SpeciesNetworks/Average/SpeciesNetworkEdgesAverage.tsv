@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Acutalibacter_muris_KB1	Blautia_coccoides_YL58	PAN	-174.23306348504497	3373.017823487078	174.23306348504497	-1.0	13.199737250606352	-13.199737250606352
+1	Acutalibacter_muris_KB1	Blautia_coccoides_YL58	PAN.Spermidine-e0.Heme-e0.L-Lactate-e0	-19.359202552783522	3373.0085113173	19.359202552783522	-1.0	4.3999093800649485	-4.3999093800649485

@@ -1,0 +1,1 @@
+{"0.6399607005503121": {"bc1010": {"Internal Flux Below 0": [], "Constraint Violated": ["D-Glucose_e0 exchange upper bound"]}}, "0.6411847954873975": {}, "0.6426391718885476": {}, "1.3858619699213235": {"bc1010": {"Internal Flux Below 0": ["rxn05654_c0_R"], "Constraint Violated": []}}, "1.3858619699213524": {}}

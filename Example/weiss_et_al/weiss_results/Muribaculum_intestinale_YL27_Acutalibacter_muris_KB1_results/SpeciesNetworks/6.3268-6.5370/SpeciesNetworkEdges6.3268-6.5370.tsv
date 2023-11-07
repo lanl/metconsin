@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Acutalibacter_muris_KB1->Muribaculum_intestinale_YL27	Acutalibacter_muris_KB1	Muribaculum_intestinale_YL27	-126.68907411676815	PAN	126.68907411676815	-1.0	11.255624110495525	-11.255624110495525
+Muribaculum_intestinale_YL27->Acutalibacter_muris_KB1	Muribaculum_intestinale_YL27	Acutalibacter_muris_KB1	-96.79614651648981	PAN	96.79614651648981	-1.0	9.838503266071005	-9.838503266071005

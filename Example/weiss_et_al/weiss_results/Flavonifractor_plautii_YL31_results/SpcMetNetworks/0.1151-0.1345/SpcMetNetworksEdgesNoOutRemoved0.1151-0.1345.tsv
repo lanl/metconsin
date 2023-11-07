@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+15	Riboflavin	Flavonifractor_plautii_YL31	Metabolite	126.68907412627907	126.68907412627907	1.0	11.25562411091802	11.25562411091802
+27	Flavonifractor_plautii_YL31	Riboflavin	Microbe	-0.9999999999999929	0.9999999999999929	-1.0	0.9999999999999964	-0.9999999999999964

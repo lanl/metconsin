@@ -1,0 +1,7 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	PAN	-6.341678949840964	572.8694854872635	6.341678949840964	-1.0	2.5182690384152693	-2.5182690384152693
+1	Limosilactobacillus_reuteri_I49	Akkermansia_muciniphilaYL44	Riboflavin	-124.28328445572808	5.677914758704397	124.28328445572808	-1.0	11.148241316715747	-11.148241316715747
+2	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Riboflavin	-1.4543988937822159	89.06043442570623	1.4543988937822159	-1.0	1.2059846158978214	-1.2059846158978214
+3	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Riboflavin.L-Aspartate-e0	0.36005807665298706	214.84031448544778	0.36005807665298706	1.0	0.6000483952590716	0.6000483952590716
+4	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	Riboflavin	-71.83924864456213	1645.6931609248984	71.83924864456213	-1.0	8.475803716731654	-8.475803716731654
+5	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	L-Asparagine-e0.L-Threonine-e0.D-Glucose-e0.O2-e0.Riboflavin.L-Glutamate-e0.L-Aspartate-e0	-0.2875584350117193	613.1369399038214	0.2875584350117193	-1.0	0.5362447528990091	-0.5362447528990091

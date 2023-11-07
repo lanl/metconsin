@@ -1,0 +1,1 @@
+{"Turicimonas_muris_YL45": {"2.830214373464057e-06": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2-e0 exchange upper bound"], "Fluxes": ["rxn04704_c0"]}}}}

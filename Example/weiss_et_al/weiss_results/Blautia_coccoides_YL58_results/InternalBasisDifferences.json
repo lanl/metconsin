@@ -1,0 +1,1 @@
+{"Blautia_coccoides_YL58": {"1.2358806443726035e-05": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2-e0 exchange upper bound"], "Fluxes": ["rxn08168_c0"]}}}}

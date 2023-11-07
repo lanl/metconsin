@@ -1,0 +1,5 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterocloster_clostridioformis_YL32	Bacteroides_caecimuris_I48	PAN	-27.613279665650296	2732.383380133547	27.613279665650296	-1.0	5.254833933213332	-5.254833933213332
+1	Bacteroides_caecimuris_I48	Enterocloster_clostridioformis_YL32	PAN	-93.41225121558098	326.18281634637947	93.41225121558098	-1.0	9.665001356212061	-9.665001356212061
+2	Enterocloster_clostridioformis_YL32	Bacteroides_caecimuris_I48	D-Glucose-e0.Spermidine-e0	-0.1083276021499908	7.7364653678863595	0.1083276021499908	-1.0	0.32913158789455443	-0.32913158789455443
+3	Enterocloster_clostridioformis_YL32	Bacteroides_caecimuris_I48	L-Aspartate-e0.D-Glucose-e0.Spermidine-e0	-0.02808060368088445	2.440185032616508	0.02808060368088445	-1.0	0.1675726817857984	-0.1675726817857984

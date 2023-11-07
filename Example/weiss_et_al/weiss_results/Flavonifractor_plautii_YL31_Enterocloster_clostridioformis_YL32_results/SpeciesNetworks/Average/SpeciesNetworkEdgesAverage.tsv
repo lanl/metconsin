@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Flavonifractor_plautii_YL31	Enterocloster_clostridioformis_YL32	PAN	-126.25404475558042	0.18860069021521186	126.25404475558042	-1.0	11.236282514941514	-11.236282514941514
+1	Enterocloster_clostridioformis_YL32	Flavonifractor_plautii_YL31	PAN	-24.0396401269729	2465.671024537416	24.0396401269729	-1.0	4.903023569897752	-4.903023569897752

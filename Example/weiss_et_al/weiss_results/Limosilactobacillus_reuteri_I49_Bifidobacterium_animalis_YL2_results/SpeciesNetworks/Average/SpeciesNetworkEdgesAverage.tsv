@@ -1,0 +1,8 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	PAN	-1.0778624485415567	103.15067093035078	1.0778624485415567	-1.0	1.0382015452413644	-1.0382015452413644
+1	Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	Riboflavin	-95.09039743220809	2.8583071012041934	95.09039743220809	-1.0	9.751430532604337	-9.751430532604337
+2	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Riboflavin	-0.09677183003227878	19.668592429384756	0.09677183003227878	-1.0	0.31108170957527986	-0.31108170957527986
+3	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Spermidine-e0.L-Asparagine-e0.D-Glucose-e0.Riboflavin.Melitose-e0	-0.00039000708236080665	0.25220826399614615	0.00039000708236080665	-1.0	0.019748596971957442	-0.019748596971957442
+4	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Spermidine-e0.Putrescine-e0.L-Asparagine-e0.D-Glucose-e0.Riboflavin.Melitose-e0	0.028817978806500746	13.293100025351048	0.028817978806500746	1.0	0.1697585897870878	0.1697585897870878
+5	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Spermidine-e0.Uracil-e0.Putrescine-e0.L-Asparagine-e0.D-Glucose-e0.L-Threonine-e0.Riboflavin.Melitose-e0	-0.12069817256635004	8.958164398998678	0.12069817256635004	-1.0	0.34741642529729366	-0.34741642529729366
+6	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Uracil-e0	-6.482035704179086	0.6001867552367799	6.482035704179086	-1.0	2.545984230936847	-2.545984230936847

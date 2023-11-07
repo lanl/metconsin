@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Limosilactobacillus_reuteri_I49->Bacteroides_caecimuris_I48	Limosilactobacillus_reuteri_I49	Bacteroides_caecimuris_I48	-0.7213364463117448	PAN	0.7213364463117448	-1.0	0.8493152808655599	-0.8493152808655599
+Bacteroides_caecimuris_I48->Limosilactobacillus_reuteri_I49	Bacteroides_caecimuris_I48	Limosilactobacillus_reuteri_I49	460.24693207257263	D-Glucose-e0.Riboflavin.O2-e0.Spermidine-e0	460.24693207257263	1.0	21.453366450806097	21.453366450806097

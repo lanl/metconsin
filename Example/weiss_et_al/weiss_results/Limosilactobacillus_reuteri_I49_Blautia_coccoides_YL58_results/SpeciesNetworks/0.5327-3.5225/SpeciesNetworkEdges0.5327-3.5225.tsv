@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	-137.7865526928154	Riboflavin.Folate-e0	137.7865526928154	-1.0	11.738251688084363	-11.738251688084363
+Limosilactobacillus_reuteri_I49->Blautia_coccoides_YL58	Limosilactobacillus_reuteri_I49	Blautia_coccoides_YL58	-206.679829050202	PAN	206.679829050202	-1.0	14.376363554466824	-14.376363554466824

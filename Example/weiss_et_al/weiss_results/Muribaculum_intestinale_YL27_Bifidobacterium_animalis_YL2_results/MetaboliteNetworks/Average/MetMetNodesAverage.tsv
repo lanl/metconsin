@@ -1,0 +1,142 @@
+	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_Bifidobacterium_animalis_YL2	Var_Bifidobacterium_animalis_YL2	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	4.583631023147072e-13	5.058128999311582e-27	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	6.61886657629388e-05	7.126581823865812e-05	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0005977523701084609	0.000597392124041844	1.9841515966624166	0.0008658056937815312	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+D-Mannose-e0	-4.4741790018092426e-05	4.917753854413971e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	4.0704470044910426e-05	4.070279956659032e-05	0.9918176266161989	0.00010777127737027049	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Folate	0.031076985657105833	0.08460003791957636	4.9253724368575875e-12	1.894695162879952e-23	1.983553844292308	0.00026825189204718206	0.012072567216157494	0.011925621849034332	1.9956264115084654	0.01219713908122534	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Galactose-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.010749157386050956	0.01063266287107146	0.0	0.0	0.010749157386050956	0.01063266287107146	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+Glycine-e0	0.0	0.0	0.0	0.0	1.667548390147241	0.21550763507706963	0.0	0.0	1.667548390147241	0.21550763507706963	Muribaculum_intestinale_YL27.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	Muribaculum_intestinale_YL27.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Aspartate-e0	7.630459340674985e-14	1.3486533888446073e-28	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Lactate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Proline	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Serine	-4.4103238581045023e-14	4.8250949029430996e-29	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Serine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Threonine	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose-e0	0.0	0.0	1.2204264579038346e-12	1.1488048716592001e-24	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Na+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	-5.5927237504123385e-05	7.683990397521894e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	4.0704470044910426e-05	4.070279956659032e-05	0.9918176266161989	0.00010777127737027049	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Niacin	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	0.5125904505863655	64.67470001141378	0.0	0.0	1.983553844292308	0.00026825189204718206	0.004046050964960155	0.004029545820419467	1.9875998952572682	0.004298892072299421	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27.	2	Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	-5.008836291297575e-14	7.038219703725026e-27	0.32717827566802127	0.2192524070982878	0.0	0.0	0.32717827566802127	0.2192524070982878	Bifidobacterium_animalis_YL2.	2		1	Bifidobacterium_animalis_YL2.	2
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyruvate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	123.60494003110179	255.619608394976	96.00018426700967	0.6283461219351062	1.983553844292308	0.00026825189204718206	1.9680329784812987	0.015542041488197524	3.9515868227736064	0.016342599142055002	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2	Bifidobacterium_animalis_YL2Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.0	0.0	1.0800240546250217e-12	8.902724817757507e-25	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0001323773314206895	0.00028506327295466246	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0005977523701084609	0.000597392124041844	0.9923746745162625	0.0006645359358998941	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Sucrose-e0	0.0	0.0	1.1391354083106324e-12	1.026312863693857e-24	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	-5.175930190448296e-13	1.0381256558725733e-24	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	0.0	0.0	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.983553844292308	0.00026825189204718206	0.0	0.0	1.983553844292308	0.00026825189204718206	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1		1	Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	-6.412562643101202e-16	1.077678130880821e-28	0.0	0.0	0.991776922146154	6.706297301179551e-05	0.0	0.0	0.991776922146154	6.706297301179551e-05	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.983550451458434	0.00027503663050906747	0.0	0.0	1.983550451458434	0.00027503663050906747	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.983550451458434	0.00027503663050906747	0.0	0.0	1.983550451458434	0.00027503663050906747	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+D-Lactate-e0	0.0	0.0	0.0	0.0	0.991775225729217	6.875915762726687e-05	0.0	0.0	0.991775225729217	6.875915762726687e-05	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+H2-e0	0.0	0.0	0.0	0.0	0.991775225729217	6.875915762726687e-05	0.0	0.0	0.991775225729217	6.875915762726687e-05	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+O2-e0	-8.855956053365448e-05	3.437766029042153e-05	0.0	0.0	0.991775225729217	6.875915762726687e-05	0.0005977523701084609	0.000597392124041844	0.9923729780993253	0.0006662341652668714	.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	3
+Succinate-e0	0.03129465607642681	0.08436085275481497	0.0	0.0	0.991775225729217	6.875915762726687e-05	0.011474814846049034	0.011342060726324	1.003250040575266	0.011412410967459454	.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	3
+2-Oxoglutarate-e0-e0	0.0	0.0	0.0	0.0	0.32344130276096417	0.21796677509035503	0.0	0.0	0.32344130276096417	0.21796677509035503	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9760798984781938	0.015157802790967269	0.0	0.0	1.9760798984781938	0.015157802790967269	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9760798984781938	0.015157802790967269	0.0	0.0	1.9760798984781938	0.015157802790967269	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.01852818395972631	0.018182067428874377	0.0	0.0	0.01852818395972631	0.018182067428874377	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Fumarate-e0	0.03125037629627181	0.08437224140064449	0.0	0.0	1.9760798984781938	0.015157802790967269	0.012072567216157494	0.011925621849034332	1.9881524656943512	0.027268633338479977	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	3
+Glycerol-e0	7.737411280213705e-05	4.974814310558726e-05	0.0	0.0	1.9760798984781938	0.015157802790967269	0.0005977523701084609	0.000597392124041844	1.9766776508483022	0.01576436520468304	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	3
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	1.9760798984781938	0.015157802790967269	0.0	0.0	1.9760798984781938	0.015157802790967269	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+H2S-e0	0.0	0.0	0.0	0.0	1.9760798984781938	0.015157802790967269	0.0	0.0	1.9760798984781938	0.015157802790967269	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2		1	.Bifidobacterium_animalis_YL2.Muribaculum_intestinale_YL27	2
+Propionate-e0	0.0	0.0	0.0	0.0	0.9809855680629354	0.01073954672719395	0.0	0.0	0.9809855680629354	0.01073954672719395	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2

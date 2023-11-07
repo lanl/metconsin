@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Acutalibacter_muris_KB1	Enterocloster_clostridioformis_YL32	PAN	-168.51139774700917	3549.324704334408	168.51139774700917	-1.0	12.981194003134272	-12.981194003134272
+1	Enterocloster_clostridioformis_YL32	Acutalibacter_muris_KB1	PAN	-64.84201161116962	2071.9703865473584	64.84201161116962	-1.0	8.052453763367389	-8.052453763367389

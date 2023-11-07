@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Bifidobacterium_animalis_YL2	Blautia_coccoides_YL58	Bifidobacterium_animalis_YL2	-96.79614651717228	Riboflavin	96.79614651717228	-1.0	9.838503266105688	-9.838503266105688
+Bifidobacterium_animalis_YL2->Blautia_coccoides_YL58	Bifidobacterium_animalis_YL2	Blautia_coccoides_YL58	-96.79614652004328	PAN	96.79614652004328	-1.0	9.838503266251594	-9.838503266251594

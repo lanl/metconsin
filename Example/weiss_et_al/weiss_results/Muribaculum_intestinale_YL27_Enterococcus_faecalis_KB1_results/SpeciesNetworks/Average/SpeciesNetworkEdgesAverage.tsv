@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterococcus_faecalis_KB1	Muribaculum_intestinale_YL27	PAN	-0.7250412804235254	91.32909650322722	0.7250412804235254	-1.0	0.8514935586506368	-0.8514935586506368
+1	Enterococcus_faecalis_KB1	Muribaculum_intestinale_YL27	Fumarate-e0.O2-e0.D-Mannose-e0.L-Aspartate-e0	-0.0521013104494866	1.561677770932235	0.0521013104494866	-1.0	0.22825711478393526	-0.22825711478393526

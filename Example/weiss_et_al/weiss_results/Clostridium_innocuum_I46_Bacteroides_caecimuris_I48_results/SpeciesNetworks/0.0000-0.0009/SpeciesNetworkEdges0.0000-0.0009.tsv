@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bacteroides_caecimuris_I48->Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	-126.68907411690105	PAN	126.68907411690105	-1.0	11.255624110501428	-11.255624110501428
+Clostridium_innocuum_I46->Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	-126.68907411724265	PAN	126.68907411724265	-1.0	11.255624110516603	-11.255624110516603

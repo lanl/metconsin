@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Limosilactobacillus_reuteri_I49->Bacteroides_caecimuris_I48	Limosilactobacillus_reuteri_I49	Bacteroides_caecimuris_I48	-126.6890741158602	PAN	126.6890741158602	-1.0	11.25562411045519	-11.25562411045519
+Bacteroides_caecimuris_I48->Limosilactobacillus_reuteri_I49	Bacteroides_caecimuris_I48	Limosilactobacillus_reuteri_I49	-96.7961465161618	PAN	96.7961465161618	-1.0	9.838503266054333	-9.838503266054333

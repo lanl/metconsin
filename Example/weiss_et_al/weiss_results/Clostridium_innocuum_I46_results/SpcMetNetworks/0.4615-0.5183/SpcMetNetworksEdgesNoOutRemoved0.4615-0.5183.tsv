@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+7	Clostridium_innocuum_I46	Thiamin-e0	Microbe	-1.0000000000000235	1.0000000000000235	-1.0	1.0000000000000118	-1.0000000000000118
+47	Thiamin-e0	Clostridium_innocuum_I46	Metabolite	253.3781482468542	253.3781482468542	1.0	15.917856270454706	15.917856270454706

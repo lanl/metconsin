@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bacteroides_caecimuris_I48->Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	-126.68907411864734	Riboflavin	126.68907411864734	-1.0	11.255624110579001	-11.255624110579001
+Clostridium_innocuum_I46->Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	-126.68907411756064	Riboflavin	126.68907411756064	-1.0	11.255624110530729	-11.255624110530729

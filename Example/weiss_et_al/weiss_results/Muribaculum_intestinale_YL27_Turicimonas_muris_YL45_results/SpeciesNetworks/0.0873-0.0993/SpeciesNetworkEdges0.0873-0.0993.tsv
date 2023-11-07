@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Muribaculum_intestinale_YL27	Turicimonas_muris_YL45	Muribaculum_intestinale_YL27	-35.321445412873715	Fumarate-e0.O2-e0.Riboflavin.Folate	35.321445412873715	-1.0	5.943184787037478	-5.943184787037478
+Muribaculum_intestinale_YL27->Turicimonas_muris_YL45	Muribaculum_intestinale_YL27	Turicimonas_muris_YL45	-126.68907411739093	Riboflavin	126.68907411739093	-1.0	11.25562411052319	-11.25562411052319

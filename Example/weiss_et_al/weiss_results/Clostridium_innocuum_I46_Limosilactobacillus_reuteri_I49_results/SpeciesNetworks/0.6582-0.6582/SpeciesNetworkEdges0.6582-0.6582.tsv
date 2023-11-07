@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Limosilactobacillus_reuteri_I49->Clostridium_innocuum_I46	Limosilactobacillus_reuteri_I49	Clostridium_innocuum_I46	-253.37814824918007	PAN	253.37814824918007	-1.0	15.917856270527764	-15.917856270527764
+Clostridium_innocuum_I46->Limosilactobacillus_reuteri_I49	Clostridium_innocuum_I46	Limosilactobacillus_reuteri_I49	-193.59229302601756	Heme-e0	193.59229302601756	-1.0	13.913744752079419	-13.913744752079419

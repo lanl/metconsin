@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Flavonifractor_plautii_YL31->Limosilactobacillus_reuteri_I49	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	-203.34556279256162	Riboflavin.Folate-e0	203.34556279256162	-1.0	14.259928568985247	-14.259928568985247
+Limosilactobacillus_reuteri_I49->Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	Flavonifractor_plautii_YL31	-84.45938274521224	Folate-e0	84.45938274521224	-1.0	9.190178602465364	-9.190178602465364

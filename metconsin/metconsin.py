@@ -635,6 +635,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     speciesHeuristic = {}
     interval_lens = {}
     total_interval = 0
+    path_summ = pd.DataFrame()
 
     basis_change_info = pd.DataFrame(columns = np.unique(np.array(basis_change_times).round(6)),index = [model.Name for model in model_list]).fillna(0).astype(bool)
 
@@ -719,6 +720,9 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         for ky,val in interval_lens.items():
             interval_lens[ky] = val/total_interval
         
+
+        path_summ = mn.get_path_df(mic_met_sum_nets,x_sim,y_sim)
+
         avg_micmetnet_sum,comb_micmet_net_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
         if rflag:
             mic_met_sum_nets["Average"] = {"nodes":avg_micmet_summ_nodes,"edges":avg_micmetnet_sum}
@@ -760,7 +764,7 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
             speciesHeuristic["Combined"] = {"nodes":avg_spc_nodes,"edges":comb_spec}
             speciesHeuristic["Difference"] = {"nodes":avg_spc_nodes,"edges":diff_spec}
 
-
+        
 
 
     all_return = {"Microbes":x_sim,
@@ -770,7 +774,8 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                   "SpcMetNetworkSummaries":mic_met_sum_nets,
                   "SpcMetNetworkNoOutRemoved":mic_met_no_out_rmvd,
                   "SpcMetNetworks":mic_met_nets, 
-                  "BasisChanges":basis_change_info}
+                  "BasisChanges":basis_change_info,
+                  "SpeciesSpeciesPaths":path_summ}
     bfcause = dynamics["bf"]
     all_return["InternalBasisDifferences"] = basis_change_differences
 
@@ -856,6 +861,7 @@ def save_metconsin(metconsin_return,flder):
     Path(metmet_folder).mkdir(parents=True, exist_ok=True)
     Path(micmic_folder).mkdir(parents=True, exist_ok=True)
 
+    metconsin_return["SpeciesSpeciesPaths"].to_csv(os.path.join(micmic_folder,"SpeciesPathSummary.tsv",sep='\t'))
 
 
     for ky in metconsin_return["MetMetNetworks"].keys():

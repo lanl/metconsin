@@ -1,0 +1,6 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterococcus_faecalis_KB1	Bacteroides_caecimuris_I48	PAN	-9.773247651164835	1123.2179534777024	9.773247651164835	-1.0	3.126219386281909	-3.126219386281909
+1	Enterococcus_faecalis_KB1	Bacteroides_caecimuris_I48	D-Glucose-e0.O2-e0.Spermidine-e0.L-Aspartate-e0	-0.10348382338048051	0.5333960861949506	0.10348382338048051	-1.0	0.3216890165679899	-0.3216890165679899
+2	Enterococcus_faecalis_KB1	Bacteroides_caecimuris_I48	Spermidine-e0	-151.07512317100353	10812.781977469314	151.07512317100353	-1.0	12.291262065833742	-12.291262065833742
+3	Enterococcus_faecalis_KB1	Bacteroides_caecimuris_I48	Glycerol-e0.Fumarate-e0.D-Glucose-e0.O2-e0.L-Cysteine-e0.Spermidine-e0.L-Glutamate-e0.D-Mannose-e0.L-Aspartate-e0.Succinate-e0.L-Asparagine-e0	7.217408571802076e-06	0.0003611794622567931	7.217408571802076e-06	1.0	0.0026865235103758307	0.0026865235103758307
+4	Enterococcus_faecalis_KB1	Bacteroides_caecimuris_I48	Glycerol-e0.Fumarate-e0.D-Glucose-e0.O2-e0.L-Cysteine-e0.L-Glutamate-e0.D-Mannose-e0.L-Aspartate-e0.Succinate-e0.L-Asparagine-e0	0.00871905798676922	0.43807203507487946	0.00871905798676922	1.0	0.09337589617652524	0.09337589617652524

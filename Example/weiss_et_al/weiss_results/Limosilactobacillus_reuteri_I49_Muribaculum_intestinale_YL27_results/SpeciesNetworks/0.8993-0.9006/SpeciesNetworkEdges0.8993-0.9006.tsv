@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	-100.74031459742267	D-Glucose-e0.Riboflavin.O2-e0.Galactose-e0.L-Cysteine-e0.Sucrose.D-Mannose-e0.L-Aspartate-e0.Glycine-e0	100.74031459742267	-1.0	10.036947474079092	-10.036947474079092
+Limosilactobacillus_reuteri_I49->Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	-5.905751208602893	PAN	5.905751208602893	-1.0	2.4301751394915745	-2.4301751394915745

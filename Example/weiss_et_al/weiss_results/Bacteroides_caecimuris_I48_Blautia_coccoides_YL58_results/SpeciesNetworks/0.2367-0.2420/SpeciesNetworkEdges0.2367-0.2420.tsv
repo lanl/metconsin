@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Bacteroides_caecimuris_I48	Blautia_coccoides_YL58	Bacteroides_caecimuris_I48	-126.68907411769952	Riboflavin	126.68907411769952	-1.0	11.255624110536898	-11.255624110536898
+Bacteroides_caecimuris_I48->Blautia_coccoides_YL58	Bacteroides_caecimuris_I48	Blautia_coccoides_YL58	-96.79614652218814	PAN	96.79614652218814	-1.0	9.838503266360597	-9.838503266360597

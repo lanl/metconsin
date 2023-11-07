@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterocloster_clostridioformis_YL32->Clostridium_innocuum_I46	Enterocloster_clostridioformis_YL32	Clostridium_innocuum_I46	-126.68907411880089	PAN	126.68907411880089	-1.0	11.255624110585822	-11.255624110585822
+Clostridium_innocuum_I46->Enterocloster_clostridioformis_YL32	Clostridium_innocuum_I46	Enterocloster_clostridioformis_YL32	-126.68907411978535	PAN	126.68907411978535	-1.0	11.255624110629554	-11.255624110629554

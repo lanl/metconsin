@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterocloster_clostridioformis_YL32->Muribaculum_intestinale_YL27	Enterocloster_clostridioformis_YL32	Muribaculum_intestinale_YL27	-126.6890741169137	PAN	126.6890741169137	-1.0	11.255624110501989	-11.255624110501989
+Muribaculum_intestinale_YL27->Enterocloster_clostridioformis_YL32	Muribaculum_intestinale_YL27	Enterocloster_clostridioformis_YL32	-126.68907411979092	PAN	126.68907411979092	-1.0	11.255624110629801	-11.255624110629801

@@ -1,0 +1,121 @@
+	Avg_Clostridium_innocuum_I46	Var_Clostridium_innocuum_I46	Avg_Enterococcus_faecalis_KB1	Var_Enterococcus_faecalis_KB1	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Cytosine	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+D-Glucose-e0	6.141019892610432e-13	1.106643438258196e-25	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+D-Mannose-e0	3.833067403400788e-13	1.1061787666810728e-25	-1.6736168372352066e-11	2.819066664965213e-23	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Folate-e0	-1.859088275195244e-12	5.049398676503631e-26	-7.391319239162295e-11	1.5692427958848824e-21	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Galactose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	0.0	0.0	0.0	0.0	0.9938507491464648	0.00012866256682749093	0.0	0.0	0.9938507491464648	0.00012866256682749093	Clostridium_innocuum_I46.	2		1	Clostridium_innocuum_I46.	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+H2O-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	3.4908265268821444e-13	3.356689442906603e-27	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+K+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	5.351953174554325e-13	4.1249243501673274e-26	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Aspartate-e0	-8.738337858816936e-15	8.61915867137614e-27	0.0	0.0	1.9873054732958066	0.0007258876201416716	0.0	0.0	1.9873054732958066	0.0007258876201416716	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.9984771151022113	0.004550268683229153	0.0	0.0	0.9984771151022113	0.004550268683229153	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46	3		1	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46	3
+L-Glutamine-e0	1.1061498613115611e-13	1.8749707256705147e-26	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Leucine-e0	0.0	0.0	0.0	0.0	1.0169086365579862	0.0224732087864266	0.0	0.0	1.0169086365579862	0.0224732087864266	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9703599251092168	0.0173602669073336	0.0	0.0	1.9703599251092168	0.0173602669073336	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Proline-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Serine-e0	0.0	0.0	-6.661079174200138e-12	2.7823565380985254e-25	1.9705793608123061	0.017148553210985035	0.0	0.0	1.9705793608123061	0.017148553210985035	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+L-Threonine-e0	5.647872857425342e-13	7.309708583585633e-27	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Valine-e0	0.0	0.0	0.0	0.0	1.9660551454703294	0.021493966372910046	0.0	0.0	1.9660551454703294	0.021493966372910046	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	1.1384950721834872e-12	3.28511882354101e-26	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+N-Acetyl-D-glucosamine-e0	3.0514056899450744e-14	2.195277288919963e-26	-2.4344284214369747e-11	2.3020641731039752e-23	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.96416819355294	0.024740840878603215	0.0	0.0	1.96416819355294	0.024740840878603215	.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	3		1	.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	3
+Na+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Niacin	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	125.92171352286073	0.5852756418593538	0.0	0.0	1.987885923076031	0.0001458619841181842	0.9939429615380155	3.646549602954605e-05	2.9818288846140466	0.0003281894642659145	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1	Clostridium_innocuum_I46	1	Clostridium_innocuum_I46Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	-4.518565654946649e-12	4.284857598383766e-22	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Pyridoxal	0.0	0.0	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Riboflavin	8.35165346197091e-14	4.626306191162189e-25	0.0	0.0	0.02299439555690566	0.022462450717872635	0.0	0.0	0.02299439555690566	0.022462450717872635	Clostridium_innocuum_I46.	2		1	Clostridium_innocuum_I46.	2
+Riboflavin-e0	0.0	0.0	96.20984854910459	0.34166324564945966	0.9939429615380155	3.646549602954605e-05	0.9939429615380155	3.646549602954605e-05	1.987885923076031	0.0001458619841181842	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1Enterococcus_faecalis_KB1	1
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	1.8638287883233988e-14	2.646156272663404e-26	-1.7288404370517424e-11	3.993834240542745e-21	1.0112495238017405	0.01704296635223289	0.0	0.0	1.0112495238017405	0.01704296635223289	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose-e0	1.5022978040681184e-12	5.669550414014991e-26	0.0	0.0	0.9939429615380155	3.646549602954605e-05	0.0	0.0	0.9939429615380155	3.646549602954605e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Thiamin-e0	4.680093505055744e-12	1.4354953404341779e-25	-6.787140557011164e-11	6.245771219063819e-21	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Uracil-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.987885923076031	0.0001458619841181842	0.0	0.0	1.987885923076031	0.0001458619841181842	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	0.9939430753588607	3.6579325213406684e-05	0.0	0.0	0.9939430753588607	3.6579325213406684e-05	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46	2		1	Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Clostridium_innocuum_I46	2
+lactate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9870885588181109	0.0009426972290756477	0.0	0.0	1.9870885588181109	0.0009426972290756477	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3
+CO2-e0	0.0	0.0	0.0	0.0	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+Ethanol-e0	0.0	0.0	0.0	0.0	1.0097694240017776	0.01561232281254916	0.0	0.0	1.0097694240017776	0.01561232281254916	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3
+Fumarate-e0	0.0	0.0	0.0	0.0	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+H2-e0	0.0	0.0	0.0	0.0	0.9939428477171702	3.65793085101e-05	0.0	0.0	0.9939428477171702	3.65793085101e-05	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+L-Malate-e0	0.0	0.0	0.0	0.0	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+O2-e0	1.795886852122467e-14	3.3439314372180746e-26	1.6665846347611612e-12	6.70111182524418e-22	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+Succinate-e0	0.0	0.0	0.0	0.0	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+XAN-e0	0.0	0.0	0.0	0.0	1.9878856954343405	0.0001463172340404	0.0	0.0	1.9878856954343405	0.0001463172340404	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+H2S-e0	0.0	0.0	0.0	0.0	0.9936573053394998	0.00032201864068402176	0.0	0.0	0.9936573053394998	0.00032201864068402176	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9864392551436603	0.0030368800245286305	0.0	0.0	1.9864392551436603	0.0030368800245286305	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2		1	.Clostridium_innocuum_I46.Enterococcus_faecalis_KB1	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.0004723022090194192	0.00047207778850298063	0.0	0.0	0.0004723022090194192	0.00047207778850298063	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+Glycerol-e0	0.0	0.0	0.0	0.0	0.000471480143437011	0.00047125650347092096	0.0	0.0	0.000471480143437011	0.00047125650347092096	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.9927473253628107	0.0012305757362382358	0.0	0.0	0.9927473253628107	0.0012305757362382358	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+Propanal-e0	0.0	0.0	0.0	0.0	0.9927473253628107	0.0012305757362382358	0.0	0.0	0.9927473253628107	0.0012305757362382358	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+Butyrate-e0	0.0	0.0	0.0	0.0	0.0007790012897116197	0.0007783907710307993	0.0	0.0	0.0007790012897116197	0.0007783907710307993	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+D-Ribose-e0	0.0	0.0	0.0	0.0	0.974586273724964	0.019014782181272966	0.0	0.0	0.974586273724964	0.019014782181272966	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2

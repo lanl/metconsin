@@ -1,0 +1,143 @@
+	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_Enterococcus_faecalis_KB1	Var_Enterococcus_faecalis_KB1	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+D-Glucose-e0	0.0	0.0	0.0	0.0	1.001100620538768	0.001150817949415448	0.0	0.0	1.001100620538768	0.001150817949415448	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1	2		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1	2
+D-Mannose-e0	0.00015234164544956747	1.3351541717899388e-05	9.081488229257053e-11	8.730040123387034e-20	1.999896955496947	1.0617622537431213e-08	0.001735208155609096	0.0017321970531350172	2.001632163652556	0.0017322076891822893	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Folate	0.0005585860317604679	0.00017950406087574358	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.001735208155609096	0.0017321970531350172	1.0016836859040825	0.0017321997167530187	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Folate-e0	0.0	0.0	3.217450953866811e-10	9.7428021949753e-19	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Galactose-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Glycine-e0	0.0	0.0	0.0	0.0	0.0015154311938999944	0.0015131345438740653	0.0	0.0	0.0015154311938999944	0.0015131345438740653	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Inosine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9964147638958558	0.003521228711305006	0.0	0.0	0.9964147638958558	0.003521228711305006	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Aspartate-e0	0.00015234164494399218	1.3351541718058728e-05	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.001735208155609096	0.0017321970531350172	2.001632163652556	0.0017322076891822893	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.0026148083666029374	0.0026079707915397676	0.0	0.0	0.0026148083666029374	0.0026079707915397676	Enterococcus_faecalis_KB1.	2		1	Enterococcus_faecalis_KB1.	2
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Proline	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Serine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Serine-e0	0.0	0.0	1.936916160437957e-11	4.699586750897095e-21	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Threonine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-glucosamine-e0	0.0	0.0	9.916369436166324e-11	1.0678710351441313e-19	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.9994810331719597	0.0004157599379002228	0.0	0.0	1.9994810331719597	0.0004157599379002228	Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Na+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	-1.4712544370410094e-15	1.6078585215791506e-27	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Niacin	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	-0.00015234164507489458	1.3351541718032722e-05	9.484431417702225e-13	3.942192115779622e-22	1.999896955496947	1.0617622537431213e-08	0.001735208155609096	0.0017321970531350172	2.001632163652556	0.0017322076891822893	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	0.7250412809609256	91.32909663861341	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.005722997709228834	0.005690243318956003	2.0056199532061756	0.005690253997346301	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27.	2	Muribaculum_intestinale_YL27Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	1.6293231288978862e-11	3.144848613208584e-21	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Pyridoxal	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Riboflavin	125.73815603102491	118.69113302622011	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.9942254800392447	0.0056902459429777575	1.994173957787718	0.005690253875810782	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Riboflavin-e0	0.0	0.0	96.79115930137209	2.4870437619002248e-05	0.9999484777484735	2.6544056343578033e-09	0.9999484777484735	2.6544056343578033e-09	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1Enterococcus_faecalis_KB1	1
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.0	0.0	7.142616347515311e-11	5.607894229815218e-20	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.00038085411354364326	8.344713573693476e-05	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.001735208155609096	0.0017321970531350172	1.0016836859040825	0.0017321997167530187	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Sucrose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	2.136803858253247e-10	4.639854947268821e-19	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.999896955496947	1.0617622537431213e-08	0.0	0.0	1.999896955496947	1.0617622537431213e-08	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1		1	Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	0.0	0.0	0.9999484777484735	2.6544056343578033e-09	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9998924269419764	9.067707006873866e-06	0.0	0.0	1.9998924269419764	9.067707006873866e-06	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9998924269419764	9.067707006873866e-06	0.0	0.0	1.9998924269419764	9.067707006873866e-06	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Ethanol-e0	0.0	0.0	0.0	0.0	1.9998924269419764	9.067707006873866e-06	0.0	0.0	1.9998924269419764	9.067707006873866e-06	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+H2-e0	0.0	0.0	0.0	0.0	1.0034898197629918	0.003533331493286109	0.0	0.0	1.0034898197629918	0.003533331493286109	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+Succinate-e0	0.0	0.0	0.0	0.0	1.001474186740948	0.0015279123020884376	0.0	0.0	1.001474186740948	0.0015279123020884376	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1	3		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Enterococcus_faecalis_KB1	3
+Formate-e0-e0	0.0	0.0	0.0	0.0	1.0005449197323502	0.000679525297408469	0.0	0.0	1.0005449197323502	0.000679525297408469	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+XAN-e0	0.0	0.0	0.0	0.0	0.9998939083029437	5.456912166780526e-05	0.0	0.0	0.9998939083029437	5.456912166780526e-05	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9997266300389853	0.000340632519480817	0.0	0.0	1.9997266300389853	0.000340632519480817	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9997266300389853	0.000340632519480817	0.0	0.0	1.9997266300389853	0.000340632519480817	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2		1	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2
+Fumarate-e0	-0.0002285124673120182	3.0040968865688233e-05	0.0	0.0	1.9997266300389853	0.000340632519480817	0.001735208155609096	0.0017321970531350172	2.0014618381945946	0.0020734207217429097	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27	3
+Glycerol-e0	7.617082268567594e-05	3.337885429481027e-06	0.0	0.0	1.0033118661431295	0.0035224035605470536	0.001735208155609096	0.0017321970531350172	1.0050470742987385	0.005242927663562502	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3	.Muribaculum_intestinale_YL27	2	.Enterococcus_faecalis_KB1.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	4
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9998633150194927	8.515812987020424e-05	0.0	0.0	0.9998633150194927	8.515812987020424e-05	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+H2S-e0	0.0	0.0	0.0	0.0	0.9998633150194927	8.515812987020424e-05	0.0	0.0	0.9998633150194927	8.515812987020424e-05	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Propanal-e0	0.0	0.0	0.0	0.0	0.9992685993472683	0.0006794187935453939	0.0	0.0	0.9992685993472683	0.0006794187935453939	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Clostridium_innocuum_I46	Blautia_coccoides_YL58	Clostridium_innocuum_I46	2610.7235558479624	Succinate-e0.Acetate-e0.L-Threonine-e0.Riboflavin.Spermidine-e0.O2-e0.L-Glutamate-e0.L-Glutamine-e0.Folate-e0	2610.7235558479624	1.0	51.095240050791055	51.095240050791055
+Clostridium_innocuum_I46->Blautia_coccoides_YL58	Clostridium_innocuum_I46	Blautia_coccoides_YL58	-10.542389171731372	PAN	10.542389171731372	-1.0	3.2469045522976763	-3.2469045522976763

@@ -1,0 +1,120 @@
+	bc1008	bc1012	bc1010	In	InAmount	Out	OutAmount	All	AllAmount
+1,2-Diacyl-sn-glycerol dioctadecanoyl	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+2-Oxoglutarate	0.0	0.0	0.0	bc1008.bc1010	2		0	bc1008.bc1010	2
+4-Hydroxybenzoate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+5-Aminolevulinate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+AMP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+ARSENOBETAINE	0.0	0.0	0.0		0		0		0
+Acetate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Adenine	0.0	0.0	0.0		0		0		0
+Adenosine	0.0	0.0	0.0	bc1010	1		0	bc1010	1
+Ala-Ala	0.0	0.0	0.0	bc1010.bc1012	2		0	bc1010.bc1012	2
+Arsenate	0.0	0.0	0.0		0		0		0
+Arsenite	0.0	0.0	0.0		0		0		0
+BET	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+BIOT	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+CMP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+CO2	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Ca2+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Carnitine	0.0	0.0	0.0		0		0		0
+Cbl	0.0	0.0	0.0		0		0		0
+Chitobiose	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+Chorismate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Citrate	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+Cl-	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Co2+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+CoA	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Cu2+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Cytidine	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+D-Alanine	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+D-Arabinose	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+D-Galacturonate	0.0	0.0	0.0		0		0		0
+D-Glucose	0.057453288118452996	3.1316528932733894	0.0	bc1008.bc1010.bc1012	3	bc1008.bc1012	2	bc1008.bc1012bc1008.bc1010.bc1012	5
+D-Serine	0.0	0.0	0.0		0		0		0
+Deoxyadenosine	0.0	0.0	0.0		0		0		0
+Deoxycytidine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Deoxyguanosine	0.0	0.0	0.0	bc1010.bc1012	2		0	bc1010.bc1012	2
+Deoxyinosine	0.0	0.0	0.0		0		0		0
+Deoxyuridine	0.0	0.0	0.0		0		0		0
+Enterobactin	0.0	0.0	0.0		0		0		0
+Fe-enterochlin	0.0	0.0	0.0		0		0		0
+Folate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Formate	0.0	0.0	0.0	bc1008.bc1012	2		0	bc1008.bc1012	2
+Fumarate	0.0	-0.7829132233184389	0.0	bc1010.bc1012	2	bc1012	1	bc1012bc1010.bc1012	3
+GTP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Galactose	0.0	0.0	0.0		0		0		0
+Glucose-1-phosphate	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+Glucuronate	0.0	0.0	0.0		0		0		0
+Glycerol	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Glycine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+H+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+H2O	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+HYXN	0.0	0.0	0.0		0		0		0
+Heme	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Inosine	0.0	0.0	0.0		0		0		0
+K+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Alanine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Arabinose	0.0	0.0	0.0		0		0		0
+L-Arginine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Ascorbate	0.0	0.0	0.0		0		0		0
+L-Asparagine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Aspartate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Cysteine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Glutamate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Glutamine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Histidine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Inositol	0.0	0.0	0.0		0		0		0
+L-Isoleucine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Lactate	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+L-Leucine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Lysine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Malate	0.0	0.0	0.0		0		0		0
+L-Methionine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Phenylalanine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Proline	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Serine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Threonine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Tryptophan	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Tyrosine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+L-Valine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Methanol	0.0	0.0	0.0		0		0		0
+Mg	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Mn2+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Myristic acid	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+N-Acetyl-D-glucosamine	0.0	0.0	0.0	bc1012	1		0	bc1012	1
+NADP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+NH3	0.0	0.0	0.0	bc1008.bc1010	2		0	bc1008.bc1010	2
+Na+	0.0	0.0	0.0		0		0		0
+Niacin	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Nicotinamide ribonucleotide	0.0	0.0	0.0	bc1010.bc1012	2		0	bc1010.bc1012	2
+Nitrate	0.0	0.0	0.0		0		0		0
+Nitrite	0.0	0.0	0.0	bc1010	1		0	bc1010	1
+O2	0.0	-1.565826446636414	0.1525294697219451	bc1008.bc1010.bc1012	3	bc1010.bc1012	2	bc1010.bc1012bc1008.bc1010.bc1012	5
+Oxidized glutathione	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+PAN	0.0	0.0	0.0		0		0		0
+PPi	0.0	0.0	0.0	bc1012	1		0	bc1012	1
+Pimelate	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+Putrescine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Pyridoxal	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Riboflavin	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+S-Adenosyl-L-methionine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Spermidine	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Succinate	0.0	0.0	0.0	bc1010.bc1012	2		0	bc1010.bc1012	2
+Sulfate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+TRHL	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+TTP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Thiamin	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+Thymidine	0.0	0.0	0.0		0		0		0
+UMP	0.0	0.0	0.0	bc1010.bc1012	2		0	bc1010.bc1012	2
+Uracil	0.0	0.0	0.0		0		0		0
+Uridine	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+Xylose	0.0	0.0	0.0		0		0		0
+Zn2+	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+chromate	0.0	0.0	0.0		0		0		0
+dATP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+dGTP	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+ddca	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+fe3	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3
+gamma-butyrobetaine	0.0	0.0	0.0		0		0		0
+hexadecenoate	0.0	0.0	0.0	bc1008	1		0	bc1008	1
+meso-2,6-Diaminopimelate	0.0	0.0	0.0	bc1008.bc1010.bc1012	3		0	bc1008.bc1010.bc1012	3

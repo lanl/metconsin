@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Enterocloster_clostridioformis_YL32	Blautia_coccoides_YL58	Enterocloster_clostridioformis_YL32	-126.68907411561116	PAN	126.68907411561116	-1.0	11.255624110444128	-11.255624110444128
+Enterocloster_clostridioformis_YL32->Blautia_coccoides_YL58	Enterocloster_clostridioformis_YL32	Blautia_coccoides_YL58	-96.79614651631213	PAN	96.79614651631213	-1.0	9.838503266061974	-9.838503266061974

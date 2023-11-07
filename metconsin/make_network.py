@@ -629,6 +629,44 @@ def average_network_spc(networks,interval_times,make_node_table=True):
 
     return avg_network,all_networks,node_table,True
 
+def get_avg_in(metser,t1,t2):
+    t1_col = np.argmin(np.abs(np.array(metser.index.astype(float)-t1)))
+    t2_col = np.argmin(np.abs(np.array(metser.index.astype(float)-t2)))
+    return metser.iloc[t1_col:t2_col+1].mean()
+
+def get_path_df(micmetnetworks,simulatedMicrobes,simulatedMetabolites):
+    ti_ints = micmetnetworks.keys()
+    all_inters = pd.DataFrame(columns=["Source","Target","Edge","Path","Metabolite","Weight","StartTime","EndTime","Length","MetaboliteBiomass","EffectiveWeight"])
+    for mic in simulatedMicrobes.index:
+        for ky in ti_ints:
+            net1 = micmetnetworks[ky]['edges']
+            mic1_s1 = net1[net1["Source"] == mic]
+            mic1_s2 = net1[[s in mic1_s1["Target"].values for s in net1["Source"]]]
+            stti = float(ky.split("-")[0])
+            endti = float(ky.split("-")[1])
+            for rw in mic1_s2.index:
+                s1rw = mic1_s1[mic1_s1["Target"] == mic1_s2.loc[rw,"Source"]]
+                sr = s1rw["Source"].iloc[0]
+                trg = mic1_s2.loc[rw,"Target"]
+                edge = "{}->{}".format(sr,trg)
+                met = s1rw["Target"].iloc[0]
+                path = "{}->{}->{}".format(sr,met,trg)
+                wei = mic1_s2.loc[rw,"Weight"]*s1rw["Weight"].iloc[0]
+                met_bm = get_avg_in(simulatedMetabolites.loc[met],stti,endti)
+                all_inters.loc["#".join([edge,ky])] = [sr,trg,edge,path,met,wei,stti,endti,endti-stti,met_bm,wei*met_bm]
+    all_inters  = all_inters[all_inters["Length"] >0]
+    pth_summs = pd.DataFrame(columns = ["Source","Target","Metabolite","Edge","AvgEffectiveWeight","TotalTime"])
+    for pth in np.unique(all_inters["Path"]):
+        pathdf = all_inters[all_inters["Path"] == pth]
+        sr = pathdf["Source"].iloc[0]
+        tg = pathdf["Target"].iloc[0]
+        met = pathdf["Metabolite"].iloc[0]
+        tottime = pathdf["Length"].sum()
+        avgew = (pathdf["Length"]*pathdf["EffectiveWeight"]).sum()
+        pth_summs.loc[pth] = [sr,tg,met,"{}->{}".format(sr,tg),avgew,tottime]
+    return pth_summs
+
+
 def make_avg_spc_node_table(networks,interval_times):
 
 

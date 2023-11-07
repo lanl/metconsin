@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	-126.68907411930297	PAN	126.68907411930297	-1.0	11.255624110608126	-11.255624110608126
+Clostridium_innocuum_I46->Muribaculum_intestinale_YL27	Clostridium_innocuum_I46	Muribaculum_intestinale_YL27	-126.68907411766132	PAN	126.68907411766132	-1.0	11.2556241105352	-11.2556241105352

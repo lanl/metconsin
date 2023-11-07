@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+37	Clostridium_innocuum_I46	Riboflavin	Microbe	-0.9999999999999052	0.9999999999999052	-1.0	0.9999999999999526	-0.9999999999999526
+55	Riboflavin	Clostridium_innocuum_I46	Metabolite	126.68907411938622	126.68907411938622	1.0	11.255624110611825	11.255624110611825

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bacteroides_caecimuris_I48->Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	5003.976699944482	L-Aspartate-e0.D-Glucose-e0.O2-e0.Spermidine-e0	5003.976699944482	1.0	70.73879204470826	70.73879204470826
+Clostridium_innocuum_I46->Bacteroides_caecimuris_I48	Clostridium_innocuum_I46	Bacteroides_caecimuris_I48	14.03179087249986	Riboflavin	14.03179087249986	1.0	3.745903211843555	3.745903211843555

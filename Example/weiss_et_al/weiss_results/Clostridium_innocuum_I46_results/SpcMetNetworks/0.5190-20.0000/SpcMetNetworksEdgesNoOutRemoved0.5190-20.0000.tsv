@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+26	Spermidine-e0	Clostridium_innocuum_I46	Metabolite	253.3781482301938	253.3781482301938	1.0	15.917856269931383	15.917856269931383
+52	Clostridium_innocuum_I46	Spermidine-e0	Microbe	-1.0000000000000107	1.0000000000000107	-1.0	1.0000000000000053	-1.0000000000000053

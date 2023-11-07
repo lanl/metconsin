@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Turicimonas_muris_YL45	Bifidobacterium_animalis_YL2	Turicimonas_muris_YL45	-126.68907411763472	Riboflavin	126.68907411763472	-1.0	11.255624110534018	-11.255624110534018
+Turicimonas_muris_YL45->Bifidobacterium_animalis_YL2	Turicimonas_muris_YL45	Bifidobacterium_animalis_YL2	-96.79614651730301	Riboflavin	96.79614651730301	-1.0	9.838503266112332	-9.838503266112332

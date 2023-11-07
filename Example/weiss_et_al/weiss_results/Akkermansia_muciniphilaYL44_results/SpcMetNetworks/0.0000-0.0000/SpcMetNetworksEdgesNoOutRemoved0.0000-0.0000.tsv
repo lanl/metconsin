@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+27	Akkermansia_muciniphilaYL44	Riboflavin	Microbe	-1.0000000000001932	1.0000000000001932	-1.0	1.0000000000000966	-1.0000000000000966
+30	Riboflavin	Akkermansia_muciniphilaYL44	Metabolite	126.6890741174977	126.6890741174977	1.0	11.255624110527933	11.255624110527933

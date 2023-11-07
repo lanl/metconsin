@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+11	Riboflavin	Turicimonas_muris_YL45	Metabolite	126.68907411739079	126.68907411739079	1.0	11.255624110523183	11.255624110523183
+47	Turicimonas_muris_YL45	Riboflavin	Microbe	-0.9999999999997204	0.9999999999997204	-1.0	0.9999999999998602	-0.9999999999998602

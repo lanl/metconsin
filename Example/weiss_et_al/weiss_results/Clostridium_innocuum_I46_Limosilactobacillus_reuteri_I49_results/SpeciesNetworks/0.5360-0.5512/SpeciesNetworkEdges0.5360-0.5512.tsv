@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Limosilactobacillus_reuteri_I49->Clostridium_innocuum_I46	Limosilactobacillus_reuteri_I49	Clostridium_innocuum_I46	-2.91682509565807	PAN	2.91682509565807	-1.0	1.7078715102893631	-1.7078715102893631
+Clostridium_innocuum_I46->Limosilactobacillus_reuteri_I49	Clostridium_innocuum_I46	Limosilactobacillus_reuteri_I49	-8.716218063899767	Folate-e0.D-Glucose-e0.L-Threonine-e0.Riboflavin.O2-e0.Spermidine-e0.Heme-e0.D-Mannose-e0.L-Glutamine-e0.Putrescine-e0.L-Aspartate-e0.D-Ribose-e0	8.716218063899767	-1.0	2.95232418001475	-2.95232418001475

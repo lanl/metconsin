@@ -1,0 +1,1 @@
+{"Enterocloster_clostridioformis_YL32": {"1.235880644317607e-05": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2-e0 exchange upper bound"], "Fluxes": ["rxn08168_c0"]}}}}

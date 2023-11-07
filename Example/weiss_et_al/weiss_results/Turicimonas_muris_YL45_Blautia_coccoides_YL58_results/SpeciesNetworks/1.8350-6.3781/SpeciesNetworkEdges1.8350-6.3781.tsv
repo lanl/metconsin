@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Turicimonas_muris_YL45	Blautia_coccoides_YL58	Turicimonas_muris_YL45	-126.68907411739085	Riboflavin	126.68907411739085	-1.0	11.255624110523184	-11.255624110523184
+Turicimonas_muris_YL45->Blautia_coccoides_YL58	Turicimonas_muris_YL45	Blautia_coccoides_YL58	-96.7961465247512	PAN	96.7961465247512	-1.0	9.838503266490854	-9.838503266490854

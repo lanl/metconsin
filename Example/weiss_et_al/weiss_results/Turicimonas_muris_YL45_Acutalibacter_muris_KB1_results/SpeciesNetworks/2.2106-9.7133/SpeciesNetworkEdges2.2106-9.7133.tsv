@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Acutalibacter_muris_KB1->Turicimonas_muris_YL45	Acutalibacter_muris_KB1	Turicimonas_muris_YL45	-253.37814823642412	Pyridoxal	253.37814823642412	-1.0	15.917856270127084	-15.917856270127084
+Turicimonas_muris_YL45->Acutalibacter_muris_KB1	Turicimonas_muris_YL45	Acutalibacter_muris_KB1	-193.59229303371959	Pyridoxal	193.59229303371959	-1.0	13.913744752356196	-13.913744752356196

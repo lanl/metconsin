@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterocloster_clostridioformis_YL32->Limosilactobacillus_reuteri_I49	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	325.81610789302397	Folate-e0.D-Glucose-e0.Spermidine-e0	325.81610789302397	1.0	18.050376946009298	18.050376946009298
+Limosilactobacillus_reuteri_I49->Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Enterocloster_clostridioformis_YL32	-0.7213364463220447	PAN	0.7213364463220447	-1.0	0.8493152808716236	-0.8493152808716236

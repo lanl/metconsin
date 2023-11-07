@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+40	Limosilactobacillus_reuteri_I49	PAN	Microbe	-0.9999999999998386	0.9999999999998386	-1.0	0.9999999999999193	-0.9999999999999193
+51	PAN	Limosilactobacillus_reuteri_I49	Metabolite	96.79614651746155	96.79614651746155	1.0	9.838503266120389	9.838503266120389

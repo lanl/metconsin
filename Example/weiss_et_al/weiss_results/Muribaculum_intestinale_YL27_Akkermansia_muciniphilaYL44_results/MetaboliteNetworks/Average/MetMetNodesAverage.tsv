@@ -1,0 +1,120 @@
+	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_Akkermansia_muciniphilaYL44	Var_Akkermansia_muciniphilaYL44	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	9.431716481887818e-15	3.506883024215071e-27	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+CO2-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Ca2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	1.75890834276886e-13	5.394237688814896e-26	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+D-Mannose-e0	1.102659912299504e-13	2.3850049760124072e-26	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Fe2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Folate	-4.810088190349131e-14	3.7593866884034234e-25	-1.2364470158226217e-13	9.485313663658803e-27	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Galactose-e0	4.2217987948762265e-14	1.5075436790518066e-26	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Glycine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+H2-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Aspartate-e0	4.2062952381507117e-14	1.2825751020165093e-26	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Cysteine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Histidine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Lysine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Proline	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Serine	-3.363500387140679e-14	7.741059298245531e-27	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Serine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Threonine	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Na+-e0	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	-3.5738855344903284e-13	4.062577677356457e-25	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Niacin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	1.9119977046450777e-13	7.144334668695448e-26	-4.124575136652221e-18	2.677281731003022e-31	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	58.739668279676934	2140.7386715141083	0.0	0.0	0.9273044055096072	0.5335133871490181	0.4636522027548036	0.13337834678725452	1.3909566082644105	1.2004051210852906	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	2.2582413467758206e-13	1.105655246416734e-25	58.73966827954027	2140.738671504146	0.9273044055096072	0.5335133871490181	0.4636522027548036	0.13337834678725452	1.3909566082644105	1.2004051210852906	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1	Akkermansia_muciniphilaYL44	1	Akkermansia_muciniphilaYL44Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	2.601146243354439e-13	3.088069795892425e-25	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Sulfate-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Uracil	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	0.4637157390619547	0.13347843173913218	0.0	0.0	0.4637157390619547	0.13347843173913218	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+fucose	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+galactose	0.0	0.0	0.0	0.0	0.4636522027548036	0.13337834678725452	0.0	0.0	0.4636522027548036	0.13337834678725452	Akkermansia_muciniphilaYL44	1		1	Akkermansia_muciniphilaYL44	1
+lactate	2.3116323611278388e-14	4.4873063388295745e-27	0.0	0.0	0.9273044055096072	0.5335133871490181	0.0	0.0	0.9273044055096072	0.5335133871490181	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1		1	Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	0.9271773328953051	0.5336212881825193	0.0	0.0	0.9271773328953051	0.5336212881825193	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2
+Succinate-e0	0.0	0.0	0.0	0.0	0.6828105475225941	0.4049625015888048	0.0	0.0	0.6828105475225941	0.4049625015888048	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27.Akkermansia_muciniphilaYL44	3		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27.Akkermansia_muciniphilaYL44	3
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.6369743808507637	0.6505965958953079	0.0	0.0	0.6369743808507637	0.6505965958953079	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	0.31848719042538187	0.16264914897382698	0.0	0.0	0.31848719042538187	0.16264914897382698	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Adenosine-e0	-3.822816560596861e-14	8.061899531005025e-26	0.0	0.0	0.6369743808507637	0.6505965958953079	0.0	0.0	0.6369743808507637	0.6505965958953079	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.6369743808507637	0.6505965958953079	0.0	0.0	0.6369743808507637	0.6505965958953079	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.31848719042538187	0.16264914897382698	0.0	0.0	0.31848719042538187	0.16264914897382698	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+H2S-e0	0.0	0.0	0.0	0.0	0.6369743808507637	0.6505965958953079	0.0	0.0	0.6369743808507637	0.6505965958953079	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2
+Propionate-e0	0.0	0.0	0.0	0.0	0.20038651375209904	0.33908135827431035	0.0	0.0	0.20038651375209904	0.33908135827431035	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2		1	.Akkermansia_muciniphilaYL44.Muribaculum_intestinale_YL27	2

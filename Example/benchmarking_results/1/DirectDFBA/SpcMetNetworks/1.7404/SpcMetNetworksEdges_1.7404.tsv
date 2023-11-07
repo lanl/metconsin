@@ -1,0 +1,14 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+bc1001##Acetate	bc1001	Acetate	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+Acetate##bc1001	Acetate	bc1001	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001
+bc1001##CO2	bc1001	CO2	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+CO2##bc1001	CO2	bc1001	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001
+bc1001##H+	bc1001	H+	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+H+##bc1001	H+	bc1001	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001
+bc1001##H2O	bc1001	H2O	Microbe	-2e-08	2e-08	-1.0	0.0001414213562373095	-0.0001414213562373095
+H2O##bc1001	H2O	bc1001	Metabolite	2e-08	2e-08	1.0	0.0001414213562373095	0.0001414213562373095
+bc1001##O2	bc1001	O2	Microbe	1e-08	1e-08	1.0	0.0001	0.0001
+bc1016##Acetate	bc1016	Acetate	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+Acetate##bc1016	Acetate	bc1016	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001
+bc1016##H+	bc1016	H+	Microbe	-1e-08	1e-08	-1.0	0.0001	-0.0001
+H+##bc1016	H+	bc1016	Metabolite	1e-08	1e-08	1.0	0.0001	0.0001

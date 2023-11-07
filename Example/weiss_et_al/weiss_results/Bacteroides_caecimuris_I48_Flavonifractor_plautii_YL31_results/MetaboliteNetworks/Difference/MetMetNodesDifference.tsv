@@ -1,0 +1,137 @@
+	Avg_Bacteroides_caecimuris_I48	Var_Bacteroides_caecimuris_I48	Avg_Flavonifractor_plautii_YL31	Var_Flavonifractor_plautii_YL31	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Acetate-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Butyrate-e0	0.0	0.0	0.0	0.0	1.8704749413263766	0.0671967769303996	0.0	0.0	1.8704749413263766	0.0671967769303996	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cytosine-e0	0.0	0.0	4.809062184614872e-13	7.889824593113313e-26	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+D-Glucose-e0	0.00022353687816981137	2.0490243039854293e-05	7.605819744847641e-13	1.7185202086901943e-25	1.9392109761746414	0.0035829884131025626	0.0024325455874224895	0.0024264484566098783	1.9416435217620638	0.0060184258686003175	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+D-Mannose-e0	0.0	0.0	8.425412187595459e-13	1.7492555852503532e-25	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Folate	8.446869588072786	639.8208325569004	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.10243254558742251	0.09162120701283158	1.0720380336747433	0.09270621388643316	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+Folate-e0	0.0	0.0	-5.142851364079271e-14	6.463679012271986e-25	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Formate-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Fumarate-e0	3.4590145351614506e-12	1.0897488916533997e-22	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Galactose-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycerol-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Glycine-e0	0.0	0.0	5.6204278887363293e-14	9.851612292924764e-27	0.9566511099879885	0.0136532734161464	0.0	0.0	0.9566511099879885	0.0136532734161464	Flavonifractor_plautii_YL31.	2		1	Flavonifractor_plautii_YL31.	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+H2-e0	0.0	0.0	4.68604502448487e-14	3.386556096729707e-28	1.9196857175407462	0.022643272054489922	0.0	0.0	1.9196857175407462	0.022643272054489922	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2
+H2O-e0	0.0	0.0	0.0	0.0	0.8999038456767982	0.06569147055434066	0.0	0.0	0.8999038456767982	0.06569147055434066	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Flavonifractor_plautii_YL31.	3		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Flavonifractor_plautii_YL31.	3
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	1.3726091099364042e-13	9.918656914055672e-26	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+K+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Alanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Alanine-e0	0.0	0.0	5.054842084522189e-13	4.492700538848258e-26	0.9516460898127034	0.01848961921517722	0.0	0.0	0.9516460898127034	0.01848961921517722	.Flavonifractor_plautii_YL31	2		1	.Flavonifractor_plautii_YL31	2
+L-Arginine-e0	0.0	0.0	-8.022061429816707e-14	3.572866474865569e-27	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.00033530524562729367	4.610304688899408e-05	-4.9684980478432826e-14	4.059487500331544e-27	1.9219907720201959	0.020434010173028795	0.0024325455874224895	0.0024264484566098783	1.9244233176076184	0.01809068070420527	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	3
+L-Aspartate-e0	0.00022353683678634416	2.0490243058854024e-05	0.0	0.0	0.9892308715111792	0.02016052912670752	0.0024325455874224895	0.0024264484566098783	0.9916634170986016	0.027358181931803748	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	3
+L-Cysteine-e0	0.0	0.0	5.735880646810013e-13	3.6211745640890483e-26	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	-2.58139432105508e-13	4.2429603798978794e-26	1.92384482129046	0.018649065232843532	0.0	0.0	1.92384482129046	0.018649065232843532	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2
+L-Glutamine-e0	0.0	0.0	-3.1725358085304593e-13	5.331208616358934e-26	0.9535267382772002	0.016678404994770975	0.0	0.0	0.9535267382772002	0.016678404994770975	Flavonifractor_plautii_YL31.	2		1	Flavonifractor_plautii_YL31.	2
+L-Glycine	0.0	0.0	0.0	0.0	0.005515935498476584	0.005484585184480803	0.0	0.0	0.005515935498476584	0.005484585184480803	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.923672455457678	0.018815305302249008	0.0	0.0	1.923672455457678	0.018815305302249008	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48	2
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Proline	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Proline-e0	0.0	0.0	-1.1812398708711347e-12	1.51589599500361e-25	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Serine	0.00011176842508974887	5.122560763173422e-06	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0024325455874224895	0.0024264484566098783	0.9720380336747432	0.0033266900593294513	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+L-Serine-e0	0.0	0.0	3.001915957693109e-13	1.141040937020923e-26	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Threonine	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Threonine-e0	0.0	0.0	4.432485972949094e-13	4.324092030731796e-26	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Tryptophan	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.933804336922941	0.008939528248774205	0.0	0.0	1.933804336922941	0.008939528248774205	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2		1	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Na+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Neu5Ac-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Niacin	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	-0.00022353678892542383	2.0490243080823027e-05	-1.456859314822007e-14	4.293564335028779e-26	1.9392109761746414	0.0035829884131025626	0.0024325455874224895	0.0024264484566098783	1.9416435217620638	0.0060184258686003175	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	2.172671815097584	270.3898004192174	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.01714963843759903	0.01684658900616494	1.9563606146122405	0.020492950571096513	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1	Bacteroides_caecimuris_I48.	2	Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	5.03518078672542e-13	1.2824109554427717e-26	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Putrescine-e0	0.0	0.0	2.03357036024577e-14	3.6089196588094084e-28	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	107.68937323700128	1693.4912182164899	122.83842154544608	14.376849841615918	1.9392109761746414	0.0035829884131025626	1.8220613377370425	0.10615854994106992	3.761272313911684	0.11647461148678451	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1	Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2	Flavonifractor_plautii_YL31Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sorbitol-e0-e0	0.0	0.0	0.0	0.0	0.016437665378103615	0.016159256033855277	0.0	0.0	0.016437665378103615	0.016159256033855277	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+Spermidine-e0	7.451235384173867e-05	2.276693661742908e-06	-1.5842360892759072e-13	4.446907057339797e-26	1.9392109761746414	0.0035829884131025626	0.0024325455874224895	0.0024264484566098783	1.9416435217620638	0.0060184258686003175	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Succinate-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Sucrose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Uracil-e0	0.0	0.0	4.662708762833984e-13	5.037951300319936e-26	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+Urea-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+XAN-e0	0.0	0.0	0.0	0.0	0.9696054880873207	0.0008957471032756407	0.0	0.0	0.9696054880873207	0.0008957471032756407	Flavonifractor_plautii_YL31	1		1	Flavonifractor_plautii_YL31	1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9392109761746414	0.0035829884131025626	0.0	0.0	1.9392109761746414	0.0035829884131025626	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1		1	Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+5'-Deoxyadenosine-e0	0.0	0.0	4.677194968228845e-13	1.9575164626594634e-25	1.9388268371859358	0.00434969483176683	0.0	0.0	1.9388268371859358	0.00434969483176683	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2		1	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9388268371859358	0.00434969483176683	0.0	0.0	1.9388268371859358	0.00434969483176683	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2		1	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9694134185929679	0.0010874237079417075	0.0	0.0	0.9694134185929679	0.0010874237079417075	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Ornithine-e0	0.0	0.0	0.0	0.0	1.932429776309004	0.017072947186508727	0.0	0.0	1.932429776309004	0.017072947186508727	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2		1	.Bacteroides_caecimuris_I48.Flavonifractor_plautii_YL31	2
+H2S-e0	0.0	0.0	0.0	0.0	0.9073356220043989	0.059055168056575486	0.0	0.0	0.9073356220043989	0.059055168056575486	.Flavonifractor_plautii_YL31	2		1	.Flavonifractor_plautii_YL31	2

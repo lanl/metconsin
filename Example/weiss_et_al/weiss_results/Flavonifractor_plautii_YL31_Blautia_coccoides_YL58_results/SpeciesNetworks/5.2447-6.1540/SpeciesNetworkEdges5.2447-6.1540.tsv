@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Blautia_coccoides_YL58->Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	2.3382056075707616	5'-Deoxyadenosine-e0	2.3382056075707616	1.0	1.529119226081067	1.529119226081067
+Flavonifractor_plautii_YL31->Blautia_coccoides_YL58	Flavonifractor_plautii_YL31	Blautia_coccoides_YL58	-3.572988343824831	PAN	3.572988343824831	-1.0	1.8902349969844572	-1.8902349969844572

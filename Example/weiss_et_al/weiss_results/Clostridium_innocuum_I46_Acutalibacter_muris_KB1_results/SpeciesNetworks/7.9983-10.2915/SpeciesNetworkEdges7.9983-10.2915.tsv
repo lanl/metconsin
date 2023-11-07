@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Acutalibacter_muris_KB1->Clostridium_innocuum_I46	Acutalibacter_muris_KB1	Clostridium_innocuum_I46	-126.6890741177391	PAN	126.6890741177391	-1.0	11.255624110538655	-11.255624110538655
+Clostridium_innocuum_I46->Acutalibacter_muris_KB1	Clostridium_innocuum_I46	Acutalibacter_muris_KB1	-96.79614651611271	PAN	96.79614651611271	-1.0	9.83850326605184	-9.83850326605184

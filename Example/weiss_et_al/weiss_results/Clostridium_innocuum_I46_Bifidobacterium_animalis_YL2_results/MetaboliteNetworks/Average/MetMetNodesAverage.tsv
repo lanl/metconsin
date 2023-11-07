@@ -1,0 +1,130 @@
+	Avg_Clostridium_innocuum_I46	Var_Clostridium_innocuum_I46	Avg_Bifidobacterium_animalis_YL2	Var_Bifidobacterium_animalis_YL2	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+2-Oxoglutarate-e0-e0	0.0	0.0	0.0	0.0	0.7880296336563644	0.1637401638253115	0.0	0.0	0.7880296336563644	0.1637401638253115	Bifidobacterium_animalis_YL2.	2		1	Bifidobacterium_animalis_YL2.	2
+Acetate-e0	0.0	0.0	0.0	0.0	1.0142085744245388	0.0191667661690265	0.0	0.0	1.0142085744245388	0.0191667661690265	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+CO2-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	0.00014878790581338437	9.368471488342163e-05	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0002445702991133007	0.0002445101667406362	1.9896203651644235	0.00035681191019155386	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Clostridium_innocuum_I46Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+D-Lactate-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+D-Mannose-e0	0.00014878790569777171	9.368471488345942e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0002445702991133007	0.0002445101667406362	0.9949324677317684	0.00027259250399413353	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Ethanol-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Folate	0.0	0.0	5.189152457006093e-14	1.3497570633472353e-23	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Folate-e0	82.62224910311431	115.51922120736388	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.9783919770340885	0.0160561015545675	1.9730798744667437	0.016139387467285143	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Fumarate-e0	0.0	0.0	0.0	0.0	1.0111354881777854	0.016204627241575682	0.0	0.0	1.0111354881777854	0.016204627241575682	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2
+Galactose-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	0.0	0.0	0.0	0.0	0.01566586363450822	0.015419140658687706	0.0	0.0	0.01566586363450822	0.015419140658687706	Clostridium_innocuum_I46.	2		1	Clostridium_innocuum_I46.	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+H2O-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	4.123855631041266e-05	1.6997352513484057e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.00010004190396825081	0.00010003184242014661	0.9947879393366234	0.00012810602294377493	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+K+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Aspartate-e0	2.6388726376040183e-05	5.605187039746118e-06	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0002445702991133007	0.0002445101667406362	1.9896203651644235	0.00035681191019155386	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Clostridium_innocuum_I46Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	1.1875746898448723e-12	4.65841334951995e-26	0.0	0.0	1.9796072629003585	0.00978377237217664	0.0	0.0	1.9796072629003585	0.00978377237217664	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+L-Glutamine-e0	-7.157011493600058e-05	2.1490540638206373e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0002445702991133007	0.0002445101667406362	0.9949324677317684	0.00027259250399413353	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Lactate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	1.0111312713309997	0.016200549589731116	0.0	0.0	1.0111312713309997	0.016200549589731116	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2	2
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9729282041201799	0.016286048093499154	0.0	0.0	1.9729282041201799	0.016286048093499154	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+L-Malate-e0	2.4373083126448286e-14	4.0378260172064586e-27	0.0	0.0	0.9864636445178249	0.00818385966044576	0.0	0.0	0.9864636445178249	0.00818385966044576	Clostridium_innocuum_I46.	2		1	Clostridium_innocuum_I46.	2
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Proline-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Serine-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Threonine-e0	-4.5161448338353487e-13	7.254191492829982e-27	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+L-Valine-e0	0.0	0.0	0.0	0.0	1.973709931230802	0.015529646532039134	0.0	0.0	1.973709931230802	0.015529646532039134	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose-e0	0.0	0.0	2.2894132849845937e-13	1.2315267121994244e-24	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	7.72177892831863e-05	2.5462146625252692e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0002445702991133007	0.0002445101667406362	0.9949324677317684	0.00027259250399413353	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+N-Acetyl-D-glucosamine-e0	0.15342328310972073	2.7559581406440565	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.00846831143898434	0.00839621819727105	1.0031562088716395	0.008424764656712562	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.968519362079041	0.02052905127644202	0.0	0.0	1.968519362079041	0.02052905127644202	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+Na+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Niacin	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	-7.439395294888825e-05	2.3421178720850603e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0002445702991133007	0.0002445101667406362	0.9949324677317684	0.00027259250399413353	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	0.014128476529545252	1.7897229359843336	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.00011152087603521517	0.00011150837306330433	1.9894873157413455	0.000223795098728932	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1	Clostridium_innocuum_I46.	2	Clostridium_innocuum_I46Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	-6.022629674385827e-14	2.639038820633042e-26	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Bifidobacterium_animalis_YL2	1		1	Bifidobacterium_animalis_YL2	1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyruvate-e0	0.0	0.0	0.0	0.0	0.29907291162127764	0.20915316623200791	0.0	0.0	0.29907291162127764	0.20915316623200791	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+Riboflavin	0.9650251499513077	121.30241287433626	96.28195545820549	0.2629879647756204	1.9893757948653101	0.00011227413788785131	1.002448472007379	0.007728534644544505	2.991824266872689	0.007953958885356214	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1	Bifidobacterium_animalis_YL2.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2	Bifidobacterium_animalis_YL2Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	1.816076512985207e-05	9.555426170329152e-06	-2.8448900131875477e-13	3.4984963382184314e-26	1.391229971622755	0.8366574241129284	0.0002445702991133007	0.0002445101667406362	1.3914745419218684	0.8371960934922282	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.	2	.Clostridium_innocuum_I46	2	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.Clostridium_innocuum_I46Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46.	3
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Succinate-e0	0.0	0.0	0.0	0.0	0.2691372958663942	0.19631763030671787	0.0	0.0	0.2691372958663942	0.19631763030671787	Clostridium_innocuum_I46..Bifidobacterium_animalis_YL2	3		1	Clostridium_innocuum_I46..Bifidobacterium_animalis_YL2	3
+Sucrose-e0	0.0	0.0	2.2035774421098938e-13	1.1293051920634462e-24	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Thiamin-e0	1.481139754238793e-14	4.8275631591045845e-26	-1.751643497519406e-14	3.35577829726505e-26	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Uracil-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+XAN-e0	0.0	0.0	0.0	0.0	0.9946878974326551	2.806853447196283e-05	0.0	0.0	0.9946878974326551	2.806853447196283e-05	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9893757948653101	0.00011227413788785131	0.0	0.0	1.9893757948653101	0.00011227413788785131	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1		1	Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	1
+lactate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H2S-e0	0.0	0.0	0.0	0.0	1.9890735301254217	0.0007166776506068908	0.0	0.0	1.9890735301254217	0.0007166776506068908	.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.9945199510685396	0.0001959770644065289	0.0	0.0	0.9945199510685396	0.0001959770644065289	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9890399021370793	0.0007839082576261156	0.0	0.0	1.9890399021370793	0.0007839082576261156	.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2		1	.Bifidobacterium_animalis_YL2.Clostridium_innocuum_I46	2
+Glycerol-e0	0.0	0.0	0.0	0.0	0.9945199510685396	0.0001959770644065289	0.0	0.0	0.9945199510685396	0.0001959770644065289	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9945199510685396	0.0001959770644065289	0.0	0.0	0.9945199510685396	0.0001959770644065289	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+NAD-e0-e0	0.0	0.0	0.0	0.0	0.009174837683505785	0.009090212876694924	0.0	0.0	0.009174837683505785	0.009090212876694924	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+Butyrate-e0	0.0	0.0	0.0	0.0	0.9751672204407714	0.019164562797309694	0.0	0.0	0.9751672204407714	0.019164562797309694	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+Cytidine-e0	0.0	0.0	0.0	0.0	0.09999999999999998	0.08994687897432653	0.0	0.0	0.09999999999999998	0.08994687897432653	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2
+Myristic acid-e0	0.0	0.0	0.0	0.0	0.09999999999999998	0.08994687897432653	0.0	0.0	0.09999999999999998	0.08994687897432653	.Bifidobacterium_animalis_YL2	2		1	.Bifidobacterium_animalis_YL2	2

@@ -1,0 +1,9 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	PAN	-2.199641330534033	207.90298075116624	2.199641330534033	-1.0	1.4831187850384855	-1.4831187850384855
+1	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Spermidine-e0.Putrescine-e0.D-Mannose-e0.Cytosine.Folate-e0	-0.004836270733372143	1.5399207547388627	0.004836270733372143	-1.0	0.06954330113944938	-0.06954330113944938
+2	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	Folate-e0	-0.3416252581458135	23.03505476752712	0.3416252581458135	-1.0	0.5844871753475978	-0.5844871753475978
+3	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Spermidine-e0.Putrescine-e0.D-Mannose-e0.Cytosine.Folate-e0.L-Asparagine-e0	-0.007606132969482704	2.016891738596555	0.007606132969482704	-1.0	0.0872131467697543	-0.0872131467697543
+4	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Spermidine-e0.Putrescine-e0.D-Mannose-e0.L-Glutamine-e0.Cytosine.Folate-e0.L-Aspartate-e0.L-Asparagine-e0.L-Threonine-e0	-0.22166657927963834	8.175627570248194	0.22166657927963834	-1.0	0.47081480359015726	-0.47081480359015726
+5	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	O2-e0.Spermidine-e0.Putrescine-e0.L-Glutamate-e0.D-Mannose-e0.L-Glutamine-e0.Cytosine.Folate-e0.L-Aspartate-e0.L-Asparagine-e0.L-Threonine-e0	-0.03970113548113612	5.3275979444841814	0.03970113548113612	-1.0	0.19925143783957025	-0.19925143783957025
+6	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	Cytosine	-3.3633108635820617	0.4465852676316742	3.3633108635820617	-1.0	1.833933167697793	-1.833933167697793
+7	Limosilactobacillus_reuteri_I49	Enterococcus_faecalis_KB1	Putrescine-e0.Folate-e0.Spermidine-e0.D-Mannose-e0	-9.01758715895563e-06	4.498242715610698e-06	9.01758715895563e-06	-1.0	0.003002929762574481	-0.003002929762574481

@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Flavonifractor_plautii_YL31	Muribaculum_intestinale_YL27	Flavonifractor_plautii_YL31	-126.68907411790133	Riboflavin	126.68907411790133	-1.0	11.255624110545861	-11.255624110545861
+Flavonifractor_plautii_YL31->Muribaculum_intestinale_YL27	Flavonifractor_plautii_YL31	Muribaculum_intestinale_YL27	-126.68907411635074	PAN	126.68907411635074	-1.0	11.255624110476981	-11.255624110476981

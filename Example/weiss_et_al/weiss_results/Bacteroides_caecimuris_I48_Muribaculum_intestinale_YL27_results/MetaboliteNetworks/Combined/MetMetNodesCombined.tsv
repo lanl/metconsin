@@ -1,0 +1,124 @@
+	Avg_Bacteroides_caecimuris_I48	Var_Bacteroides_caecimuris_I48	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	0.0	0.0	2.4080717580647625e-13	8.099491252852394e-27	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	1.267259220166099e-12	8.990909976316557e-27	4.4640167940517065e-13	2.86778476759804e-26	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+D-Mannose-e0	0.0	0.0	2.4063546088441895e-13	2.868955136922761e-26	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Folate	1.8176883515163295e-12	4.0980292831695418e-25	2.086845272082903e-12	7.147275020010625e-25	1.720693296616849	0.36319610662845725	0.0	0.0	1.720693296616849	0.36319610662845725	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2
+Galactose-e0	0.0	0.0	2.66057584817491e-13	2.899254091480671e-26	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	4.374248499462229e-13	6.640261098747713e-27	1.9172162308904055	0.009482778478457651	0.0	0.0	1.9172162308904055	0.009482778478457651	Muribaculum_intestinale_YL27.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	Muribaculum_intestinale_YL27.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+Glycine-e0	0.0	0.0	7.861654864971023e-14	4.873933264997171e-28	0.9460308679148357	0.015567730108130243	0.0	0.0	0.9460308679148357	0.015567730108130243	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	0.960404672654939	0.0015682411538962464	0.0	0.0	0.960404672654939	0.0015682411538962464	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Alanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Alanine-e0	0.0	0.0	2.020340169489532e-13	1.314775498007616e-27	0.9513137043268686	0.010429745669188037	0.0	0.0	0.9513137043268686	0.010429745669188037	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Arginine-e0	0.0	0.0	7.781499317622306e-14	1.534999705914621e-26	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Aspartate-e0	0.0	0.0	3.8912290400761426e-13	2.5025056318156907e-27	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Cysteine-e0	0.0	0.0	1.2759464824842284e-13	4.397226997234826e-27	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	3.4277898771403556e-13	8.46642609626812e-27	0.9355606808500128	0.02557935397323522	0.0	0.0	0.9355606808500128	0.02557935397323522	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.004131388739349411	0.0041136435482397645	0.0	0.0	0.004131388739349411	0.0041136435482397645	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+L-Glycine	0.0	0.0	0.0	0.0	0.003477065726443684	0.003464496331908253	0.0	0.0	0.003477065726443684	0.003464496331908253	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Proline	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Serine	-1.9497704318460216e-13	2.7529239508957294e-28	-1.7647201607686112e-13	2.0958098340069812e-27	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Threonine	0.0	0.0	-6.003543367623254e-14	2.3543377848482857e-28	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tyrosine	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Na+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	0.0	0.0	3.657147315623023e-13	3.102562712190798e-26	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Niacin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	108.99652029315385	1457.3354099661215	108.99652029376925	1457.3354099825783	1.720693296616849	0.36319610662845725	1.720693296616849	0.36319610662845725	3.441386593233698	1.452784426513829	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	-6.582107303191872e-14	1.561652906384807e-27	0.8355606808500128	0.10971457996763305	0.0	0.0	0.8355606808500128	0.10971457996763305	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Putrescine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	2.5043028334446107e-12	7.931979424858197e-25	1.0600902048604603e-12	1.565122816931285e-25	1.720693296616849	0.36319610662845725	0.0	0.0	1.720693296616849	0.36319610662845725	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	1.2885746091340634e-12	2.092992499551731e-25	0.0	0.0	0.8603466483084246	0.09079902665711431	0.0	0.0	0.8603466483084246	0.09079902665711431	Bacteroides_caecimuris_I48.	2		1	Bacteroides_caecimuris_I48.	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0	0.0	1.1400033975075329e-12	9.233751355259496e-26	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Sucrose-e0	0.0	0.0	0.0	0.0	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	0.0	0.0	0.0	0.0	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.920693296616849	0.006040151336421008	0.0	0.0	1.920693296616849	0.006040151336421008	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1		1	Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	1.1555664857634638e-13	5.6023375212020704e-27	0.9603466483084245	0.001510037834105252	0.0	0.0	0.9603466483084245	0.001510037834105252	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9206898019392706	0.006047118698920646	0.0	0.0	1.9206898019392706	0.006047118698920646	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9206898019392706	0.006047118698920646	0.0	0.0	1.9206898019392706	0.006047118698920646	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+Formate-e0	0.0	0.0	0.0	0.0	0.9603449009696353	0.0015117796747301615	0.0	0.0	0.9603449009696353	0.0015117796747301615	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.9603449009696353	0.0015117796747301615	0.0	0.0	0.9603449009696353	0.0015117796747301615	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Glycerol-e0	0.0	0.0	-1.6850427975169138e-13	1.8599299282962283e-26	1.9206898019392706	0.006047118698920646	0.0	0.0	1.9206898019392706	0.006047118698920646	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+H2-e0	0.0	0.0	0.0	0.0	1.9206898019392706	0.006047118698920646	0.0	0.0	1.9206898019392706	0.006047118698920646	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+O2-e0	4.541608019806868e-15	7.176121084380461e-27	7.207508501964441e-15	3.9483216142739734e-27	1.9206898019392706	0.006047118698920646	0.0	0.0	1.9206898019392706	0.006047118698920646	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+Sorbitol-e0-e0	0.0	0.0	0.0	0.0	0.9603449009696353	0.0015117796747301615	0.0	0.0	0.9603449009696353	0.0015117796747301615	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Succinate-e0	0.0	0.0	1.2022489152639063e-13	2.907094806898907e-27	1.7740747748296313	0.12939058413534196	0.0	0.0	1.7740747748296313	0.12939058413534196	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.Bacteroides_caecimuris_I48	3		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27.Bacteroides_caecimuris_I48	3
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.9205772479238201	0.006271504826727442	0.0	0.0	1.9205772479238201	0.006271504826727442	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9205772479238201	0.006271504826727442	0.0	0.0	1.9205772479238201	0.006271504826727442	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	1.9205772479238201	0.006271504826727442	0.0	0.0	1.9205772479238201	0.006271504826727442	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2		1	.Bacteroides_caecimuris_I48.Muribaculum_intestinale_YL27	2
+H2S-e0	0.0	0.0	0.0	0.0	0.9602886239619101	0.0015678762066818606	0.0	0.0	0.9602886239619101	0.0015678762066818606	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Propionate-e0	0.0	0.0	0.0	0.0	0.9538296347631231	0.007962401226192722	0.0	0.0	0.9538296347631231	0.007962401226192722	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+GABA-e0-e0	0.0	0.0	0.0	0.0	0.9391291749170176	0.022192754642007675	0.0	0.0	0.9391291749170176	0.022192754642007675	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2

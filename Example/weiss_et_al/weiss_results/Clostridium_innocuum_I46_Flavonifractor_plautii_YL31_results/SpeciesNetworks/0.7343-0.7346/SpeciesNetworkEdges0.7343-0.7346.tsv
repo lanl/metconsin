@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Flavonifractor_plautii_YL31->Clostridium_innocuum_I46	Flavonifractor_plautii_YL31	Clostridium_innocuum_I46	64.52257438838839	L-Threonine-e0.D-Glucose-e0.O2-e0.Spermidine-e0.L-Glutamate-e0.L-Glutamine-e0.Folate-e0.L-Aspartate-e0	64.52257438838839	1.0	8.03259449918819	8.03259449918819
+Clostridium_innocuum_I46->Flavonifractor_plautii_YL31	Clostridium_innocuum_I46	Flavonifractor_plautii_YL31	-84.45938273843333	Folate-e0	84.45938273843333	-1.0	9.190178602096552	-9.190178602096552

@@ -1,0 +1,149 @@
+	Avg_Limosilactobacillus_reuteri_I49	Var_Limosilactobacillus_reuteri_I49	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	0.0	0.0	5.423402722060003e-13	2.9754108824823677e-26	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Cl--e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Cytosine	8.027286167605074e-06	6.584994020045705e-07	0.0	0.0	0.9691008074831255	0.016076789668051344	9.784435618725708e-05	9.783464130604332e-05	0.9691986518393128	0.01617787066540721	Limosilactobacillus_reuteri_I49.	2	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49..Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+D-Glucose-e0	4.63155304891984e-05	1.1114987575198665e-05	-1.8916458401542066e-13	5.947593387341316e-26	1.970467872829641	0.0008592683640118081	0.0004457416068633116	0.0004455399874793135	1.9709136144365043	0.0013051971034891466	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+D-Mannose-e0	0.0001997966168603065	3.4726243035552044e-05	-4.1470863908222403e-13	5.982375983332828e-26	1.970467872829641	0.0008592683640118081	0.0023684143403163425	0.002362722125271381	1.9728362871699572	0.0032240560936440343	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+Fe2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Folate	0.0	0.0	3.726927831213102e-12	7.817189664170549e-25	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Folate-e0	3.3762526371855155	198.68261265838743	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.06005477612169058	0.056394945054129605	1.0452887125365111	0.056635950427591106	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Galactose-e0	3.210902154244017e-05	1.0535990440087296e-05	-3.895454609987202e-13	3.3875269985977656e-26	1.925087186478399	0.04411056008299037	9.784435618725708e-05	9.783464130604332e-05	1.9251850308345864	0.044217491676843045	Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2	.Limosilactobacillus_reuteri_I49	2	Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	3
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	4.0365203564904496e-13	1.7486085764357452e-26	0.922359282212333	0.059050457666998984	0.0	0.0	0.922359282212333	0.059050457666998984	Muribaculum_intestinale_YL27.	2		1	Muribaculum_intestinale_YL27.	2
+Glycine-e0	8.02725864584712e-06	6.584994024524441e-07	3.7609966805421125e-14	1.742872423393959e-27	1.9550803015329845	0.01599314582385546	9.784435618725708e-05	9.783464130604332e-05	1.9551781458891715	0.01609412143697832	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	3
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Inosine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	2.0728622523516843e-13	4.177976479760423e-27	1.8769011130299469	0.17555087064594793	0.0	0.0	1.8769011130299469	0.17555087064594793	Limosilactobacillus_reuteri_I49..Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	3		1	Limosilactobacillus_reuteri_I49..Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	3
+L-Arginine-e0	0.0	0.0	6.885777865859462e-13	6.388606444342252e-26	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.00021250715749739424	2.706204214709244e-05	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.002012992548253277	0.0020088805751118342	0.9872469289630738	0.002224575478352963	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+L-Aspartate-e0	3.141541067027154e-05	4.338034157458431e-05	3.6274004485759353e-13	3.826215070613979e-27	1.970467872829641	0.0008592683640118081	0.002020517089640288	0.0020163743180340297	1.972488389919281	0.0028774048690249016	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+L-Cysteine-e0	8.027270780358391e-06	6.584994022548582e-07	4.270583394004858e-13	2.1304784275096968e-26	1.970467872829641	0.0008592683640118081	9.784435618725708e-05	9.783464130604332e-05	1.9705657171858282	0.0009571883399340927	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.9252708945032396	0.05650305196565443	0.0	0.0	0.9252708945032396	0.05650305196565443	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Glutamate-e0	1.598493398914863e-05	1.173804682405999e-05	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.002012992548253277	0.0020088805751118342	0.9872469289630738	0.002224575478352963	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+L-Glutamine-e0	1.6054532689691306e-05	2.6339976093064144e-06	0.0	0.0	0.9398543441917211	0.0434849052328373	9.784435618725708e-05	9.783464130604332e-05	0.9399521885479083	0.04359179394211175	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lactate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Proline	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Serine	0.0	0.0	-2.545594875697943e-13	1.2314753152577427e-27	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Serine-e0	8.027273363419721e-06	6.584994022127042e-07	0.0	0.0	0.9847976838663951	0.0006506862748456611	9.784435618725708e-05	9.783464130604332e-05	0.9848955282225824	0.0007486502137337038	Limosilactobacillus_reuteri_I49.	2	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49..Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+L-Threonine	0.0	0.0	-5.848503694383167e-14	4.85735668432819e-28	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	1.6019725736827246e-05	4.910010480181906e-06	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.002012992548253277	0.0020088805751118342	0.9872469289630738	0.002224575478352963	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+L-Tryptophan	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose-e0	0.0005390942739861668	0.00018583148316287596	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0023608897989293317	0.0023552336951919405	0.9875948262137498	0.0025710803071239624	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Na+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Neu5Ac-e0	0.0	0.0	3.2528033769857545e-13	3.6155433057178397e-26	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Niacin	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Limosilactobacillus_reuteri_I49	1		1	Limosilactobacillus_reuteri_I49	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	9.866942985658003	856.2879218114074	124.81837519256733	3.4478404109815814	1.970467872829641	0.0008592683640118081	1.0871692235185348	0.09165032143732232	3.057637096348176	0.09345776067280868	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pyruvate-e0	0.0002158511437601943	3.471947147304412e-05	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0023684143403163425	0.002362722125271381	0.9876023507551368	0.0025785720184547532	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Riboflavin	34.6000472233546	3046.5513988573866	9.995346160228899e-13	3.989513449934e-26	1.970467872829641	0.0008592683640118081	0.3129136718803091	0.21355288721606197	2.28338154470995	0.21468506215482291	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	8.127738806562235e-05	5.048120415643903e-05	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0023684143403163425	0.002362722125271381	0.9876023507551368	0.0025785720184547532	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0002962565384962171	6.673150663260908e-05	2.0195554671306047e-13	1.2748978976706822e-25	1.970467872829641	0.0008592683640118081	0.0023608897989293317	0.0023552336951919405	1.9728287626285703	0.0032165611010618895	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+Sulfate-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.0	0.0	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Thiamine	117.1730775104193	8285.607826621103	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.6304397535524876	0.22711663548026362	1.6156736899673079	0.22760637049462515	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	8.027290065544276e-06	6.584994019410316e-07	0.0	0.0	0.9394802650231968	0.04382422682926539	9.784435618725708e-05	9.783464130604332e-05	0.939578109379384	0.043931189822531885	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+Urea-e0	0.0001965222181427995	2.1007434396696705e-05	0.0	0.0	0.9852339364148205	0.00021481709100295201	0.00191514819206602	0.001911426240609733	0.9871490846068864	0.002127078476542746	Limosilactobacillus_reuteri_I49	1	.Limosilactobacillus_reuteri_I49	2	Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	2
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.970467872829641	0.0008592683640118081	0.0	0.0	1.970467872829641	0.0008592683640118081	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1		1	Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	-2.0128760251440808e-13	1.1683699065714379e-26	0.9852339364148205	0.00021481709100295201	0.0	0.0	0.9852339364148205	0.00021481709100295201	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9704622043375724	0.0008706003717870926	0.0	0.0	1.9704622043375724	0.0008706003717870926	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.9704622043375724	0.0008706003717870926	0.0	0.0	1.9704622043375724	0.0008706003717870926	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+D-Lactate-e0	0.0	0.0	0.0	0.0	0.9852311021687862	0.00021765009294677314	0.0	0.0	0.9852311021687862	0.00021765009294677314	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+D-Mannitol-e0	0.0	0.0	0.0	0.0	0.061987228979370645	0.058088075055635076	0.0	0.0	0.061987228979370645	0.058088075055635076	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Fumarate-e0	0.0	0.0	1.3800347691582359e-13	7.965356072198379e-27	1.9704622043375724	0.0008706003717870926	0.0	0.0	1.9704622043375724	0.0008706003717870926	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+H2-e0	0.0	0.0	0.0	0.0	0.9852311021687862	0.00021765009294677314	0.0	0.0	0.9852311021687862	0.00021765009294677314	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+O2-e0	-8.358608039851317e-05	0.0002978238363441114	1.0562378063946211e-14	4.8519949193994605e-27	1.9704622043375724	0.0008706003717870926	0.0023684143403163425	0.002362722125271381	1.9728306186778886	0.0032354153485739134	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	3
+Sorbitol-e0	0.0	0.0	0.0	0.0	0.9852311021687862	0.00021765009294677314	0.0	0.0	0.9852311021687862	0.00021765009294677314	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Succinate-e0	0.0	0.0	-2.4949744896630436e-15	2.320744273811511e-28	1.0228322420466005	0.03640068045580757	0.0	0.0	1.0228322420466005	0.03640068045580757	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49	3		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Limosilactobacillus_reuteri_I49	3
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.985187959776332	0.00026077153524395373	0.0	0.0	0.985187959776332	0.00026077153524395373	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.969776814970781	0.0022402967653544882	0.0	0.0	1.969776814970781	0.0022402967653544882	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.969776814970781	0.0022402967653544882	0.0	0.0	1.969776814970781	0.0022402967653544882	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9848884074853905	0.0005600741913386221	0.0	0.0	0.9848884074853905	0.0005600741913386221	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Glycolate-e0	2.4081782229535477e-05	5.926494621763559e-06	0.0	0.0	0.941489014942256	0.041998787810729805	9.784435618725708e-05	9.783464130604332e-05	0.9415868592984433	0.04210535190992387	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49	2	.Limosilactobacillus_reuteri_I49.Limosilactobacillus_reuteri_I49Limosilactobacillus_reuteri_I49	3
+H2S-e0	0.0	0.0	0.0	0.0	1.9691911501634836	0.0028242813100229007	0.0	0.0	1.9691911501634836	0.0028242813100229007	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+Homocysteine-e0	0.0	0.0	0.0	0.0	0.9848884074853905	0.0005600741913386221	0.0	0.0	0.9848884074853905	0.0005600741913386221	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2
+Ornithine-e0	0.0	0.0	0.0	0.0	1.9340250137446586	0.03979322562191332	0.0	0.0	1.9340250137446586	0.03979322562191332	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Limosilactobacillus_reuteri_I49.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+Propionate-e0	0.0	0.0	0.0	0.0	0.9627626839022676	0.022163857071594923	0.0	0.0	0.9627626839022676	0.022163857071594923	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+GABA-e0-e0	0.0	0.0	0.0	0.0	0.9169551776553961	0.06373297318676227	0.0	0.0	0.9169551776553961	0.06373297318676227	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Malate-e0	0.0	0.0	0.0	0.0	0.09999999999999996	0.08985233936414817	0.0	0.0	0.09999999999999996	0.08985233936414817	.Limosilactobacillus_reuteri_I49	2		1	.Limosilactobacillus_reuteri_I49	2

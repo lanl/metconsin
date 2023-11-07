@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Limosilactobacillus_reuteri_I49	Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	-96.79614651623562	PAN	96.79614651623562	-1.0	9.838503266058085	-9.838503266058085
+Limosilactobacillus_reuteri_I49->Akkermansia_muciniphilaYL44	Limosilactobacillus_reuteri_I49	Akkermansia_muciniphilaYL44	-126.68907411746444	Riboflavin	126.68907411746444	-1.0	11.255624110526455	-11.255624110526455

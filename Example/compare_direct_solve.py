@@ -95,7 +95,7 @@ if __name__=="__main__":
 
     oxygen_in = {"O2_e0":100}
 
-    NT = 10
+    NT = 2
 
     basic_results = pd.DataFrame(index = range(NT),columns = ["Community_Size","MetConSIN_Time","Direct_Time","MetConSIN_EndTIme","Direct_EndTIme","Average_Microbe_Difference","Average_Metabolite_Difference","Max_Microbe_Diff","Max_Metabolite_Diff"])
     avg_net_comps = pd.DataFrame(columns = ["Proportion MetConSIN Shared","Proportion DirectDFBA Shared","Number Different Sign","Average ABS Difference"])
@@ -145,10 +145,11 @@ if __name__=="__main__":
         basic_results.loc[i] = [len(comm),t1-t0,t2-t1,metconsin_sol["Microbes"].columns[-1],direct_sol["Microbes"].columns[-1],mean_mic_diff['IntegralDiff'],mean_met_diff['IntegralDiff'],max_mic_diff['MaxDiff'],max_met_diff['MaxDiff']]
     
         nets_comps = pd.DataFrame(columns = ["Proportion MetConSIN Shared","Proportion DirectDFBA Shared","Number Different Sign","Average ABS Difference"])
-        for j in range(len(net_times)):
-            netcomp,netcompdf = compare_nets(metconsin_sol["SpcMetNetworkSummaries"][inters[j]]['edges'],direct_sol["SpcMetNetworks"][net_times[j]]['edges'],"MetConSIN","DirectDFBA")
-            nets_comps.loc[str(net_times[j])] = netcomp
-            netcompdf.to_csv(os.path.join(trial_flder,"ComparedNetworks","{:.4f}_network.tsv".format(net_times[j])),sep='\t')
+        net_times_post  = [nt for nt in net_times if nt in direct_sol["SpcMetNetworks"].keys()]
+        for j in range(len(net_times_post)):
+            netcomp,netcompdf = compare_nets(metconsin_sol["SpcMetNetworkSummaries"][inters[j]]['edges'],direct_sol["SpcMetNetworks"][net_times_post[j]]['edges'],"MetConSIN","DirectDFBA")
+            nets_comps.loc[str(net_times_post[j])] = netcomp
+            netcompdf.to_csv(os.path.join(trial_flder,"ComparedNetworks","{:.4f}_network.tsv".format(net_times_post[j])),sep='\t')
 
         avnetcomp,avnetcompdf = compare_nets(metconsin_sol["SpcMetNetworkSummaries"]["Average"]['edges'],direct_sol["SpcMetNetworks"]["Average"]['edges'],"MetConSIN","DirectDFBA")
         nets_comps.loc["Average"] = avnetcomp

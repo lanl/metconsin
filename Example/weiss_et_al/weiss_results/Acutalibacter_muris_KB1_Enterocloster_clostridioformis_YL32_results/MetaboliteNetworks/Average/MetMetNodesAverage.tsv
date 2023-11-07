@@ -1,0 +1,118 @@
+	Avg_Acutalibacter_muris_KB1	Var_Acutalibacter_muris_KB1	Avg_Enterocloster_clostridioformis_YL32	Var_Enterocloster_clostridioformis_YL32	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+CO2-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cytosine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+D-Glucose-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+D-Mannose-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Folate-e0	0.0	0.0	2.414592814383388e-12	7.960148393179219e-27	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Galactose-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glycine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+H2-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+H2O-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+H2S-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Heme-e0	0.0	0.0	4.976668329209534e-12	3.4581105378607594e-23	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+K+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Aspartate-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+L-Cysteine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+L-Lactate-e0	1.6314133357671688e-13	1.0505212289089548e-26	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Proline-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Serine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Threonine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Tryptophan	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+L-Valine-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-galactosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-acetyl-D-gluosamine	0.0	0.0	-3.6795103864748595e-14	2.175626989538156e-27	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Na+-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Neu5Ac-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Niacin	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+O2-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	64.84201161116825	2071.97038654727	126.68907411985124	2.380928514974396e-22	1.9999999999999998	4.930380657631323e-32	1.6698821589990576	0.22114005205381893	3.6698821589990573	0.2211400520538189	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1	Enterocloster_clostridioformis_YL32.Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	2	Enterocloster_clostridioformis_YL32Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32.Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	2.748164703323007e-13	1.5192676054665024e-26	-6.012342911882919e-14	1.6416007919484132e-29	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Putrescine-e0	0.0	0.0	9.289440428235533e-13	4.0676866814718376e-25	0.6797324061834095	0.21769626216752191	0.0	0.0	0.6797324061834095	0.21769626216752191	Enterocloster_clostridioformis_YL32.	2		1	Enterocloster_clostridioformis_YL32.	2
+Pyridoxal	63.9082698107106	8287.881546273999	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.3301178410009423	0.2211400520538189	1.3301178410009424	0.22114005205381893	Acutalibacter_muris_KB1	1	Acutalibacter_muris_KB1.	2	Acutalibacter_muris_KB1Acutalibacter_muris_KB1.Acutalibacter_muris_KB1	2
+Riboflavin	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	1.7508969563417802e-14	1.349998017948673e-26	7.210797400508038e-13	7.259921167322507e-25	0.8346572950162915	0.9726617899086705	0.0	0.0	0.8346572950162915	0.9726617899086705	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32.	2		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32.	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Succinate-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Sucrose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Thiamin-e0	0.0	0.0	-9.053949334835773e-13	6.195974374486404e-25	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+Thiamine	4.565966877875352e-14	1.2466037491020218e-26	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+Uracil-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+Urea-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+XAN-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Enterocloster_clostridioformis_YL32	1		1	Enterocloster_clostridioformis_YL32	1
+XAN-e0-e0	0.0	0.0	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	0.0	0.0	0.9999999999999999	1.2325951644078308e-32	Acutalibacter_muris_KB1	1		1	Acutalibacter_muris_KB1	1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9999999999999998	4.930380657631323e-32	0.0	0.0	1.9999999999999998	4.930380657631323e-32	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1		1	Acutalibacter_muris_KB1.Enterocloster_clostridioformis_YL32	1

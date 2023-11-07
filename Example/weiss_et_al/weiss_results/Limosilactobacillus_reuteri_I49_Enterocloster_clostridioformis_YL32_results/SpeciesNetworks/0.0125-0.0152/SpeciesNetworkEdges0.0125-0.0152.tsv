@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterocloster_clostridioformis_YL32->Limosilactobacillus_reuteri_I49	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	-5.548274340883566	Putrescine-e0.L-Asparagine-e0.Folate-e0.Spermidine-e0	5.548274340883566	-1.0	2.3554775186538217	-2.3554775186538217
+Limosilactobacillus_reuteri_I49->Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Enterocloster_clostridioformis_YL32	-3.80229131046922	PAN	3.80229131046922	-1.0	1.949946489129694	-1.949946489129694

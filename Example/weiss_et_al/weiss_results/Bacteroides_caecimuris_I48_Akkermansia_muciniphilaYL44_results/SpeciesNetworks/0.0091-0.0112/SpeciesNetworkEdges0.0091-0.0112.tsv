@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Akkermansia_muciniphilaYL44->Bacteroides_caecimuris_I48	Akkermansia_muciniphilaYL44	Bacteroides_caecimuris_I48	-126.68907411109525	PAN	126.68907411109525	-1.0	11.25562411024352	-11.25562411024352
+Bacteroides_caecimuris_I48->Akkermansia_muciniphilaYL44	Bacteroides_caecimuris_I48	Akkermansia_muciniphilaYL44	-126.68907411770763	Riboflavin	126.68907411770763	-1.0	11.255624110537259	-11.255624110537259

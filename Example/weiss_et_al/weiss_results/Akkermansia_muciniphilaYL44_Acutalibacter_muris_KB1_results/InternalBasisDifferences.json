@@ -1,0 +1,1 @@
+{"Akkermansia_muciniphilaYL44": {"1.3076956551225231e-06": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2-e0 exchange upper bound"], "Fluxes": ["rxn05195_c0"]}}}, "Acutalibacter_muris_KB1": {"12.33468656970786": {"Activated": {"Constraints": [], "Fluxes": ["rxn01137_c0"]}, "Deactivated": {"Constraints": [], "Fluxes": ["rxn09115_c0"]}}}}

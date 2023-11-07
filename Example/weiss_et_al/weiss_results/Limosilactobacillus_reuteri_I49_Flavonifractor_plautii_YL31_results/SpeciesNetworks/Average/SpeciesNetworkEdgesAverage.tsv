@@ -1,0 +1,11 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	PAN	-0.06682794704254644	6.464216339755636	0.06682794704254644	-1.0	0.25851101918979474	-0.25851101918979474
+1	Limosilactobacillus_reuteri_I49	Flavonifractor_plautii_YL31	Riboflavin	-0.08873416179901147	11.233765460203973	0.08873416179901147	-1.0	0.2978827987632241	-0.2978827987632241
+2	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Riboflavin.Spermidine-e0.D-Mannose-e0.Folate-e0	-0.00021753612576991564	0.0006057215249168751	0.00021753612576991564	-1.0	0.01474910593120531	-0.01474910593120531
+3	Limosilactobacillus_reuteri_I49	Flavonifractor_plautii_YL31	Folate-e0	-75.84946405248641	646.0510944255325	75.84946405248641	-1.0	8.709159778789594	-8.709159778789594
+4	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	Riboflavin.Folate-e0	-100.29871859960024	640.54949839572	100.29871859960024	-1.0	10.01492479250844	-10.01492479250844
+5	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Riboflavin.Spermidine-e0.D-Mannose-e0.Folate-e0.Urea-e0.L-Asparagine-e0	-3.963846158303694e-06	4.466854068043614e-05	3.963846158303694e-06	-1.0	0.0019909410233112618	-0.0019909410233112618
+6	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	O2-e0.Riboflavin.Spermidine-e0.D-Mannose-e0.Putrescine-e0.Folate-e0.Urea-e0.L-Asparagine-e0	-0.0013126771739655442	0.007420995075914072	0.0013126771739655442	-1.0	0.03623088701599154	-0.03623088701599154
+7	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	D-Glucose-e0.O2-e0.Riboflavin.Spermidine-e0.D-Mannose-e0.Putrescine-e0.Folate-e0.L-Aspartate-e0.Urea-e0	5.80297727706978e-07	8.847342798825093e-06	5.80297727706978e-07	1.0	0.0007617727533240986	0.0007617727533240986
+8	Flavonifractor_plautii_YL31	Limosilactobacillus_reuteri_I49	O2-e0.Riboflavin.Spermidine-e0.D-Mannose-e0.Putrescine-e0.L-Glutamate-e0.Folate-e0.L-Aspartate-e0.Urea-e0	0.016729163317916785	0.4019529315686827	0.016729163317916785	1.0	0.12934126687920133	0.12934126687920133
+9	Limosilactobacillus_reuteri_I49	Flavonifractor_plautii_YL31	Folate-e0.5'-Deoxyadenosine-e0	-0.03128675774011298	0.016767471448906245	0.03128675774011298	-1.0	0.17688063133116916	-0.17688063133116916

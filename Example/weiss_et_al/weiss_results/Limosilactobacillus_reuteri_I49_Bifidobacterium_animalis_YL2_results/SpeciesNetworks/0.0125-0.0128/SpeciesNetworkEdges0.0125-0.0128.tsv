@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	461.30733960302797	Spermidine-e0.Putrescine-e0.L-Asparagine-e0.D-Glucose-e0.Riboflavin.Melitose-e0	461.30733960302797	1.0	21.478066477293247	21.478066477293247
+Limosilactobacillus_reuteri_I49->Bifidobacterium_animalis_YL2	Limosilactobacillus_reuteri_I49	Bifidobacterium_animalis_YL2	-96.79614651724016	Riboflavin	96.79614651724016	-1.0	9.838503266109138	-9.838503266109138

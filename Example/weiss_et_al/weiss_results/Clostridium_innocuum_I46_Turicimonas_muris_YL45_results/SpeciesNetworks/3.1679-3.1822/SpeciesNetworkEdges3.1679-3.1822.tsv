@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Turicimonas_muris_YL45->Clostridium_innocuum_I46	Turicimonas_muris_YL45	Clostridium_innocuum_I46	-126.68907411794717	Riboflavin	126.68907411794717	-1.0	11.255624110547899	-11.255624110547899
+Clostridium_innocuum_I46->Turicimonas_muris_YL45	Clostridium_innocuum_I46	Turicimonas_muris_YL45	-126.6890741171486	Riboflavin	126.6890741171486	-1.0	11.255624110512425	-11.255624110512425

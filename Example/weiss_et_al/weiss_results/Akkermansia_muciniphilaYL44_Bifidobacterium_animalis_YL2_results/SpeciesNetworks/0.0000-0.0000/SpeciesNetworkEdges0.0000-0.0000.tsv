@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Bifidobacterium_animalis_YL2->Akkermansia_muciniphilaYL44	Bifidobacterium_animalis_YL2	Akkermansia_muciniphilaYL44	-126.6890741174717	Riboflavin	126.6890741174717	-1.0	11.255624110526778	-11.255624110526778
+Akkermansia_muciniphilaYL44->Bifidobacterium_animalis_YL2	Akkermansia_muciniphilaYL44	Bifidobacterium_animalis_YL2	-96.79614651725068	Riboflavin	96.79614651725068	-1.0	9.838503266109672	-9.838503266109672

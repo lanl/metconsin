@@ -1,0 +1,8 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Blautia_coccoides_YL58	Clostridium_innocuum_I46	PAN	-3.499562790260006	430.9140875114801	3.499562790260006	-1.0	1.8707118405195402	-1.8707118405195402
+1	Clostridium_innocuum_I46	Blautia_coccoides_YL58	PAN	-82.2950230710034	1040.4330920539378	82.2950230710034	-1.0	9.071660436270937	-9.071660436270937
+2	Blautia_coccoides_YL58	Clostridium_innocuum_I46	Succinate-e0.Acetate-e0.L-Threonine-e0.Riboflavin.Spermidine-e0.O2-e0.L-Glutamate-e0.L-Glutamine-e0.Folate-e0	0.11164508122107396	291.4617799996391	0.11164508122107396	1.0	0.33413332850985394	0.33413332850985394
+3	Blautia_coccoides_YL58	Clostridium_innocuum_I46	Succinate-e0.L-Malate-e0.L-Asparagine-e0.Acetate-e0.D-Glucose-e0.L-Aspartate-e0.L-Alanine-e0.L-Threonine-e0.Riboflavin.L-Cysteine-e0.Spermidine-e0.O2-e0.L-Glutamate-e0.Thiamin-e0.L-Serine-e0.L-Glutamine-e0.Folate-e0	-0.21323085840449763	137.65888432494808	0.21323085840449763	-1.0	0.4617692696623473	-0.4617692696623473
+4	Blautia_coccoides_YL58	Clostridium_innocuum_I46	Riboflavin	-92.26345209493641	3040.4490049984615	92.26345209493641	-1.0	9.605386618712252	-9.605386618712252
+5	Clostridium_innocuum_I46	Blautia_coccoides_YL58	PAN.L-Aspartate-e0.L-Malate-e0	-9.85732561628395e-06	9.333976327483656e-07	9.85732561628395e-06	-1.0	0.0031396378160998047	-0.0031396378160998047
+6	Clostridium_innocuum_I46	Blautia_coccoides_YL58	L-Aspartate-e0.L-Malate-e0	-0.00956740752284453	0.0008223575641929969	0.00956740752284453	-1.0	0.09781312551413808	-0.09781312551413808

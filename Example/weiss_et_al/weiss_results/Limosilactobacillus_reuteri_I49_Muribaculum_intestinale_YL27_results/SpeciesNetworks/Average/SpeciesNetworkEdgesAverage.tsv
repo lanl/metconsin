@@ -1,0 +1,8 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	PAN	-9.866942985657824	856.2879218113762	9.866942985657824	-1.0	3.141169047609158	-3.141169047609158
+1	Limosilactobacillus_reuteri_I49	Muribaculum_intestinale_YL27	PAN	-215.97970319322891	7943.21800384306	215.97970319322891	-1.0	14.69624792908819	-14.69624792908819
+2	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	D-Glucose-e0.Riboflavin.O2-e0.Sucrose.D-Mannose-e0	-0.015449194034114275	0.6858155229921876	0.015449194034114275	-1.0	0.1242947868340192	-0.1242947868340192
+3	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Riboflavin.O2-e0.D-Mannose-e0.L-Aspartate-e0	-0.030149580427817967	120.8034101265996	0.030149580427817967	-1.0	0.17363634535378233	-0.17363634535378233
+4	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Riboflavin	-34.59830266773593	3046.6718611960728	34.59830266773593	-1.0	5.882032188600801	-5.882032188600801
+5	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	Riboflavin.O2-e0.Sucrose.D-Mannose-e0.L-Aspartate-e0	-0.0019655005293924364	0.002473489621034968	0.0019655005293924364	-1.0	0.044333965865828384	-0.044333965865828384
+6	Muribaculum_intestinale_YL27	Limosilactobacillus_reuteri_I49	D-Glucose-e0.Riboflavin.O2-e0.Galactose-e0.L-Cysteine-e0.Sucrose.D-Mannose-e0.L-Aspartate-e0.Glycine-e0	-0.009856871223886557	0.9928857154904083	0.009856871223886557	-1.0	0.09928177689730656	-0.09928177689730656

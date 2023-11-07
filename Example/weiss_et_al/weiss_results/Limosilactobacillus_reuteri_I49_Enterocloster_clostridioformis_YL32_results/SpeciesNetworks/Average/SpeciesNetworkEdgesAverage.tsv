@@ -1,0 +1,8 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	PAN	-51.56440748228992	2031.9988462892654	51.56440748228992	-1.0	7.180836126962509	-7.180836126962509
+1	Limosilactobacillus_reuteri_I49	Enterocloster_clostridioformis_YL32	PAN	-167.7391494718864	6780.615096396171	167.7391494718864	-1.0	12.951414960222934	-12.951414960222934
+2	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Folate-e0.D-Glucose-e0.Spermidine-e0	-0.0021001768630899203	0.5001157945277186	0.0021001768630899203	-1.0	0.045827686643446455	-0.045827686643446455
+3	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Folate-e0	-12.765721399217998	297.72438900822215	12.765721399217998	-1.0	3.5729149722905524	-3.5729149722905524
+4	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	L-Asparagine-e0.Folate-e0.D-Glucose-e0.Spermidine-e0	-4.447263803305833e-05	0.009995089078792686	4.447263803305833e-05	-1.0	0.0066687808505796866	-0.0066687808505796866
+5	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Putrescine-e0.L-Asparagine-e0.Folate-e0.Spermidine-e0	-0.0007211398772250133	0.004000503090056424	0.0007211398772250133	-1.0	0.02685404768791873	-0.02685404768791873
+6	Enterocloster_clostridioformis_YL32	Limosilactobacillus_reuteri_I49	Putrescine-e0.L-Aspartate-e0.L-Glutamate-e0.L-Asparagine-e0.Folate-e0.Spermidine-e0	-0.012348687461476413	0.387632784285752	0.012348687461476413	-1.0	0.11112464830754883	-0.11112464830754883

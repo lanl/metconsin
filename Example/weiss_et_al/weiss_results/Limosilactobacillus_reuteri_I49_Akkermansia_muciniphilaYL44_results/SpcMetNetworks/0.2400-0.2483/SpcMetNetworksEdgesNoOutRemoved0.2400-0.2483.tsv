@@ -1,0 +1,6 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+8	Melitose-e0	Limosilactobacillus_reuteri_I49	Metabolite	3.0903794260458777	3.0903794260458777	1.0	1.7579475037798704	1.7579475037798704
+48	Akkermansia_muciniphilaYL44	Riboflavin	Microbe	-0.999999999999968	0.999999999999968	-1.0	0.999999999999984	-0.999999999999984
+61	Limosilactobacillus_reuteri_I49	Riboflavin	Microbe	-0.9999999999999988	0.9999999999999988	-1.0	0.9999999999999993	-0.9999999999999993
+77	Limosilactobacillus_reuteri_I49	Melitose-e0	Microbe	-1.0	1.0	-1.0	1.0	-1.0
+98	Riboflavin	Akkermansia_muciniphilaYL44	Metabolite	126.68907411746463	126.68907411746463	1.0	11.255624110526464	11.255624110526464

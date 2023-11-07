@@ -1,0 +1,141 @@
+	Avg_Bacteroides_caecimuris_I48	Var_Bacteroides_caecimuris_I48	Avg_Enterococcus_faecalis_KB1	Var_Enterococcus_faecalis_KB1	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Cytosine	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+D-Glucose-e0	0.0018418247172018228	0.0001698875739247542	0.0	0.0	1.5931718709531668	0.13184224242962617	0.019776964240539274	0.019306274925750513	1.6129488351937065	0.15442178543330612	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+D-Mannose-e0	-9.166398594800446e-06	4.837744483919739e-07	0.0	0.0	1.0566133050397317	0.233138462722475	0.00017364559692472687	0.0001736093106291473	1.0567869506366565	0.2335650586259308	Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2	.Bacteroides_caecimuris_I48	2	Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	3
+Fe2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Folate	0.007069729546312451	0.0026510982341540414	0.0	0.0	0.7965859354765834	0.03296056060740654	0.018434770489064865	0.018025801335190963	0.8150207059656482	0.05251192332380598	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+Folate-e0	0.0	0.0	1.30505358252949e-11	2.7064618120354436e-23	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Galactose-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	4.5831992659857533e-05	1.209436120983331e-05	0.0	0.0	0.37703078022286846	0.2059628123258344	0.00017364559692472687	0.0001736093106291473	0.37720442581979313	0.20632613843077663	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	3
+Glycine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+H2O-e0	0.0	0.0	0.0	0.0	1.224050997078297	0.27590481238865433	0.0	0.0	1.224050997078297	0.27590481238865433	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	2
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Inosine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+K+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+L-Alanine	0.0	0.0	0.0	0.0	0.5108883549440428	0.19678896704717247	0.0	0.0	0.5108883549440428	0.19678896704717247	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	1.8332798683736802e-05	1.9350977935037735e-06	0.0	0.0	1.5931718709531668	0.13184224242962617	0.00017364559692472687	0.0001736093106291473	1.5933455165500918	0.1320445916713373	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+L-Aspartate-e0	0.00182349191445495	0.00016416193121403163	0.0	0.0	1.5931718709531668	0.13184224242962617	0.019776964240539274	0.019306274925750513	1.6129488351937065	0.15442178543330612	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+L-Cysteine-e0	9.16639979148564e-06	4.837744483661766e-07	0.0	0.0	1.5931718709531668	0.13184224242962617	0.00017364559692472687	0.0001736093106291473	1.5933455165500918	0.1320445916713373	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	4.58319933106338e-05	1.2094361209764271e-05	0.0	0.0	1.5931718709531668	0.13184224242962617	0.00017364559692472687	0.0001736093106291473	1.5933455165500918	0.1320445916713373	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Glycine	1.8332796560097783e-05	1.93509779359429e-06	0.0	0.0	0.6122161367885013	0.16116619827742126	0.00017364559692472687	0.0001736093106291473	0.6123897823854261	0.1614312321651639	Bacteroides_caecimuris_I48.	2	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48..Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	3
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Phenylalanine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Proline	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Serine	0.0009300787545168789	4.487085306751438e-05	0.0	0.0	0.7965859354765834	0.03296056060740654	0.019776964240539274	0.019306274925750513	0.8163628997171226	0.05390346957212191	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+L-Serine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Threonine	2.7499195771070198e-05	4.353970035528135e-06	0.0	0.0	0.7965859354765834	0.03296056060740654	0.00017364559692472687	0.0001736093106291473	0.7967595810735082	0.03314853988357674	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+L-Threonine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tryptophan-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Tyrosine	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+L-Tyrosine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-glucosamine-e0	0.0	0.0	-1.1375814200672079e-11	6.725985975783487e-24	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Na+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Neu5Ac-e0	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Bacteroides_caecimuris_I48	1		1	Bacteroides_caecimuris_I48	1
+Niacin	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	9.77324765060433	1123.2179533488663	0.0	0.0	1.5931718709531668	0.13184224242962617	0.07714357152551558	0.06998189722831052	1.6703154424786821	0.21459210480267576	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	Bacteroides_caecimuris_I48.	2	Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	0.0	0.0	-3.28035628964091e-11	6.017744176267589e-23	1.068039015151868	0.2382019205846711	0.0	0.0	1.068039015151868	0.2382019205846711	Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2		1	Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+Pyridoxal	0.0	0.0	0.0	0.0	0.7965859354765834	0.03296056060740654	0.0	0.0	0.7965859354765834	0.03296056060740654	Enterococcus_faecalis_KB1	1		1	Enterococcus_faecalis_KB1	1
+Riboflavin	0.004461190258781837	0.0012753796529685175	0.0	0.0	0.7965859354765834	0.03296056060740654	0.015317290065401296	0.015034945809779612	0.8119032255419847	0.04926308206736338	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+Riboflavin-e0	0.0	0.0	77.10644892587207	308.8237742231532	0.7965859354765834	0.03296056060740654	0.7965859354765834	0.03296056060740654	1.5931718709531668	0.13184224242962617	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1	1	Enterococcus_faecalis_KB1Enterococcus_faecalis_KB1	1
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	151.0757249160692	10812.563193867736	-4.563775377891489e-11	1.117895803432681e-22	1.5931718709531668	0.13184224242962617	0.6158471573201498	0.15943104743322328	2.2090190282733175	0.3932016149799899	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose-e0	7.333119719410334e-05	3.096156469562495e-05	0.0	0.0	0.7965859354765834	0.03296056060740654	0.00017364559692472687	0.0001736093106291473	0.7967595810735082	0.03314853988357674	Bacteroides_caecimuris_I48	1	.Bacteroides_caecimuris_I48	2	Bacteroides_caecimuris_I48.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48	2
+Sulfate-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Thiamin-e0	0.0	0.0	-7.017451509308157e-11	2.5645963673045196e-22	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Uracil-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.5931718709531668	0.13184224242962617	0.0	0.0	1.5931718709531668	0.13184224242962617	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	0.7965865354669583	0.03296121024928973	0.0	0.0	0.7965865354669583	0.03296121024928973	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48	2		1	Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48	2
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Acetate-e0	0.0	0.0	0.0	0.0	1.593170670972417	0.13184444378162727	0.0	0.0	1.593170670972417	0.13184444378162727	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+CO2-e0	0.0	0.0	0.0	0.0	1.593170670972417	0.13184444378162727	0.0	0.0	1.593170670972417	0.13184444378162727	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+Ethanol-e0	0.0	0.0	0.0	0.0	0.7965853354862085	0.03296111094540682	0.0	0.0	0.7965853354862085	0.03296111094540682	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+Formate-e0	0.0	0.0	0.0	0.0	0.7965853354862085	0.03296111094540682	0.0	0.0	0.7965853354862085	0.03296111094540682	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Glycerol-e0	2.7499196755307348e-05	4.353970035462971e-06	0.0	0.0	1.459375893420484	0.22195221182609365	0.00017364559692472687	0.0001736093106291473	1.459549539017409	0.22221047910401293	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	4
+H2-e0	0.0	0.0	0.0	0.0	1.2181215116504978	0.27554398612457137	0.0	0.0	1.2181215116504978	0.27554398612457137	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3
+O2-e0	-0.0018234919066837582	0.0001641619312474869	0.0	0.0	1.593170670972417	0.13184444378162727	0.019776964240539274	0.019306274925750513	1.6129476352129566	0.15442404390409545	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	3
+Sorbitol-e0-e0	0.0	0.0	0.0	0.0	0.09674759084165262	0.08548351926842748	0.0	0.0	0.09674759084165262	0.08548351926842748	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Succinate-e0	2.7499195455007514e-05	4.353970035548527e-06	0.0	0.0	1.593170670972417	0.13184444378162727	0.00017364559692472687	0.0001736093106291473	1.593344316569342	0.13204679352485243	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	3
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	1.5917134524082148	0.13451513829671605	0.0	0.0	1.5917134524082148	0.13451513829671605	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.4364291178786053	0.2345352313902858	0.0	0.0	1.4364291178786053	0.2345352313902858	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Enterococcus_faecalis_KB1	3
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.7958567262041074	0.03362878457417901	0.0	0.0	0.7958567262041074	0.03362878457417901	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+Fumarate-e0	1.8332797939258823e-05	1.935097793536024e-06	0.0	0.0	1.5917134524082148	0.13451513829671605	0.00017364559692472687	0.0001736093106291473	1.5918870980051398	0.13471809706273802	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2	.Bacteroides_caecimuris_I48	2	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1.Bacteroides_caecimuris_I48Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	3
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.7958567262041074	0.03362878457417901	0.0	0.0	0.7958567262041074	0.03362878457417901	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2
+Propanal-e0	0.0	0.0	0.0	0.0	0.7958567262041074	0.03362878457417901	0.0	0.0	0.7958567262041074	0.03362878457417901	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+XAN-e0	0.0	0.0	0.0	0.0	0.7958567262041074	0.03362878457417901	0.0	0.0	0.7958567262041074	0.03362878457417901	.Enterococcus_faecalis_KB1	2		1	.Enterococcus_faecalis_KB1	2
+H2S-e0	0.0	0.0	0.0	0.0	1.2922482994179596	0.574908632321242	0.0	0.0	1.2922482994179596	0.574908632321242	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2		1	.Bacteroides_caecimuris_I48.Enterococcus_faecalis_KB1	2
+D-Mannitol-e0	0.0	0.0	0.0	0.0	0.1600273695631484	0.12920942879636543	0.0	0.0	0.1600273695631484	0.12920942879636543	.Bacteroides_caecimuris_I48	2		1	.Bacteroides_caecimuris_I48	2

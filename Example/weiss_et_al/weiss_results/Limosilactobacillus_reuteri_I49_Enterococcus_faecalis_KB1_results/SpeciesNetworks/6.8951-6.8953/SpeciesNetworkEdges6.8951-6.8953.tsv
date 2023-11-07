@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Enterococcus_faecalis_KB1->Limosilactobacillus_reuteri_I49	Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	-0.08056178105291059	Cytosine	0.08056178105291059	-1.0	0.2838340731006596	-0.2838340731006596
+Limosilactobacillus_reuteri_I49->Enterococcus_faecalis_KB1	Limosilactobacillus_reuteri_I49	Enterococcus_faecalis_KB1	-0.4988393126768259	Putrescine-e0.Folate-e0.Spermidine-e0.D-Mannose-e0	0.4988393126768259	-1.0	0.7062855744504668	-0.7062855744504668

@@ -1,0 +1,7 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	PAN	-0.06707695218824566	12.981049970998837	0.06707695218824566	-1.0	0.25899218557370735	-0.25899218557370735
+1	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	Riboflavin.Spermidine-e0.D-Glucose-e0.Thiamine	-0.017509300089143563	4.224034521440675	0.017509300089143563	-1.0	0.13232271191728034	-0.13232271191728034
+2	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	Riboflavin.Thiamine	13.606881265355032	4478.428477343951	13.606881265355032	1.0	3.6887506374591155	3.6887506374591155
+3	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	Riboflavin.Spermidine-e0.Heme-e0.L-Asparagine-e0.L-Glutamine-e0.D-Glucose-e0.Thiamine	-0.45210433235967706	4284.412749065241	0.45210433235967706	-1.0	0.6723870405946839	-0.6723870405946839
+4	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	Riboflavin.L-Cysteine-e0.Spermidine-e0.Heme-e0.L-Asparagine-e0.Glycine-e0.L-Serine-e0.L-Glutamine-e0.Uracil-e0.D-Glucose-e0.Thiamine.L-Threonine-e0	-0.0841626977716798	110.42356037208185	0.0841626977716798	-1.0	0.2901080794663944	-0.2901080794663944
+5	Acutalibacter_muris_KB1	Limosilactobacillus_reuteri_I49	Riboflavin	217.21805519426445	2460.291795267899	217.21805519426445	1.0	14.738319279831892	14.738319279831892

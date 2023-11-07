@@ -1,0 +1,127 @@
+	Turicimonas_muris_YL45	Enterocloster_clostridioformis_YL32	In	InAmount	Out	OutAmount	All	AllAmount
+5'-Deoxyadenosine-e0	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Acetate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Adenine	0.0	0.0		0		0		0
+Anserine	0.0	0.0		0		0		0
+BIOT-e0	0.0	0.0		0		0		0
+Biotin	0.0	0.0		0		0		0
+CO2-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Ca2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Carnitine	0.0	0.0		0		0		0
+Carnosine	0.0	0.0		0		0		0
+Cd2+-e0	0.0	0.0		0		0		0
+Cellulose	0.0	0.0		0		0		0
+Cholesterol	0.0	0.0		0		0		0
+Choline	0.0	0.0		0		0		0
+Choline-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Chromium	0.0	0.0		0		0		0
+Citrulline	0.0	0.0		0		0		0
+Cl--e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Co2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Creatine	0.0	0.0		0		0		0
+Creatinine	0.0	0.0		0		0		0
+Cu2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Cytosine	0.0	0.0		0		0		0
+Cytosine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+D-Glucose-e0	0.0	3.742089971225937e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+D-Glyceraldehyde-e0	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+D-Mannose-e0	0.0	3.476108290101365e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+D-Ribose-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Fe2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Folate	7.240597010849115e-12	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Folate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Formate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Formate-e0-e0	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Fumarate-e0	0.0	-1.6980583605885613e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Galactose-e0	0.0	5.629274824059394e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Gamma-Tocopherol	0.0	0.0		0		0		0
+Glycine-e0	0.0	3.867552111902484e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Glycolaldehyde-e0	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Guanidine	0.0	0.0		0		0		0
+Guanine	0.0	0.0		0		0		0
+H+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+H2O-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+H2S-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Hemin	0.0	0.0		0		0		0
+Hydrocortisone	0.0	0.0		0		0		0
+Hypoxanthine	0.0	0.0		0		0		0
+Inosine	0.0	0.0		0		0		0
+Inosine-e0	0.0	3.6179531592850367e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+K+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Alanine-e0	0.0	0.0		0		0		0
+L-Arginine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Ascorbate	0.0	0.0		0		0		0
+L-Ascorbate-e0	0.0	0.0		0		0		0
+L-Asparagine-e0	2.9723445926777003e-13	3.158528993907339e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Aspartate-e0	1.994342191391496e-13	2.9716507032873096e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Cysteine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Cystine	0.0	0.0		0		0		0
+L-Fucose-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Glutamate-e0	0.0	2.4235613516054855e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Glutamine-e0	0.0	6.353195747266227e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Histidine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Isoleucine	0.0	0.0		0		0		0
+L-Isoleucine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Lactate-e0	0.0	0.0		0		0		0
+L-Leucine	0.0	0.0		0		0		0
+L-Leucine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Lysine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Methionine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Phenylalanine	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Proline-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Serine-e0	-2.320232672347917e-15	5.250196111195038e-12	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Threonine-e0	0.0	3.6003075520874006e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Tryptophan	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+L-Tyrosine	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+L-Tyrosine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+L-Valine-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Linolenic	0.0	0.0		0		0		0
+Melitose	0.0	0.0		0		0		0
+Methylguanidine	0.0	0.0		0		0		0
+Methylhistidine	0.0	0.0		0		0		0
+Mg	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Mg-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Mn2+	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Mn2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Molybdenum	0.0	0.0		0		0		0
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0		0		0		0
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0		0		0		0
+N-Acetyl-D-chondrosamine-e0	0.0	0.0		0		0		0
+N-acetyl-D-galactosamine	0.0	0.0		0		0		0
+N-acetyl-D-gluosamine	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+N-acetylneuraminate (as sialic residue)	0.0	0.0		0		0		0
+NH3-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Na+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Neu5Ac-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Niacin	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Nickel	0.0	0.0		0		0		0
+O2-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Oleic acid	0.0	0.0		0		0		0
+PAN	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Pb-e0	0.0	0.0		0		0		0
+Pectin	0.0	0.0		0		0		0
+Phosphate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Phosphoethanolamine	0.0	0.0		0		0		0
+Puryvate	0.0	1.446620601086579e-13	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Putrescine-e0	0.0	3.0965507935576397e-12	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Pyridoxal	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Pyruvate-e0	1.552607868660072e-13	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+Riboflavin	126.6890741160274	0.0	Turicimonas_muris_YL45	1	Turicimonas_muris_YL45	1	Turicimonas_muris_YL45Turicimonas_muris_YL45	2
+Selenium	0.0	0.0		0		0		0
+Stachyose	0.0	0.0		0		0		0
+Starch	0.0	0.0		0		0		0
+Succinate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Sucrose	0.0	0.0		0		0		0
+Sucrose-e0	0.0	0.0		0		0		0
+Sulfate-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Thiamin-e0	0.0	253.3781482472997	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2	Enterocloster_clostridioformis_YL32	1	Enterocloster_clostridioformis_YL32Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	3
+Uracil-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+Urea-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+VitA Retinol	0.0	0.0		0		0		0
+Vitamin K1	0.0	0.0		0		0		0
+Vitamin K3	0.0	0.0		0		0		0
+XAN-e0	0.0	0.0	Enterocloster_clostridioformis_YL32	1		0	Enterocloster_clostridioformis_YL32	1
+Zn2+-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2
+acetylhexosamine	0.0	0.0		0		0		0
+carbonate	0.0	0.0	Turicimonas_muris_YL45	1		0	Turicimonas_muris_YL45	1
+fe3-e0	0.0	0.0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2		0	Enterocloster_clostridioformis_YL32.Turicimonas_muris_YL45	2

@@ -1,0 +1,144 @@
+	Name	Type	In	InAmount	Out	OutAmount	All	AllAmount	IntrinsicGrowth
+Clostridium_innocuum_I46	Clostridium_innocuum_I46	Microbe	Deoxyguanosine-e0.GLUM-e0.Guanosine-e0.Maltoheptaose-e0.N-Acetyl-D-glucosamine-e0.TRHL-e0.Taurine-e0.indol-e0	8	3-dehydrocholate-e0.5-Methylthio-D-ribose-e0.ACTN-e0.Acetaldehyde-e0.Acetate-e0.BDOH-e0.BET-e0.Butyrate-e0.CELB-e0.CO-e0.CO2-e0.Ca2+-e0.Cholate-e0.Choline-e0.Citrate-e0.Cl--e0.Co2+-e0.Cu2+-e0.D-Fructose-e0.D-Galactonate-e0-e0.D-Glucose-e0.D-Glyceraldehyde-e0.D-Mannose-e0.D-Ribose-e0.Deoxyguanosine-e0.Ethanol-e0.Fe2+-e0.Folate-e0.Formaldehyde-e0.GLCN-e0.GLUM-e0.Guanosine-e0.H+-e0.H2O2-e0.H2S-e0.Inosine.K+-e0.L-Alanine-e0.L-Arginine-e0.L-Asparagine-e0.L-Aspartate-e0.L-Cysteine-e0.L-Glutamate-e0.L-Glutamine-e0.L-Histidine-e0.L-Inositol-e0.L-Isoleucine-e0.L-Leucine-e0.L-Lysine-e0.L-Methionine-e0.L-Phenylalanine.L-Proline-e0.L-Threonine-e0.L-Tryptophan.L-Tyrosine.L-Valine-e0.Maltoheptaose-e0.Mg-e0.Mn2+-e0.N-Acetyl-D-chondrosamine-e0.N-Acetyl-D-glucosamine-e0.NH3-e0.Na+-e0.O2-e0.PAN.Phosphate-e0.Propionate-e0.Riboflavin.Spermidine-e0.Succinate-e0.Sucrose-e0.Sulfate-e0.TRHL-e0.Taurine-e0.Thiamin-e0.Uracil-e0.XAN-e0.Xanthosine-e0.Zn2+-e0.fe3-e0.indol-e0.methylmenaquinone 7-e0.methymenaquinol 7-e0	83	3-dehydrocholate-e0.5-Methylthio-D-ribose-e0.ACTN-e0.Acetaldehyde-e0.Acetate-e0.BDOH-e0.BET-e0.Butyrate-e0.CELB-e0.CO-e0.CO2-e0.Ca2+-e0.Cholate-e0.Choline-e0.Citrate-e0.Cl--e0.Co2+-e0.Cu2+-e0.D-Fructose-e0.D-Galactonate-e0-e0.D-Glucose-e0.D-Glyceraldehyde-e0.D-Mannose-e0.D-Ribose-e0.Deoxyguanosine-e0.Ethanol-e0.Fe2+-e0.Folate-e0.Formaldehyde-e0.GLCN-e0.GLUM-e0.Guanosine-e0.H+-e0.H2O2-e0.H2S-e0.Inosine.K+-e0.L-Alanine-e0.L-Arginine-e0.L-Asparagine-e0.L-Aspartate-e0.L-Cysteine-e0.L-Glutamate-e0.L-Glutamine-e0.L-Histidine-e0.L-Inositol-e0.L-Isoleucine-e0.L-Leucine-e0.L-Lysine-e0.L-Methionine-e0.L-Phenylalanine.L-Proline-e0.L-Threonine-e0.L-Tryptophan.L-Tyrosine.L-Valine-e0.Maltoheptaose-e0.Mg-e0.Mn2+-e0.N-Acetyl-D-chondrosamine-e0.N-Acetyl-D-glucosamine-e0.NH3-e0.Na+-e0.O2-e0.PAN.Phosphate-e0.Propionate-e0.Riboflavin.Spermidine-e0.Succinate-e0.Sucrose-e0.Sulfate-e0.TRHL-e0.Taurine-e0.Thiamin-e0.Uracil-e0.XAN-e0.Xanthosine-e0.Zn2+-e0.fe3-e0.indol-e0.methylmenaquinone 7-e0.methymenaquinol 7-e0Deoxyguanosine-e0.GLUM-e0.Guanosine-e0.Maltoheptaose-e0.N-Acetyl-D-glucosamine-e0.TRHL-e0.Taurine-e0.indol-e0	91	0.0
+Muribaculum_intestinale_YL27	Muribaculum_intestinale_YL27	Microbe	1,4-beta-D-Xylan-e0.CELB-e0.CO-e0.Citrate-e0.Cytidine-e0.D-Ribose-e0.Folate.GLCN-e0-e0.Guanosine-e0.NAD-e0.Thymidine-e0.Xylose-e0	12	(R)-1,2-Propanediol-e0.1,2-Propanediol-e0.1,4-beta-D-Xylan-e0.3-dehydrocholate-e0.5'-Deoxyadenosine-e0.5-Methylthio-D-ribose-e0.Acetaldehyde-e0.Acetate-e0.Adenosine-e0.Asparagine.Butyrate-e0.CELB-e0.CO-e0.CO2-e0.Ca2+-e0.Cholate-e0.Citrate-e0.Cl--e0.Co2+-e0.CoA-e0.Cu2+-e0.Cytidine-e0.D-Fructose-e0.D-Galacturonate-e0.D-Glucose-e0.D-Glyceraldehyde-e0.D-Ribose-e0.Ethanol-e0.Fe2+-e0.Folate.Formaldehyde-e0.Formate-e0-e0.Fumarate-e0.GABA-e0-e0.GLCN-e0-e0.Galactose-e0.Glucuronate-e0-e0.Glutamine.Glycerol-3-phosphate-e0-e0.Glycerol-e0.Glycolaldehyde-e0.Guanosine-e0.H+-e0.H2-e0.H2O-e0.H2O2-e0.H2S-e0.Inosine-e0.K+-e0.L-Arginine-e0.L-Aspartate-e0.L-Cysteine-e0.L-Histidine-e0.L-Inositol-e0.L-Lysine-e0.L-Methionine-e0.L-Phenylalanine.L-Proline.L-Serine.L-Threonine.L-Tyrosine.LACT-e0.Maltose-e0.Menaquinone 7-e0.Mg-e0.Mn2+-e0.Myristic acid-e0.NAD-e0.NH3-e0.Na+-e0.Neu5Ac-e0.O2-e0.Ornithine-e0.PAN.Phosphate-e0.Propionate-e0.Sorbitol-e0-e0.Succinate-e0.Sucrose.Sulfate-e0.Thiamin-e0.Thymidine-e0.Xanthosine-e0.Xylose-e0.Zn2+-e0.ddca-e0.fe3-e0.indol-e0.lactate.methylmenaquinone 7-e0.methymenaquinol 7-e0.mql7-e0.ocdca-e0	93	(R)-1,2-Propanediol-e0.1,2-Propanediol-e0.1,4-beta-D-Xylan-e0.3-dehydrocholate-e0.5'-Deoxyadenosine-e0.5-Methylthio-D-ribose-e0.Acetaldehyde-e0.Acetate-e0.Adenosine-e0.Asparagine.Butyrate-e0.CELB-e0.CO-e0.CO2-e0.Ca2+-e0.Cholate-e0.Citrate-e0.Cl--e0.Co2+-e0.CoA-e0.Cu2+-e0.Cytidine-e0.D-Fructose-e0.D-Galacturonate-e0.D-Glucose-e0.D-Glyceraldehyde-e0.D-Ribose-e0.Ethanol-e0.Fe2+-e0.Folate.Formaldehyde-e0.Formate-e0-e0.Fumarate-e0.GABA-e0-e0.GLCN-e0-e0.Galactose-e0.Glucuronate-e0-e0.Glutamine.Glycerol-3-phosphate-e0-e0.Glycerol-e0.Glycolaldehyde-e0.Guanosine-e0.H+-e0.H2-e0.H2O-e0.H2O2-e0.H2S-e0.Inosine-e0.K+-e0.L-Arginine-e0.L-Aspartate-e0.L-Cysteine-e0.L-Histidine-e0.L-Inositol-e0.L-Lysine-e0.L-Methionine-e0.L-Phenylalanine.L-Proline.L-Serine.L-Threonine.L-Tyrosine.LACT-e0.Maltose-e0.Menaquinone 7-e0.Mg-e0.Mn2+-e0.Myristic acid-e0.NAD-e0.NH3-e0.Na+-e0.Neu5Ac-e0.O2-e0.Ornithine-e0.PAN.Phosphate-e0.Propionate-e0.Sorbitol-e0-e0.Succinate-e0.Sucrose.Sulfate-e0.Thiamin-e0.Thymidine-e0.Xanthosine-e0.Xylose-e0.Zn2+-e0.ddca-e0.fe3-e0.indol-e0.lactate.methylmenaquinone 7-e0.methymenaquinol 7-e0.mql7-e0.ocdca-e01,4-beta-D-Xylan-e0.CELB-e0.CO-e0.Citrate-e0.Cytidine-e0.D-Ribose-e0.Folate.GLCN-e0-e0.Guanosine-e0.NAD-e0.Thymidine-e0.Xylose-e0	105	0.0
+5'-Deoxyadenosine-e0	5'-Deoxyadenosine-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+5-Methylthio-D-ribose-e0	5-Methylthio-D-ribose-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Acetate-e0	Acetate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Adenine	Adenine	Metabolite		0		0		0	0.0
+Anserine	Anserine	Metabolite		0		0		0	0.0
+Asparagine	Asparagine	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+BIOT-e0	BIOT-e0	Metabolite		0		0		0	0.0
+Biotin	Biotin	Metabolite		0		0		0	0.0
+Butyrate-e0	Butyrate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+CO2-e0	CO2-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Ca2+-e0	Ca2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Carnitine	Carnitine	Metabolite		0		0		0	0.0
+Carnosine	Carnosine	Metabolite		0		0		0	0.0
+Cd2+-e0	Cd2+-e0	Metabolite		0		0		0	0.0
+Cellulose	Cellulose	Metabolite		0		0		0	0.0
+Cholesterol	Cholesterol	Metabolite		0		0		0	0.0
+Choline	Choline	Metabolite		0		0		0	0.0
+Choline-e0	Choline-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Chromium	Chromium	Metabolite		0		0		0	0.0
+Citrulline	Citrulline	Metabolite		0		0		0	0.0
+Cl--e0	Cl--e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Co2+-e0	Co2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Creatine	Creatine	Metabolite		0		0		0	0.0
+Creatinine	Creatinine	Metabolite		0		0		0	0.0
+Cu2+-e0	Cu2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Cytosine	Cytosine	Metabolite		0		0		0	0.0
+D-Glucose-e0	D-Glucose-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+D-Mannose-e0	D-Mannose-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+D-Ribose-e0	D-Ribose-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	3	0.0
+Ethanol-e0	Ethanol-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Fe2+-e0	Fe2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Folate	Folate	Metabolite	Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27	1	Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2	0.0
+Folate-e0	Folate-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Formate-e0-e0	Formate-e0-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Fumarate-e0	Fumarate-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Galactose-e0	Galactose-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Gamma-Tocopherol	Gamma-Tocopherol	Metabolite		0		0		0	0.0
+Glutamine	Glutamine	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Glycine-e0	Glycine-e0	Metabolite		0		0		0	0.0
+Glycolaldehyde-e0	Glycolaldehyde-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Guanidine	Guanidine	Metabolite		0		0		0	0.0
+Guanine	Guanine	Metabolite		0		0		0	0.0
+H+-e0	H+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+H2-e0	H2-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+H2O-e0	H2O-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+H2S-e0	H2S-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Heme-e0	Heme-e0	Metabolite		0		0		0	0.0
+Hemin	Hemin	Metabolite		0		0		0	0.0
+Hydrocortisone	Hydrocortisone	Metabolite		0		0		0	0.0
+Hypoxanthine	Hypoxanthine	Metabolite		0		0		0	0.0
+Inosine	Inosine	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Inosine-e0	Inosine-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+K+-e0	K+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Alanine-e0	L-Alanine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Arginine-e0	L-Arginine-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Ascorbate	L-Ascorbate	Metabolite		0		0		0	0.0
+L-Ascorbate-e0	L-Ascorbate-e0	Metabolite		0		0		0	0.0
+L-Asparagine-e0	L-Asparagine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Aspartate-e0	L-Aspartate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Cysteine-e0	L-Cysteine-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Cystine	L-Cystine	Metabolite		0		0		0	0.0
+L-Fucose-e0	L-Fucose-e0	Metabolite		0		0		0	0.0
+L-Glutamate	L-Glutamate	Metabolite		0		0		0	0.0
+L-Glutamate-e0	L-Glutamate-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Glutamine-e0	L-Glutamine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Histidine-e0	L-Histidine-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Isoleucine	L-Isoleucine	Metabolite		0		0		0	0.0
+L-Isoleucine-e0	L-Isoleucine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Leucine	L-Leucine	Metabolite		0		0		0	0.0
+L-Leucine-e0	L-Leucine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Lysine-e0	L-Lysine-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Malate-e0	L-Malate-e0	Metabolite		0		0		0	0.0
+L-Methionine-e0	L-Methionine-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Phenylalanine	L-Phenylalanine	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Proline	L-Proline	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+L-Proline-e0	L-Proline-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Serine	L-Serine	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+L-Serine-e0	L-Serine-e0	Metabolite		0		0		0	0.0
+L-Threonine	L-Threonine	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+L-Threonine-e0	L-Threonine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Tryptophan	L-Tryptophan	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+L-Tyrosine	L-Tyrosine	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+L-Valine	L-Valine	Metabolite		0		0		0	0.0
+L-Valine-e0	L-Valine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Linolenic	Linolenic	Metabolite		0		0		0	0.0
+Melitose	Melitose	Metabolite		0		0		0	0.0
+Methylguanidine	Methylguanidine	Metabolite		0		0		0	0.0
+Methylhistidine	Methylhistidine	Metabolite		0		0		0	0.0
+Mg-e0	Mg-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Mn2+-e0	Mn2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Molybdenum	Molybdenum	Metabolite		0		0		0	0.0
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	Metabolite		0		0		0	0.0
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	Metabolite		0		0		0	0.0
+N-Acetyl-D-chondrosamine-e0	N-Acetyl-D-chondrosamine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+N-Acetyl-D-glucosamine-e0	N-Acetyl-D-glucosamine-e0	Metabolite	Clostridium_innocuum_I46	1	Clostridium_innocuum_I46	1	Clostridium_innocuum_I46Clostridium_innocuum_I46	2	0.0
+N-acetylneuraminate (as sialic residue)	N-acetylneuraminate (as sialic residue)	Metabolite		0		0		0	0.0
+NAD-e0-e0	NAD-e0-e0	Metabolite		0		0		0	0.0
+NH3-e0	NH3-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Na+-e0	Na+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Neu5Ac-e0	Neu5Ac-e0	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Niacin	Niacin	Metabolite		0		0		0	0.0
+Nickel	Nickel	Metabolite		0		0		0	0.0
+O2-e0	O2-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Oleic acid	Oleic acid	Metabolite		0		0		0	0.0
+PAN	PAN	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Pb-e0	Pb-e0	Metabolite		0		0		0	0.0
+Pectin	Pectin	Metabolite		0		0		0	0.0
+Phosphate-e0	Phosphate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Phosphoethanolamine	Phosphoethanolamine	Metabolite		0		0		0	0.0
+Puryvate	Puryvate	Metabolite		0		0		0	0.0
+Putrescine	Putrescine	Metabolite		0		0		0	0.0
+Putrescine-e0	Putrescine-e0	Metabolite		0		0		0	0.0
+Pyridoxal	Pyridoxal	Metabolite		0		0		0	0.0
+Riboflavin	Riboflavin	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Selenium	Selenium	Metabolite		0		0		0	0.0
+Spermidine	Spermidine	Metabolite		0		0		0	0.0
+Spermidine-e0	Spermidine-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Stachyose	Stachyose	Metabolite		0		0		0	0.0
+Starch	Starch	Metabolite		0		0		0	0.0
+Succinate-e0	Succinate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Sucrose	Sucrose	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0
+Sucrose-e0	Sucrose-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Sulfate-e0	Sulfate-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Thiamin-e0	Thiamin-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+Uracil	Uracil	Metabolite		0		0		0	0.0
+Uracil-e0	Uracil-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Urea-e0	Urea-e0	Metabolite		0		0		0	0.0
+VitA Retinol	VitA Retinol	Metabolite		0		0		0	0.0
+Vitamin K1	Vitamin K1	Metabolite		0		0		0	0.0
+Vitamin K3	Vitamin K3	Metabolite		0		0		0	0.0
+XAN-e0	XAN-e0	Metabolite	Clostridium_innocuum_I46	1		0	Clostridium_innocuum_I46	1	0.0
+Zn2+-e0	Zn2+-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+acetylhexosamine	acetylhexosamine	Metabolite		0		0		0	0.0
+acgal-e0	acgal-e0	Metabolite		0		0		0	0.0
+acgam-e0	acgam-e0	Metabolite		0		0		0	0.0
+carbonate	carbonate	Metabolite		0		0		0	0.0
+core3-e0	core3-e0	Metabolite		0		0		0	0.0
+core4-e0	core4-e0	Metabolite		0		0		0	0.0
+fe3-e0	fe3-e0	Metabolite	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		0	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	0.0
+fucose	fucose	Metabolite		0		0		0	0.0
+lactate	lactate	Metabolite	Muribaculum_intestinale_YL27	1		0	Muribaculum_intestinale_YL27	1	0.0

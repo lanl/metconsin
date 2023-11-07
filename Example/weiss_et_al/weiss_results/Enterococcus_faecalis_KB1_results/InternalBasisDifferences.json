@@ -1,0 +1,1 @@
+{"Enterococcus_faecalis_KB1": {"9.991439573509135e-07": {"Activated": {"Constraints": [], "Fluxes": []}, "Deactivated": {"Constraints": ["O2-e0 exchange upper bound"], "Fluxes": ["rxn05195_c0"]}}}}

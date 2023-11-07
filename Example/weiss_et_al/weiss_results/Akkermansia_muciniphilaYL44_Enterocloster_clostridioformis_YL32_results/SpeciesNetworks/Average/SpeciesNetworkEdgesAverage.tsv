@@ -1,0 +1,3 @@
+	Source	Target	Metabolites	Weight	Variance	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+0	Akkermansia_muciniphilaYL44	Enterocloster_clostridioformis_YL32	PAN	-126.64184573703483	0.0022296885692255197	126.64184573703483	-1.0	11.253525924661783	-11.253525924661783
+1	Enterocloster_clostridioformis_YL32	Akkermansia_muciniphilaYL44	PAN	-66.42149646423526	4001.4180150669463	66.42149646423526	-1.0	8.149938433156121	-8.149938433156121

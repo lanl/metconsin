@@ -1,0 +1,142 @@
+	Avg_Clostridium_innocuum_I46	Var_Clostridium_innocuum_I46	Avg_Muribaculum_intestinale_YL27	Var_Muribaculum_intestinale_YL27	Avg_InAmount	Var_InAmount	Avg_OutAmount	Var_OutAmount	Avg_AllAmount	Var_AllAmount	In	InAmount	Out	OutAmount	All	AllAmount
+Adenine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Anserine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Asparagine	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+BIOT-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Biotin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Ca2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Carnitine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Carnosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cd2+-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cellulose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cholesterol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Choline-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Chromium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Citrulline	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cl--e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Co2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Creatine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Creatinine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Cu2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Cytosine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+D-Glucose-e0	0.0016869705002243523	0.0002682204344277434	0.00010456581648115082	1.300252235261163e-05	1.9494169397417587	0.0024939339130672445	0.04326819577017392	0.04134870980156478	1.9926851355119324	0.04395335171002144	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46	3	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	3
+D-Mannose-e0	0.0016869705001734683	0.0002682204344279329	0.0	0.0	0.9813253152522529	0.0072039039692443916	0.042427929926118234	0.0405822726654481	1.023753245178371	0.0472647769162344	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46	2	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	3
+Fe2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Folate	0.0	0.0	-0.005754869595488816	0.10026157858849111	0.9747084698708793	0.0006234834782668111	0.022696273205037764	0.022168124193966687	0.9974047430759171	0.02282064353638977	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Folate-e0	0.016160334090854583	0.006074592094456519	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.042427929926118234	0.0405822726654481	1.0171363997969975	0.04126003516999547	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Galactose-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Gamma-Tocopherol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Glutamine	0.0	0.0	0.004009628803798693	0.001096108363556028	0.9747084698708793	0.0006234834782668111	0.014956408447519899	0.014727056726444138	0.9896648783183991	0.015369674281923743	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Glycine-e0	0.0	0.0	0.0	0.0	0.7459077164484299	0.18877524586955324	0.0	0.0	0.7459077164484299	0.18877524586955324	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.	3		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.	3
+Guanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Guanine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+H+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+H2O-e0	0.0	0.0	0.0	0.0	0.9901432871346031	0.015833787982770766	0.0	0.0	0.9901432871346031	0.015833787982770766	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+Hemin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hydrocortisone	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Hypoxanthine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Inosine	-4.130142705970329e-05	1.3262892554769329e-05	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.00017296926206609883	0.0001729385870192336	0.9748814391329453	0.0007966433488400141	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Inosine-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+K+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Alanine-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Arginine-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Ascorbate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Ascorbate-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Asparagine-e0	-0.0007197568091165798	6.17334641254015e-05	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.040799833201120767	0.039093105863404316	1.015508303072	0.0397687855063773	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+L-Aspartate-e0	9.128651928391866e-05	4.787985106996856e-05	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0017722230482553126	0.0017690028387288203	1.951189162790014	0.004267471243183166	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+L-Cysteine-e0	-4.1301427766763624e-05	1.3262892554707613e-05	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.00017296926206609883	0.0001729385870192336	1.9495899090038245	0.00266731506719444	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+L-Cystine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Fucose-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Glutamate-e0	0.0	0.0	0.0	0.0	0.9745841161604895	0.0007476622451460082	0.0	0.0	0.9745841161604895	0.0007476622451460082	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+L-Glutamine-e0	0.0	0.0	0.0	0.0	0.9655564280861143	0.009677938561471464	0.0	0.0	0.9655564280861143	0.009677938561471464	Clostridium_innocuum_I46.	2		1	Clostridium_innocuum_I46.	2
+L-Histidine-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Isoleucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Isoleucine-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Leucine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Leucine-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Lysine-e0	0.0	0.0	0.0	0.0	1.9317240444853743	0.019820603547755288	0.0	0.0	1.9317240444853743	0.019820603547755288	Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+L-Methionine-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Phenylalanine	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Proline	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Proline-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Serine	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Serine-e0	0.0	0.0	0.0	0.0	0.493425125128462	0.24379908380701276	0.0	0.0	0.493425125128462	0.24379908380701276	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+L-Threonine	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+L-Threonine-e0	5.551458940150144e-13	1.6362168615906077e-25	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tryptophan	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+L-Tyrosine	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+L-Valine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+L-Valine-e0	0.0	0.0	0.0	0.0	0.974452484062699	0.0008790746118609031	0.0	0.0	0.974452484062699	0.0008790746118609031	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+Linolenic	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Melitose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylguanidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Methylhistidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mg-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Mn2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Molybdenum	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 3 (GlcNAcβ1,3GalNAcαSer/Thr-PROTEIN)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Mucin core 4 [GlcNAcβ1,6(GlcNAcβ1,3)GalNAcαSer/Thr-PROTEIN]	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+N-Acetyl-D-chondrosamine-e0	0.0021783351674921855	0.00025563054604817794	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.042427929926118234	0.0405822726654481	1.0171363997969975	0.04126003516999547	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+N-Acetyl-D-glucosamine-e0	5.660765487355132	69.69900693426416	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.31341655097605603	0.2127022312042195	1.2881250208469357	0.21372667568239395	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+N-acetylneuraminate (as sialic residue)	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+NH3-e0	0.0	0.0	0.0	0.0	1.3916029482823555	0.23985460506845496	0.0	0.0	1.3916029482823555	0.23985460506845496	Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+Na+-e0	0.0	0.0	0.0	0.0	1.7421171494791254	0.16520325629719843	0.0	0.0	1.7421171494791254	0.16520325629719843	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	2
+Neu5Ac-e0	0.0	0.0	0.004114194619635131	0.0011213020623206274	0.9747084698708793	0.0006234834782668111	0.014956408447519899	0.014727056726444138	0.9896648783183991	0.015369674281923743	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Niacin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Nickel	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Oleic acid	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+PAN	78.47364705684913	3627.8922985906306	120.60954374411105	365.3420431888589	1.9494169397417587	0.0024939339130672445	1.5714314133635596	0.2591116073072467	3.5208483531053187	0.26562627789695903	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46..Muribaculum_intestinale_YL27	4	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	4
+Pb-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Pectin	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Phosphate-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Phosphoethanolamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Puryvate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Putrescine-e0	4.832466168315194e-13	3.589326752267468e-25	0.0	0.0	0.5324013360672636	0.24178123929502476	0.0	0.0	0.5324013360672636	0.24178123929502476	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+Pyridoxal	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Riboflavin	0.05901587688643308	6.810039216738173	-0.00015605237719660598	2.9125759854405088e-05	1.5865225868110968	0.22943675721436035	0.043687780454215994	0.041730886318309804	1.630210367265313	0.22050069684169657	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46	2	.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46	3	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	5
+Selenium	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Spermidine-e0	0.004752406649185199	0.0006003190239674736	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.042427929926118234	0.0405822726654481	1.0171363997969975	0.04126003516999547	Clostridium_innocuum_I46	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Clostridium_innocuum_I46Clostridium_innocuum_I46	2
+Stachyose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Starch	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Sucrose	0.0	0.0	0.0002614145408234582	8.126576470402835e-05	0.9747084698708793	0.0006234834782668111	0.000840265844055685	0.0008395419403658988	0.975548735714935	0.0014641003900468642	Muribaculum_intestinale_YL27	1	.Muribaculum_intestinale_YL27	2	Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Muribaculum_intestinale_YL27	2
+Sucrose-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Sulfate-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+Thiamin-e0	0.013009601493130664	0.004513304389472503	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.042427929926118234	0.0405822726654481	1.991844869667877	0.04318476463107644	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1	.Clostridium_innocuum_I46	2	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+Uracil	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Uracil-e0	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Clostridium_innocuum_I46	1		1	Clostridium_innocuum_I46	1
+Urea-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+VitA Retinol	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Vitamin K3	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+Zn2+-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+acetylhexosamine	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgal-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+acgam-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+carbonate	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core3-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+core4-e0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+fe3-e0	0.0	0.0	0.0	0.0	1.9494169397417587	0.0024939339130672445	0.0	0.0	1.9494169397417587	0.0024939339130672445	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1		1	Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	1
+fucose	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0		1		1		1
+lactate	0.0	0.0	0.0	0.0	0.9747084698708793	0.0006234834782668111	0.0	0.0	0.9747084698708793	0.0006234834782668111	Muribaculum_intestinale_YL27	1		1	Muribaculum_intestinale_YL27	1
+Acetate-e0	0.0	0.0	0.0	0.0	1.949411597651186	0.002504604396433849	0.0	0.0	1.949411597651186	0.002504604396433849	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+CO2-e0	0.0	0.0	0.0	0.0	1.949411597651186	0.002504604396433849	0.0	0.0	1.949411597651186	0.002504604396433849	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+H2-e0	0.0	0.0	0.0	0.0	0.974705798825593	0.0006261510991084622	0.0	0.0	0.974705798825593	0.0006261510991084622	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+L-Malate-e0	2.537057090541591e-13	1.157872927542485e-25	0.0	0.0	0.5387525533368774	0.24115726388913866	0.0	0.0	0.5387525533368774	0.24115726388913866	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+O2-e0	-9.128651990157572e-05	4.787985106984459e-05	-0.00010456581574341013	1.3002522352774679e-05	1.949411597651186	0.002504604396433849	0.0026124888923109973	0.002605491176921473	1.9520240865434972	0.005116808625820165	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46	3	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	4
+Succinate-e0	0.0	0.0	0.0	0.0	1.9398654308982801	0.011932807216468567	0.0	0.0	1.9398654308982801	0.011932807216468567	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+Ethanol-e0	0.0	0.0	0.0	0.0	1.9492875226956599	0.0027524197004849065	0.0	0.0	1.9492875226956599	0.0027524197004849065	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+Formate-e0-e0	0.0	0.0	0.0	0.0	0.9746437613478299	0.0006881049251212266	0.0	0.0	0.9746437613478299	0.0006881049251212266	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Fumarate-e0	-1.0426149423457991e-14	6.084644121932574e-27	-1.666507911084511e-13	5.63857901055155e-27	1.4770460140385449	0.24500794758510483	0.0	0.0	1.4770460140385449	0.24500794758510483	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Muribaculum_intestinale_YL27	3
+XAN-e0	0.0	0.0	0.0	0.0	0.9746437613478299	0.0006881049251212266	0.0	0.0	0.9746437613478299	0.0006881049251212266	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+H2S-e0	0.0	0.0	0.0	0.0	1.949168232320979	0.0029906489805840326	0.0	0.0	1.949168232320979	0.0029906489805840326	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+5'-Deoxyadenosine-e0	0.0	0.0	0.0	0.0	0.974540728919932	0.0007909809857036111	0.0	0.0	0.974540728919932	0.0007909809857036111	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Glycolaldehyde-e0	0.0	0.0	0.0	0.0	0.9745154614865202	0.0008162067481594541	0.0	0.0	0.9745154614865202	0.0008162067481594541	.Muribaculum_intestinale_YL27	2		1	.Muribaculum_intestinale_YL27	2
+Heme-e0	-6.815350710951166e-12	1.0017144429073544e-22	0.0	0.0	0.4324772457789391	0.2407102366646355	0.0	0.0	0.4324772457789391	0.2407102366646355	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+5-Methylthio-D-ribose-e0	0.0	0.0	0.0	0.0	1.9489363009288503	0.0034537448979568494	0.0	0.0	1.9489363009288503	0.0034537448979568494	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+NAD-e0-e0	0.0	0.0	0.0	0.0	0.00976875166694683	0.009670909624802507	0.0	0.0	0.00976875166694683	0.009670909624802507	.Clostridium_innocuum_I46	2		1	.Clostridium_innocuum_I46	2
+Butyrate-e0	0.0	0.0	0.0	0.0	1.9335550775160486	0.03391911148569403	0.0	0.0	1.9335550775160486	0.03391911148569403	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2		1	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2
+D-Ribose-e0	0.0	0.0	0.024770300279138093	0.07555088692150426	1.9185473052143107	0.06317718299819337	0.013042907285874854	0.012868487325288759	1.9315902125001856	0.0769046683145024	.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27	2	.Muribaculum_intestinale_YL27Clostridium_innocuum_I46.Muribaculum_intestinale_YL27.Clostridium_innocuum_I46.Muribaculum_intestinale_YL27	3

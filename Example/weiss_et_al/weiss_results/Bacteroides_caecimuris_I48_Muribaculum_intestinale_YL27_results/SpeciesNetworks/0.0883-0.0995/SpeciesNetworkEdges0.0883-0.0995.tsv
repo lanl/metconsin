@@ -1,0 +1,3 @@
+	Source	Target	Weight	Metabolites	ABSWeight	SignWeight	ABSRootWeight	SignedRootWeight
+Muribaculum_intestinale_YL27->Bacteroides_caecimuris_I48	Muribaculum_intestinale_YL27	Bacteroides_caecimuris_I48	-126.68907411553064	PAN	126.68907411553064	-1.0	11.25562411044055	-11.25562411044055
+Bacteroides_caecimuris_I48->Muribaculum_intestinale_YL27	Bacteroides_caecimuris_I48	Muribaculum_intestinale_YL27	-126.68907411771174	PAN	126.68907411771174	-1.0	11.25562411053744	-11.25562411053744

@@ -1,0 +1,3 @@
+	Source	Target	SourceType	Weight	ABS_Weight	Sign_Weight	ABSRootWeight	SignedRootWeight
+9	Riboflavin	Muribaculum_intestinale_YL27	Metabolite	126.68907411739957	126.68907411739957	1.0	11.255624110523573	11.255624110523573
+48	Muribaculum_intestinale_YL27	Riboflavin	Microbe	-1.0000000000000533	1.0000000000000533	-1.0	1.0000000000000266	-1.0000000000000266
