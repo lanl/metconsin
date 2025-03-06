@@ -76,11 +76,6 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
         else:
             print("[MetConSIN Environment] Error: No model of species " + mod)
 
-    if media_file == "minimal":
-
-        print("[metconsin_environment] Creating environment from minimal media.")
-        growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth).to_dict()
-
     current = os.path.dirname(os.path.realpath(__file__))
     parent = os.path.dirname(current)
     agora_flder = "AGORA_Media"
@@ -110,12 +105,16 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
             print("[metconsin_environment] No file {}. Creating default environment from model mediums".format(media_file))
             growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
 
+    elif isinstance(media_file,pd.DataFrame):
+        print("[metconsin_environment] Creating environment from DataFrame")
+        growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion).to_dict()
+
     elif media_file == None:
         print("[metconsin_environment] Creating default environment from model mediums")
         growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
 
     else:
-        print("[metconsin_environment] Parameter media_file should be a str or None. Creating default environment from model mediums")
+        print("[metconsin_environment] Parameter media_file should be a str (possibly path to file) or None. Creating default environment from model mediums")
         growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
 
     return growth_media
@@ -702,8 +701,12 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
                 met_met_edges,met_met_nodes = mn.trim_network(met_met_edges,met_met_nodes,dynamics_t)
                 met_med_net,node_table = mn.trim_network(met_med_net,node_table,dynamics_t)
                 met_med_net_summary = mn.make_medmet_summ(met_med_net)
+                
+
+
 
                 nz_out = [i for i in met_med_net_summary.index if node_table.loc[met_med_net_summary.loc[i,'Target'],"OutAmount"] > 0]
+
                 no_out_rmvd = met_med_net_summary.loc[nz_out]
 
                 ssnet,ssnodes,ssadj=mn.heuristic_ss(met_med_net_summary,node_table,report_activity=report_activity_network,flobj = flobj)
@@ -720,8 +723,10 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
         for ky,val in interval_lens.items():
             interval_lens[ky] = val/total_interval
         
-
-        path_summ = mn.get_path_df(mic_met_sum_nets,x_sim,y_sim)
+        try:
+            path_summ = mn.get_path_df(mic_met_sum_nets,x_sim,y_sim)
+        except:
+            path_summ = None
 
         avg_micmetnet_sum,comb_micmet_net_sum,avg_micmet_summ_nodes,rflag = mn.average_network(mic_met_sum_nets,interval_lens,"micmet")
         if rflag:
@@ -861,7 +866,7 @@ def save_metconsin(metconsin_return,flder):
     Path(metmet_folder).mkdir(parents=True, exist_ok=True)
     Path(micmic_folder).mkdir(parents=True, exist_ok=True)
 
-    metconsin_return["SpeciesSpeciesPaths"].to_csv(os.path.join(micmic_folder,"SpeciesPathSummary.tsv",sep='\t'))
+    metconsin_return["SpeciesSpeciesPaths"].to_csv(os.path.join(micmic_folder,"SpeciesPathSummary.tsv"),sep='\t')
 
 
     for ky in metconsin_return["MetMetNetworks"].keys():

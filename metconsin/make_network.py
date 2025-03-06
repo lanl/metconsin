@@ -242,6 +242,8 @@ def species_metabolite_network(metlist,metcons,community,report_activity = True,
     node_table["Name"] = node_table["Name"].apply(lambda s:s.replace("_e",""))
     node_table.index = node_table["Name"].values
 
+    node_table.drop_duplicates(inplace = True)
+
     met_met_nodes.index = [m.replace("_e0","").replace("_e","") for m in met_met_nodes.index]
 
     minuts,sec = divmod(time.time() - start_time, 60)
@@ -421,19 +423,29 @@ def average_network_micmet(networks,interval_times):
     :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
     :type interval_times: dict[float]
 
-    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method succeeded
     :rtype: tuple[pandas dataframe,pandas dataframe, bool]
     """
 
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
-        weights = edges["Weight"]
+        weights = edges["Weight"].copy()
         if "Cofactor" in edges.columns:
             weights.index = ["##".join(edges.loc[rw,["Source","Target","SourceType","Cofactor"]]) for rw in edges.index]
         else:
             weights.index = ["##".join(edges.loc[rw,["Source","Target","SourceType"]]) for rw in edges.index]
-        all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+        try:
+            all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+        except:
+            print("[average_network_micmet] ------------- Error concatenating interval {}\nPrinting and removing duplicate edges.".format(ky))
+            print([(item,count) for item, count in collections.Counter(weights.index).items() if count > 1])
+            weights[~weights.index.duplicated(keep='first')]
+            try:
+                all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
     all_networks = all_networks.fillna(value = 0)
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
     var_network_rw_vals = np.dot(((all_networks.values.T - avg_network_rw.values)**2).T,[interval_times[col] for col in all_networks.columns])
@@ -507,13 +519,19 @@ def average_network_metmet(networks,interval_times):
     all_networks = pd.DataFrame(dtype = float)
     for ky in networks.keys():
         edges = networks[ky]["edges"]
-        weights = edges["Weight"]
+        weights = edges["Weight"].copy()
         weights.index = ["##".join(edges.loc[rw,["Source","Target","Microbe"]]) for rw in edges.index]
         try:
             all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
         except:
-            print(len(weights.index),len(np.unique(weights.index)))
-            print([item for item, count in collections.Counter(weights.index).items() if count > 1])
+            print("[average_network_metmet] ------------- Error concatenating interval {}\nPrinting and removing duplicate edges.".format(ky))
+            print([(item,count) for item, count in collections.Counter(weights.index).items() if count > 1])
+            weights[~weights.index.duplicated(keep='first')]
+            try:
+                all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
 
     all_networks = all_networks.fillna(value = 0)
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
@@ -551,8 +569,18 @@ def make_avg_metmet_node_table(networks,interval_times):
     for mod in model_list:
         moddf = pd.DataFrame()
         for ky,val in networks.items():
-            tab = val["nodes"]
-            moddf = pd.concat([moddf,tab[mod]],axis = 1).rename({mod:ky},axis = 1)
+            tab = val["nodes"].copy()
+            try:
+                moddf = pd.concat([moddf,tab[mod]],axis = 1).rename({mod:ky},axis = 1)
+            except:
+                print("[make_avg_metmet_node_table] ------------- Error concatenating interval {} for model {}\nPrinting and removing duplicates.".format(ky,mod))
+                print([item for item, count in collections.Counter(tab.index).items() if count > 1])
+                tab[~tab.index.duplicated(keep='first')]
+                try:
+                    moddf = pd.concat([moddf,tab[mod]],axis = 1).rename({mod:ky},axis = 1)
+                except Exception as e:
+                    print(e)
+                    print("Skippling Interval")
         resdf = pd.DataFrame()
         moddf.fillna(0,inplace = True)
         mavg = moddf.dot([interval_times[col] for col in moddf])
@@ -566,10 +594,22 @@ def make_avg_metmet_node_table(networks,interval_times):
     a_node_tab = pd.DataFrame()
 
     for ky,val in networks.items():
-        tab = val["nodes"]
-        i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
-        o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
-        a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+        tab = val["nodes"].copy()
+        try:
+            i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
+            o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
+            a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+        except:
+            print("[make_avg_metmet_node_table](in/out/all tables) -------- Error concatenating interval {}\n printing and removing duplicates".format(ky))
+            print([item for item, count in collections.Counter(tab.index).items() if count > 1])
+            tab[~tab.index.duplicated(keep='first')]
+            try:
+                i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
+                o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
+                a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
 
     i_node_tab.fillna("",inplace = True)
     o_node_tab.fillna("",inplace = True)
@@ -594,7 +634,7 @@ def average_network_spc(networks,interval_times,make_node_table=True):
     :param interval_times: Length of the time intervals corresponding to the networks. Keyed by time interval labels.
     :type interval_times: dict[float]
 
-    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method failed
+    :return: Time-averaged network as tuple of edges, nodes, and a flag that indicates if the method succeeded
     :rtype: tuple[pandas dataframe,pandas dataframe, bool]
     """
 
@@ -604,12 +644,22 @@ def average_network_spc(networks,interval_times,make_node_table=True):
         edges = networks[ky]["edges"]
         if not make_node_table:
             node_table = networks[ky]["nodes"]
-        weights = edges["Weight"]
+        weights = edges["Weight"].copy()
         weights.index = ["##".join(edges.loc[rw,["Source","Target","Metabolites"]]) for rw in edges.index]
         # mets = edges["Metabolites"]
         # mets.index = ["##".join(edges.loc[rw,["Source","Target","Metabolites"]]) for rw in edges.index]
         # metabs = pd.concat([metabs,mets],axis = 1).rename({"Metabolites":ky},axis = 1)
-        all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+        try:
+            all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+        except:
+            print("[average_network_spc] ------------- Error concatenating interval {}\nPrinting and Removing Duplicate Edges".format(ky))
+            print([item for item, count in collections.Counter(weights.index).items() if count > 1])
+            weights[~weights.index.duplicated(keep='first')]
+            try:
+                all_networks = pd.concat([all_networks,weights],axis = 1).rename({"Weight":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
     all_networks = all_networks.fillna(value = 0)
     # metabs.fillna("",inplace = True)
     avg_network_rw = all_networks.dot([interval_times[col] for col in all_networks.columns])
@@ -686,8 +736,21 @@ def make_avg_spc_node_table(networks,interval_times):
 
     igrth = pd.DataFrame()
     for ky,val in networks.items():
-        tab = val["nodes"]
-        igrth = pd.concat([igrth,tab["IntrinsicGrowth"]],axis = 1).rename({"IntrinsicGrowth":ky},axis = 1)
+        tab = val["nodes"].copy()
+        try:
+            igrth = pd.concat([igrth,tab["IntrinsicGrowth"]],axis = 1).rename({"IntrinsicGrowth":ky},axis = 1)
+        except:
+            print("[make_avg_spc_node_table] ----------- Error concatenating interval {}\nPrinting and Removing Duplicate Edges".format(ky))
+            print([item for item, count in collections.Counter(tab.index).items() if count > 1])
+            tab[~tab.index.duplicated(keep='first')]
+            try:
+                igrth = pd.concat([igrth,tab["IntrinsicGrowth"]],axis = 1).rename({"IntrinsicGrowth":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
+
+
+
     resdf = pd.DataFrame()
     igrth.fillna(0,inplace = True)
     mavg = igrth.dot([interval_times[col] for col in igrth])
@@ -701,10 +764,23 @@ def make_avg_spc_node_table(networks,interval_times):
     a_node_tab = pd.DataFrame()
 
     for ky,val in networks.items():
-        tab = val["nodes"]
-        i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
-        o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
-        a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+        tab = val["nodes"].copy()
+        try:
+            i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
+            o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
+            a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+        except:
+            print("[make_avg_spc_node_table](in/out/all tables) -------- Error concatenating interval {}\n printing and removing duplicates".format(ky))
+            print([(item,count) for item, count in collections.Counter(tab.index).items() if count > 1])
+            tab[~tab.index.duplicated(keep='first')]
+            try:
+                i_node_tab = pd.concat([i_node_tab,tab["In"]],axis = 1).rename({"In":ky},axis = 1)
+                o_node_tab = pd.concat([o_node_tab,tab["Out"]],axis = 1).rename({"Out":ky},axis = 1)
+                a_node_tab = pd.concat([a_node_tab,tab["All"]],axis = 1).rename({"All":ky},axis = 1)
+            except Exception as e:
+                print(e)
+                print("Skippling Interval")
+
 
     i_node_tab.fillna("",inplace = True)
     o_node_tab.fillna("",inplace = True)

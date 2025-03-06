@@ -497,17 +497,19 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
                 minimal_ok = False
 
 
+        model_med = model.medium
+
         for mi,met in enumerate(exchng_metabolite_names):
 
             if met not in met_ids.index:
                 met_ids.loc[met] = exchng_metabolite_ids[mi]
 
-            rxns = [r for r in model.medium.keys() if met in [m.name for m in model.reactions.get_by_id(r).reactants]]
+            rxns = [r for r in model_med.keys() if met in [m.name for m in model.reactions.get_by_id(r).reactants]]
             if len(rxns):
                 if minimal_ok:
                     all_medias.loc[met,modelkey] = np.mean([mod_min_med.loc[r] if r in mod_min_med.index else 0 for r in rxns])
                 else:
-                    all_medias.loc[met,modelkey] = np.mean([model.medium[r] if r in model.medium.keys() else 0 for r in rxns])
+                    all_medias.loc[met,modelkey] = np.mean([model_med[r] if r in model_med.keys() else 0 for r in rxns])
             else:
                 all_medias.loc[met,modelkey] = 0
 
@@ -531,3 +533,75 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
                 media.loc[met] = media_df[media_df[metabolite_id_type] == metid]["fluxValue"].iloc[0]
 
     return media
+
+def make_media_dataframe(models,uniform_flux = 0,metabolite_id_type="metabolite"):
+
+    """Creates an environment dataframe template that can be edited and passed to ``make_media``.  
+
+    :param models: Set of cobrapy models for the community to be simulated
+    :type models: dict[cobra model]
+
+
+    :param metabolite_id_type: Column heading of ``media_df`` that labels the metabolites in such a way as to mactch the labeling in the models. **We assume this is the same for all models**. Default "metabolite"
+    :type metabolite_id_type: str
+
+    :param uniform_flux: 
+    :type uniform_flux:
+    f
+
+    .. note:: 
+
+        Setting default_proportion to 0 will result in an environment set exactly by the provided table, but may result in 0 growth.
+
+    :return: pandas series with initial environmental metabolite concentrations
+    :rtype: pandas.Series
+    """
+
+    if not isinstance(models,dict):
+        modeldict = {}
+        for mod in models:
+            modeldict[mod.name] = mod
+        models = modeldict
+
+
+
+    all_medias = pd.DataFrame()
+    met_ids = pd.Series(dtype=str)
+
+    for modelkey in models.keys():
+
+        model = models[modelkey]
+
+        #list all reactions the model claims are exchange.
+        exchng_reactions = [rxn.id for rxn in model.reactions if 'EX_' in rxn.id]#
+
+        exchng_metabolite_ids_wrx = [(rx,metab.id) for rx in exchng_reactions for metab in model.reactions.get_by_id(rx).reactants] #
+        exchng_metabolite_ids = [t[1] for t in exchng_metabolite_ids_wrx]
+
+        exchng_metabolite_names = [model.metabolites.get_by_id(metab).name for metab in exchng_metabolite_ids]
+
+
+        model_med = model.medium
+
+        for mi,met in enumerate(exchng_metabolite_names):
+
+            if met not in met_ids.index:
+                met_ids.loc[met] = exchng_metabolite_ids[mi]
+
+            rxns = [r for r in model_med.keys() if met in [m.name for m in model.reactions.get_by_id(r).reactants]]
+            if len(rxns):
+                all_medias.loc[met,modelkey] = np.mean([model_med[r] if r in model_med.keys() else 0 for r in rxns])
+            else:
+                all_medias.loc[met,modelkey] = 0
+
+    media_df = all_medias.fillna(0).max(axis = 1)
+
+    media_template = pd.DataFrame(index = media_df.index)
+    media_template["Name_wext"] = media_template.index
+    media_template["Name"] = [val.split('_')[0] for val in media_template["Name_wext"]]
+    media_template["ID_wext"] = met_ids
+    media_template[metabolite_id_type] = [val.split('_')[0] for val in media_template["ID_wext"]]
+    media_template["fluxValue"] = [uniform_flux]*len(media_template)
+
+
+    return media_template,media_df
