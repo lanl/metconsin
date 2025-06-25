@@ -4,6 +4,12 @@ from .surfmod import *
 import pandas as pd
 import cobra as cb
 
+def remove_list(s1,rli):
+    s2 = str(s1)
+    for s in rli:
+        s2 = s2.replace(str(s),"")
+    return s2
+
 def prep_cobrapy_models(models,**kwargs):
 
 
@@ -100,6 +106,9 @@ def prep_cobrapy_models(models,**kwargs):
     flobj = kwargs.get("flobj")
     deathrates = kwargs.get("model_deathrates")
 
+    extags = kwargs.get('ExtTags','_e0')
+    if not isinstance(extags,list):
+        extags = [extags]
 
     if deathrates == None:
         deathrates = dict([(modky,0) for modky in models.keys()])
@@ -136,7 +145,9 @@ def prep_cobrapy_models(models,**kwargs):
         exchng_metabolite_ids = [t[1] for t in exchng_metabolite_ids_wrx]
 
 
-        exchng_metabolite_names = [model.metabolites.get_by_id(metab).name for metab in exchng_metabolite_ids]
+        exchng_metabolite_names = [remove_list(model.metabolites.get_by_id(metab).name,extags) for metab in exchng_metabolite_ids]
+
+        # print(len(exchng_reactions))
 
         #filter out metabolites we want to ignore.
         if len(met_filter):
@@ -147,14 +158,19 @@ def prep_cobrapy_models(models,**kwargs):
             else:
                 exchng_metabolite_names_flt = exchng_metabolite_names
                 print("[prep_cobrapy_models] Must specify sense of metabolite filter - exclude or include.\n No filtering done.")
-            exchng_metabolite_ids_flt = [metid for metid in exchng_metabolite_ids if model.metabolites.get_by_id(metid).name in exchng_metabolite_names_flt]
-            exchng_reactions_flt = [rxid for rxid in exchng_reactions if all([metid in exchng_metabolite_ids_flt for metid in model.reactions.get_by_id(rxid).reactants])]
+            exchng_metabolite_ids_flt = [metid for metid in exchng_metabolite_ids if remove_list(model.metabolites.get_by_id(metid).name,extags) in exchng_metabolite_names_flt]
+            # for rxid in exchng_reactions:
+            #     print(rxid)
+            #     print(model.reactions.get_by_id(rxid).reactants)
+
+            exchng_reactions_flt = [rxid for rxid in exchng_reactions if all([metid.id in exchng_metabolite_ids_flt for metid in model.reactions.get_by_id(rxid).reactants])]
 
             exchng_metabolite_names = exchng_metabolite_names_flt
             exchng_metabolite_ids = exchng_metabolite_ids_flt
             exchng_reactions = exchng_reactions_flt
 
-
+        # print(exchng_metabolite_ids)
+        # print(len(exchng_reactions))
 
         idtonm = dict(zip(exchng_metabolite_ids,exchng_metabolite_names))
         nmtoid = dict(zip(exchng_metabolite_names,exchng_metabolite_ids))
@@ -165,7 +181,7 @@ def prep_cobrapy_models(models,**kwargs):
             environment = {}
             for rxn in model.medium:
                 for met in model.reactions.get_by_id(rxn).reactants:
-                    environment[met.id] = model.medium[rxn]
+                    environment[remove_list(met.id,extags)] = model.medium[rxn]
 
         y_init = {}
         for metabo in exchng_metabolite_names:
@@ -174,7 +190,7 @@ def prep_cobrapy_models(models,**kwargs):
             elif nmtoid[metabo] in environment.keys():#environment is keyed by metabolite ID
                 y_init[metabo] = environment[nmtoid[metabo]]
             elif any([nmtoid[metabo] in rx.reactants for rx in model.reactions]):#environment is keyed by exchange reaction ID
-                y_init[metabo] = np.mean([environment[rx.id] for rx in model.reactions if metabo in rx.reactants])
+                y_init[metabo] = np.mean([environment[rx.id] for rx in model.reactions if model.metabolites.get_by_id(nmtoid[metabo]) in rx.reactants])
 
 
 
@@ -432,14 +448,16 @@ def prep_cobrapy_models(models,**kwargs):
 
     return surfmods,masterlist,master_y0
 
-def make_media(models,media_df = None,metabolite_id_type="metabolite",default_proportion = 0.1,minimal=False,minimal_grth=None):
+
+
+def make_media(models,media_df = None,metabolite_id_type="metabolite",default_proportion = 0.1,minimal=False,minimal_grth=None,extags = '_e0',keyed = "Name"):
 
     """Creates an initial environment state from a given media table. Given media must include "fluxValue" column that will be used to determine initial availability, and a column that maps the metabolite to its ID in the models used. 
 
     :param models: Set of cobrapy models for the community to be simulated
     :type models: dict[cobra model]
 
-    :param media_df: Table (or path to .csv or .tsv containing table) defining a media. If none is supplied, environment is based on media files for models supplied. Default None.
+    :param media_df: Table (or path to .csv or .tsv containing table) defining a media. If none is supplied, environment is based on medium attribute for cobra models supplied. Default None.
     :type media_df: pandas.DataFrame
 
     :param metabolite_id_type: Column heading of ``media_df`` that labels the metabolites in such a way as to mactch the labeling in the models. **We assume this is the same for all models**. Default "metabolite"
@@ -453,6 +471,12 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
 
     :param minimal_grth: Option to constrain initial growth when computing minimal media. If None, uses model growth from model default media. Default None.
     :type minimial_grth: float
+
+    :param extags: Optional tag or list of tags for exterior compartment metbolite names --- will be trimmed from names so that mediums can be combined. default "_e0"
+    :type extags: str,list,None
+
+    :param keyed: how the returned media is keyed (name or ID). Options "Name" or "ID".
+    :type keyed: str
 
     .. note:: 
 
@@ -468,6 +492,8 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
             modeldict[mod.name] = mod
         models = modeldict
 
+    if not isinstance(extags,list):
+        extags = [extags]
 
 
     all_medias = pd.DataFrame()
@@ -484,7 +510,7 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
         exchng_metabolite_ids_wrx = [(rx,metab.id) for rx in exchng_reactions for metab in model.reactions.get_by_id(rx).reactants] #
         exchng_metabolite_ids = [t[1] for t in exchng_metabolite_ids_wrx]
 
-        exchng_metabolite_names = [model.metabolites.get_by_id(metab).name for metab in exchng_metabolite_ids]
+        exchng_metabolite_names = [remove_list(model.metabolites.get_by_id(metab).name,extags) for metab in exchng_metabolite_ids]
 
         minimal_ok = False
         if minimal:
@@ -502,9 +528,11 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
         for mi,met in enumerate(exchng_metabolite_names):
 
             if met not in met_ids.index:
-                met_ids.loc[met] = exchng_metabolite_ids[mi]
+                met_ids.loc[met] = remove_list(exchng_metabolite_ids[mi],extags)
 
-            rxns = [r for r in model_med.keys() if met in [m.name for m in model.reactions.get_by_id(r).reactants]]
+            rxns = [r for r in model_med.keys() if met in [remove_list(m.name,extags) for m in model.reactions.get_by_id(r).reactants]]
+#             print(met)
+#             print(rxns)
             if len(rxns):
                 if minimal_ok:
                     all_medias.loc[met,modelkey] = np.mean([mod_min_med.loc[r] if r in mod_min_med.index else 0 for r in rxns])
@@ -528,9 +556,18 @@ def make_media(models,media_df = None,metabolite_id_type="metabolite",default_pr
     if isinstance(media_df,pd.DataFrame):
 
         for met in intitial_media.index:
-            metid = met_ids.loc[met].split("_")[0]
+            metid = met_ids.loc[met]
+            
+            for et in extags:
+                metid = metid.replace(str(et),"")
+
             if metid in media_df[metabolite_id_type].values:
                 media.loc[met] = media_df[media_df[metabolite_id_type] == metid]["fluxValue"].iloc[0]
+    
+    if isinstance(keyed,str):
+        if keyed.lower() == "id":
+            media.index = [met_ids.loc[n] for n in media.index]
+    
 
     return media
 

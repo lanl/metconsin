@@ -57,6 +57,8 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
     met_id_col = kwargs.get("metabolite_id_type","metabolite")
     default_proportion = kwargs.get("default_proportion",0.1)
     minimal_grth = kwargs.get("intitial_growth")
+    extags = kwargs.get("ExtTags","_e0")
+    keyed = kwargs.get("keyed")
 
     cobra_models = {}
 
@@ -94,28 +96,28 @@ def metconsin_environment(community_members,model_info_file,**kwargs):
 
         elif media_file.lower() == "minimal":
             print("[metconsin_environment] Creating environment from minimal media.")
-            growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth).to_dict()
+            growth_media = pr.make_media(cobra_models,default_proportion = 1,minimal=True,minimal_grth=minimal_grth,extags = extags,keyed = keyed).to_dict()
         elif media_file.lower() == "default":
             print("[metconsin_environment] Creating default environment from model mediums")
-            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion,extags = extags,keyed = keyed).to_dict()
         elif os.path.isfile(media_file):
             print("[metconsin_environment] Creating environment from file {}".format(media_file))
-            growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion).to_dict()
+            growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion,extags = extags,keyed = keyed).to_dict()
         else:
             print("[metconsin_environment] No file {}. Creating default environment from model mediums".format(media_file))
-            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+            growth_media = pr.make_media(cobra_models,default_proportion =default_proportion,extags = extags,keyed = keyed).to_dict()
 
     elif isinstance(media_file,pd.DataFrame):
         print("[metconsin_environment] Creating environment from DataFrame")
-        growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion).to_dict()
+        growth_media = pr.make_media(cobra_models,media_df = media_file,metabolite_id_type=met_id_col,default_proportion = default_proportion,extags = extags,keyed = keyed).to_dict()
 
     elif media_file == None:
         print("[metconsin_environment] Creating default environment from model mediums")
-        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion,extags = extags,keyed = keyed).to_dict()
 
     else:
         print("[metconsin_environment] Parameter media_file should be a str (possibly path to file) or None. Creating default environment from model mediums")
-        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion).to_dict()
+        growth_media = pr.make_media(cobra_models,default_proportion =default_proportion,extags = extags,keyed = keyed).to_dict()
 
     return growth_media
 
@@ -512,7 +514,6 @@ def metconsin_sim(community_members,model_info_file,**kwargs):
     model_fl_nmhead = kwargs.get("nameColhead","Species")
 
 
-
     start_time = time.time()
 
 
@@ -866,7 +867,10 @@ def save_metconsin(metconsin_return,flder):
     Path(metmet_folder).mkdir(parents=True, exist_ok=True)
     Path(micmic_folder).mkdir(parents=True, exist_ok=True)
 
-    metconsin_return["SpeciesSpeciesPaths"].to_csv(os.path.join(micmic_folder,"SpeciesPathSummary.tsv"),sep='\t')
+    try:
+        metconsin_return["SpeciesSpeciesPaths"].to_csv(os.path.join(micmic_folder,"SpeciesPathSummary.tsv"),sep='\t')
+    except AttributeError:
+        print("[save_metconsin] Warning: No species-species path summaries found.")
 
 
     for ky in metconsin_return["MetMetNetworks"].keys():

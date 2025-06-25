@@ -1063,9 +1063,8 @@ class SurfMod:
                 #stop if we're stuck at the same number
                 if np.std(maxtimes[-5:]) < 10**-5:
                     keeptrying = False
-            #also stop if we're stuck in a loop
-            elif numof > 2:
-                if maxtimes[-1] in maxtimes[:-1]:
+                #also stop if we're stuck in a loop
+                elif maxtimes[-1] in maxtimes[:-1]:
                     #get the loop:
                     loopat = np.where(np.array(maxtimes) == maxtimes[-1])[0]
                     if maxtimes[-1] == min(maxtimes[loopat[0]:loopat[1]]):

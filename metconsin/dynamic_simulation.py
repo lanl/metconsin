@@ -169,7 +169,8 @@ def find_stop(t0,t1,sln,models):
         for i in range(mod.total_vars):
             if min(abs(get_var_i(t0,i,sln,mod,len(models))),abs(get_var_i(t1,i,sln,mod,len(models)))) > 10**-8 and (get_var_i(t0,i,sln,mod,len(models))*get_var_i(t1,i,sln,mod,len(models)) < 0):
                 all_roots[j] = root_scalar(get_var_i,args = (i,sln,mod,len(models)),bracket=[t0,t1]).root
-                print("AN EARLIER STOP: {} - {}".format(t1,all_roots[j]))
+                if all_roots[j] == min(all_roots):
+                    print("AN EARLIER STOP: {} - {}".format(t1,all_roots[j]))
             j+=1
     return min(all_roots)
 
@@ -398,6 +399,13 @@ def surfin_fba(models,x0,y0,endtime,**kwargs):
                 break
             stptime = interval.t[-1]#find_stop(t_c, interval.t[-1],interval.sol,models)##find_event(interval,models)
             ### If we're worried that solve_ivp's root finder isn't good enough, we can use find_stop to get even more precise
+            
+            for mod in models:
+                if min(mod.slack_vals) < -10**-7:
+                    refine_stoptime = True
+                if min(mod.inter_flux) < -10**-7:
+                    refine_stoptime = True
+            
             if refine_stoptime:
                 stptime = find_stop(t_c, interval.t[-1],interval.sol,models)
             
